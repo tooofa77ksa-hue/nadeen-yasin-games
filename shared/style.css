@@ -100,12 +100,13 @@ table.t td,table.t th{padding:8px 10px;border-bottom:2px dashed #e9c866;text-ali
 .live.off{background:var(--bad)}
 a.btn{display:inline-block;text-decoration:none}
 /* الشهادة */
-.cert,.cert-print{display:none}
+.cert,.cert-print,.rep-print{display:none}
 @media print{
  html,body{background:#fff!important;color:#000;margin:0}
  #app{max-width:none!important;padding:0!important;margin:0!important}
- #app>*:not(.cert-print){display:none!important}
- .cert-print{display:block!important}
+ #app>*{display:none!important}
+ body.pr-cert #app>.cert-print{display:block!important}
+ body.pr-rep #app>.rep-print{display:block!important}
  @page{size:A4 landscape;margin:0}
  .cert{display:block!important;page-break-after:always;break-after:page;width:297mm;height:209mm;overflow:hidden;box-sizing:border-box;padding:9mm;background:#ffc72c;color:#2b1b10;font-family:'Tajawal',sans-serif}
  .cert-print .cert:last-child{page-break-after:auto;break-after:auto}
@@ -116,6 +117,20 @@ a.btn{display:inline-block;text-decoration:none}
  .cert .sig{display:flex;justify-content:space-between;gap:12mm;width:100%;margin-top:8mm;font-size:14pt;font-weight:700}
  .cert .cs{position:absolute;filter:drop-shadow(0 2mm 2mm #0003)}
  .cert .cs1{left:12mm;bottom:10mm;width:46mm}.cert .cs2{right:14mm;top:12mm;width:36mm}.cert .cs3{left:16mm;top:14mm;width:28mm}.cert .cs4{right:16mm;bottom:12mm;width:32mm}
+ .rep{width:297mm;height:209mm;box-sizing:border-box;padding:9mm;background:#ffc72c;font-family:'Tajawal',sans-serif;color:#2b1b10}
+ .rep .sheet{height:100%;box-sizing:border-box;background:#fff;border-radius:7mm;padding:8mm 12mm;position:relative}
+ .rep h1{font-family:'Lalezar';font-size:28pt;margin:0;color:#ff8a1f;text-shadow:1.5px 0 0 #2b1b10,-1.5px 0 0 #2b1b10,0 1.5px 0 #2b1b10,0 -1.5px 0 #2b1b10}
+ .rep .sub{font-size:12pt;margin:1mm 0 4mm}
+ .rep .row2{display:flex;gap:8mm;margin-bottom:4mm}
+ .rep .box{flex:1;border-radius:5mm;padding:4mm 6mm;color:#2b1b10;border:1.2mm solid #2b1b10}
+ .rep .b-n{background:#ffd6ea}.rep .b-y{background:#cfe0ff}
+ .rep .box h2{font-family:'Lalezar';font-size:18pt;margin:0}
+ .rep .box .big{font-size:20pt;font-weight:800}
+ .rep table{width:100%;border-collapse:collapse;font-size:11pt}
+ .rep th{background:#3d7bff;color:#fff;padding:2mm;text-align:right}
+ .rep td{padding:1.6mm 2mm;border-bottom:.4mm dashed #c9a43a;text-align:right}
+ .rep .st{width:5mm;height:5mm;vertical-align:middle}
+ .rep .av{position:absolute;bottom:6mm;left:10mm;width:22mm}
 }
 @media (max-width:640px){.heroc{flex-direction:column;text-align:center}.heroc .hb{width:96px}h1{font-size:1.9rem}.planet{min-height:170px}}
 /* حركة الصلصال (ستوب موشن) */

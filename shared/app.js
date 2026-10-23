@@ -13,7 +13,7 @@ const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1
 const pick=(a,n)=>shuf(a).slice(0,n);
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 /* خطاب المذكّر لياسين (خارج نصوص الأسئلة) */
-if(P==='yasin'){const MAP=[['أحسنتِ','أحسنتَ'],['بطلة','بطل'],['جرّبي','جرّب'],['حصلتِ','حصلتَ'],['أرسليها','أرسلها'],['العبي','العب'],['أرسلي','أرسل'],['أجيبي','أجب'],['أخطأتِ','أخطأتَ'],['غيّري','غيّر'],['أدِيري','أدِر'],['اقرئي','اقرأ'],['اكتبي','اكتب'],['اختاري','اختر'],['ابدئي','ابدأ'],['اتركي','اترك'],['تحقّقي','تحقّق'],['اللاعبة','اللاعب'],['مرحبًا بكِ','مرحبًا بك'],['افتحي','افتح'],['ألصقي','ألصق'],['قرأتِ','قرأتَ'],['فكّري','فكّر'],['تعلّمتِ','تعلّمتَ'],['تذكّري','تذكّر'],['تأكّدي','تأكّد'],['اضغطي','اضغط'],['استخدمي','استخدم'],['حاولي','حاول'],['ركّزي','ركّز'],['انتبهي','انتبه'],['أكملي','أكمل'],['ارجعي','ارجع'],['تختاري','تختار'],['تتجاوزي','تتجاوز'],['تحصلين','تحصل'],['اربحي','اربح'],['وصلتِ','وصلتَ'],['لكِ','لك'],['أرسليها','أرسلها'],['ألصقي','ألصق']];
+if(P==='yasin'){const MAP=[['أحسنتِ','أحسنتَ'],['بطلة','بطل'],['جرّبي','جرّب'],['حصلتِ','حصلتَ'],['أرسليها','أرسلها'],['العبي','العب'],['أرسلي','أرسل'],['أجيبي','أجب'],['أخطأتِ','أخطأتَ'],['غيّري','غيّر'],['أدِيري','أدِر'],['اقرئي','اقرأ'],['اكتبي','اكتب'],['اختاري','اختر'],['ابدئي','ابدأ'],['اتركي','اترك'],['تحقّقي','تحقّق'],['اللاعبة','اللاعب'],['مرحبًا بكِ','مرحبًا بك'],['افتحي','افتح'],['ألصقي','ألصق'],['قرأتِ','قرأتَ'],['فكّري','فكّر'],['تعلّمتِ','تعلّمتَ'],['تذكّري','تذكّر'],['تأكّدي','تأكّد'],['اضغطي','اضغط'],['استخدمي','استخدم'],['حاولي','حاول'],['ركّزي','ركّز'],['انتبهي','انتبه'],['أكملي','أكمل'],['ارجعي','ارجع'],['تختاري','تختار'],['تتجاوزي','تتجاوز'],['تحصلين','تحصل'],['اربحي','اربح'],['اختبري','اختبر'],['وصلتِ','وصلتَ'],['لكِ','لك'],['أرسليها','أرسلها'],['ألصقي','ألصق']];
  const SKIP='.q,.opt,.pass,.why';
  let busy=false;const fix=root=>{if(busy)return;busy=true;try{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(n.parentElement&&n.parentElement.closest(SKIP))continue;let t=n.nodeValue,o=t;for(const [a,b] of MAP)if(t.includes(a))t=t.split(a).join(b);if(t!==o)n.nodeValue=t}}finally{busy=false}};
  new MutationObserver(()=>fix(app)).observe(app,{childList:true,subtree:true});}
@@ -62,15 +62,18 @@ async function finish(game,label,sc,max){setMas('hide');
  app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${st>=2?spr(SEQ(P,'dance',4),150,P,.25):st===1?spr(SEQ(P,'clap',3),150,P,.3):avatar(130,P,'oops')}</div><h2>${st>=2?'أحسنتِ يا بطلة!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
  <p class="muted">${ok?'وصلت نتيجتك إلى المعلمة مها ✓':'ما وصلت النتيجة للمعلمة الآن؛ أرسليها بالواتساب أو جرّبي لاحقًا.'}</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again">العبي مرة ثانية</button><button class="btn ghost" id="home">الرئيسية</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">أرسلي لمعلمتك بالواتساب</a></div></div>`;
- if(st>=1)confetti(st*30+10);for(let k=0;k<st;k++)setTimeout(()=>sfx('correct'),400+k*350);$('#again').onclick=()=>{if(game==='central'){const m=label.match(/\((\d+)\)/);GAMES.central.start(m?+m[1]-1:0)}else GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
+ if(st>=1)confetti(st*30+10);for(let k=0;k<st;k++)setTimeout(()=>sfx('correct'),400+k*350);$('#again').onclick=()=>{if(game==='lesson'){GAMES.lesson.start()}else if(game==='central'){const m=label.match(/\((\d+)\)/);GAMES.central.start(m?+m[1]-1:0)}else GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
 function confetti(n=40){const c=['#ffd54a','#ff7ac8','#7fe8ff','#9affc9','#c9a7ff'];for(let i=0;i<n;i++){const d=document.createElement('i');d.style.cssText=`position:fixed;top:-10px;left:${Math.random()*100}%;width:9px;height:14px;background:${c[i%5]};z-index:30;border-radius:2px;transition:transform ${1.6+Math.random()*1.4}s ease-in,opacity 2.6s;pointer-events:none`;document.body.appendChild(d);requestAnimationFrame(()=>{d.style.transform=`translate(${(Math.random()-.5)*240}px,${innerHeight+40}px) rotate(${Math.random()*720}deg)`;d.style.opacity='0'});setTimeout(()=>d.remove(),3200)}}
 function topbar(){return `<div class="top"><div class="who">${avatar(40)}<div><h3 style="margin:0">${NAMES[P]}</h3><div class="muted" style="font-size:.85rem">مركز رؤيا وإبداع</div></div></div><div class="chips"><span class="chip">${starSvg(true,18)} ${LS.get('stars',0)}</span><span class="chip">🪙 ${LS.get('coins',0)}</span><button class="chip" id="mt" style="font:inherit;color:inherit;cursor:pointer">${muted?'🔇':'🔊'}</button><button class="chip" id="hm" style="font:inherit;color:inherit;cursor:pointer">🏠</button></div></div>`}
 function bindTop(){const m=$('#mt');if(m)m.onclick=()=>{muted=!muted;LS.set('mute',muted);m.textContent=muted?'🔇':'🔊'};const h=$('#hm');if(h)h.onclick=home}
 /* أسئلة */
 const KINDS={antonym:'الأضداد',synonym:'المرادفات',irab:'الإعراب',plural:'الجموع',comp:'فهم المقروء',spelling:'الإملاء',grammar:'القواعد'};
+const LKIND={spelling:['imla1','imla2','imla3','imla4'],grammar:['nahw1','nahw4','rasm'],irab:['nahw2','nahw3','nahw5','nahw6'],comprehension:['poem','entry']};
+function lessonItems(id){const L=(QD.LQ||[]).find(x=>x.id===id);return L?L.items.map(x=>({...x,kind:'lesson',pg:L.pg?('ص'+L.pg):''})):[]}
 function pool(kind){
  const q=QD.Q.filter(x=>x.kind===kind);const e=QD.EX.filter(x=>x.kind===kind);
- return [...q,...e];
+ const k2=kind==='comp'?'comprehension':kind;const ls=(LKIND[k2]||[]).flatMap(lessonItems);
+ return [...q,...e,...ls];
 }
 function prep(q){let o=q.o.map((t,i)=>({t,i}));const fixed=q.o.length<=2||(q.type==='tf');if(!fixed)o=shuf(o);return {...q,o:o.map(x=>x.t),a:o.findIndex(x=>x.i===q.a)}}
 function ask(box,q,done,opts={}){
@@ -105,6 +108,12 @@ GAMES.million={start(){const kinds=['antonym','synonym','irab','plural','grammar
   app.innerHTML=`${topbar()}<div style="display:flex;gap:12px;align-items:flex-start"><div class="ladder">${PR.map((p,k)=>`<div class="${k===i?'cur':k<i?'done':''}">${p}</div>`).join('')}</div><div style="flex:1"><div class="card"><div class="chips" style="margin-bottom:6px"><button class="chip lf" data-l="half" ${lf.half?'':'disabled'} style="font:inherit;color:inherit;cursor:pointer">٥٠:٥٠</button><button class="chip lf" data-l="swap" ${lf.swap?'':'disabled'} style="font:inherit;color:inherit;cursor:pointer">🔄 غيّري السؤال</button><button class="chip lf" data-l="hint" ${lf.hint?'':'disabled'} style="font:inherit;color:inherit;cursor:pointer">💡 تلميح</button></div><div id="qb"></div></div></div></div>`;bindTop();
   const q=all[i];ask($('#qb'),q,ok=>{if(ok){i++;step()}else{finish('million','من سيربح المليون',i,15)}},{hide:hide||[]});
   $$('.lf').forEach(b=>b.onclick=()=>{const l=b.dataset.l;lf[l]=0;if(l==='half'){const w=shuf(q.o.map((t,k)=>k).filter(k=>k!==q.a)).slice(0,2);step(w)}else if(l==='swap'){all[i]=spare.pop();step()}else{toast('تلميح: الإجابة تبدأ بحرف «'+nz(q.o[q.a]).replace(/^ال/,'').charAt(0)+'»');b.disabled=true}})};step()}};
+/* اختبر نفسك على درس */
+GAMES.lesson={start(id){id=id||GAMES._lid;GAMES._lid=id;const L=(QD.LQ||[]).find(x=>x.id===id);if(!L)return home();
+ const qs=pick(lessonItems(id),Math.min(10,lessonItems(id).length)).map(prep);let i=0,sc=0;
+ const step=()=>{if(i>=qs.length)return finish('lesson','درس: '+L.title.replace(/[\u064B-\u0652]/g,''),sc,qs.length);
+  app.innerHTML=`${topbar()}<div class="card"><div class="bar"><i style="width:${i/qs.length*100}%"></i></div><p class="muted">${esc(L.title)} · سؤال ${i+1} من ${qs.length}</p><div id="qb"></div></div>`;bindTop();
+  ask($('#qb'),qs[i],ok=>{if(ok)sc++;i++;step()})};step()}};
 /* العجلة */
 const WH=[['antonym','أضداد','#ff7ac8'],['synonym','مرادفات','#8f6bff'],['irab','إعراب','#39b6ff'],['plural','جموع','#27e0c0'],['comp','فهم مقروء','#ffd54a'],['mix','اختبار منوّع','#ff9f43']];
 GAMES.wheel={start(){const n=WH.length,ang=360/n;
@@ -192,11 +201,13 @@ function home(){setMas('hide');
  app.innerHTML=`${topbar()}<div class="heroc"><div class="hop avw">${spr([P+'_wave1',P+'_wave2'],150,P)}</div><div class="ht"><h1>أهلًا ${NAMES[P]}!</h1><span class="pill">اختاري لعبة وابدئي</span><span class="pill">كل نتيجة تصل إلى المعلمة مها</span></div><span class="hb">${spr(['bee_fly1','bee_fly2'],130,'bee')}</span></div><div class="card center" style="margin-top:0;display:none"></div>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
  <div class="grid">${PL.map((p,i)=>`<div class="planet f${i%4}" data-g="${p[0]}"><img class="stk" src="${IMG}${p[3]}.webp" alt=""><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
  ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${h.stars?starRow(h.stars,h.stars,16):'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}
+ <div class="card"><h3>📚 اختبري نفسك على درس</h3><p class="muted" style="margin:0 0 8px">أسئلة من كل درس في الكتاب، مع الشرح بعد كل إجابة.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${(QD.LQ||[]).filter(l=>!l.id.startsWith('rc')).map(l=>`<button class="btn ghost lq" data-id="${l.id}">${l.title}</button>`).join('')}</div></div>
  <div class="card"><h3>📝 الاختبارات المركزية</h3><p class="muted" style="margin:0 0 8px">ورقة كاملة بنمط الاختبار: قطعة قراءة، ثم قواعد وإعراب، ثم إملاء ومفردات. تظهر النتيجة والمراجعة في النهاية.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${centralPapers().map((p,i)=>`<button class="btn ghost cp" data-i="${i}">اختبار ${p.n}: ${p.title}</button>`).join('')}</div></div>
  ${skyCard()}
  <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();
  $$('.planet').forEach(el=>el.onclick=()=>{const [g,k]=el.dataset.g.split(':');GAMES[g].start(k)});
  $$('.cp').forEach(b=>b.onclick=()=>GAMES.central.start(+b.dataset.i));
+ $$('.lq').forEach(b=>b.onclick=()=>GAMES.lesson.start(b.dataset.id));
  const a=$('#goA');if(a)a.onclick=()=>{LS.set('assign',null);const [g,k]=asg.game.split(':');GAMES[g].start(k)}}
 window.GAMES=GAMES;window.home=home;window.NYG={CFG,bus,LS,NAMES,esc,avatar,alienSvg,confetti,topbar,bindTop,sfx,toast,QD,$,$$};
 if(P!=='maha'){home();bus.listen(m=>{if(m.t==='assign'&&(m.to===P||m.to==='both')){LS.set('assign',m);toast('📣 رسالة من المعلمة مها');if($('.grid')&&$('h1'))home()}})}
