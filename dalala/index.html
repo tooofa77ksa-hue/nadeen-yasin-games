@@ -861,7 +861,7 @@ const SECTIONS=[
 function homePage(){$('#crumb').textContent='لغتي الجميلة';
   const row=it=>{const ok=it.special||LBY[it.id];return `<div class="row ${ok?'':'off'}"><span class="t">${it.t} <span class="pg">${it.pg}</span>${it.note?`<br><small>${it.note}</small>`:''}</span>${ok?`<button class="go" data-go="${it.special||'L-'+it.id}">افتحي الدرس</button>`:'<span class="tag">قريبًا</span>'}</div>`};
   const ICO={'مدخل الوحدة':'bag','الاستماع':'bulb','الفهم القرائي':'book','قطع الفهم القرائي':'magnifier','الظاهرة الإملائية':'pencil','الوظيفة النحوية':'apple','الرسم الكتابي':'medal','النص الشعري':'globe','نموذج اختبار':'trophy'};
-  app.innerHTML=`<section class="hero"><div class="scene">${sceneSvg()}</div><div class="cloudp"><h2>معلمة المادة: دلال السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></div></section>
+  app.innerHTML=`<section class="hero"><div class="scene">${sceneSvg()}</div><div class="cloudp"><h2>مادة لغتي</h2><p><b>الصف الرابع الابتدائي · الفصل الدراسي الأول</b><br>معلمة المادة: دلال السناني<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></div></section>
   <button class="big" data-go="groups"><img class="ic stk" src="assets/bag.webp" alt=""><span><b>مجموعات الفصل</b><small>رابع 1 ورابع 2، أربع مجموعات لكل فصل</small></span></button>
   <button class="big" data-go="pick"><img class="ic stk" src="assets/magnifier.webp" alt=""><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويقف على اسم طالبة، ثم سؤال لها</small></span></button>
   <button class="big" data-go="central"><img class="ic stk" src="assets/trophy.webp" alt=""><span><b>الاختبارات المركزية</b><small>سبع أوراق بنمط الاختبار، تُصحَّح دفعة واحدة</small></span></button>
