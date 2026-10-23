@@ -208,6 +208,15 @@ footer{color:#58628f}footer b{color:#27397f}
 .felt{filter:url(#felt)}
 .bee{transition:opacity .25s}.bee.away{opacity:0;pointer-events:none}
 .bee .x{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;border:3px solid #fff;background:#27397f;color:#fff;font:700 15px/1 inherit;cursor:pointer;padding:0}
+/* خيش وقماش حقيقيان: نسيج متقاطع وزغب لباد */
+body{background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 .35' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .42 0 0 0 0 .25 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.35 .9' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .42 0 0 0 0 .25 0 0 0 .3 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23m)'/%3E%3C/svg%3E");background-color:#f1e3c0}
+.card,.sec,.big,.opt,.btn,.tabs button{background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 -.1'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23f)' opacity='.55'/%3E%3C/svg%3E");background-blend-mode:soft-light}
+.bar{background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0h3v3H0zM3 3h3v3H3z' fill='%23ffffff12'/%3E%3C/svg%3E")}
+.stk{filter:drop-shadow(0 5px 4px #0003);display:block}
+.big .ic{width:82px;flex:none;font-size:0}
+.sec h3{display:flex;align-items:center;gap:10px}.sec h3 .stk{width:46px}
+.bee{width:112px}.bee img{width:100%;display:block;filter:drop-shadow(0 6px 5px #0004)}
+.scn-bee{animation:beeFly 14s ease-in-out infinite}
 </style>
 
 <div class="wrap">
@@ -787,11 +796,12 @@ const SECTIONS=[
  {u:'نموذج اختبار',items:[{id:'exam1',t:'نموذج اختبار الوحدة',pg:'ص١٥١'}]}];
 function homePage(){$('#crumb').textContent='لغتي الجميلة';
   const row=it=>{const ok=it.special||LBY[it.id];return `<div class="row ${ok?'':'off'}"><span class="t">${it.t} <span class="pg">${it.pg}</span>${it.note?`<br><small>${it.note}</small>`:''}</span>${ok?`<button class="go" data-go="${it.special||'L-'+it.id}">افتحي الدرس</button>`:'<span class="tag">قريبًا</span>'}</div>`};
+  const ICO={'مدخل الوحدة':'bag','الاستماع':'bulb','الفهم القرائي':'book','قطع الفهم القرائي':'magnifier','الظاهرة الإملائية':'pencil','الوظيفة النحوية':'apple','الرسم الكتابي':'medal','النص الشعري':'globe','نموذج اختبار':'trophy'};
   app.innerHTML=`<section class="hero"><div class="scene">${sceneSvg()}</div><div class="cloudp"><h2>معلمة المادة: دلال السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></div></section>
-  <button class="big" data-go="groups"><span class="ic">👥</span><span><b>مجموعات الفصل</b><small>رابع 1 ورابع 2، أربع مجموعات لكل فصل</small></span></button>
-  <button class="big" data-go="pick"><span class="ic">🎲</span><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويقف على اسم طالبة، ثم سؤال لها</small></span></button>
-  <button class="big" id="goM"><span class="ic">⭐</span><span><b>من سيربح مليون نجمة؟</b><small>أسئلة من كل الدروس، العبي وحدك أو مع صاحبتك</small></span></button>
-  <section class="units"><h2>الوحدة الأولى: صحتي وبيئتي</h2>${SECTIONS.map(s=>`<div class="sec"><h3>${s.u}</h3>${s.items.map(row).join('')}</div>`).join('')}</section>
+  <button class="big" data-go="groups"><img class="ic stk" src="assets/bag.webp" alt=""><span><b>مجموعات الفصل</b><small>رابع 1 ورابع 2، أربع مجموعات لكل فصل</small></span></button>
+  <button class="big" data-go="pick"><img class="ic stk" src="assets/magnifier.webp" alt=""><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويقف على اسم طالبة، ثم سؤال لها</small></span></button>
+  <button class="big" id="goM"><img class="ic stk" src="assets/star.webp" alt=""><span><b>من سيربح مليون نجمة؟</b><small>أسئلة من كل الدروس، العبي وحدك أو مع صاحبتك</small></span></button>
+  <section class="units"><h2>الوحدة الأولى: صحتي وبيئتي</h2>${SECTIONS.map(s=>`<div class="sec"><h3>${ICO[s.u]?`<img class="stk" src="assets/${ICO[s.u]}.webp" alt="">`:''}${s.u}</h3>${s.items.map(row).join('')}</div>`).join('')}</section>
   <p class="lead">الدروس من كتاب لغتي الجميلة (١٤٤٨) وأوراق العمل، وعلى كل درس رقم صفحته في الكتاب.</p>`;
   $('#goM').onclick=()=>{window.MSEL='all';location.hash='million'};
   $$('[data-go]').forEach(b=>b.onclick=()=>{location.hash=b.dataset.go})}
@@ -862,12 +872,12 @@ function sceneSvg(){return `<svg viewBox="0 0 640 260" preserveAspectRatio="xMid
  <g class="felt"><ellipse cx="170" cy="270" rx="560" ry="86" fill="#79c357"/><ellipse cx="520" cy="276" rx="700" ry="78" fill="#5cae4a"/><ellipse cx="320" cy="292" rx="1100" ry="50" fill="#8ed16a"/></g>
  <g class="felt scn-tree" transform="translate(330 168)"><rect x="-8" y="0" width="16" height="52" rx="6" fill="#a8683a"/><circle cx="0" cy="-12" r="40" fill="#3f9a45"/><circle cx="-28" cy="8" r="26" fill="#4cab4f"/><circle cx="28" cy="8" r="26" fill="#4cab4f"/><circle cx="-10" cy="-26" r="6" fill="#ff7b6b"/><circle cx="16" cy="-6" r="6" fill="#ff7b6b"/></g>
  <g class="felt"><g fill="#ff7b9c"><circle cx="300" cy="238" r="6"/><circle cx="360" cy="244" r="6"/><circle cx="520" cy="236" r="6"/></g><g fill="#ffd34d"><circle cx="300" cy="238" r="2.6"/><circle cx="360" cy="244" r="2.6"/><circle cx="520" cy="236" r="2.6"/></g></g>
- <g class="scn-bee" transform="translate(560 110)">${beeSvg(60).replace('<svg ','<svg x="0" y="0" ').replace(/<svg class="" /,'<svg ')}</g></svg>`}
+ <image class="scn-bee" href="assets/bee_fly1.webp" x="500" y="60" width="90" height="90"/></svg>`}
 (function(){
  const d=document.createElement('div');d.innerHTML=FELT_DEFS;document.body.appendChild(d.firstChild);
- let bub=null,ti=0;const b=document.createElement('div');b.className='bee wave';b.id='bee';b.setAttribute('role','button');b.setAttribute('aria-label','النحلة المرشدة');b.tabIndex=0;b.innerHTML=beeSvg(104)+'<button class="x" aria-label="إخفاء النحلة">×</button>';document.body.appendChild(b);let gone=false;try{gone=sessionStorage.getItem('beeGone')==='1'}catch(_){}if(gone)b.style.display='none';b.querySelector('.x').onclick=ev=>{ev.stopPropagation();b.style.display='none';if(bub){bub.remove();bub=null}try{sessionStorage.setItem('beeGone','1')}catch(_){}};let st;addEventListener('scroll',()=>{b.classList.add('away');clearTimeout(st);st=setTimeout(()=>b.classList.remove('away'),900)},{passive:true});
+ let bub=null,ti=0;const b=document.createElement('div');b.className='bee wave';b.id='bee';b.setAttribute('role','button');b.setAttribute('aria-label','النحلة المرشدة');b.tabIndex=0;b.innerHTML='<img src="assets/bee_wave.webp" alt="">'+'<button class="x" aria-label="إخفاء النحلة">×</button>';document.body.appendChild(b);let gone=false;try{gone=sessionStorage.getItem('beeGone')==='1'}catch(_){}if(gone)b.style.display='none';b.querySelector('.x').onclick=ev=>{ev.stopPropagation();b.style.display='none';if(bub){bub.remove();bub=null}try{sessionStorage.setItem('beeGone','1')}catch(_){}};let st;addEventListener('scroll',()=>{b.classList.add('away');clearTimeout(st);st=setTimeout(()=>b.classList.remove('away'),900)},{passive:true});
  const TIPS=['أهلًا بكِ! أنا النحلة المرشدة، وسأرافقك في كل صفحة.','اضغطي «افتحي الدرس» لتبدئي الدرس.','في «مَن ستجيب؟» يقف العدّاد على طالبة ثم يظهر لها سؤال.','جرّبي «ألعاب مبهرة» داخل كل درس.','زر «وضع الفصل» يكبّر الخط على شاشة الفصل.','في أسفل الصفحة دليل استخدام المعلمة.'];
- const say=t=>{if(bub)bub.remove();bub=document.createElement('div');bub.className='beeb';bub.textContent=t;document.body.appendChild(bub);setTimeout(()=>{if(bub){bub.remove();bub=null}},5200)};
+ const IM=['bee_wave','bee_point','bee_cheer'];const say=t=>{if(bub)bub.remove();bub=document.createElement('div');bub.className='beeb';bub.textContent=t;document.body.appendChild(bub);b.firstChild.src='assets/'+IM[ti%3]+'.webp';setTimeout(()=>{if(bub){bub.remove();bub=null}},5200)};
  b.onclick=()=>{b.classList.remove('wave');void b.offsetWidth;b.classList.add('wave');say(TIPS[ti++%TIPS.length])};
  b.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')b.onclick()};
  setTimeout(()=>say(TIPS[0]),1400);
