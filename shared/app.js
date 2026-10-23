@@ -41,12 +41,13 @@ function skyCard(){const n=LS.get('stars',0),r=rankOf(n),nx=RANKS[r+1];const sho
 function avatar(w=64,who=P,pose='idle'){return `<img class="av" src="${IMG}${who}_${pose}.webp" alt="" style="width:${w}px;height:auto">`}
 function alienSvg(w=90,mood='x'){return `<img src="${IMG}${mood==='sad'?'monster_sad':'monster'}.webp" alt="" style="width:${w}px;height:auto;display:block">`}
 const AR={nadeen:'2/3',yasin:'2/3',bee:'1/1'};
-function spr(frames,w,who){const n=frames.length;return `<span class="sprite n${n}" style="width:${w}px;aspect-ratio:${AR[who]||'2/3'}">${frames.map((f,i)=>`<img src="${IMG}${f}.webp" alt="" style="animation-delay:${(i*.34).toFixed(2)}s;animation-duration:${(n*.34).toFixed(2)}s">`).join('')}</span>`}
+function spr(frames,w,who,dur=.34){const n=frames.length;return `<span class="sprite n${n}" style="width:${w}px;aspect-ratio:${AR[who]||'2/3'}">${frames.map((f,i)=>`<img src="${IMG}${f}.webp" alt="" style="animation-delay:${(i*dur).toFixed(2)}s;animation-duration:${(n*dur).toFixed(2)}s">`).join('')}</span>`}
+const SEQ=(w,a,n)=>Array.from({length:n},(_,i)=>`${w}_${a}${i+1}`);
 let mas=null;
 function setMas(st){if(P==='maha')return;if(!mas){mas=document.createElement('div');mas.id='mas';document.body.appendChild(mas)}
  if(st==='hide'){mas.className='mas hide';return}
- const cur=mas.dataset.st;if(cur!==st){mas.dataset.st=st;mas.innerHTML=`<img src="${IMG}${P}_${st}.webp" alt="">`}
- mas.className='mas '+st;if(st==='happy'||st==='oops'){const im=mas.firstChild;im.style.animation='none';void im.offsetWidth;im.style.animation=''}}
+ const cur=mas.dataset.st;if(cur!==st){mas.dataset.st=st;mas.innerHTML=st==='happy'?spr(SEQ(P,'jump',3),112,P,.2):`<img src="${IMG}${P}_${st}.webp" alt="">`}
+ mas.className='mas '+st;if(st==='oops'){const im=mas.firstChild;im.style.animation='none';void im.offsetWidth;im.style.animation=''}}
 /* الإرسال والاستقبال */
 const bus={status:'off',async send(m){m.at=Date.now();try{LS.set('outbox',[...LS.get('outbox',[]).slice(-30),m]);const r=await fetch(CFG.base+CFG.topic,{method:'POST',body:JSON.stringify(m)});return r.ok}catch(e){return false}},
  listen(fn,since){let es;const open=()=>{try{es=new EventSource(CFG.base+CFG.topic+'/sse?since='+(since||'12h'));es.onopen=()=>{bus.status='on';fn({_s:1})};es.onmessage=ev=>{try{const d=JSON.parse(ev.data);if(d.event==='message'){const m=JSON.parse(d.message);m._id=d.id;fn(m)}}catch(e){}};es.onerror=()=>{bus.status='off';fn({_s:1})}}catch(e){}};open();}};
@@ -58,7 +59,7 @@ async function finish(game,label,sc,max){setMas('hide');
  const ok=await bus.send(rec);
  const wa='https://wa.me/?text='+encodeURIComponent(`نتيجة ${NAMES[P]} في «${label}»: ${sc} من ${max} ${'⭐'.repeat(st)}`);
  sfx(st>=2?'win':'cheer');
- app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(130,P,st>=2?'happy':st===1?'think':'oops')}</div><h2>${st>=2?'أحسنتِ يا بطلة!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
+ app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${st>=2?spr(SEQ(P,'dance',4),150,P,.25):st===1?spr(SEQ(P,'clap',3),150,P,.3):avatar(130,P,'oops')}</div><h2>${st>=2?'أحسنتِ يا بطلة!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
  <p class="muted">${ok?'وصلت نتيجتك إلى المعلمة مها ✓':'ما وصلت النتيجة للمعلمة الآن؛ أرسليها بالواتساب أو جرّبي لاحقًا.'}</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again">العبي مرة ثانية</button><button class="btn ghost" id="home">الرئيسية</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">أرسلي لمعلمتك بالواتساب</a></div></div>`;
  confetti(st*30+10);for(let k=0;k<st;k++)setTimeout(()=>sfx('correct'),400+k*350);$('#again').onclick=()=>{if(game==='central'){const m=label.match(/\((\d+)\)/);GAMES.central.start(m?+m[1]-1:0)}else GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
@@ -94,7 +95,7 @@ GAMES.alien={start(kind){kind=kind||GAMES._akind||'mix';GAMES._akind=kind;
  const src=kind==='mix'?['antonym','synonym','irab','plural','grammar','spelling'].flatMap(k=>pick(pool(k),6)):pool(kind);const qs=pick(src,10).map(prep);let i=0,lives=3,sc=0;
  const step=()=>{if(i>=qs.length||lives<=0){const w=lives>0;sfx(w?'win':'wrong');return finish('alien','هروب من وحش الأخطاء',sc,qs.length)}
   const pos=Math.min(70,(3-lives)*28);
-  app.innerHTML=`${topbar()}<div class="card"><div class="stage"><div style="position:absolute;right:14px;bottom:4px" id="hero">${avatar(64,P,'idle')}</div><div id="alien" style="position:absolute;bottom:4px;left:${16+pos}%">${alienSvg(66+(3-lives)*26,'x')}</div></div><div class="chips" style="margin:8px 0"><span class="chip">${'❤️'.repeat(lives)}${'🖤'.repeat(3-lives)}</span><span class="chip">سؤال ${i+1}/${qs.length}</span></div><p class="muted" style="margin:0">أجيبي صح ليبتعد وحش الأخطاء، وإذا أخطأتِ يقترب!</p><div id="qb"></div></div>`;bindTop();
+  app.innerHTML=`${topbar()}<div class="card"><div class="stage"><div style="position:absolute;right:14px;bottom:4px" id="hero">${spr(SEQ(P,'walk',4),70,P,.24)}</div><div id="alien" style="position:absolute;bottom:4px;left:${16+pos}%">${alienSvg(66+(3-lives)*26,'x')}</div></div><div class="chips" style="margin:8px 0"><span class="chip">${'❤️'.repeat(lives)}${'🖤'.repeat(3-lives)}</span><span class="chip">سؤال ${i+1}/${qs.length}</span></div><p class="muted" style="margin:0">أجيبي صح ليبتعد وحش الأخطاء، وإذا أخطأتِ يقترب!</p><div id="qb"></div></div>`;bindTop();
   ask($('#qb'),qs[i],ok=>{if(ok){sc++;const a=$('#hero');a.classList.add('hop');confetti(8)}else{lives--}i++;step()})};step()}};
 /* مليونير */
 const PR=['١٠٠','٢٠٠','٣٠٠','٥٠٠','١٠٠٠','٢٠٠٠','٤٠٠٠','٨٠٠٠','١٦٠٠٠','٣٢٠٠٠','٦٤٠٠٠','١٢٥٠٠٠','٢٥٠٠٠٠','٥٠٠٠٠٠','١٠٠٠٠٠٠'];
