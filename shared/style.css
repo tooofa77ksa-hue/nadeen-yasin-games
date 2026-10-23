@@ -118,4 +118,22 @@ a.btn{display:inline-block;text-decoration:none}
  .cert .cs1{left:12mm;bottom:10mm;width:46mm}.cert .cs2{right:14mm;top:12mm;width:36mm}.cert .cs3{left:16mm;top:14mm;width:28mm}.cert .cs4{right:16mm;bottom:12mm;width:32mm}
 }
 @media (max-width:640px){.heroc{flex-direction:column;text-align:center}.heroc .hb{width:96px}h1{font-size:1.9rem}.planet{min-height:170px}}
+/* حركة الصلصال (ستوب موشن) */
+.sprite{position:relative;display:inline-block;animation:boil .55s steps(1) infinite}
+.sprite img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;filter:drop-shadow(0 6px 4px #0003)}
+.sprite.n2 img{animation-name:f2;animation-timing-function:steps(1,end);animation-iteration-count:infinite}
+.sprite.n3 img{animation-name:f3;animation-timing-function:steps(1,end);animation-iteration-count:infinite}
+@keyframes f2{0%{opacity:1}50%{opacity:0}100%{opacity:0}}
+@keyframes f3{0%{opacity:1}33.33%{opacity:0}100%{opacity:0}}
+@keyframes boil{0%{rotate:-1deg}33%{rotate:.9deg}66%{rotate:-.4deg}}
+.mas{position:fixed;left:8px;bottom:6px;width:112px;z-index:20;pointer-events:none;transition:opacity .25s}
+.mas img{width:100%;display:block;filter:drop-shadow(0 6px 4px #0004);transform-origin:50% 100%}
+.mas.hide{opacity:0}
+.mas.think img{animation:sway 2.4s ease-in-out infinite}
+.mas.happy img{animation:jumpy .7s ease 2}
+.mas.oops img{animation:shake .5s ease 1}
+@keyframes sway{0%,100%{transform:rotate(-2deg) scaleY(1)}50%{transform:rotate(2deg) scaleY(1.025)}}
+@keyframes jumpy{40%{transform:translateY(-30px) rotate(-4deg) scale(1.04)}}
+body{padding-bottom:130px}
+@media (max-width:640px){.mas{width:84px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}

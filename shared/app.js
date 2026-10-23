@@ -40,11 +40,18 @@ function skyCard(){const n=LS.get('stars',0),r=rankOf(n),nx=RANKS[r+1];const sho
 /* الشخصيات */
 function avatar(w=64,who=P,pose='idle'){return `<img class="av" src="${IMG}${who}_${pose}.webp" alt="" style="width:${w}px;height:auto">`}
 function alienSvg(w=90,mood='x'){return `<img src="${IMG}${mood==='sad'?'monster_sad':'monster'}.webp" alt="" style="width:${w}px;height:auto;display:block">`}
+const AR={nadeen:'2/3',yasin:'2/3',bee:'1/1'};
+function spr(frames,w,who){const n=frames.length;return `<span class="sprite n${n}" style="width:${w}px;aspect-ratio:${AR[who]||'2/3'}">${frames.map((f,i)=>`<img src="${IMG}${f}.webp" alt="" style="animation-delay:${(i*.34).toFixed(2)}s;animation-duration:${(n*.34).toFixed(2)}s">`).join('')}</span>`}
+let mas=null;
+function setMas(st){if(P==='maha')return;if(!mas){mas=document.createElement('div');mas.id='mas';document.body.appendChild(mas)}
+ if(st==='hide'){mas.className='mas hide';return}
+ const cur=mas.dataset.st;if(cur!==st){mas.dataset.st=st;mas.innerHTML=`<img src="${IMG}${P}_${st}.webp" alt="">`}
+ mas.className='mas '+st;if(st==='happy'||st==='oops'){const im=mas.firstChild;im.style.animation='none';void im.offsetWidth;im.style.animation=''}}
 /* الإرسال والاستقبال */
 const bus={status:'off',async send(m){m.at=Date.now();try{LS.set('outbox',[...LS.get('outbox',[]).slice(-30),m]);const r=await fetch(CFG.base+CFG.topic,{method:'POST',body:JSON.stringify(m)});return r.ok}catch(e){return false}},
  listen(fn,since){let es;const open=()=>{try{es=new EventSource(CFG.base+CFG.topic+'/sse?since='+(since||'12h'));es.onopen=()=>{bus.status='on';fn({_s:1})};es.onmessage=ev=>{try{const d=JSON.parse(ev.data);if(d.event==='message'){const m=JSON.parse(d.message);m._id=d.id;fn(m)}}catch(e){}};es.onerror=()=>{bus.status='off';fn({_s:1})}}catch(e){}};open();}};
 function stars(sc,max){const r=sc/max;return r>=.85?3:r>=.6?2:r>=.3?1:0}
-async function finish(game,label,sc,max){
+async function finish(game,label,sc,max){setMas('hide');
  const st=stars(sc,max);const hist=LS.get('hist',[]);const rec={t:'res',p:P,name:NAMES[P],game,label,score:sc,max,stars:st};
  hist.push(rec);LS.set('hist',hist.slice(-60));
  const coins=LS.get('coins',0)+sc*2+st*5;LS.set('coins',coins);const before=rankOf(LS.get('stars',0));LS.set('stars',LS.get('stars',0)+st);const after=rankOf(LS.get('stars',0));
@@ -69,7 +76,8 @@ function ask(box,q,done,opts={}){
  const hide=opts.hide||[];
  box.innerHTML=`${q.passage?`<div class="pass">${esc(q.passage)}</div>`:''}<div class="q" style="margin:10px 0">${esc(q.q)}</div><div class="opts">${q.o.map((t,i)=>`<button class="opt ${hide.includes(i)?'dim':''}" data-i="${i}" ${hide.includes(i)?'disabled':''}>${esc(t)}</button>`).join('')}</div><div id="fb"></div>`;
  let locked=false;
- $$('.opt',box).forEach(b=>b.onclick=()=>{if(locked)return;locked=true;const i=+b.dataset.i,ok=i===q.a;$$('.opt',box).forEach(x=>{if(+x.dataset.i===q.a)x.classList.add('ok')});if(!ok)b.classList.add('no','shake');
+ setMas('think');
+ $$('.opt',box).forEach(b=>b.onclick=()=>{if(locked)return;locked=true;const i=+b.dataset.i,ok=i===q.a;setMas(ok?'happy':'oops');$$('.opt',box).forEach(x=>{if(+x.dataset.i===q.a)x.classList.add('ok')});if(!ok)b.classList.add('no','shake');
   sfx(ok?'correct':'wrong');
   const src=q.src==='إ'?' · معلومة إضافية':q.pg||q.src_pg||q.p?` · ${q.pg||q.p||('ص'+q.src_pg)}`:'';
   $('#fb',box).innerHTML=`<div class="why">${ok?'✅ أحسنتِ! ':'❌ الإجابة الصحيحة: <b>'+esc(q.o[q.a])+'</b>. '}${q.w?esc(q.w):''}<span class="muted">${src}</span></div>`;
@@ -178,9 +186,9 @@ const PL=[
  ['planet:spelling','الإملاء','كتابة صحيحة','book'],
  ['planet:grammar','القواعد','اسم وفعل وحرف','gem']];
 const TIPS=['اقرئي السؤال ببطء مرتين قبل أن تختاري الإجابة.','إذا أخطأتِ فلا بأس؛ اقرئي الشرح الذي يظهر، فهو يعلّمك الصواب.','جرّبي كل الألعاب: الأضداد، والمرادفات، والإعراب، والجموع، والإملاء، والقواعد.','في «من سيربح المليون» ثلاث مساعدات تُستخدم كل واحدة مرة واحدة: ٥٠:٥٠، وتغيير السؤال، والتلميح.','في المتقاطعة يُكتب الأفقي من اليمين إلى اليسار، ويمكنك طلب «كشف حرف» عند الحاجة.','في «الهروب من وحش الأخطاء» لا تتجاوزي ثلاثة أخطاء، وكل إجابة صحيحة تُبعد وحش الأخطاء عنك.','بعد كل جولة تصل نتيجتك إلى المعلمة مها، وتحصلين على نجوم وعملات.','العبي مع صديقك أو صديقتك بالتناوب ثم قارنا النتيجة مع المعلمة مها.'];
-function home(){
+function home(){setMas('hide');
  const hist=LS.get('hist',[]);const asg=LS.get('assign',null);
- app.innerHTML=`${topbar()}<div class="heroc"><div class="hop avw">${avatar(150,P,'happy')}</div><div class="ht"><h1>أهلًا ${NAMES[P]}!</h1><span class="pill">اختاري لعبة وابدئي</span><span class="pill">كل نتيجة تصل إلى المعلمة مها</span></div><img class="hb stk" src="${IMG}bee_wave.webp" alt=""></div><div class="card center" style="margin-top:0;display:none"></div>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
+ app.innerHTML=`${topbar()}<div class="heroc"><div class="hop avw">${spr([P+'_wave1',P+'_wave2'],150,P)}</div><div class="ht"><h1>أهلًا ${NAMES[P]}!</h1><span class="pill">اختاري لعبة وابدئي</span><span class="pill">كل نتيجة تصل إلى المعلمة مها</span></div><span class="hb">${spr(['bee_fly1','bee_fly2'],130,'bee')}</span></div><div class="card center" style="margin-top:0;display:none"></div>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
  <div class="grid">${PL.map((p,i)=>`<div class="planet f${i%4}" data-g="${p[0]}"><img class="stk" src="${IMG}${p[3]}.webp" alt=""><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
  ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${h.stars?starRow(h.stars,h.stars,16):'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}
  <div class="card"><h3>📝 الاختبارات المركزية</h3><p class="muted" style="margin:0 0 8px">ورقة كاملة بنمط الاختبار: قطعة قراءة، ثم قواعد وإعراب، ثم إملاء ومفردات. تظهر النتيجة والمراجعة في النهاية.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${centralPapers().map((p,i)=>`<button class="btn ghost cp" data-i="${i}">اختبار ${p.n}: ${p.title}</button>`).join('')}</div></div>
