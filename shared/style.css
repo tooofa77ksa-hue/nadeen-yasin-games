@@ -3,7 +3,7 @@ body.yasin{--ac:#39b6ff;--ac2:#27e0c0}
 body.maha{--ac:#ffb347;--ac2:#ff7ac8}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%}html{background:#0b1233}
-body{font:500 1.05rem/1.7 'Tajawal',system-ui,sans-serif;color:var(--ink);background:radial-gradient(1200px 700px at 80% -10%,#3a2a9a55,transparent),linear-gradient(#0b1233,#161650 60%,#24146b);background-attachment:fixed;direction:rtl;overflow-x:hidden}
+body{font:400 17px/1.7 'Tajawal',system-ui,sans-serif;color:var(--ink);background:radial-gradient(1200px 700px at 80% -10%,#3a2a9a55,transparent),linear-gradient(#0b1233,#161650 60%,#24146b);background-attachment:fixed;direction:rtl;overflow-x:hidden}
 #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 #stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.7;animation:tw 3s ease-in-out infinite}
 @keyframes tw{50%{opacity:.15;transform:scale(.6)}}
@@ -15,7 +15,7 @@ h1{font-size:2.1rem}h2{font-size:1.6rem}h3{font-size:1.25rem}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chip{background:var(--card2);border:1px solid var(--line);padding:4px 12px;border-radius:99px;font-weight:700}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;backdrop-filter:blur(4px);margin:12px 0}
-.btn{font:700 1.05rem 'Tajawal',sans-serif;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2));border:0;border-radius:16px;padding:12px 20px;min-height:48px;cursor:pointer;box-shadow:0 6px 18px #0006;transition:transform .15s}
+.btn{font:800 1.05rem 'Tajawal',sans-serif;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2));border:0;border-radius:16px;padding:12px 20px;min-height:48px;cursor:pointer;box-shadow:0 6px 18px #0006;transition:transform .15s}
 .btn:active{transform:scale(.96)}
 .btn.ghost{background:var(--card2);box-shadow:none;border:1px solid var(--line)}
 .btn.gold{background:linear-gradient(135deg,#ffd54a,#ff9f43);color:#3b2400}
@@ -28,10 +28,10 @@ h1{font-size:2.1rem}h2{font-size:1.6rem}h3{font-size:1.25rem}
 @keyframes fl{50%{transform:translateY(-6px)}}
 .planet b{font-family:'Lalezar';font-size:1.3rem;font-weight:400}
 .planet small{color:var(--mut)}
-.q{font:700 1.45rem/1.9 'Noto Naskh Arabic','Tajawal',serif}
-.pass{background:#ffffff1c;border-right:5px solid var(--gold);padding:12px 14px;border-radius:12px;font:500 1.25rem/2.1 'Noto Naskh Arabic',serif;max-height:260px;overflow:auto;white-space:pre-wrap}
+.q{font:500 1.28rem/2.1 'Noto Naskh Arabic','Tajawal',serif}
+.pass{background:#ffffff1c;border-right:5px solid var(--gold);padding:12px 14px;border-radius:12px;font:500 1.34rem/2.4 'Noto Naskh Arabic',serif;max-height:260px;overflow:auto;white-space:pre-wrap}
 .opts{display:grid;gap:10px;margin-top:10px}
-.opt{font:700 1.3rem 'Noto Naskh Arabic','Tajawal',serif;text-align:right;color:var(--ink);background:var(--card2);border:2px solid var(--line);border-radius:16px;padding:12px 16px;min-height:54px;cursor:pointer;transition:.15s}
+.opt{font:500 1.15rem/1.7 'Noto Naskh Arabic','Tajawal',serif;text-align:right;color:var(--ink);background:var(--card2);border:2px solid var(--line);border-radius:16px;padding:12px 16px;min-height:54px;cursor:pointer;transition:.15s}
 .opt:active{transform:scale(.98)}
 .opt.ok{background:#1e8f63;border-color:var(--ok)}
 .opt.no{background:#a1304a;border-color:var(--bad)}
@@ -89,3 +89,15 @@ table.t td,table.t th{padding:8px 10px;border-bottom:1px solid var(--line);text-
 a.btn{display:inline-block;text-decoration:none}
 textarea,input[type=text]{font:600 1rem 'Tajawal';padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:#ffffff18;color:var(--ink);width:100%}
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#111b;border:1px solid var(--line);padding:8px 16px;border-radius:99px;z-index:20}
+
+/* نجوم حقيقية */
+.rstar{display:inline-block;filter:drop-shadow(0 0 6px #ffd54acc)}
+.rstar.off{filter:none;opacity:.35}
+.starrow .rstar{animation:starIn .6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes starIn{0%{transform:scale(0) rotate(-120deg);opacity:0}100%{transform:scale(1) rotate(0)}}
+.sky{position:relative;height:200px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 70% 20%,#3b2a8f,#0a0f2c 70%);border:1px solid var(--line)}
+.sky .s{position:absolute;filter:drop-shadow(0 0 5px #ffe58a);animation:tw 3s ease-in-out infinite}
+.shoot{position:fixed;top:12%;left:-10%;width:120px;height:2px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(25deg);opacity:0;z-index:0;animation:shoot 9s linear infinite 3s}
+@keyframes shoot{0%{left:-10%;top:8%;opacity:0}3%{opacity:1}12%{left:70%;top:40%;opacity:0}100%{opacity:0}}
+.rankbar{height:10px;border-radius:99px;background:#ffffff22;overflow:hidden;margin:6px 0}
+.rankbar i{display:block;height:100%;background:linear-gradient(90deg,#ffd54a,#ff9f43)}
