@@ -12,6 +12,11 @@ const nz=s=>s.replace(TASH,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي');
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const pick=(a,n)=>shuf(a).slice(0,n);
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+/* خطاب المذكّر لياسين (خارج نصوص الأسئلة) */
+if(P==='yasin'){const MAP=[['أحسنتِ','أحسنتَ'],['بطلة','بطل'],['جرّبي','جرّب'],['حصلتِ','حصلتَ'],['أرسليها','أرسلها'],['العبي','العب'],['أرسلي','أرسل'],['أجيبي','أجب'],['أخطأتِ','أخطأتَ'],['غيّري','غيّر'],['أدِيري','أدِر'],['اقرئي','اقرأ'],['اكتبي','اكتب'],['اختاري','اختر'],['ابدئي','ابدأ'],['اتركي','اترك'],['تحقّقي','تحقّق'],['اللاعبة','اللاعب'],['مرحبًا بكِ','مرحبًا بك'],['افتحي','افتح'],['ألصقي','ألصق'],['قرأتِ','قرأتَ'],['فكّري','فكّر'],['تعلّمتِ','تعلّمتَ'],['تذكّري','تذكّر'],['تأكّدي','تأكّد'],['اضغطي','اضغط'],['استخدمي','استخدم'],['حاولي','حاول'],['ركّزي','ركّز'],['انتبهي','انتبه'],['أكملي','أكمل'],['ارجعي','ارجع'],['تختاري','تختار'],['تتجاوزي','تتجاوز'],['تحصلين','تحصل'],['لكِ','لك'],['أرسليها','أرسلها'],['ألصقي','ألصق']];
+ const SKIP='.q,.opt,.pass,.why';
+ let busy=false;const fix=root=>{if(busy)return;busy=true;try{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(n.parentElement&&n.parentElement.closest(SKIP))continue;let t=n.nodeValue,o=t;for(const [a,b] of MAP)if(t.includes(a))t=t.split(a).join(b);if(t!==o)n.nodeValue=t}}finally{busy=false}};
+ new MutationObserver(()=>fix(app)).observe(app,{childList:true,subtree:true});}
 /* نجوم الخلفية */
 (()=>{const d=document.createElement('div');d.id='stars';let h='';for(let i=0;i<70;i++)h+=`<i style="top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s;width:${1+Math.random()*3}px;height:${1+Math.random()*3}px"></i>`;d.innerHTML=h;document.body.prepend(d)})();
 /* الأصوات */
@@ -41,7 +46,7 @@ async function finish(game,label,sc,max){
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again">العبي مرة ثانية</button><button class="btn ghost" id="home">الرئيسية</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">أرسلي لمعلمتك بالواتساب</a></div></div>`;
  confetti(st*30+10);$('#again').onclick=()=>{GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
 function confetti(n=40){const c=['#ffd54a','#ff7ac8','#7fe8ff','#9affc9','#c9a7ff'];for(let i=0;i<n;i++){const d=document.createElement('i');d.style.cssText=`position:fixed;top:-10px;left:${Math.random()*100}%;width:9px;height:14px;background:${c[i%5]};z-index:30;border-radius:2px;transition:transform ${1.6+Math.random()*1.4}s ease-in,opacity 2.6s;pointer-events:none`;document.body.appendChild(d);requestAnimationFrame(()=>{d.style.transform=`translate(${(Math.random()-.5)*240}px,${innerHeight+40}px) rotate(${Math.random()*720}deg)`;d.style.opacity='0'});setTimeout(()=>d.remove(),3200)}}
-function topbar(){return `<div class="top"><div class="who">${avatar(40)}<div><h3 style="margin:0">${NAMES[P]}</h3><div class="muted" style="font-size:.85rem">مركز رؤية وإبداع</div></div></div><div class="chips"><span class="chip">🪙 ${LS.get('coins',0)}</span><button class="chip" id="mt" style="font:inherit;color:inherit;cursor:pointer">${muted?'🔇':'🔊'}</button><button class="chip" id="hm" style="font:inherit;color:inherit;cursor:pointer">🏠</button></div></div>`}
+function topbar(){return `<div class="top"><div class="who">${avatar(40)}<div><h3 style="margin:0">${NAMES[P]}</h3><div class="muted" style="font-size:.85rem">مركز رؤيا وإبداع</div></div></div><div class="chips"><span class="chip">🪙 ${LS.get('coins',0)}</span><button class="chip" id="mt" style="font:inherit;color:inherit;cursor:pointer">${muted?'🔇':'🔊'}</button><button class="chip" id="hm" style="font:inherit;color:inherit;cursor:pointer">🏠</button></div></div>`}
 function bindTop(){const m=$('#mt');if(m)m.onclick=()=>{muted=!muted;LS.set('mute',muted);m.textContent=muted?'🔇':'🔊'};const h=$('#hm');if(h)h.onclick=home}
 /* أسئلة */
 const KINDS={antonym:'الأضداد',synonym:'المرادفات',irab:'الإعراب',plural:'الجموع',comp:'فهم المقروء',spelling:'الإملاء',grammar:'القواعد'};
@@ -137,11 +142,13 @@ const PL=[
  ['planet:plural','كوكب الجموع','مفرد وجمع','#7fe8ff'],
  ['planet:spelling','كوكب الإملاء','كتابة صحيحة','#9affc9'],
  ['planet:grammar','كوكب القواعد','اسم وفعل وحرف','#ffb347']];
+const TIPS=['اقرئي السؤال ببطء مرتين قبل أن تختاري الإجابة.','إذا أخطأتِ فلا بأس؛ اقرئي الشرح الذي يظهر، فهو يعلّمك الصواب.','جرّبي كل الكواكب: الأضداد، والمرادفات، والإعراب، والجموع، والإملاء، والقواعد.','في «من سيربح المليون» ثلاث مساعدات تُستخدم كل واحدة مرة واحدة: ٥٠:٥٠، وتغيير السؤال، والتلميح.','في المتقاطعة يُكتب الأفقي من اليمين إلى اليسار، ويمكنك طلب «كشف حرف» عند الحاجة.','في «الهروب من الفضائي» لا تتجاوزي ثلاثة أخطاء، وكل إجابة صحيحة تُبعد الفضائي عنك.','بعد كل جولة تصل نتيجتك إلى المعلمة مها، وتحصلين على نجوم وعملات.','العبي مع صديقك أو صديقتك بالتناوب ثم قارنا النتيجة مع المعلمة مها.'];
 function home(){
  const hist=LS.get('hist',[]);const asg=LS.get('assign',null);
  app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(84)}</div><h1>أهلًا ${NAMES[P]}!</h1><p class="muted">اختاري كوكبًا وابدئي رحلتك. كل نتيجة تصل إلى المعلمة مها.</p>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
  <div class="grid">${PL.map(p=>`<div class="planet" data-g="${p[0]}"><div class="pl" style="background:radial-gradient(circle at 35% 30%,#fff8,${p[3]})"></div><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
- ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${'⭐'.repeat(h.stars)||'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}`;bindTop();
+ ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${'⭐'.repeat(h.stars)||'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}
+ <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();
  $$('.planet').forEach(el=>el.onclick=()=>{const [g,k]=el.dataset.g.split(':');sfx('clap');GAMES[g].start(k)});
  const a=$('#goA');if(a)a.onclick=()=>{LS.set('assign',null);const [g,k]=asg.game.split(':');GAMES[g].start(k)}}
 window.GAMES=GAMES;window.home=home;window.NYG={CFG,bus,LS,NAMES,esc,avatar,alienSvg,confetti,topbar,bindTop,sfx,toast,QD,$,$$};

@@ -135,6 +135,7 @@ textarea{width:100%;min-height:84px;border:2px solid var(--line);border-radius:1
 .src{font-size:.85rem;color:var(--soft)}
 body.cls{font-size:21px}
 body.cls .wrap{max-width:1040px}
+@media(min-width:1000px){.wrap{max-width:1240px}body.cls .wrap{max-width:1560px}.units{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}.units>h2{grid-column:1/-1}.hero,.big{max-width:none}}
 body.cls .qtxt{font-size:1.75rem;line-height:2.1}
 body.cls .opt{font-size:1.5rem;min-height:74px}
 body.cls .read p{font-size:2rem}
@@ -160,6 +161,16 @@ canvas.conf{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;hei
 <div class="wrap">
   <div class="bar"><button id="homeB" aria-label="الرئيسية">الرئيسية</button><h1 id="crumb">لغتي الجميلة</h1><button id="clapB" aria-label="تصفيق">👏</button><button id="clsB" aria-pressed="false">وضع الفصل</button><button id="muteB" aria-label="كتم الصوت" aria-pressed="false">🔊</button></div>
   <main id="app"></main>
+  <details class="card" id="tGuide" style="margin:14px 0;cursor:pointer"><summary style="font-weight:800">📖 دليل استخدام المعلمة</summary><div style="margin-top:10px;line-height:2">
+   <p><b>١) بداية الحصة:</b> افتحي الرابط على الآيباد أو شاشة الفصل. زر «وضع الفصل» في الأعلى يكبّر الخط لتراه الطالبات من بعيد.</p>
+   <p><b>٢) الدروس:</b> اضغطي «افتحي الدرس»، ورقم صفحته في الكتاب مكتوب بجانبه. في كل درس تبويبات: «تعلّمي» للشرح، و«إملاء» للإملاء، و«افهمي المطلوب» لتوضيح صيغ الأسئلة، و«العبي» لأسئلة وألعاب الدرس، و«تحدّي الدرس» أسئلة بمستويات، و«ألعاب مبهرة». وزر 🔊 يقرأ النص بصوت نورة.</p>
+   <p><b>٣) مجموعات الفصل:</b> اختاري الفصل (رابع 1 أو رابع 2) ثم المجموعة، فيظهر اسمها في أعلى الصفحة، وتسلّمين الآيباد لطالبات المجموعة. «تغيير المجموعة» تعيدك إلى الاختيار. وفي أسفل صفحة المجموعات ثمانية روابط، لكل مجموعة رابط، يمكنك نسخه وإرساله.</p>
+   <p><b>٤) مَن ستجيب؟:</b> اختاري الفصل ثم «ابدئي»؛ يمرّ العدّاد على الأسماء ثم يقف على طالبة، ويظهر تحته <b>سؤال لها</b>. اقرئي السؤال بصوت مسموع، واستمعي إلى إجابتها، ثم اضغطي «أظهري الإجابة». وإذا أجابت إجابة صحيحة فاضغطي «أجابت إجابة صحيحة» ليبدأ التصفيق. «سؤال آخر» يغيّر السؤال، ومن القائمة أسفله تختارين درسًا معيّنًا. يُشطب اسم من وقع عليها الاختيار حتى تنال كل طالبة فرصتها، و«إرجاع الكل» يعيد جميع الأسماء.</p>
+   <p><b>٥) تحرير الأسماء:</b> اضغطي «✏️ تحرير الأسماء» ثم اضغطي اسمًا لتعديله، أو اتركي الخانة فارغة لحذفه. ولإضافة طالبة اكتبي اسمها وسط «إضافة»، أو الصقي قائمة كاملة في الخانة الكبيرة (اسم في كل سطر). تُحفظ التعديلات على هذا الجهاز فقط.</p>
+   <p><b>٦) من سيربح مليون نجمة؟:</b> مراجعة عامة بأسئلة من الدروس. اختاري لاعبة أو لاعبتين، وللّاعبة مساعدات: «٥٠:٥٠» و«اسألي صاحبتك» و«غيّري السؤال».</p>
+   <p><b>٧) ألعاب مبهرة (داخل كل درس):</b> «سباق الفرق» للفصل على الشاشة بين أربع مجموعات تتبادل الأدوار، و«بطاقات الذاكرة» لمطابقة الكلمة بمعناها، و«تحدّي السرعة» أسئلة صواب وخطأ، و«فقاعات الإجابة» لطالبة واحدة.</p>
+   <p><b>٨) الاستماع:</b> درس «ناقل الأمراض» (ص٣٢–٣٣). والاختبارات ملفات PDF منفصلة، وليست في الموقع.</p>
+  </div></details>
   <footer><b>لغتي الجميلة · الصف الرابع</b><span>معلمة المادة: دلال السناني</span></footer>
 </div>
 <canvas class="conf" id="conf" aria-hidden="true"></canvas>
@@ -517,7 +528,7 @@ function startMil(names,bank){
   P.length>1?turn_screen():play()}
 /* ---- مجموعات الفصلين (٤ لكل فصل) ---- */
 const GN=[['الطموح','🎯'],['الإبداع','💡'],['التميّز','🏆'],['الإنجاز','📚']],CL={r1:'رابع 1',r2:'رابع 2'};
-const ART='https://claude.ai/artifact/5ydjDbdfB7tvJKEyjBJQRm';
+const ART='https://tooofa77ksa-hue.github.io/nadeen-yasin-games/dalala/';
 let GRP=store.get('grp',null);
 const gKey=g=>g.c+'-'+g.k;
 const gNames=g=>(store.get('names',{})[gKey(g)])||[];
@@ -533,6 +544,20 @@ function groupsPage(){$('#crumb').textContent='المجموعات';
  <section class="card"><h3>روابط المجموعات (للنسخ والإرسال)</h3>${['r1','r2'].map(c=>GN.map((g,i)=>`<p style="margin:4px 0"><b>${CL[c]} · ${g[0]}</b><br><small dir="ltr" style="word-break:break-all">${ART}#home&amp;g=${c}-${i+1}</small></p>`).join('')).join('')}<p class="lead">إذا ما فتح الرابط المجموعة تلقائيًا، تختار البنت مجموعتها من هذه الصفحة.</p></section>`;
  $$('[data-c]',app).forEach(b=>b.onclick=()=>{setGrp(b.dataset.c,+b.dataset.k);location.hash='home'})}
 
+
+/* سؤال لِمن وقع عليها الاختيار */
+function pickQ(name){const sel=PK.src||'all';const bank=millBank(sel).filter(q=>(q.tier||2)<=2&&q.o&&q.o.length>=3);const box=$('#tkQ');if(!box)return;if(!bank.length){box.innerHTML='';return}
+ const q=bank[Math.random()*bank.length|0],L=['أ','ب','ج','د'];
+ const opts=[{id:'all',t:'كل الدروس'},...SECTIONS.flatMap(s=>s.items).filter(i=>i.id&&LBY[i.id]).map(i=>({id:i.id,t:i.t}))];
+ box.innerHTML=`<div class="card"><h3>سؤال لـ ${name}</h3><p class="lead" style="margin:0 0 6px">اقرئي السؤال بصوت مسموع، واسمعي إجابة الطالبة، ثم اضغطي «أظهري الإجابة».</p>
+ <p class="qtxt" style="font-weight:800">${q.q}</p><div class="names" id="tkO">${q.o.map((o,i)=>`<div class="card" data-i="${i}" style="margin:0;padding:10px 14px"><b>${L[i]}.</b> ${o}</div>`).join('')}</div><div id="tkW"></div>
+ <div class="center" style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn ghost" id="tkSh">أظهري الإجابة</button><button class="btn sun" id="tkOk">✅ أجابت إجابة صحيحة</button><button class="btn ghost" id="tkNx">سؤال آخر</button></div>
+ <p class="lead center" style="margin-top:10px">أسئلة من: <select id="tkSrc" style="padding:6px 10px;border-radius:10px;font:700 1rem var(--f-ui)">${opts.map(o=>`<option value="${o.id}" ${o.id===sel?'selected':''}>${o.t}</option>`).join('')}</select></p></div>`;
+ $('#tkSh').onclick=()=>{$$('#tkO .card').forEach(c=>{if(+c.dataset.i===q.a){c.style.background='var(--teal-t)';c.style.borderColor='var(--teal-d)'}});$('#tkW').innerHTML=`<p class="lead" style="margin-top:10px"><b>الإجابة الصحيحة:</b> ${q.o[q.a]}${q.w?'<br>'+q.w:''}</p>`};
+ $('#tkOk').onclick=()=>{sfx('win');clap(14,1.6);confetti(60)};
+ $('#tkNx').onclick=()=>pickQ(name);
+ $('#tkSrc').onchange=e=>{PK.src=e.target.value;pickQ(name)}}
+
 /* ---- اختيار طالبة (عدّاد يمشي ويوقف) ---- */
 const NAMES={'رابع 1':['ألين بدير','تالا المستادي','ترف السلمي','حور الجغثمي','ردينا الصريمي','رغد الخطابي','رواسن المغربي','روز صيرفي','ريم الخطابي','ريما الشهري','ساره الحربي','سمر العمودي','غزل اليعقوبي','فجر الذبياني','قمر','لانا العميري','لينا الرشيدي','ماريا الشمراني','مريم بادنجكي','وجد خرمي'],
 'رابع 2':['أرام عسيري','أسيل وداد','تالا الشمراني','تالا القريقري','تيلا أبو صالح','جميلة السميري','جنى الشريف','حلا الغامدي','دانه اليوبي','روز الحمراني','ريتاج عواجي','ريما بن خميس','شدن الخرماني','شذى يونس','علا زهران','علويه الحداد','غني العوفي','لارين الشمري','لانا آل شبيب','لجين الحانطي','لميس اليوبي','لين بازهير','ماريا الحربي','مريم باشماخ','مشاعل ثابت','ميار الجهني','ندى السهلي','هديل الفارسي','ورد الزهراني']};
@@ -540,9 +565,10 @@ let PK={c:null,off:new Set(),busy:false};
 function pickPage(){$('#crumb').textContent='اختيار طالبة';if(!PK.c)PK.c=GRP?CL[GRP.c]:null;
  if(!PK.c){app.innerHTML=`<div class="card center"><h2>أي فصل؟</h2><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" data-c="رابع 1">رابع 1</button><button class="btn sun" data-c="رابع 2">رابع 2</button></div></div>`;$$('[data-c]',app).forEach(b=>b.onclick=()=>{PK.c=b.dataset.c;PK.off=new Set();pickPage()});return}
  const extra=store.get('xnames',{})[PK.c]||[];const gone=store.get('rnames',{})[PK.c]||[];const all=[...NAMES[PK.c],...extra].filter(n=>!gone.includes(n));PK.edit=PK.edit||false;
- app.innerHTML=`<div class="center"><h2>مَن ستجيب؟ 🎲</h2><p class="lead">${PK.c} · اضغطي «ابدئي» ويمشي العدّاد ثم يقف على اسم. اضغطي على اسم لإخفائه (غائبة أو أجابت).</p></div>
+ app.innerHTML=`<div class="center"><h2>مَن ستجيب؟ 🎲</h2><p class="lead">${PK.c} · اضغطي «ابدئي» فيمرّ العدّاد ثم يقف على اسم، ويظهر سؤال لتلك الطالبة. اضغطي على اسم لإخفائه (غائبة أو أجابت).</p></div>
  <div id="tkr" class="card center" style="font:800 2.8rem/1.4 var(--f-read);min-height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(var(--card),var(--teal-t))">؟</div>
  <div class="center" style="margin:10px 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn sun" id="tkGo">▶ ابدئي</button><button class="btn ghost" id="tkRs">إرجاع الكل</button><button class="btn ghost" id="tkEd">${PK.edit?'✔ إنهاء التحرير':'✏️ تحرير الأسماء'}</button><button class="btn ghost" id="tkCl">تغيير الفصل</button></div>
+ <div id="tkQ"></div>
  <div class="card"><div id="tkL" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">${all.map(n=>`<button class="btn ghost nm" data-n="${n}" style="min-height:38px;padding:4px 12px;${PK.off.has(n)?'opacity:.35;text-decoration:line-through':''}">${n}</button>`).join('')}</div>
  <div class="center" style="margin-top:10px"><textarea id="tkBulk" rows="3" placeholder="الصقي قائمة الأسماء هنا، اسم في كل سطر" style="width:min(520px,92%);padding:8px 12px;border-radius:12px;border:2px solid var(--line);font:600 1rem var(--f-read)"></textarea><br><button class="btn" id="tkBk">إضافة القائمة</button><br><input id="tkIn" placeholder="أضيفي اسمًا" style="padding:8px 12px;border-radius:12px;border:2px solid var(--line);font:600 1rem var(--f-read)"> <button class="btn" id="tkAd">إضافة</button></div></div>`;
  $$('.nm',app).forEach(b=>b.onclick=()=>{const n=b.dataset.n;
@@ -558,7 +584,7 @@ function pickPage(){$('#crumb').textContent='اختيار طالبة';if(!PK.c)P
  $('#tkGo').onclick=()=>{if(PK.busy)return;const pool=all.filter(n=>!PK.off.has(n));if(pool.length<1)return;PK.busy=true;const t=$('#tkr');$('#tkGo').disabled=true;
   const win=pool[Math.random()*pool.length|0];let steps=26+(Math.random()*8|0),i=0,last=-1;
   const step=()=>{i++;let n;if(i>=steps)n=win;else{do{n=pool[Math.random()*pool.length|0]}while(n===last&&pool.length>1)}last=n;t.textContent=n;t.style.transform='scale('+(i>=steps?1.12:1)+')';
-   if(i>=steps){PK.busy=false;sfx('win');clap(14,1.6);confetti(60);t.style.color='var(--teal-d)';PK.off.add(win);$('#tkGo').disabled=false;
+   if(i>=steps){PK.busy=false;sfx('tick');t.style.color='var(--teal-d)';PK.off.add(win);pickQ(win);$('#tkGo').disabled=false;
      $$('.nm',app).forEach(b=>{if(b.dataset.n===win){b.style.opacity='.35';b.style.textDecoration='line-through'}});return}
    t.style.color='';sfx('tick');setTimeout(step,35+Math.pow(i/steps,3)*480)};step()}}
 
