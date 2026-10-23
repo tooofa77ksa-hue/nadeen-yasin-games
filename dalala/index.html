@@ -133,6 +133,7 @@ textarea{width:100%;min-height:84px;border:2px solid var(--line);border-radius:1
 .names{display:grid;gap:10px}
 .names input{border:2px solid var(--line);border-radius:14px;padding:10px 12px;font:700 1.05rem var(--f-ui);background:var(--card);color:var(--ink);width:100%}
 .src{font-size:.85rem;color:var(--soft)}
+@keyframes phr{from{transform:rotate(-18deg)}to{transform:rotate(18deg)}}
 body.cls{font-size:21px}
 body.cls .wrap{max-width:1040px}
 @media(min-width:1000px){.wrap{max-width:1240px}body.cls .wrap{max-width:1560px}.units{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}.units>h2{grid-column:1/-1}.hero,.big{max-width:none}}
@@ -165,7 +166,7 @@ canvas.conf{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;hei
    <p><b>١) بداية الحصة:</b> افتحي الرابط على الآيباد أو شاشة الفصل. زر «وضع الفصل» في الأعلى يكبّر الخط لتراه الطالبات من بعيد.</p>
    <p><b>٢) الدروس:</b> اضغطي «افتحي الدرس»، ورقم صفحته في الكتاب مكتوب بجانبه. في كل درس تبويبات: «تعلّمي» للشرح، و«إملاء» للإملاء، و«افهمي المطلوب» لتوضيح صيغ الأسئلة، و«العبي» لأسئلة وألعاب الدرس، و«تحدّي الدرس» أسئلة بمستويات، و«ألعاب مبهرة». وزر 🔊 يقرأ النص بصوت نورة.</p>
    <p><b>٣) مجموعات الفصل:</b> اختاري الفصل (رابع 1 أو رابع 2) ثم المجموعة، فيظهر اسمها في أعلى الصفحة، وتسلّمين الآيباد لطالبات المجموعة. «تغيير المجموعة» تعيدك إلى الاختيار. وفي أسفل صفحة المجموعات ثمانية روابط، لكل مجموعة رابط، يمكنك نسخه وإرساله.</p>
-   <p><b>٤) مَن ستجيب؟:</b> اختاري الفصل ثم «ابدئي»؛ يمرّ العدّاد على الأسماء ثم يقف على طالبة، ويظهر تحته <b>سؤال لها</b>. اقرئي السؤال بصوت مسموع، واستمعي إلى إجابتها، ثم اضغطي «أظهري الإجابة». وإذا أجابت إجابة صحيحة فاضغطي «أجابت إجابة صحيحة» ليبدأ التصفيق. «سؤال آخر» يغيّر السؤال، ومن القائمة أسفله تختارين درسًا معيّنًا. يُشطب اسم من وقع عليها الاختيار حتى تنال كل طالبة فرصتها، و«إرجاع الكل» يعيد جميع الأسماء.</p>
+   <p><b>٤) مَن ستجيب؟:</b> اختاري الفصل ثم «ابدئي»؛ يمرّ العدّاد على الأسماء ثم يقف على طالبة، ويظهر تحته <b>سؤال لها</b>. اقرئي السؤال بصوت مسموع، واستمعي إلى إجابتها، ثم اضغطي «أظهري الإجابة». وإذا أجابت إجابة صحيحة فاضغطي «أجابت إجابة صحيحة» ليبدأ التصفيق. «📞 الاتصال بصديقة» يجعل الهاتف يرنّ ثم تردّ زميلة: تُختار عشوائيًا مثل العدّاد، أو تختارها الطالبة بنفسها. «سؤال آخر» يغيّر السؤال، ومن القائمة أسفله تختارين درسًا معيّنًا. يُشطب اسم من وقع عليها الاختيار حتى تنال كل طالبة فرصتها، و«إرجاع الكل» يعيد جميع الأسماء.</p>
    <p><b>٥) تحرير الأسماء:</b> اضغطي «✏️ تحرير الأسماء» ثم اضغطي اسمًا لتعديله، أو اتركي الخانة فارغة لحذفه. ولإضافة طالبة اكتبي اسمها وسط «إضافة»، أو الصقي قائمة كاملة في الخانة الكبيرة (اسم في كل سطر). تُحفظ التعديلات على هذا الجهاز فقط.</p>
    <p><b>٦) من سيربح مليون نجمة؟:</b> مراجعة عامة بأسئلة من الدروس. اختاري لاعبة أو لاعبتين، وللّاعبة مساعدات: «٥٠:٥٠» و«اسألي صاحبتك» و«غيّري السؤال».</p>
    <p><b>٧) ألعاب مبهرة (داخل كل درس):</b> «سباق الفرق» للفصل على الشاشة بين أربع مجموعات تتبادل الأدوار، و«بطاقات الذاكرة» لمطابقة الكلمة بمعناها، و«تحدّي السرعة» أسئلة صواب وخطأ، و«فقاعات الإجابة» لطالبة واحدة.</p>
@@ -545,15 +546,27 @@ function groupsPage(){$('#crumb').textContent='المجموعات';
  $$('[data-c]',app).forEach(b=>b.onclick=()=>{setGrp(b.dataset.c,+b.dataset.k);location.hash='home'})}
 
 
+
+function curNames(){const extra=store.get('xnames',{})[PK.c]||[];const gone=store.get('rnames',{})[PK.c]||[];return [...NAMES[PK.c],...extra].filter(n=>!gone.includes(n))}
+function ringTone(){if(muted)return;try{for(let k=0;k<3;k++){tone(880,.25,'sine',.25,k*1.0);tone(660,.25,'sine',.25,k*1.0+.3)}}catch(e){}}
+function callFriend(name){const box=$('#tkF');if(!box)return;const others=curNames().filter(n=>n!==name&&!PK.off.has(n));
+ if(others.length<1){box.innerHTML='<p class="lead">لا توجد أسماء أخرى متاحة للاتصال بها.</p>';return}
+ box.innerHTML=`<div class="card center" style="background:var(--teal-t)"><h3>📞 الاتصال بصديقة</h3><p class="lead">اختاري كيف تُحدَّد الصديقة:</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn sun" id="cfR">🎲 اختيار عشوائي</button><button class="btn ghost" id="cfC">👭 تختارها الطالبة</button></div><div id="cfX"></div></div>`;
+ const ring=(f)=>{$('#cfX').innerHTML=`<div class="center" style="margin-top:12px"><div id="ph" style="font-size:4rem;display:inline-block;animation:phr .35s infinite alternate">📞</div><p class="lead" id="cfT" style="font-weight:800;font-size:1.3rem">يرنّ الهاتف…</p></div>`;ringTone();
+  setTimeout(()=>{$('#ph').style.animation='none';$('#cfT').innerHTML=`ردّت الصديقة: <b style="font-size:1.8rem;color:var(--teal-d)">${f}</b><br><span class="lead">ستساعدك ${f} بما تعرفه، والقرار الأخير لكِ.</span>`;sfx('yes')},3200)};
+ $('#cfR').onclick=()=>{const t=document.createElement('div');t.id='cfT0';$('#cfX').innerHTML=`<div id="tk2" class="card center" style="font:800 2rem/1.5 var(--f-read);margin-top:12px">؟</div>`;const win=others[Math.random()*others.length|0];let i=0,steps=18;const st=()=>{i++;const n=i>=steps?win:others[Math.random()*others.length|0];$('#tk2').textContent=n;sfx('tick');if(i>=steps){setTimeout(()=>ring(win),600)}else setTimeout(st,40+Math.pow(i/steps,3)*420)};st()};
+ $('#cfC').onclick=()=>{$('#cfX').innerHTML=`<p class="lead" style="margin-top:10px">اضغطي اسم الصديقة التي تريد الاتصال بها:</p><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">${others.map(n=>`<button class="btn ghost nm2" data-n="${n}" style="min-height:38px;padding:4px 12px">${n}</button>`).join('')}</div>`;$$('.nm2',box).forEach(b=>b.onclick=()=>ring(b.dataset.n))}}
+
 /* سؤال لِمن وقع عليها الاختيار */
 function pickQ(name){const sel=PK.src||'all';const bank=millBank(sel).filter(q=>(q.tier||2)<=2&&q.o&&q.o.length>=3);const box=$('#tkQ');if(!box)return;if(!bank.length){box.innerHTML='';return}
  const q=bank[Math.random()*bank.length|0],L=['أ','ب','ج','د'];
  const opts=[{id:'all',t:'كل الدروس'},...SECTIONS.flatMap(s=>s.items).filter(i=>i.id&&LBY[i.id]).map(i=>({id:i.id,t:i.t}))];
  box.innerHTML=`<div class="card"><h3>سؤال لـ ${name}</h3><p class="lead" style="margin:0 0 6px">اقرئي السؤال بصوت مسموع، واسمعي إجابة الطالبة، ثم اضغطي «أظهري الإجابة».</p>
- <p class="qtxt" style="font-weight:800">${q.q}</p><div class="names" id="tkO">${q.o.map((o,i)=>`<div class="card" data-i="${i}" style="margin:0;padding:10px 14px"><b>${L[i]}.</b> ${o}</div>`).join('')}</div><div id="tkW"></div>
- <div class="center" style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn ghost" id="tkSh">أظهري الإجابة</button><button class="btn sun" id="tkOk">✅ أجابت إجابة صحيحة</button><button class="btn ghost" id="tkNx">سؤال آخر</button></div>
+ <p class="qtxt" style="font-weight:800">${q.q}</p><div class="names" id="tkO">${q.o.map((o,i)=>`<div class="card" data-i="${i}" style="margin:0;padding:10px 14px"><b>${L[i]}.</b> ${o}</div>`).join('')}</div><div id="tkW"></div><div id="tkF"></div>
+ <div class="center" style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn ghost" id="tkSh">أظهري الإجابة</button><button class="btn ghost" id="tkCf">📞 الاتصال بصديقة</button><button class="btn sun" id="tkOk">✅ أجابت إجابة صحيحة</button><button class="btn ghost" id="tkNx">سؤال آخر</button></div>
  <p class="lead center" style="margin-top:10px">أسئلة من: <select id="tkSrc" style="padding:6px 10px;border-radius:10px;font:700 1rem var(--f-ui)">${opts.map(o=>`<option value="${o.id}" ${o.id===sel?'selected':''}>${o.t}</option>`).join('')}</select></p></div>`;
  $('#tkSh').onclick=()=>{$$('#tkO .card').forEach(c=>{if(+c.dataset.i===q.a){c.style.background='var(--teal-t)';c.style.borderColor='var(--teal-d)'}});$('#tkW').innerHTML=`<p class="lead" style="margin-top:10px"><b>الإجابة الصحيحة:</b> ${q.o[q.a]}${q.w?'<br>'+q.w:''}</p>`};
+ $('#tkCf').onclick=()=>callFriend(name);
  $('#tkOk').onclick=()=>{sfx('win');clap(14,1.6);confetti(60)};
  $('#tkNx').onclick=()=>pickQ(name);
  $('#tkSrc').onchange=e=>{PK.src=e.target.value;pickQ(name)}}
@@ -583,7 +596,7 @@ function pickPage(){$('#crumb').textContent='اختيار طالبة';if(!PK.c)P
  $('#tkAd').onclick=()=>{const v=$('#tkIn').value.trim();if(!v)return;const x=store.get('xnames',{});x[PK.c]=[...(x[PK.c]||[]),v];store.set('xnames',x);pickPage()};
  $('#tkGo').onclick=()=>{if(PK.busy)return;const pool=all.filter(n=>!PK.off.has(n));if(pool.length<1)return;PK.busy=true;const t=$('#tkr');$('#tkGo').disabled=true;
   const win=pool[Math.random()*pool.length|0];let steps=26+(Math.random()*8|0),i=0,last=-1;
-  const step=()=>{i++;let n;if(i>=steps)n=win;else{do{n=pool[Math.random()*pool.length|0]}while(n===last&&pool.length>1)}last=n;t.textContent=n;t.style.transform='scale('+(i>=steps?1.12:1)+')';
+  const step=()=>{i++;let n;if(i>=steps)n=win;else{do{n=pool[Math.random()*pool.length|0]}while(n===last&&pool.length>1)}last=n;t.textContent=n;t.style.transform='none';t.style.fontSize=(i>=steps?'3.2rem':'2.8rem');
    if(i>=steps){PK.busy=false;sfx('tick');t.style.color='var(--teal-d)';PK.off.add(win);pickQ(win);$('#tkGo').disabled=false;
      $$('.nm',app).forEach(b=>{if(b.dataset.n===win){b.style.opacity='.35';b.style.textDecoration='line-through'}});return}
    t.style.color='';sfx('tick');setTimeout(step,35+Math.pow(i/steps,3)*480)};step()}}
