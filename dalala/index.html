@@ -9,12 +9,6 @@
   --leaf:#5aa832; --leaf-t:#e6f4d9; --sun:#f6b42a; --sun-t:#fff3d1; --coral:#e5594a; --coral-t:#fde5e1; --plum:#7a55b5;
   --f-ui:"Tajawal",system-ui,sans-serif; --f-read:"Noto Naskh Arabic","Tajawal",serif; --f-disp:"Lalezar","Tajawal",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f1d24;--card:#172830;--ink:#e6f1f5;--soft:#9db4bf;--line:#29414b;
-  --teal:#47b9d9;--teal-d:#8fd6ea;--teal-t:#17353f;--leaf:#8ccf5e;--leaf-t:#1f3320;--sun:#f6b42a;--sun-t:#3a2f12;--coral:#f08073;--coral-t:#3b1f1c;--plum:#a98be0;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0f1d24;--card:#172830;--ink:#e6f1f5;--soft:#9db4bf;--line:#29414b;
-  --teal:#47b9d9;--teal-d:#8fd6ea;--teal-t:#17353f;--leaf:#8ccf5e;--leaf-t:#1f3320;--sun:#f6b42a;--sun-t:#3a2f12;--coral:#f08073;--coral-t:#3b1f1c;--plum:#a98be0;color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:17px;line-height:1.7;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 28px}
@@ -158,6 +152,64 @@ footer b{color:var(--ink);font-size:1.05rem}
 .pop{animation:pop .25s ease-out}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 canvas.conf{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:100%}
+
+/* ===== أسلوب مجسّمات الصلصال: إطار أصفر، حقول ملوّنة، ملصقات بحافة بيضاء ===== */
+:root{--bg:#ffc72c;--card:#ffffff;--ink:#2b1b10;--soft:#6a4a26;--line:#f1d27a;
+ --teal:#3d7bff;--teal-d:#2b1b10;--teal-t:#e6efff;--leaf:#34c25a;--leaf-t:#e2f7e8;--sun:#ffb02e;--sun-t:#fff1c8;--coral:#ff6b4a;--coral-t:#ffe3dc;--plum:#8f6bff;color-scheme:light}
+body{background-color:var(--bg);background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .5  0 0 0 0 .35  0 0 0 0 0  0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");color:var(--ink)}
+h1,h2,h3{color:var(--ink)}
+.bar{background:#fff;color:var(--ink);border-bottom:5px solid var(--ink);border-radius:0 0 26px 26px;box-shadow:0 6px 0 #0002}
+.bar h1{font-size:1.5rem}
+.bar button{background:#ffe08a;color:var(--ink);border:3px solid var(--ink);border-radius:999px;box-shadow:0 3px 0 var(--ink);font-weight:800}
+.stk{filter:drop-shadow(0 6px 4px #0003);display:block}
+.hero{position:relative;min-height:250px;background:#ff8a1f;border-radius:14px;border:0;box-shadow:0 8px 0 #0002;color:var(--ink);flex-direction:row;align-items:center;justify-content:space-between;gap:16px;overflow:visible;padding:20px 26px}
+.hero .ttl{flex:1;min-width:0}
+.hero h2{font-size:2.3rem;color:var(--ink);line-height:1.25;margin:0;text-shadow:0 0 0 #fff,3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,0 7px 0 #0003}
+.pill{display:inline-block;background:#fff;color:var(--ink);border-radius:999px;padding:5px 16px;font-weight:800;box-shadow:0 4px 0 #0002;margin-top:8px}
+.hero .hb{width:min(240px,34vw);animation:bob 3.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px) rotate(2deg)}}
+.banner{position:relative;margin:16px 0;border-radius:14px;overflow:hidden;box-shadow:0 8px 0 #0002;height:clamp(200px,26vw,300px)}
+.banner img.sc{width:100%;height:100%;object-fit:cover;object-position:center 62%;display:block}
+.banner .plate{position:absolute;inset-inline-start:18px;bottom:18px;background:#fff;border-radius:20px;padding:12px 18px;max-width:min(420px,70%);box-shadow:0 6px 0 #0003}
+.banner .plate b{font:400 1.35rem/1.3 var(--f-disp);display:block}
+.big{position:relative;border:0;border-radius:14px;color:var(--ink);box-shadow:0 8px 0 #0002;background:#3d7bff;padding:14px 18px;transition:transform .2s}
+.big:nth-of-type(2){background:#34c25a}.big:nth-of-type(3){background:#c9ee2b}
+.big:hover{transform:translateY(-4px) rotate(-.5deg)}.big:active{transform:translateY(3px)}
+.big .ic{width:84px;flex:none;animation:bob 4s ease-in-out infinite}
+.big:nth-of-type(2) .ic{animation-delay:.6s}.big:nth-of-type(3) .ic{animation-delay:1.2s}
+.big>span:last-child{background:#fff;border-radius:18px;padding:8px 16px;flex:1;box-shadow:0 4px 0 #0002}
+.big b{font-size:1.5rem}.big small{color:var(--soft);font-size:1rem}
+.units h2{background:#fff;display:inline-block;border-radius:999px;padding:6px 22px;box-shadow:0 5px 0 #0002;margin-bottom:8px}
+.sec{border:0;border-radius:14px;padding:16px 18px;box-shadow:0 8px 0 #0002;background:#ff8a1f}
+.units .sec:nth-of-type(4n+2){background:#3d7bff}.units .sec:nth-of-type(4n+3){background:#34c25a}.units .sec:nth-of-type(4n){background:#c9ee2b}
+.sec h3{display:flex;align-items:center;gap:12px;font-size:1.5rem;text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,0 5px 0 #0003;margin-bottom:10px}
+.sec h3 img{width:62px;flex:none}
+.row{background:#fff;border:0;border-radius:18px;padding:10px 14px;margin:8px 0;box-shadow:0 4px 0 #0002;border-top:0}
+.row:first-of-type{border-top:0}
+.row .go,button.go{background:#34c25a;color:#fff;border:3px solid #fff;border-radius:999px;padding:6px 16px;font-weight:800;box-shadow:0 4px 0 #1d8a3b}
+.pg,.row .pg{background:#ffe08a;color:var(--ink);border-radius:999px;padding:1px 10px}
+.card{background:#fff;border:0;border-radius:18px;box-shadow:0 7px 0 #0002;padding:18px}
+.tabs button{background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:999px;box-shadow:0 4px 0 var(--ink);font-weight:800}
+.tabs button[aria-selected="true"]{background:#3d7bff;color:#fff;border-color:var(--ink)}
+.btn{background:#3d7bff;color:#fff;border:3px solid #fff;border-radius:999px;box-shadow:0 6px 0 #1f4fc0,0 8px 0 #0002;font-weight:800;outline:none}
+.btn.sun{background:#ffb02e;color:var(--ink);box-shadow:0 6px 0 #c47d0a,0 8px 0 #0002}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:0 5px 0 var(--ink)}
+.btn:active{transform:translateY(3px)}
+.opt{background:#fff;color:var(--ink);border:0;border-radius:18px;box-shadow:0 6px 0 #0002;border-inline-start:12px solid #ff8a1f}
+.opts .opt:nth-child(4n+2){border-inline-start-color:#3d7bff}.opts .opt:nth-child(4n+3){border-inline-start-color:#34c25a}.opts .opt:nth-child(4n){border-inline-start-color:#c9ee2b}
+.qtxt,.lt{color:var(--ink)}
+footer{color:var(--ink)}footer b{color:var(--ink)}
+#grpB{background:#fff!important;color:var(--ink)!important;border-radius:999px;margin:8px 0;box-shadow:0 4px 0 #0002}
+.bee{position:fixed;left:12px;bottom:12px;z-index:30;width:112px;cursor:pointer;animation:bob 3.2s ease-in-out infinite}
+.bee img{width:100%;display:block;filter:drop-shadow(0 6px 5px #0004)}
+.bee.wave{animation:beeW .6s ease-in-out 3}
+.bee{transition:opacity .25s}.bee.away{opacity:0;pointer-events:none}
+.bee .x{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;border:3px solid var(--ink);background:#fff;color:var(--ink);font:800 14px/1 Tajawal;padding:0;cursor:pointer;box-shadow:0 3px 0 #0003}
+@keyframes beeW{25%{transform:rotate(-8deg) translateY(-8px)}75%{transform:rotate(8deg) translateY(-8px)}}
+.beeb{position:fixed;left:130px;bottom:64px;z-index:31;max-width:min(300px,62vw);background:#fff;border:4px solid var(--ink);border-radius:22px;padding:10px 16px;font-weight:800;color:var(--ink);box-shadow:0 5px 0 #0003}
+.tip{background:#fff1c8;border:3px dashed var(--ink)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+@media (max-width:640px){.bar{flex-wrap:wrap;row-gap:6px}.bar h1{order:-1;flex-basis:100%;text-align:center}.bee{width:84px}.hero{flex-direction:column-reverse;text-align:center}.hero .hb{width:150px}.hero h2{font-size:1.8rem}}
 </style>
 
 <div class="wrap">
@@ -575,7 +627,7 @@ function callFriend(name){const box=$('#tkF');if(!box)return;const others=curNam
 /* سؤال لِمن وقع عليها الاختيار */
 function pickQ(name){const sel=PK.src||'all';const bank=millBank(sel).filter(q=>(q.tier||2)<=2&&q.o&&q.o.length>=3);const box=$('#tkQ');if(!box)return;if(!bank.length){box.innerHTML='';return}
  const q=bank[Math.random()*bank.length|0],L=['أ','ب','ج','د'];
- const opts=[{id:'all',t:'كل الدروس'},...SECTIONS.flatMap(s=>s.items).filter(i=>i.id&&LBY[i.id]).map(i=>({id:i.id,t:i.t}))];
+ const opts=[{id:'all',t:'كل الدروس'},...SECTIONS.flatMap(s=>s.items).filter(i=>i.id&&LBY[i.id]&&millBank(i.id).filter(q=>(q.tier||2)<=2&&q.o&&q.o.length>=3).length>0).map(i=>({id:i.id,t:i.t}))];
  box.innerHTML=`<div class="card"><h3>سؤال لـ ${name}</h3><p class="lead" style="margin:0 0 6px">اقرئي السؤال بصوت مسموع، واسمعي إجابة الطالبة، ثم اضغطي «أظهري الإجابة».</p>
  <p class="qtxt" style="font-weight:800">${q.q}</p><div class="names" id="tkO">${q.o.map((o,i)=>`<div class="card" data-i="${i}" style="margin:0;padding:10px 14px"><b>${L[i]}.</b> ${o}</div>`).join('')}</div><div id="tkW"></div><div id="tkF"></div>
  <div class="center" style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn ghost" id="tkSh">أظهري الإجابة</button><button class="btn ghost" id="tkCf">📞 الاتصال بصديقة</button><button class="btn sun" id="tkOk">✅ أجابت إجابة صحيحة</button><button class="btn ghost" id="tkNx">سؤال آخر</button></div>
@@ -737,11 +789,13 @@ const SECTIONS=[
  {u:'نموذج اختبار',items:[{id:'exam1',t:'نموذج اختبار الوحدة',pg:'ص١٥١'}]}];
 function homePage(){$('#crumb').textContent='لغتي الجميلة';
   const row=it=>{const ok=it.special||LBY[it.id];return `<div class="row ${ok?'':'off'}"><span class="t">${it.t} <span class="pg">${it.pg}</span>${it.note?`<br><small>${it.note}</small>`:''}</span>${ok?`<button class="go" data-go="${it.special||'L-'+it.id}">افتحي الدرس</button>`:'<span class="tag">قريبًا</span>'}</div>`};
-  app.innerHTML=`<section class="hero"><h2>معلمة المادة: دلال السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></section>
-  <button class="big" data-go="groups"><span class="ic">👥</span><span><b>مجموعات الفصل</b><small>رابع 1 ورابع 2، أربع مجموعات لكل فصل</small></span></button>
-  <button class="big" data-go="pick"><span class="ic">🎲</span><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويوقف على اسم طالبة</small></span></button>
-  <button class="big" id="goM"><span class="ic">⭐</span><span><b>من سيربح مليون نجمة؟</b><small>أسئلة من كل الدروس، العبي وحدك أو مع صاحبتك</small></span></button>
-  <section class="units"><h2>الوحدة الأولى: صحتي وبيئتي</h2>${SECTIONS.map(s=>`<div class="sec"><h3>${s.u}</h3>${s.items.map(row).join('')}</div>`).join('')}</section>
+  const ICO={'مدخل الوحدة':'bag','الاستماع':'bulb','الفهم القرائي':'book','قطع الفهم القرائي':'magnifier','الظاهرة الإملائية':'pencil','الوظيفة النحوية':'apple','الرسم الكتابي':'medal','النص الشعري':'globe','نموذج اختبار':'trophy'};
+  app.innerHTML=`<section class="hero"><div class="ttl"><h2>معلمة المادة: دلال السناني</h2><span class="pill">الصف الرابع الابتدائي · الفصل الدراسي الأول</span><br><span class="pill">نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها</span></div><img class="hb stk" src="assets/bee_cheer.webp" alt=""></section>
+  <div class="banner"><img class="sc" src="assets/gate.webp" alt=""><div class="plate"><b>لغتي الجميلة</b>اقرئي، افهمي، والعبي مع صديقاتك</div></div>
+  <button class="big" data-go="groups"><img class="ic stk" src="assets/bag.webp" alt=""><span><b>مجموعات الفصل</b><small>رابع 1 ورابع 2، أربع مجموعات لكل فصل</small></span></button>
+  <button class="big" data-go="pick"><img class="ic stk" src="assets/magnifier.webp" alt=""><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويقف على اسم طالبة، ثم سؤال لها</small></span></button>
+  <button class="big" id="goM"><img class="ic stk" src="assets/star.webp" alt=""><span><b>من سيربح مليون نجمة؟</b><small>أسئلة من كل الدروس، العبي وحدك أو مع صاحبتك</small></span></button>
+  <section class="units"><h2>الوحدة الأولى: صحتي وبيئتي</h2>${SECTIONS.map(s=>`<div class="sec"><h3>${ICO[s.u]?`<img class="stk" src="assets/${ICO[s.u]}.webp" alt="">`:''}${s.u}</h3>${s.items.map(row).join('')}</div>`).join('')}</section>
   <p class="lead">الدروس من كتاب لغتي الجميلة (١٤٤٨) وأوراق العمل، وعلى كل درس رقم صفحته في الكتاب.</p>`;
   $('#goM').onclick=()=>{window.MSEL='all';location.hash='million'};
   $$('[data-go]').forEach(b=>b.onclick=()=>{location.hash=b.dataset.go})}
@@ -792,6 +846,17 @@ function matchGame2(box,pairs){const L=shuf(pairs.map((x,i)=>[x[0],i])),R=shuf(p
   $$('.pairs button',box).forEach(b=>b.onclick=()=>{if(b.classList.contains('done'))return;if(b.dataset.s==='l'){$$('[data-s=l]',box).forEach(x=>x.classList.remove('sel'));b.classList.add('sel');s=b;sfx('tick');return}
     if(!s)return;if(s.dataset.i===b.dataset.i){s.classList.remove('sel');s.classList.add('done');b.classList.add('done');s=null;sfx('yes');if(++done===pairs.length){$('.fb',box).textContent='ممتاز! وصلتِ الكل.';confetti(40);sfx('win')}}else{b.classList.add('bad');sfx('no');setTimeout(()=>b.classList.remove('bad'),400)}})}
 route();
+
+/* ===== أسلوب الصلصال: النحلة المرشدة ===== */
+(function(){
+ let bub=null,ti=0;const b=document.createElement('div');b.className='bee wave';b.id='bee';b.setAttribute('role','button');b.setAttribute('aria-label','النحلة المرشدة');b.tabIndex=0;b.innerHTML='<img src="assets/bee_wave.webp" alt=""><button class="x" aria-label="إخفاء النحلة">×</button>';document.body.appendChild(b);let gone=false;try{gone=sessionStorage.getItem('beeGone')==='1'}catch(_){}if(gone)b.style.display='none';b.querySelector('.x').onclick=ev=>{ev.stopPropagation();b.style.display='none';if(bub){bub.remove();bub=null}try{sessionStorage.setItem('beeGone','1')}catch(_){}};let st;addEventListener('scroll',()=>{b.classList.add('away');clearTimeout(st);st=setTimeout(()=>b.classList.remove('away'),900)},{passive:true});
+ const IM=['bee_wave','bee_point','bee_cheer'];
+ const TIPS=['أهلًا بكِ! أنا النحلة المرشدة، وسأرافقك في كل صفحة.','اضغطي «افتحي الدرس» لتبدئي الدرس.','في «مَن ستجيب؟» يقف العدّاد على طالبة ثم يظهر لها سؤال.','جرّبي «ألعاب مبهرة» داخل كل درس.','زر «وضع الفصل» يكبّر الخط على شاشة الفصل.','في أسفل الصفحة دليل استخدام المعلمة.'];
+ const say=t=>{if(bub)bub.remove();bub=document.createElement('div');bub.className='beeb';bub.textContent=t;document.body.appendChild(bub);b.firstChild.src='assets/'+IM[ti%3]+'.webp';setTimeout(()=>{if(bub){bub.remove();bub=null}},5200)};
+ b.onclick=()=>{b.classList.remove('wave');void b.offsetWidth;b.classList.add('wave');say(TIPS[ti++%TIPS.length])};
+ b.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')b.onclick()};
+ setTimeout(()=>say(TIPS[0]),1400);
+})();
 
 </script>
 </body></html>
