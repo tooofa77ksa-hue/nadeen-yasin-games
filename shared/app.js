@@ -56,7 +56,7 @@ async function finish(game,label,sc,max){
  app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(90)}</div><h2>${st>=2?'أحسنتِ يا بطلة الفضاء!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
  <p class="muted">${ok?'وصلت نتيجتك إلى المعلمة مها ✓':'ما وصلت النتيجة للمعلمة الآن؛ أرسليها بالواتساب أو جرّبي لاحقًا.'}</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again">العبي مرة ثانية</button><button class="btn ghost" id="home">الرئيسية</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">أرسلي لمعلمتك بالواتساب</a></div></div>`;
- confetti(st*30+10);for(let k=0;k<st;k++)setTimeout(()=>sfx('correct'),400+k*350);$('#again').onclick=()=>{GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
+ confetti(st*30+10);for(let k=0;k<st;k++)setTimeout(()=>sfx('correct'),400+k*350);$('#again').onclick=()=>{if(game==='central'){const m=label.match(/\((\d+)\)/);GAMES.central.start(m?+m[1]-1:0)}else GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
 function confetti(n=40){const c=['#ffd54a','#ff7ac8','#7fe8ff','#9affc9','#c9a7ff'];for(let i=0;i<n;i++){const d=document.createElement('i');d.style.cssText=`position:fixed;top:-10px;left:${Math.random()*100}%;width:9px;height:14px;background:${c[i%5]};z-index:30;border-radius:2px;transition:transform ${1.6+Math.random()*1.4}s ease-in,opacity 2.6s;pointer-events:none`;document.body.appendChild(d);requestAnimationFrame(()=>{d.style.transform=`translate(${(Math.random()-.5)*240}px,${innerHeight+40}px) rotate(${Math.random()*720}deg)`;d.style.opacity='0'});setTimeout(()=>d.remove(),3200)}}
 function topbar(){return `<div class="top"><div class="who">${avatar(40)}<div><h3 style="margin:0">${NAMES[P]}</h3><div class="muted" style="font-size:.85rem">مركز رؤيا وإبداع</div></div></div><div class="chips"><span class="chip">${starSvg(true,18)} ${LS.get('stars',0)}</span><span class="chip">🪙 ${LS.get('coins',0)}</span><button class="chip" id="mt" style="font:inherit;color:inherit;cursor:pointer">${muted?'🔇':'🔊'}</button><button class="chip" id="hm" style="font:inherit;color:inherit;cursor:pointer">🏠</button></div></div>`}
 function bindTop(){const m=$('#mt');if(m)m.onclick=()=>{muted=!muted;LS.set('mute',muted);m.textContent=muted?'🔇':'🔊'};const h=$('#hm');if(h)h.onclick=home}
@@ -140,6 +140,31 @@ GAMES.exam={start(){const kinds=['grammar','spelling','irab','comp','antonym'];c
  const step=()=>{if(i>=all.length)return finish('exam','اختبار على نمط الاختبارات',sc,all.length);
   app.innerHTML=`${topbar()}<div class="card"><div class="bar"><i style="width:${i/all.length*100}%"></i></div><p class="muted">اختبار · سؤال ${i+1} من ${all.length}</p><div id="qb"></div></div>`;bindTop();
   ask($('#qb'),all[i],ok=>{if(ok)sc++;i++;step()})};step()}};
+
+/* الاختبارات المركزية: ورقة بنمط الاختبار (قطعة + أسئلتها + قواعد وإملاء ومفردات) */
+const PT={'E1-003':'رِحْلَةُ عُمَرَ إِلَى الشَّاطِئِ','E1-029':'الْمُحَافَظَةُ عَلَى الْمَاءِ','E1-076':'مَدِينَةُ الطَّائِفِ','E2-006':'الشَّجَرَةُ الْعَجُوزُ','E2-030':'أُسَامَةُ وَالسَّاعَةُ','E2-054':'نُورَةُ وَالْفَرَاشَةُ','E2-077':'أَبْيَاتٌ شِعْرِيَّةٌ'};
+function centralPapers(){const ex=QD.EX;const groups=[];const idx={};
+ ex.forEach(q=>{if(q.passage){if(idx[q.passage]===undefined){idx[q.passage]=groups.length;groups.push({first:q.id,passage:q.passage,qs:[]})}groups[idx[q.passage]].qs.push(q)}});
+ const papers=groups.filter(g=>PT[g.first]).map((g,i)=>({n:i+1,title:PT[g.first],read:g.qs}));
+ const lang=ex.filter(q=>!q.passage&&q.type!=='fill');
+ const sec=q=>q.kind==='grammar'||q.kind==='irab'?2:q.kind==='spelling'?3:4;
+ const by={2:lang.filter(q=>sec(q)===2),3:lang.filter(q=>sec(q)===3),4:lang.filter(q=>sec(q)===4)};
+ papers.forEach((p,i)=>{const take=(arr,n)=>Array.from({length:Math.min(n,arr.length)},(_,k)=>arr[(i*n+k)%arr.length]);
+  p.s2=take(by[2],6);p.s3=take(by[3],4);p.s4=take(by[4],Math.min(2,by[4].length))});
+ return papers}
+GAMES.central={start(i){const papers=centralPapers();const p=papers[+i||0];if(!p)return home();
+ const SEC=[[1,'أَوَّلًا: الْقِرَاءَةُ وَالْفَهْمُ',p.read],[2,'ثَانِيًا: الْقَوَاعِدُ النَّحْوِيَّةُ وَالْإِعْرَابُ',p.s2],[3,'ثَالِثًا: الظَّاهِرَةُ الْإِمْلَائِيَّةُ',p.s3],[4,'رَابِعًا: الْمُفْرَدَاتُ وَالْأَضْدَادُ',p.s4]].filter(x=>x[2].length);
+ const all=[];SEC.forEach(x=>x[2].forEach(q=>all.push({sec:x[1],pr:x[0]===1,q:prep(q)})));
+ let k=0,sc=0;const miss=[];
+ const step=()=>{if(k>=all.length)return end();const it=all[k],q=it.q;
+  app.innerHTML=`${topbar()}<div class="card"><div class="center"><h3 style="margin:0">اختبار مركزي (${p.n}) · لغتي · الصف الرابع</h3><div class="muted">${p.title}</div></div><div class="bar" style="margin:8px 0"><i style="width:${k/all.length*100}%"></i></div>
+  <p class="chip" style="display:inline-block">${it.sec}</p><p class="muted" style="margin:4px 0">سؤال ${k+1} من ${all.length}</p>
+  ${it.pr?`<div class="pass">${esc(q.passage)}</div>`:''}<div class="q" style="margin:10px 0">${esc(q.q)}</div><div class="opts">${q.o.map((t,j)=>`<button class="opt" data-i="${j}">${esc(t)}</button>`).join('')}</div></div>`;bindTop();
+  let lock=false;$$('.opt').forEach(b=>b.onclick=()=>{if(lock)return;lock=true;const j=+b.dataset.i;b.style.borderColor='var(--gold)';b.style.background='#ffd54a33';sfx('clap');const ok=j===q.a;if(ok)sc++;else miss.push({q,j});setTimeout(()=>{k++;step()},450)})};
+ const end=()=>{const rev=miss.map(m=>`<div class="why" style="margin:8px 0;text-align:right"><b>${esc(m.q.q)}</b><br>اختيارك: ${esc(m.q.o[m.j])}<br>الإجابة الصحيحة: <b>${esc(m.q.o[m.q.a])}</b>${m.q.w?'<br>'+esc(m.q.w):''}</div>`).join('');
+  finish('central','اختبار مركزي ('+p.n+')',sc,all.length);
+  setTimeout(()=>{const c=$('.card.center');if(c)c.insertAdjacentHTML('beforeend',miss.length?`<h3 style="margin-top:14px">راجعي أخطاءك</h3>${rev}`:'<p class="chip" style="display:inline-block;background:var(--ok);color:#06331f">ممتاز! بلا أخطاء 🎉</p>')},60)};
+ step()}};
 /* الرئيسية */
 const PL=[
  ['wheel','عجلة التحدّي','أدِيري واتركي الفضاء يختار','#ff7ac8'],
@@ -160,9 +185,11 @@ function home(){
  app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(84)}</div><h1>أهلًا ${NAMES[P]}!</h1><p class="muted">اختاري كوكبًا وابدئي رحلتك. كل نتيجة تصل إلى المعلمة مها.</p>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
  <div class="grid">${PL.map(p=>`<div class="planet" data-g="${p[0]}"><div class="pl" style="background:radial-gradient(circle at 35% 30%,#fff8,${p[3]})"></div><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
  ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${h.stars?starRow(h.stars,h.stars,16):'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}
+ <div class="card"><h3>📝 الاختبارات المركزية</h3><p class="muted" style="margin:0 0 8px">ورقة كاملة بنمط الاختبار: قطعة قراءة، ثم قواعد وإعراب، ثم إملاء ومفردات. تظهر النتيجة والمراجعة في النهاية.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${centralPapers().map((p,i)=>`<button class="btn ghost cp" data-i="${i}">اختبار ${p.n}: ${p.title}</button>`).join('')}</div></div>
  ${skyCard()}
  <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();
  $$('.planet').forEach(el=>el.onclick=()=>{const [g,k]=el.dataset.g.split(':');sfx('clap');GAMES[g].start(k)});
+ $$('.cp').forEach(b=>b.onclick=()=>GAMES.central.start(+b.dataset.i));
  const a=$('#goA');if(a)a.onclick=()=>{LS.set('assign',null);const [g,k]=asg.game.split(':');GAMES[g].start(k)}}
 window.GAMES=GAMES;window.home=home;window.NYG={CFG,bus,LS,NAMES,esc,avatar,alienSvg,confetti,topbar,bindTop,sfx,toast,QD,$,$$};
 if(P!=='maha'){home();bus.listen(m=>{if(m.t==='assign'&&(m.to===P||m.to==='both')){LS.set('assign',m);toast('📣 رسالة من المعلمة مها');if($('.grid')&&$('h1'))home()}})}
