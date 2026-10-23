@@ -160,7 +160,7 @@ canvas.conf{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;hei
 <div class="wrap">
   <div class="bar"><button id="homeB" aria-label="الرئيسية">الرئيسية</button><h1 id="crumb">لغتي الجميلة</h1><button id="clapB" aria-label="تصفيق">👏</button><button id="clsB" aria-pressed="false">وضع الفصل</button><button id="muteB" aria-label="كتم الصوت" aria-pressed="false">🔊</button></div>
   <main id="app"></main>
-  <footer><b>لغتي الجميلة · الصف الرابع</b><span>معلمة المادة: دلالة السناني</span></footer>
+  <footer><b>لغتي الجميلة · الصف الرابع</b><span>معلمة المادة: دلال السناني</span></footer>
 </div>
 <canvas class="conf" id="conf" aria-hidden="true"></canvas>
 
@@ -401,7 +401,7 @@ const UNIT=[
  ['الوظيفة النحوية','أنواع الكلمة والجملة ص٦٧ · المبتدأ والخبر ص٧٧ · الاسم المجرور بحرف الجر ص٨٤ · أنواع الفعل ص٩٢ · الفاعل ص١٠٣ · المفعول به ص١١٢',0],
  ['الرسم الكتابي','الحروف المرتكزة على السطر ص١٢٠',0],['النص الشعري','لمَ تألّمتِ الفراشة؟ ص١٣٣',0]];
 function homePage(){$('#crumb').textContent='لغتي الجميلة';
-  app.innerHTML=`<section class="hero"><h2>معلمة المادة: دلالة السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></section>
+  app.innerHTML=`<section class="hero"><h2>معلمة المادة: دلال السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></section>
   <button class="big" id="goM"><span class="ic">⭐</span><span><b>من سيربح مليون نجمة؟</b><small>أسئلة كلمة ومعناها وفهم النص، العبي وحدك أو مع صاحبتك</small></span></button>
   <section class="units"><h2>الوحدة الأولى: صحتي وبيئتي</h2>
   ${UNIT.map(u=>`<div class="sec"><h3>${u[0]}</h3><div class="row ${u[2]?'':'off'}"><span class="t">${u[1]}</span>${u[2]?'<button class="go" data-go="lesson">افتحي الدرس</button>':'<span class="tag">قريبًا</span>'}</div></div>`).join('')}</section>
@@ -534,17 +534,24 @@ function groupsPage(){$('#crumb').textContent='المجموعات';
  $$('[data-c]',app).forEach(b=>b.onclick=()=>{setGrp(b.dataset.c,+b.dataset.k);location.hash='home'})}
 
 /* ---- اختيار طالبة (عدّاد يمشي ويوقف) ---- */
-const NAMES={'رابع 1':[],'رابع 2':[]};
+const NAMES={'رابع 1':['ألين بدير','تالا المستادي','ترف السلمي','حور الجغثمي','ردينا الصريمي','رغد الخطابي','رواسن المغربي','روز صيرفي','ريم الخطابي','ريما الشهري','ساره الحربي','سمر العمودي','غزل اليعقوبي','فجر الذبياني','قمر','لانا العميري','لينا الرشيدي','ماريا الشمراني','مريم بادنجكي','وجد خرمي'],
+'رابع 2':['أرام عسيري','أسيل وداد','تالا الشمراني','تالا القريقري','تيلا أبو صالح','جميلة السميري','جنى الشريف','حلا الغامدي','دانه اليوبي','روز الحمراني','ريتاج عواجي','ريما بن خميس','شدن الخرماني','شذى يونس','علا زهران','علويه الحداد','غني العوفي','لارين الشمري','لانا آل شبيب','لجين الحانطي','لميس اليوبي','لين بازهير','ماريا الحربي','مريم باشماخ','مشاعل ثابت','ميار الجهني','نادين الشمراني','ندى السهلي','هديل الفارسي','ورد الزهراني']};
 let PK={c:null,off:new Set(),busy:false};
 function pickPage(){$('#crumb').textContent='اختيار طالبة';if(!PK.c)PK.c=GRP?CL[GRP.c]:null;
  if(!PK.c){app.innerHTML=`<div class="card center"><h2>أي فصل؟</h2><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" data-c="رابع 1">رابع 1</button><button class="btn sun" data-c="رابع 2">رابع 2</button></div></div>`;$$('[data-c]',app).forEach(b=>b.onclick=()=>{PK.c=b.dataset.c;PK.off=new Set();pickPage()});return}
- const extra=store.get('xnames',{})[PK.c]||[];const all=[...NAMES[PK.c],...extra];
+ const extra=store.get('xnames',{})[PK.c]||[];const gone=store.get('rnames',{})[PK.c]||[];const all=[...NAMES[PK.c],...extra].filter(n=>!gone.includes(n));PK.edit=PK.edit||false;
  app.innerHTML=`<div class="center"><h2>مَن ستجيب؟ 🎲</h2><p class="lead">${PK.c} · اضغطي «ابدئي» ويمشي العدّاد ثم يقف على اسم. اضغطي على اسم لإخفائه (غائبة أو أجابت).</p></div>
  <div id="tkr" class="card center" style="font:800 2.8rem/1.4 var(--f-read);min-height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(var(--card),var(--teal-t))">؟</div>
- <div class="center" style="margin:10px 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn sun" id="tkGo">▶ ابدئي</button><button class="btn ghost" id="tkRs">إرجاع الكل</button><button class="btn ghost" id="tkCl">تغيير الفصل</button></div>
+ <div class="center" style="margin:10px 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn sun" id="tkGo">▶ ابدئي</button><button class="btn ghost" id="tkRs">إرجاع الكل</button><button class="btn ghost" id="tkEd">${PK.edit?'✔ إنهاء التحرير':'✏️ تحرير الأسماء'}</button><button class="btn ghost" id="tkCl">تغيير الفصل</button></div>
  <div class="card"><div id="tkL" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">${all.map(n=>`<button class="btn ghost nm" data-n="${n}" style="min-height:38px;padding:4px 12px;${PK.off.has(n)?'opacity:.35;text-decoration:line-through':''}">${n}</button>`).join('')}</div>
  <div class="center" style="margin-top:10px"><textarea id="tkBulk" rows="3" placeholder="الصقي قائمة الأسماء هنا، اسم في كل سطر" style="width:min(520px,92%);padding:8px 12px;border-radius:12px;border:2px solid var(--line);font:600 1rem var(--f-read)"></textarea><br><button class="btn" id="tkBk">إضافة القائمة</button><br><input id="tkIn" placeholder="أضيفي اسمًا" style="padding:8px 12px;border-radius:12px;border:2px solid var(--line);font:600 1rem var(--f-read)"> <button class="btn" id="tkAd">إضافة</button></div></div>`;
- $$('.nm',app).forEach(b=>b.onclick=()=>{const n=b.dataset.n;PK.off.has(n)?PK.off.delete(n):PK.off.add(n);pickPage()});
+ $$('.nm',app).forEach(b=>b.onclick=()=>{const n=b.dataset.n;
+  if(PK.edit){const v=prompt('تعديل الاسم (اتركيه فارغًا لحذف الاسم):',n);if(v===null)return;const t=v.trim();
+   const r=store.get('rnames',{});r[PK.c]=[...new Set([...(r[PK.c]||[]),n])];store.set('rnames',r);
+   if(t){const x=store.get('xnames',{});x[PK.c]=[...(x[PK.c]||[]),t];store.set('xnames',x)}
+   PK.off.delete(n);pickPage();return}
+  PK.off.has(n)?PK.off.delete(n):PK.off.add(n);pickPage()});
+ $('#tkEd').onclick=()=>{PK.edit=!PK.edit;pickPage()};
  $('#tkRs').onclick=()=>{PK.off=new Set();pickPage()};$('#tkCl').onclick=()=>{PK.c=null;PK.off=new Set();pickPage()};
  $('#tkBk').onclick=()=>{const v=$('#tkBulk').value.split(/\n+/).map(s=>s.trim()).filter(Boolean);if(!v.length)return;const x=store.get('xnames',{});x[PK.c]=[...new Set([...(x[PK.c]||[]),...v])];store.set('xnames',x);pickPage()};
  $('#tkAd').onclick=()=>{const v=$('#tkIn').value.trim();if(!v)return;const x=store.get('xnames',{});x[PK.c]=[...(x[PK.c]||[]),v];store.set('xnames',x);pickPage()};
@@ -675,7 +682,7 @@ const SECTIONS=[
  {u:'نموذج اختبار',items:[{id:'exam1',t:'نموذج اختبار الوحدة',pg:'ص١٥١'}]}];
 function homePage(){$('#crumb').textContent='لغتي الجميلة';
   const row=it=>{const ok=it.special||LBY[it.id];return `<div class="row ${ok?'':'off'}"><span class="t">${it.t} <span class="pg">${it.pg}</span>${it.note?`<br><small>${it.note}</small>`:''}</span>${ok?`<button class="go" data-go="${it.special||'L-'+it.id}">افتحي الدرس</button>`:'<span class="tag">قريبًا</span>'}</div>`};
-  app.innerHTML=`<section class="hero"><h2>معلمة المادة: دلالة السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></section>
+  app.innerHTML=`<section class="hero"><h2>معلمة المادة: دلال السناني</h2><p>الصف الرابع الابتدائي · الفصل الدراسي الأول<br>نقرأ، نفهم المطلوب، ونلعب لنحفظ الكلمة ومعناها.</p></section>
   <button class="big" data-go="groups"><span class="ic">👥</span><span><b>مجموعات الفصل</b><small>رابع 1 ورابع 2، أربع مجموعات لكل فصل</small></span></button>
   <button class="big" data-go="pick"><span class="ic">🎲</span><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويوقف على اسم طالبة</small></span></button>
   <button class="big" id="goM"><span class="ic">⭐</span><span><b>من سيربح مليون نجمة؟</b><small>أسئلة من كل الدروس، العبي وحدك أو مع صاحبتك</small></span></button>
