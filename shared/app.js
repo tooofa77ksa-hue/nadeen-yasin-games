@@ -18,7 +18,7 @@ if(P==='yasin'){const MAP=[['أحسنتِ','أحسنتَ'],['بطلة','بطل']
  let busy=false;const fix=root=>{if(busy)return;busy=true;try{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(n.parentElement&&n.parentElement.closest(SKIP))continue;let t=n.nodeValue,o=t;for(const [a,b] of MAP)if(t.includes(a))t=t.split(a).join(b);if(t!==o)n.nodeValue=t}}finally{busy=false}};
  new MutationObserver(()=>fix(app)).observe(app,{childList:true,subtree:true});}
 /* نجوم الخلفية */
-(()=>{const sh=document.createElement('div');sh.className='shoot';document.body.prepend(sh);const d=document.createElement('div');d.id='stars';let h='';for(let i=0;i<70;i++)h+=`<i style="top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s;width:${1+Math.random()*3}px;height:${1+Math.random()*3}px"></i>`;d.innerHTML=h;document.body.prepend(d)})();
+
 /* الأصوات */
 const AU={};['correct','wrong','win','cheer','clap'].forEach(n=>{try{const a=new Audio('../shared/sfx/'+n+'.mp3');a.preload='auto';AU[n]=a}catch(e){}});
 let muted=LS.get('mute',false);
@@ -27,21 +27,19 @@ function toast(t){const d=document.createElement('div');d.className='toast';d.te
 /* نجوم SVG حقيقية */
 const STAR_PATH='M12 1.8l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 16.8 6 20.2l1.3-6.7-5-4.7 6.8-.8z';
 (()=>{const d=document.createElement('div');d.style.cssText='position:absolute;width:0;height:0;overflow:hidden';d.innerHTML='<svg width="0" height="0"><defs><linearGradient id="gStar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a6"/><stop offset=".5" stop-color="#ffd54a"/><stop offset="1" stop-color="#ff9f1a"/></linearGradient></defs></svg>';document.body.appendChild(d)})();
-const starSvg=(on=true,w=34,delay=0)=>`<svg class="rstar ${on?'':'off'}" width="${w}" height="${w}" viewBox="0 0 24 24" style="animation-delay:${delay}s"><path d="${STAR_PATH}" fill="${on?'url(#gStar)':'#9aa3d9'}" stroke="${on?'#b86a00':'#6d76b3'}" stroke-width="1" stroke-linejoin="round"/>${on?'<path d="M12 4.2l1.6 3.8" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".8"/>':''}</svg>`;
+const IMG='../shared/img/';
+const starSvg=(on=true,w=34,delay=0)=>`<img class="rstar ${on?'':'off'}" src="${IMG}${on?'star':'star_empty'}.webp" width="${w}" height="${w}" alt="" style="animation-delay:${delay}s">`;
 const starRow=(n,total=3,w=34)=>`<span class="starrow">${Array.from({length:total},(_,i)=>starSvg(i<n,w,i*.35)).join('')}</span>`;
-const RANKS=[[0,'متدرّبة فضاء','متدرّب فضاء'],[10,'رائدة فضاء','رائد فضاء'],[30,'قائدة المركبة','قائد المركبة'],[60,'بطلة المجرّة','بطل المجرّة'],[100,'ملكة النجوم','ملك النجوم']];
+const RANKS=[[0,'متدرّبة','متدرّب'],[10,'مغامِرة','مغامِر'],[30,'قائدة الفريق','قائد الفريق'],[60,'بطلة المدرسة','بطل المدرسة'],[100,'ملكة النجوم','ملك النجوم']];
 const rankOf=n=>{let r=0;RANKS.forEach((x,i)=>{if(n>=x[0])r=i});return r};
 const rankName=i=>RANKS[i][P==='yasin'?2:1];
-function skyCard(){const n=LS.get('stars',0),r=rankOf(n),nx=RANKS[r+1];const shown=Math.min(n,160);let h='';
- for(let i=0;i<shown;i++){const fx=k=>{const v=Math.sin((i+1)*k)*43758.5453;return v-Math.floor(v)};h+=`<span class="s" style="left:${3+fx(12.9898)*92}%;top:${6+fx(78.233)*82}%;animation-delay:${fx(39.346)*3}s">${starSvg(true,12+Math.round(fx(11.13)*8))}</span>`}
- return `<div class="card"><h3>✨ سماء نجومي</h3><div class="sky">${h||'<p class="center muted" style="margin-top:80px">اربحي نجومًا وستضيء سماؤك!</p>'}</div>
+function skyCard(){const n=LS.get('stars',0),r=rankOf(n),nx=RANKS[r+1];const shown=Math.min(n,60);let h='';
+ for(let i=0;i<shown;i++)h+=`<img class="s2" src="${IMG}star.webp" alt="" style="animation-delay:${(i%7)*.2}s">`;
+ return `<div class="card shelf"><h3>🌟 خزانة نجومي</h3><div class="stars2">${h||'<p class="center muted" style="margin:30px 0">اربحي نجومًا وستمتلئ خزانتك!</p>'}</div>
  <p style="margin:8px 0 0"><b>${n}</b> نجمة · الرتبة: <b>${rankName(r)}</b></p>${nx?`<div class="rankbar"><i style="width:${(n-RANKS[r][0])/(nx[0]-RANKS[r][0])*100}%"></i></div><p class="muted" style="margin:0">تبقّى ${nx[0]-n} نجمة لتصير ${rankName(r+1)}</p>`:'<p class="muted" style="margin:0">وصلتِ إلى أعلى رتبة!</p>'}</div>`}
 /* الشخصيات */
-const SK={nadeen:'#ffcfa3',yasin:'#f0b98a'};
-function avatar(w=64,who=P){
- if(who==='yasin')return `<svg width="${w}" height="${w*1.4}" viewBox="0 0 60 84"><rect x="12" y="2" width="36" height="36" rx="8" fill="#e8eef9"/><rect x="16" y="10" width="28" height="22" rx="6" fill="#142a63"/><rect x="20" y="16" width="6" height="8" rx="2" fill="#7fe8ff"/><rect x="34" y="16" width="6" height="8" rx="2" fill="#7fe8ff"/><path d="M25 27q5 4 10 0" stroke="#7fe8ff" stroke-width="2" fill="none"/><rect x="14" y="40" width="32" height="26" rx="6" fill="#2f7bff"/><rect x="24" y="46" width="12" height="10" rx="3" fill="#ffd54a"/><rect x="2" y="42" width="11" height="22" rx="5" fill="#2f7bff"/><rect x="47" y="42" width="11" height="22" rx="5" fill="#2f7bff"/><rect x="15" y="66" width="13" height="16" rx="4" fill="#1a3e9b"/><rect x="32" y="66" width="13" height="16" rx="4" fill="#1a3e9b"/></svg>`;
- return `<svg width="${w}" height="${w*1.4}" viewBox="0 0 60 84"><circle cx="30" cy="4" r="0"/><g fill="#ff7ac8"><circle cx="14" cy="8" r="5"/><circle cx="24" cy="4" r="5"/><circle cx="36" cy="4" r="5"/><circle cx="46" cy="8" r="5"/></g><g fill="#ffd54a"><circle cx="14" cy="8" r="2"/><circle cx="24" cy="4" r="2"/><circle cx="36" cy="4" r="2"/><circle cx="46" cy="8" r="2"/></g><rect x="10" y="10" width="40" height="30" rx="9" fill="#5a2d82"/><rect x="14" y="14" width="32" height="26" rx="8" fill="${SK.nadeen}"/><rect x="21" y="23" width="5" height="6" rx="2" fill="#2a1a3e"/><rect x="34" y="23" width="5" height="6" rx="2" fill="#2a1a3e"/><path d="M25 33q5 4 10 0" stroke="#c4455b" stroke-width="2" fill="none"/><rect x="14" y="42" width="32" height="24" rx="6" fill="#ff7ac8"/><rect x="2" y="44" width="11" height="20" rx="5" fill="#ff7ac8"/><rect x="47" y="44" width="11" height="20" rx="5" fill="#ff7ac8"/><path d="M12 62h36l6 16H6z" fill="#b66bff"/><rect x="16" y="76" width="11" height="7" rx="3" fill="#5a2d82"/><rect x="33" y="76" width="11" height="7" rx="3" fill="#5a2d82"/></svg>`}
-function alienSvg(w=90,mood='x'){return `<svg width="${w}" height="${w}" viewBox="0 0 100 100"><path d="M30 30L22 12M70 30l8-18" stroke="#6ee26e" stroke-width="4"/><circle cx="22" cy="12" r="5" fill="#ffd54a"/><circle cx="78" cy="12" r="5" fill="#ffd54a"/><ellipse cx="50" cy="58" rx="36" ry="32" fill="#6ee26e"/><ellipse cx="38" cy="52" rx="10" ry="12" fill="#fff"/><ellipse cx="62" cy="52" rx="10" ry="12" fill="#fff"/><circle cx="40" cy="54" r="5" fill="#222"/><circle cx="64" cy="54" r="5" fill="#222"/>${mood==='sad'?'<path d="M38 80q12-9 24 0" stroke="#256b25" stroke-width="3.5" fill="none"/>':'<path d="M36 76q14 12 28 0" stroke="#256b25" stroke-width="3.5" fill="none"/>'}</svg>`}
+function avatar(w=64,who=P,pose='idle'){return `<img class="av" src="${IMG}${who}_${pose}.webp" alt="" style="width:${w}px;height:auto">`}
+function alienSvg(w=90,mood='x'){return `<img src="${IMG}${mood==='sad'?'monster_sad':'monster'}.webp" alt="" style="width:${w}px;height:auto;display:block">`}
 /* الإرسال والاستقبال */
 const bus={status:'off',async send(m){m.at=Date.now();try{LS.set('outbox',[...LS.get('outbox',[]).slice(-30),m]);const r=await fetch(CFG.base+CFG.topic,{method:'POST',body:JSON.stringify(m)});return r.ok}catch(e){return false}},
  listen(fn,since){let es;const open=()=>{try{es=new EventSource(CFG.base+CFG.topic+'/sse?since='+(since||'12h'));es.onopen=()=>{bus.status='on';fn({_s:1})};es.onmessage=ev=>{try{const d=JSON.parse(ev.data);if(d.event==='message'){const m=JSON.parse(d.message);m._id=d.id;fn(m)}}catch(e){}};es.onerror=()=>{bus.status='off';fn({_s:1})}}catch(e){}};open();}};
@@ -53,7 +51,7 @@ async function finish(game,label,sc,max){
  const ok=await bus.send(rec);
  const wa='https://wa.me/?text='+encodeURIComponent(`نتيجة ${NAMES[P]} في «${label}»: ${sc} من ${max} ${'⭐'.repeat(st)}`);
  sfx(st>=2?'win':'cheer');
- app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(90)}</div><h2>${st>=2?'أحسنتِ يا بطلة الفضاء!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
+ app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(130,P,st>=2?'happy':st===1?'think':'oops')}</div><h2>${st>=2?'أحسنتِ يا بطلة!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
  <p class="muted">${ok?'وصلت نتيجتك إلى المعلمة مها ✓':'ما وصلت النتيجة للمعلمة الآن؛ أرسليها بالواتساب أو جرّبي لاحقًا.'}</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again">العبي مرة ثانية</button><button class="btn ghost" id="home">الرئيسية</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">أرسلي لمعلمتك بالواتساب</a></div></div>`;
  confetti(st*30+10);for(let k=0;k<st;k++)setTimeout(()=>sfx('correct'),400+k*350);$('#again').onclick=()=>{if(game==='central'){const m=label.match(/\((\d+)\)/);GAMES.central.start(m?+m[1]-1:0)}else GAMES[game]?GAMES[game].start():home()};$('#home').onclick=home}
@@ -83,12 +81,12 @@ GAMES.planet=GAMES.quiz={start(kind){kind=kind||GAMES._kind||'antonym';GAMES._ki
  const step=()=>{if(i>=qs.length)return finish('planet',KINDS[kind]||kind,sc,qs.length);
   app.innerHTML=`${topbar()}<div class="card"><div class="bar"><i style="width:${i/qs.length*100}%"></i></div><p class="muted">سؤال ${i+1} من ${qs.length} · ${KINDS[kind]||''}</p><div id="qb"></div></div>`;bindTop();
   ask($('#qb'),qs[i],ok=>{if(ok){sc++}i++;step()})};step()}};
-/* الفضائي */
+/* وحش الأخطاء */
 GAMES.alien={start(kind){kind=kind||GAMES._akind||'mix';GAMES._akind=kind;
  const src=kind==='mix'?['antonym','synonym','irab','plural','grammar','spelling'].flatMap(k=>pick(pool(k),6)):pool(kind);const qs=pick(src,10).map(prep);let i=0,lives=3,sc=0;
- const step=()=>{if(i>=qs.length||lives<=0){const w=lives>0;sfx(w?'win':'wrong');return finish('alien','هروب من الفضائي',sc,qs.length)}
+ const step=()=>{if(i>=qs.length||lives<=0){const w=lives>0;sfx(w?'win':'wrong');return finish('alien','هروب من وحش الأخطاء',sc,qs.length)}
   const pos=Math.min(70,(3-lives)*28);
-  app.innerHTML=`${topbar()}<div class="card"><div class="stage"><div style="position:absolute;right:10px;bottom:6px" id="hero">${avatar(54)}</div><div id="alien" style="position:absolute;bottom:4px;left:${16+pos}%">${alienSvg(86,lives<3?'x':'x')}</div></div><div class="chips" style="margin:8px 0"><span class="chip">${'❤️'.repeat(lives)}${'🖤'.repeat(3-lives)}</span><span class="chip">سؤال ${i+1}/${qs.length}</span></div><p class="muted" style="margin:0">أجيبي صح ليبتعد الفضائي، وإذا أخطأتِ يقترب!</p><div id="qb"></div></div>`;bindTop();
+  app.innerHTML=`${topbar()}<div class="card"><div class="stage"><div style="position:absolute;right:14px;bottom:4px" id="hero">${avatar(64,P,'idle')}</div><div id="alien" style="position:absolute;bottom:4px;left:${16+pos}%">${alienSvg(66+(3-lives)*26,'x')}</div></div><div class="chips" style="margin:8px 0"><span class="chip">${'❤️'.repeat(lives)}${'🖤'.repeat(3-lives)}</span><span class="chip">سؤال ${i+1}/${qs.length}</span></div><p class="muted" style="margin:0">أجيبي صح ليبتعد وحش الأخطاء، وإذا أخطأتِ يقترب!</p><div id="qb"></div></div>`;bindTop();
   ask($('#qb'),qs[i],ok=>{if(ok){sc++;const a=$('#hero');a.classList.add('hop');confetti(8)}else{lives--}i++;step()})};step()}};
 /* مليونير */
 const PR=['١٠٠','٢٠٠','٣٠٠','٥٠٠','١٠٠٠','٢٠٠٠','٤٠٠٠','٨٠٠٠','١٦٠٠٠','٣٢٠٠٠','٦٤٠٠٠','١٢٥٠٠٠','٢٥٠٠٠٠','٥٠٠٠٠٠','١٠٠٠٠٠٠'];
@@ -102,7 +100,7 @@ GAMES.million={start(){const kinds=['antonym','synonym','irab','plural','grammar
 const WH=[['antonym','أضداد','#ff7ac8'],['synonym','مرادفات','#8f6bff'],['irab','إعراب','#39b6ff'],['plural','جموع','#27e0c0'],['comp','فهم مقروء','#ffd54a'],['mix','اختبار منوّع','#ff9f43']];
 GAMES.wheel={start(){const n=WH.length,ang=360/n;
  let seg='';WH.forEach((w,k)=>{const a0=(k*ang-90)*Math.PI/180,a1=((k+1)*ang-90)*Math.PI/180;const x0=150+140*Math.cos(a0),y0=150+140*Math.sin(a0),x1=150+140*Math.cos(a1),y1=150+140*Math.sin(a1);const m=(k+.5)*ang;seg+=`<path d="M150 150L${x0} ${y0}A140 140 0 0 1 ${x1} ${y1}Z" fill="${w[2]}" stroke="#fff" stroke-width="3"/><text x="150" y="${Math.cos(m*Math.PI/180)<0?262:40}" transform="rotate(${Math.cos(m*Math.PI/180)<0?m+180:m} 150 150)" text-anchor="middle" font-family="Lalezar,Tajawal" font-size="19" fill="#1a1040">${w[1]}</text>`});
- app.innerHTML=`${pageHdr('عجلة التحدّي','أدِيري العجلة، وسيختار لك الفضاء تحدّيًا!')}<div class="wheelwrap"><div class="ptr"></div><svg id="wheel" viewBox="0 0 300 300"><circle cx="150" cy="150" r="146" fill="#fff"/>${seg}<circle cx="150" cy="150" r="18" fill="#1a1040" stroke="#ffd54a" stroke-width="4"/></svg></div><div class="center"><button class="btn gold" id="spin" style="font-size:1.3rem;padding:14px 34px">أدِيري! 🚀</button></div>`;bindTop();
+ app.innerHTML=`${pageHdr('عجلة التحدّي','أدِيري العجلة، وسيختار لك الحظ تحدّيًا!')}<div class="wheelwrap"><div class="ptr"></div><svg id="wheel" viewBox="0 0 300 300"><circle cx="150" cy="150" r="146" fill="#fff"/>${seg}<circle cx="150" cy="150" r="18" fill="#1a1040" stroke="#ffd54a" stroke-width="4"/></svg></div><div class="center"><button class="btn gold" id="spin" style="font-size:1.3rem;padding:14px 34px">أدِيري! 🚀</button></div>`;bindTop();
  let rot=0;$('#spin').onclick=()=>{const b=$('#spin');b.disabled=true;sfx('cheer');const k=Math.random()*n|0;const target=360*6+(360-(k+.5)*ang);rot=Math.ceil(rot/360)*360+target;$('#wheel').style.transform=`rotate(${rot}deg)`;
   setTimeout(()=>{const w=WH[k];toast('التحدّي: '+w[1]);confetti(30);sfx('win');setTimeout(()=>{if(w[0]==='comp')GAMES.comp.start();else if(w[0]==='mix')GAMES.alien.start('mix');else GAMES.planet.start(w[0])},1200)},4700)}}};
 /* فهم المقروء */
@@ -167,23 +165,23 @@ GAMES.central={start(i){const papers=centralPapers();const p=papers[+i||0];if(!p
  step()}};
 /* الرئيسية */
 const PL=[
- ['wheel','عجلة التحدّي','أدِيري واتركي الفضاء يختار','#ff7ac8'],
- ['million','من سيربح المليون','١٥ سؤالًا ومساعدات','#ffd54a'],
- ['alien','الهروب من الفضائي','أجيبي صح ليبتعد','#6ee26e'],
- ['cw','المتقاطعة','كلمات من الكتاب','#39b6ff'],
- ['exam','اختبار وزاري','١٠ أسئلة بنمط الاختبارات','#ff9f43'],
- ['comp','فهم المقروء','نص قصير وأسئلة','#8f6bff'],
- ['planet:antonym','كوكب الأضداد','ضدّ الكلمة','#27e0c0'],
- ['planet:synonym','كوكب المرادفات','الكلمة وأختها','#c9a7ff'],
- ['planet:irab','كوكب الإعراب','ما وظيفة الكلمة؟','#ff6b81'],
- ['planet:plural','كوكب الجموع','مفرد وجمع','#7fe8ff'],
- ['planet:spelling','كوكب الإملاء','كتابة صحيحة','#9affc9'],
- ['planet:grammar','كوكب القواعد','اسم وفعل وحرف','#ffb347']];
-const TIPS=['اقرئي السؤال ببطء مرتين قبل أن تختاري الإجابة.','إذا أخطأتِ فلا بأس؛ اقرئي الشرح الذي يظهر، فهو يعلّمك الصواب.','جرّبي كل الكواكب: الأضداد، والمرادفات، والإعراب، والجموع، والإملاء، والقواعد.','في «من سيربح المليون» ثلاث مساعدات تُستخدم كل واحدة مرة واحدة: ٥٠:٥٠، وتغيير السؤال، والتلميح.','في المتقاطعة يُكتب الأفقي من اليمين إلى اليسار، ويمكنك طلب «كشف حرف» عند الحاجة.','في «الهروب من الفضائي» لا تتجاوزي ثلاثة أخطاء، وكل إجابة صحيحة تُبعد الفضائي عنك.','بعد كل جولة تصل نتيجتك إلى المعلمة مها، وتحصلين على نجوم وعملات.','العبي مع صديقك أو صديقتك بالتناوب ثم قارنا النتيجة مع المعلمة مها.'];
+ ['wheel','عجلة التحدّي','أدِيري واتركي الحظ يختار','coin'],
+ ['million','من سيربح المليون','١٥ سؤالًا ومساعدات','trophy'],
+ ['alien','الهروب من وحش الأخطاء','أجيبي صح ليبتعد','monster'],
+ ['cw','المتقاطعة','كلمات من الكتاب','pencil'],
+ ['exam','اختبار وزاري','١٠ أسئلة بنمط الاختبارات','medal'],
+ ['comp','فهم المقروء','نص قصير وأسئلة','magnifier'],
+ ['planet:antonym','الأضداد','ضدّ الكلمة','globe'],
+ ['planet:synonym','المرادفات','الكلمة وأختها','bulb'],
+ ['planet:irab','الإعراب','ما وظيفة الكلمة؟','bag'],
+ ['planet:plural','الجموع','مفرد وجمع','apple'],
+ ['planet:spelling','الإملاء','كتابة صحيحة','book'],
+ ['planet:grammar','القواعد','اسم وفعل وحرف','gem']];
+const TIPS=['اقرئي السؤال ببطء مرتين قبل أن تختاري الإجابة.','إذا أخطأتِ فلا بأس؛ اقرئي الشرح الذي يظهر، فهو يعلّمك الصواب.','جرّبي كل الألعاب: الأضداد، والمرادفات، والإعراب، والجموع، والإملاء، والقواعد.','في «من سيربح المليون» ثلاث مساعدات تُستخدم كل واحدة مرة واحدة: ٥٠:٥٠، وتغيير السؤال، والتلميح.','في المتقاطعة يُكتب الأفقي من اليمين إلى اليسار، ويمكنك طلب «كشف حرف» عند الحاجة.','في «الهروب من وحش الأخطاء» لا تتجاوزي ثلاثة أخطاء، وكل إجابة صحيحة تُبعد وحش الأخطاء عنك.','بعد كل جولة تصل نتيجتك إلى المعلمة مها، وتحصلين على نجوم وعملات.','العبي مع صديقك أو صديقتك بالتناوب ثم قارنا النتيجة مع المعلمة مها.'];
 function home(){
  const hist=LS.get('hist',[]);const asg=LS.get('assign',null);
- app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${avatar(84)}</div><h1>أهلًا ${NAMES[P]}!</h1><p class="muted">اختاري كوكبًا وابدئي رحلتك. كل نتيجة تصل إلى المعلمة مها.</p>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
- <div class="grid">${PL.map(p=>`<div class="planet" data-g="${p[0]}"><div class="pl" style="background:radial-gradient(circle at 35% 30%,#fff8,${p[3]})"></div><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
+ app.innerHTML=`${topbar()}<div class="heroc"><div class="hop avw">${avatar(150,P,'happy')}</div><div class="ht"><h1>أهلًا ${NAMES[P]}!</h1><span class="pill">اختاري لعبة وابدئي</span><span class="pill">كل نتيجة تصل إلى المعلمة مها</span></div><img class="hb stk" src="${IMG}bee_wave.webp" alt=""></div><div class="card center" style="margin-top:0;display:none"></div>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
+ <div class="grid">${PL.map((p,i)=>`<div class="planet f${i%4}" data-g="${p[0]}"><img class="stk" src="${IMG}${p[3]}.webp" alt=""><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
  ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${h.stars?starRow(h.stars,h.stars,16):'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}
  <div class="card"><h3>📝 الاختبارات المركزية</h3><p class="muted" style="margin:0 0 8px">ورقة كاملة بنمط الاختبار: قطعة قراءة، ثم قواعد وإعراب، ثم إملاء ومفردات. تظهر النتيجة والمراجعة في النهاية.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${centralPapers().map((p,i)=>`<button class="btn ghost cp" data-i="${i}">اختبار ${p.n}: ${p.title}</button>`).join('')}</div></div>
  ${skyCard()}

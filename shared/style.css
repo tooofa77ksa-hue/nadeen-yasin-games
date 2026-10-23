@@ -1,103 +1,121 @@
-:root{--bg1:#0b1233;--bg2:#1b1b5e;--card:#ffffff14;--card2:#ffffff22;--ink:#f5f7ff;--mut:#b8c0ee;--gold:#ffd54a;--ok:#3ddc97;--bad:#ff6b81;--ac:#ff7ac8;--ac2:#8f6bff;--line:#ffffff30;--r:20px}
-body.yasin{--ac:#39b6ff;--ac2:#27e0c0}
-body.maha{--ac:#ffb347;--ac2:#ff7ac8}
+/* ملعب نادين وياسين: أسلوب مجسّمات الصلصال (إطار أصفر، حقول ملوّنة، ملصقات بحافة بيضاء) */
+:root{--bg:#ffc72c;--card:#fff;--ink:#2b1b10;--mut:#6a4a26;--gold:#ffd54a;--ok:#34c25a;--bad:#ff6b4a;--ac:#ff8bb8;--ac2:#b87bff;--line:#2b1b10;--r:18px;--f1:#ff8a1f;--f2:#3d7bff;--f3:#34c25a;--f4:#c9ee2b}
+body.yasin{--ac:#ff5a4d;--ac2:#3d7bff}
+body.maha{--ac:#ff8a1f;--ac2:#3d7bff}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%}html{background:#0b1233}
-body{font:400 17px/1.7 'Tajawal',system-ui,sans-serif;color:var(--ink);background:radial-gradient(1200px 700px at 80% -10%,#3a2a9a55,transparent),linear-gradient(#0b1233,#161650 60%,#24146b);background-attachment:fixed;direction:rtl;overflow-x:hidden}
-#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
-#stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.7;animation:tw 3s ease-in-out infinite}
-@keyframes tw{50%{opacity:.15;transform:scale(.6)}}
-#app{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:12px 16px 70px}
-h1,h2,h3{font-family:'Lalezar','Tajawal',sans-serif;font-weight:400;margin:.2em 0;letter-spacing:.2px}
-h1{font-size:2.1rem}h2{font-size:1.6rem}h3{font-size:1.25rem}
-.top{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:6px 0 10px}
+html,body{margin:0;min-height:100%}
+html{background:#ffc72c}
+body{font:400 17px/1.7 'Tajawal',system-ui,sans-serif;color:var(--ink);background-color:var(--bg);background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .5  0 0 0 0 .35  0 0 0 0 0  0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");direction:rtl;overflow-x:hidden}
+#app{position:relative;max-width:1060px;margin:0 auto;padding:12px 16px 80px}
+h1,h2,h3{font-family:'Lalezar','Tajawal',sans-serif;font-weight:400;margin:.2em 0;letter-spacing:.2px;color:var(--ink)}
+h1{font-size:2.3rem}h2{font-size:1.7rem}h3{font-size:1.3rem}
+.stk{filter:drop-shadow(0 6px 4px #0003)}
+.av{display:block;filter:drop-shadow(0 6px 4px #0003)}
+.top{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:8px 14px;background:#fff;border:0;border-bottom:5px solid var(--ink);border-radius:0 0 26px 26px;box-shadow:0 6px 0 #0002;margin:0 -16px 14px}
 .top .who{display:flex;align-items:center;gap:10px}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{background:var(--card2);border:1px solid var(--line);padding:4px 12px;border-radius:99px;font-weight:700}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;backdrop-filter:blur(4px);margin:12px 0}
-.btn{font:800 1.05rem 'Tajawal',sans-serif;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2));border:0;border-radius:16px;padding:12px 20px;min-height:48px;cursor:pointer;box-shadow:0 6px 18px #0006;transition:transform .15s}
-.btn:active{transform:scale(.96)}
-.btn.ghost{background:var(--card2);box-shadow:none;border:1px solid var(--line)}
-.btn.gold{background:linear-gradient(135deg,#ffd54a,#ff9f43);color:#3b2400}
+.top .who h3{font-size:1.3rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{background:#ffe08a;color:var(--ink);border:3px solid var(--ink);padding:2px 12px;border-radius:99px;font-weight:800;box-shadow:0 3px 0 var(--ink);display:inline-flex;gap:6px;align-items:center}
+.card{background:#fff;border:0;border-radius:var(--r);padding:18px;box-shadow:0 7px 0 #0002;margin:14px 0;color:var(--ink)}
+.btn{font:800 1.05rem 'Tajawal',sans-serif;color:#fff;background:var(--f2);border:3px solid #fff;border-radius:999px;padding:11px 22px;min-height:48px;cursor:pointer;box-shadow:0 6px 0 #1f4fc0,0 8px 0 #0002;transition:transform .12s}
+.btn:active{transform:translateY(3px)}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:0 5px 0 var(--ink)}
+.btn.gold{background:#ffb02e;color:var(--ink);box-shadow:0 6px 0 #c47d0a,0 8px 0 #0002}
 .btn[disabled]{opacity:.45}
 .center{text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.planet{position:relative;border-radius:22px;padding:18px 14px;text-align:center;border:1px solid var(--line);background:var(--card);cursor:pointer;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:transform .2s}
-.planet:hover{transform:translateY(-4px)}
-.planet .pl{width:74px;height:74px;border-radius:50%;box-shadow:inset -12px -8px 0 #0004,0 0 24px #fff3;animation:fl 5s ease-in-out infinite}
-@keyframes fl{50%{transform:translateY(-6px)}}
-.planet b{font-family:'Lalezar';font-size:1.3rem;font-weight:400}
-.planet small{color:var(--mut)}
-.q{font:500 1.28rem/2.1 'Noto Naskh Arabic','Tajawal',serif}
-.pass{background:#ffffff1c;border-right:5px solid var(--gold);padding:12px 14px;border-radius:12px;font:500 1.34rem/2.4 'Noto Naskh Arabic',serif;max-height:260px;overflow:auto;white-space:pre-wrap}
-.opts{display:grid;gap:10px;margin-top:10px}
-.opt{font:500 1.15rem/1.7 'Noto Naskh Arabic','Tajawal',serif;text-align:right;color:var(--ink);background:var(--card2);border:2px solid var(--line);border-radius:16px;padding:12px 16px;min-height:54px;cursor:pointer;transition:.15s}
-.opt:active{transform:scale(.98)}
-.opt.ok{background:#1e8f63;border-color:var(--ok)}
-.opt.no{background:#a1304a;border-color:var(--bad)}
+.muted{color:var(--mut)}
+.pill{display:inline-block;background:#fff;color:var(--ink);border-radius:999px;padding:4px 16px;font-weight:800;box-shadow:0 4px 0 #0002;margin:6px 4px 0 0}
+/* بطاقة الترحيب */
+.heroc{position:relative;display:flex;align-items:center;gap:16px;background:var(--f1);border-radius:14px;padding:18px 24px;box-shadow:0 8px 0 #0002;margin:6px 0 16px;overflow:visible}
+.heroc .avw{flex:none}
+.heroc .ht{flex:1;min-width:0}
+.heroc h1{margin:0;text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,0 7px 0 #0003}
+.heroc .hb{width:130px;flex:none;animation:bob 3.4s ease-in-out infinite}
+.hop{animation:hop 2.6s ease-in-out infinite}
+@keyframes hop{0%,100%{transform:translateY(0)}20%{transform:translateY(-16px) rotate(-3deg)}35%{transform:translateY(0)}}
+@keyframes bob{50%{transform:translateY(-12px) rotate(2deg)}}
+/* الألعاب */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.planet{position:relative;border-radius:14px;padding:16px 12px 14px;text-align:center;background:var(--f1);cursor:pointer;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;box-shadow:0 8px 0 #0002;transition:transform .2s}
+.planet.f1{background:var(--f2)}.planet.f2{background:var(--f3)}.planet.f3{background:var(--f4)}
+.planet:hover{transform:translateY(-5px) rotate(-.6deg)}
+.planet:active{transform:translateY(3px)}
+.planet .stk{width:104px;height:104px;object-fit:contain;animation:bob 4s ease-in-out infinite;margin-bottom:6px}
+.planet:nth-child(2n) .stk{animation-delay:.7s}.planet:nth-child(3n) .stk{animation-delay:1.3s}
+.planet b{font:400 1.35rem/1.2 'Lalezar';background:#fff;border-radius:16px;padding:4px 14px;box-shadow:0 4px 0 #0002;display:block}
+.planet small{background:#fff9;border-radius:99px;padding:0 10px;color:var(--ink);font-weight:700;margin-top:4px}
+/* الأسئلة */
+.q{font:500 1.3rem/2.1 'Noto Naskh Arabic','Tajawal',serif;color:var(--ink)}
+.pass{background:#fff6d6;border:3px dashed var(--ink);padding:12px 16px;border-radius:14px;font:500 1.34rem/2.4 'Noto Naskh Arabic',serif;max-height:270px;overflow:auto;white-space:pre-wrap}
+.opts{display:grid;gap:12px;margin-top:10px}
+.opt{font:500 1.15rem/1.7 'Noto Naskh Arabic','Tajawal',serif;text-align:right;color:var(--ink);background:#fff;border:0;border-radius:18px;padding:12px 16px;min-height:56px;cursor:pointer;box-shadow:0 6px 0 #0002;border-inline-start:14px solid var(--f1);transition:.15s}
+.opts .opt:nth-child(4n+2){border-inline-start-color:var(--f2)}.opts .opt:nth-child(4n+3){border-inline-start-color:var(--f3)}.opts .opt:nth-child(4n){border-inline-start-color:var(--f4)}
+.opt:active{transform:translateY(3px)}
+.opt.ok{background:#bff0cc;box-shadow:0 0 0 4px var(--ok),0 6px 0 #0002}
+.opt.no{background:#ffd0c6;box-shadow:0 0 0 4px var(--bad),0 6px 0 #0002}
 .opt.dim{opacity:.4}
-.why{margin-top:10px;padding:10px 14px;border-radius:14px;background:#00000040;border:1px dashed var(--line)}
-.bar{height:12px;background:#ffffff22;border-radius:99px;overflow:hidden}
-.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--ac2),var(--ac));width:0;transition:width .4s}
-.stage{position:relative;height:150px;border-radius:18px;background:linear-gradient(#0a0f2c,#1a1a58);overflow:hidden;border:1px solid var(--line)}
-.stage svg{position:absolute;bottom:6px}
+.why{margin-top:12px;padding:10px 14px;border-radius:14px;background:#fff1c8;border:3px dashed var(--ink)}
+.bar{height:16px;background:#fff;border:3px solid var(--ink);border-radius:99px;overflow:hidden}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--f1),#ffd54a);width:0;transition:width .4s}
+.stage{position:relative;height:170px;border-radius:14px;background:#7fd1ff url("img/garden.webp") center 55%/cover;overflow:hidden;box-shadow:inset 0 0 0 4px #fff}
+.stage>*{position:absolute;bottom:4px}
 #alien{transition:left .8s cubic-bezier(.3,1.4,.5,1),transform .5s}
 .pop{animation:pop .5s ease}
 @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 .shake{animation:shake .4s}
 @keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-.hop{animation:hop .6s ease}
-@keyframes hop{40%{transform:translateY(-26px) rotate(-6deg)}}
 .ladder{display:flex;flex-direction:column-reverse;gap:4px;min-width:96px}
-.ladder div{font-weight:700;font-size:.85rem;padding:2px 8px;border-radius:8px;background:#ffffff14;text-align:center}
-.ladder div.cur{background:var(--gold);color:#3b2400}
-.ladder div.done{background:#1e8f6388}
+.ladder div{font-weight:800;font-size:.85rem;padding:2px 8px;border-radius:10px;background:#fff;border:2px solid var(--ink);text-align:center}
+.ladder div.cur{background:var(--gold)}
+.ladder div.done{background:#bff0cc}
 .wheelwrap{position:relative;width:min(340px,86vw);margin:10px auto}
-#wheel{width:100%;display:block;transition:transform 4.5s cubic-bezier(.12,.7,.1,1)}
-.ptr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:34px solid var(--gold);filter:drop-shadow(0 2px 3px #0008);z-index:2}
-.cw{display:inline-grid;gap:2px;direction:ltr;margin:6px}
+#wheel{width:100%;display:block;transition:transform 4.5s cubic-bezier(.12,.7,.1,1);filter:drop-shadow(0 8px 6px #0003)}
+.ptr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:36px solid var(--ink);z-index:2}
+.cw{display:inline-grid;gap:3px;direction:ltr;margin:6px}
 .cw .c{width:var(--cs,38px);height:var(--cs,38px);position:relative}
-.cw input{width:100%;height:100%;text-align:center;font:700 calc(var(--cs,38px)*.55) 'Noto Naskh Arabic',serif;border:0;border-radius:8px;background:#fff;color:#111;padding:0;direction:rtl}
-.cw input.good{background:#aaf0cf}.cw input.bad{background:#ffc2cc}
-.cw .n{position:absolute;top:1px;right:3px;font-size:.6rem;color:#555;pointer-events:none}
+.cw input{width:100%;height:100%;text-align:center;font:700 calc(var(--cs,38px)*.55) 'Noto Naskh Arabic',serif;border:3px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);padding:0;direction:rtl}
+.cw input.good{background:#bff0cc}.cw input.bad{background:#ffd0c6}
+.cw .n{position:absolute;top:1px;right:4px;font-size:.6rem;color:#555;pointer-events:none}
 .cw .e{width:var(--cs,38px);height:var(--cs,38px)}
-.clue{display:flex;gap:8px;padding:3px 0}
-.clue b{color:var(--gold)}
-.cert{display:none}
+.clue{display:flex;gap:8px;padding:3px 0;align-items:center}
+.clue b{color:#c47d0a}
+/* النجوم والخزانة */
+.rstar{display:inline-block;filter:drop-shadow(0 4px 3px #0003);object-fit:contain}
+.rstar.off{opacity:.55}
+.starrow .rstar{animation:starIn .6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes starIn{0%{transform:scale(0) rotate(-120deg);opacity:0}100%{transform:scale(1) rotate(0)}}
+.shelf .stars2{display:flex;flex-wrap:wrap;gap:4px;min-height:60px;background:#fff1c8;border:3px dashed var(--ink);border-radius:14px;padding:10px}
+.shelf .s2{width:36px;height:36px;object-fit:contain;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 3px 2px #0003)}
+.rankbar{height:14px;border-radius:99px;background:#fff;border:3px solid var(--ink);overflow:hidden;margin:6px 0}
+.rankbar i{display:block;height:100%;background:linear-gradient(90deg,#ffd54a,#ff8a1f)}
+details.card summary{font-weight:800;cursor:pointer}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#fff;color:var(--ink);border:3px solid var(--ink);padding:8px 18px;border-radius:99px;z-index:20;font-weight:800;box-shadow:0 5px 0 #0003}
+textarea,input[type=text]{font:600 1rem 'Tajawal';padding:10px 12px;border-radius:12px;border:3px solid var(--ink);background:#fff;color:var(--ink);width:100%}
+select.chip{font:inherit;color:var(--ink)}
+table.t{width:100%;border-collapse:collapse}
+table.t td,table.t th{padding:8px 10px;border-bottom:2px dashed #e9c866;text-align:right}
+.badge{display:inline-block;padding:2px 12px;border-radius:99px;font-weight:800;border:2px solid var(--ink)}
+.b1{background:#ffd54a}.b2{background:#cfe0ff}
+.live{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--ok);margin-left:6px;border:2px solid var(--ink);animation:bob 1.4s infinite}
+.live.off{background:var(--bad)}
+a.btn{display:inline-block;text-decoration:none}
+/* الشهادة */
+.cert,.cert-print{display:none}
 @media print{
  html,body{background:#fff!important;color:#000;margin:0}
  #app{max-width:none!important;padding:0!important;margin:0!important}
- #stars,#app>*:not(.cert-print){display:none!important}
+ #app>*:not(.cert-print){display:none!important}
  .cert-print{display:block!important}
- .cert-print .cert:last-child{page-break-after:auto;break-after:auto}
  @page{size:A4 landscape;margin:0}
- .cert{display:block!important;page-break-after:always;break-after:page;width:297mm;height:209mm;overflow:hidden;position:relative;box-sizing:border-box;padding:16mm;background:linear-gradient(135deg,#fff7e0,#ffe6f2);color:#2a1a5e;text-align:center;font-family:'Tajawal',sans-serif}
- .cert .frame{position:absolute;inset:8mm;border:3mm double #f2b01e;border-radius:10mm}
- .cert h1{font-family:'Lalezar';font-size:46pt;margin:10mm 0 4mm;color:#e0475b}
- .cert .nm{font-family:'Lalezar';font-size:50pt;color:#2a1a5e;margin:6mm 0}
- .cert p{font-size:20pt;margin:3mm 40mm;line-height:1.8}
- .cert .sig{position:absolute;bottom:20mm;right:30mm;left:30mm;display:flex;justify-content:space-between;font-size:15pt}
+ .cert{display:block!important;page-break-after:always;break-after:page;width:297mm;height:209mm;overflow:hidden;box-sizing:border-box;padding:9mm;background:#ffc72c;color:#2b1b10;font-family:'Tajawal',sans-serif}
+ .cert-print .cert:last-child{page-break-after:auto;break-after:auto}
+ .cert .paper{position:relative;width:100%;height:100%;box-sizing:border-box;background:#fff;border-radius:8mm;border:2.5mm dashed #ff8a1f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8mm 62mm;text-align:center}
+ .cert h1{font-family:'Lalezar';font-size:46pt;margin:0 0 3mm;color:#ff8a1f;text-shadow:2px 0 0 #2b1b10,-2px 0 0 #2b1b10,0 2px 0 #2b1b10,0 -2px 0 #2b1b10}
+ .cert .nm{font-family:'Lalezar';font-size:50pt;color:#3d7bff;margin:4mm 0}
+ .cert p{font-size:18pt;margin:2mm 0;line-height:1.8}
+ .cert .sig{display:flex;justify-content:space-between;gap:12mm;width:100%;margin-top:8mm;font-size:14pt;font-weight:700}
+ .cert .cs{position:absolute;filter:drop-shadow(0 2mm 2mm #0003)}
+ .cert .cs1{left:12mm;bottom:10mm;width:46mm}.cert .cs2{right:14mm;top:12mm;width:36mm}.cert .cs3{left:16mm;top:14mm;width:28mm}.cert .cs4{right:16mm;bottom:12mm;width:32mm}
 }
-.cert-print{display:none}
-.muted{color:var(--mut)}
-table.t{width:100%;border-collapse:collapse}
-table.t td,table.t th{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right}
-.badge{display:inline-block;padding:2px 10px;border-radius:99px;font-weight:800}
-.b1{background:#ffd54a;color:#3b2400}.b2{background:#cfd8ff;color:#1a2a6e}
-.live{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ok);margin-left:6px;animation:tw 1.2s infinite}
-.live.off{background:var(--bad)}
-a.btn{display:inline-block;text-decoration:none}
-textarea,input[type=text]{font:600 1rem 'Tajawal';padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:#ffffff18;color:var(--ink);width:100%}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#111b;border:1px solid var(--line);padding:8px 16px;border-radius:99px;z-index:20}
-
-/* نجوم حقيقية */
-.rstar{display:inline-block;filter:drop-shadow(0 0 6px #ffd54acc)}
-.rstar.off{filter:none;opacity:.35}
-.starrow .rstar{animation:starIn .6s cubic-bezier(.3,1.6,.5,1) both}
-@keyframes starIn{0%{transform:scale(0) rotate(-120deg);opacity:0}100%{transform:scale(1) rotate(0)}}
-.sky{position:relative;height:200px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 70% 20%,#3b2a8f,#0a0f2c 70%);border:1px solid var(--line)}
-.sky .s{position:absolute;filter:drop-shadow(0 0 5px #ffe58a);animation:tw 3s ease-in-out infinite}
-.shoot{position:fixed;top:12%;left:-10%;width:120px;height:2px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(25deg);opacity:0;z-index:0;animation:shoot 9s linear infinite 3s}
-@keyframes shoot{0%{left:-10%;top:8%;opacity:0}3%{opacity:1}12%{left:70%;top:40%;opacity:0}100%{opacity:0}}
-.rankbar{height:10px;border-radius:99px;background:#ffffff22;overflow:hidden;margin:6px 0}
-.rankbar i{display:block;height:100%;background:linear-gradient(90deg,#ffd54a,#ff9f43)}
+@media (max-width:640px){.heroc{flex-direction:column;text-align:center}.heroc .hb{width:96px}h1{font-size:1.9rem}.planet{min-height:170px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
