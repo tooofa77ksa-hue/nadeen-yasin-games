@@ -245,6 +245,16 @@ h2,.units h2{text-shadow:0 1px 0 #fff8,0 -1px 0 #0002}
 .bar button{background-color:#fff6df!important;color:#2a3c86!important;border:0;outline:2px dashed #c9a368;outline-offset:-4px;box-shadow:0 3px 0 #0004}
 #app>.sub,.lh .sub,.muted,.soft{color:#3a2a12!important}
 footer{background:#fff6dfcc;border-radius:16px;padding:8px}
+
+/* حركة خفيفة: الأيقونات تتمايل والبطاقات تنبثق */
+@keyframes bobI{50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes wig{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-9deg)}95%{transform:rotate(8deg)}}
+.big .ic{animation:bobI 3.6s ease-in-out infinite}.big:nth-of-type(2) .ic{animation-delay:.5s}.big:nth-of-type(3) .ic{animation-delay:1s}
+.sec h3 .stk{animation:wig 5s ease-in-out infinite}.sec:nth-of-type(2n) h3 .stk{animation-delay:1.7s}
+.sec,.card,.big{animation:popIn .45s ease both}
+.btn:hover,.opt:hover,.tabs button:hover{transform:translateY(-2px) rotate(-.6deg)}
+.btn,.opt,.tabs button{transition:transform .15s}
 </style>
 
 <div class="wrap">
@@ -655,7 +665,7 @@ function callFriend(name){const box=$('#tkF');if(!box)return;const others=curNam
  if(others.length<1){box.innerHTML='<p class="lead">لا توجد أسماء أخرى متاحة للاتصال بها.</p>';return}
  box.innerHTML=`<div class="card center" style="background:var(--teal-t)"><h3>📞 الاتصال بصديقة</h3><p class="lead">اختاري كيف تُحدَّد الصديقة:</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn sun" id="cfR">🎲 اختيار عشوائي</button><button class="btn ghost" id="cfC">👭 تختارها الطالبة</button></div><div id="cfX"></div></div>`;
  const ring=(f)=>{$('#cfX').innerHTML=`<div class="center" style="margin-top:12px"><div id="ph" style="font-size:4rem;display:inline-block;animation:phr .35s infinite alternate">📞</div><p class="lead" id="cfT" style="font-weight:800;font-size:1.3rem">يرنّ الهاتف…</p></div>`;ringTone();
-  setTimeout(()=>{$('#ph').style.animation='none';$('#cfT').innerHTML=`ردّت الصديقة: <b style="font-size:1.8rem;color:var(--teal-d)">${f}</b><br><span class="lead">ستساعدك ${f} بما تعرفه، والقرار الأخير لكِ.</span>`;sfx('yes')},3200)};
+  setTimeout(()=>{if(!$('#ph')||!$('#cfT'))return;$('#ph').style.animation='none';$('#cfT').innerHTML=`ردّت الصديقة: <b style="font-size:1.8rem;color:var(--teal-d)">${f}</b><br><span class="lead">ستساعدك ${f} بما تعرفه، والقرار الأخير لكِ.</span>`;sfx('yes')},3200)};
  $('#cfR').onclick=()=>{const t=document.createElement('div');t.id='cfT0';$('#cfX').innerHTML=`<div id="tk2" class="card center" style="font:800 2rem/1.5 var(--f-read);margin-top:12px">؟</div>`;const win=others[Math.random()*others.length|0];let i=0,steps=18;const st=()=>{i++;const n=i>=steps?win:others[Math.random()*others.length|0];$('#tk2').textContent=n;sfx('tick');if(i>=steps){setTimeout(()=>ring(win),600)}else setTimeout(st,40+Math.pow(i/steps,3)*420)};st()};
  $('#cfC').onclick=()=>{$('#cfX').innerHTML=`<p class="lead" style="margin-top:10px">اضغطي اسم الصديقة التي تريد الاتصال بها:</p><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">${others.map(n=>`<button class="btn ghost nm2" data-n="${n}" style="min-height:38px;padding:4px 12px">${n}</button>`).join('')}</div>`;$$('.nm2',box).forEach(b=>b.onclick=()=>ring(b.dataset.n))}}
 
@@ -784,7 +794,7 @@ function funBubbles(L){const box=$('#fBox');const Q=funPool(L).slice(0,8);if(Q.l
   let done=false;const next=(ok)=>{if(done)return;done=true;$$('.bub',box).forEach(b=>b.style.animationPlayState='paused');$$('.bub',box)[q.a].classList.add('good');
    if(ok){sc++;sfx('yes');clap(6,.8)}else{lives--;sfx('no')}$('#fFb').innerHTML=`<p class="lead">${ok?'أحسنتِ!':'الإجابة الصحيحة ظاهرة بالأخضر. '+(q.w||'')}</p><button class="btn" id="fNx">التالي</button>`;$('#fNx').onclick=()=>{i++;draw()}};
   $$('.bub',box).forEach(b=>{b.onclick=()=>{next(+b.dataset.k===q.a)}});const sea=$('.sea',box);sea.addEventListener('animationiteration',()=>{},{once:true});
-  setTimeout(()=>{if(!done)next(false)},(12-Math.min(i,5)*.7+4.8+2)*1000)};
+  setTimeout(()=>{if(!done&&box.isConnected&&$$('.bub',box)[q.a])next(false)},(12-Math.min(i,5)*.7+4.8+2)*1000)};
  draw()}
 
 /* ---- بطاقات الذاكرة ---- */
@@ -804,7 +814,7 @@ function funSpeed(L){const box=$('#fBox');const Q=[];(L.games||[]).forEach(g=>{i
   <div class="center" style="display:flex;gap:12px;justify-content:center;margin-top:12px"><button class="btn" id="tY" style="min-width:120px;font-size:1.3rem">✔ صح</button><button class="btn sun" id="tN" style="min-width:120px;font-size:1.3rem">✘ خطأ</button></div><div id="fFb" class="center"></div></div>`;pruneEars(box);
   let t0=Date.now(),done=false;const END=12000;const fin=ans=>{if(done)return;done=true;clearInterval(tm);const ok=ans===q.a;if(ok){sc++;streak++;best=Math.max(best,streak);sfx('yes')}else{streak=0;sfx('no')}$('#tY').disabled=$('#tN').disabled=true;
    $('#fFb').innerHTML=`<p class="lead">${ok?'صح! ':'إجابة غير صحيحة. '}${q.w||''}</p><button class="btn" id="fNx">التالي</button>`;$('#fNx').onclick=()=>{i++;draw()}};
-  $('#tY').onclick=()=>fin(true);$('#tN').onclick=()=>fin(false);tm=setInterval(()=>{const r=1-(Date.now()-t0)/END;$('#tb').style.width=Math.max(0,r*100)+'%';if(r<=0)fin(null)},100)};
+  $('#tY').onclick=()=>fin(true);$('#tN').onclick=()=>fin(false);tm=setInterval(()=>{if(!box.isConnected||!$('#tb')){clearInterval(tm);return}const r=1-(Date.now()-t0)/END;$('#tb').style.width=Math.max(0,r*100)+'%';if(r<=0)fin(null)},100)};
  draw()}
 
 /* ---- محرّك الدروس العامة (ألعاب الدروس الجديدة) ---- */
