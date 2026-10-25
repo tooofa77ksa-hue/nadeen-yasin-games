@@ -22,10 +22,10 @@ SCI.confetti=(n=60)=>{let c=$('#conf');if(!c){c=document.createElement('canvas')
 
 /* ---------- الفرق ---------- */
 const COLS=['#ff8a1f','#3d7bff','#34c25a','#ff5a9d'];
-let teams=LS.get('teams',null)||['الفريق الأول','الفريق الثاني','الفريق الثالث','الفريق الرابع'].map(n=>({n,s:0}));
+let teams=LS.get('teams2',null)||['المخترعات 🔬','نجمات الفضاء 🚀','العالِمات 🧪','المستكشفات 🌿'].map(n=>({n,s:0}));
 let turn=0;
 SCI.teams={get list(){return teams},get turn(){return turn},
- award(p){teams[turn].s+=p;LS.set('teams',teams);SCI.refreshTeams()},
+ award(p){teams[turn].s+=p;LS.set('teams2',teams);SCI.refreshTeams()},
  next(){turn=(turn+1)%teams.length;SCI.refreshTeams()}};
 SCI.teamsBar=()=>`<div class="teamsbar" id="tb">${teams.map((t,i)=>`<span class="tm ${i===turn?'cur':''}"><i style="background:${COLS[i]}"></i>${t.n}<b>${ar(t.s)}</b></span>`).join('')}</div>`;
 SCI.refreshTeams=()=>{const b=$('#tb');if(b)b.outerHTML=SCI.teamsBar()};
@@ -34,12 +34,12 @@ function teamsPanel(){let p=$('.panel');if(p){p.remove();return}
  p.innerHTML=`<h3>🏆 الفرق والنقاط</h3>${teams.map((t,i)=>`<div class="r"><i style="width:22px;height:22px;border-radius:50%;background:${COLS[i]}"></i><input data-i="${i}" value="${t.n}" aria-label="اسم الفريق"><button class="s" data-m="${i}">−</button><b style="font:400 1.4rem Lalezar;min-width:34px;text-align:center">${ar(t.s)}</b><button class="s" data-p="${i}">+</button><button class="s" data-t="${i}" title="الدور">▶</button></div>`).join('')}
  <div class="r"><button class="btn ghost" id="tz">تصفير النقاط</button><button class="btn" id="tx">إغلاق</button></div>`;
  document.body.appendChild(p);
- $$('input',p).forEach(e=>e.oninput=()=>{teams[+e.dataset.i].n=e.value;LS.set('teams',teams);SCI.refreshTeams()});
+ $$('input',p).forEach(e=>e.oninput=()=>{teams[+e.dataset.i].n=e.value;LS.set('teams2',teams);SCI.refreshTeams()});
  const rr=()=>{p.remove();teamsPanel()};
- $$('[data-m]',p).forEach(b=>b.onclick=()=>{teams[+b.dataset.m].s--;LS.set('teams',teams);SCI.refreshTeams();rr()});
- $$('[data-p]',p).forEach(b=>b.onclick=()=>{teams[+b.dataset.p].s++;LS.set('teams',teams);SCI.refreshTeams();rr()});
+ $$('[data-m]',p).forEach(b=>b.onclick=()=>{teams[+b.dataset.m].s--;LS.set('teams2',teams);SCI.refreshTeams();rr()});
+ $$('[data-p]',p).forEach(b=>b.onclick=()=>{teams[+b.dataset.p].s++;LS.set('teams2',teams);SCI.refreshTeams();rr()});
  $$('[data-t]',p).forEach(b=>b.onclick=()=>{turn=+b.dataset.t;SCI.refreshTeams();rr()});
- $('#tz',p).onclick=()=>{teams.forEach(t=>t.s=0);LS.set('teams',teams);SCI.refreshTeams();rr()};
+ $('#tz',p).onclick=()=>{teams.forEach(t=>t.s=0);LS.set('teams2',teams);SCI.refreshTeams();rr()};
  $('#tx',p).onclick=()=>p.remove()}
 
 /* ---------- القراءة بصوت عالٍ (اختياري) ---------- */
@@ -56,15 +56,20 @@ SCI.pgSpan=pgSpan;
 /* ---------- الصفحة الرئيسية ---------- */
 SCI.routes.home=()=>{
  const units=[];CH.forEach(c=>{let u=units.find(x=>x.u===c.unit);if(!u){u={u:c.unit,cs:[]};units.push(u)}u.cs.push(c)});
- const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الفصل','مَن تجيب؟ وتوزيع الفرق','heart','#ff5a9d','groups'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref']];
+ const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الصف الرابع','مَن تجيب؟ و4/1 و4/2','heart','#ff5a9d','groups'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref']];
  SCI.page(`<section class="hero2"><div class="ht"><h1>مادة العلوم</h1><span class="tn" style="font-size:1.15rem">الصف الرابع الابتدائي · الفصل الدراسي الأول</span><br><span class="tn">معلمة المادة: حنان العمري</span></div><div class="hi"><img src="img/microscope.webp" alt=""><img src="img/frog.webp" alt=""></div></section>
  <div class="big4">${big.map(b=>`<button class="bigc" style="background:${b[3]}" data-go="${b[4]}"><img src="img/${b[2]==='trophy_x'?'balanced_food':b[2]}.webp" alt=""><b>${b[0]}</b><small>${b[1]}</small></button>`).join('')}</div>
  <section class="units" id="units">${units.map(u=>`<h2>${u.u}</h2><div class="chg">${u.cs.map((c,i)=>`<button class="chc" style="background:${c.color}" data-go="${c.id}"><img src="img/${c.icon}.webp" alt=""><span><small>${c.n} · ص${ar(c.pg)}</small><b>${c.title}</b></span></button>`).join('')}</div>`).join('')}</section>
- <details class="card"><summary><b>📖 دليل استخدام المعلمة</b></summary><div style="margin-top:8px;line-height:2">
- <p>• <b>مختبر المجسّمات:</b> الخلية ثلاثية الأبعاد (تدور بالإصبع)، تفكّكها بالمنزلق وتركّبها، واختاري الخلية النباتية أو الحيوانية. والمجهر لتكبير البصل والدم والبكتيريا.</p>
- <p>• <b>ألعاب الفصل:</b> أربعة فرق. اضغطي «الفرق» لتغيير الأسماء والنقاط. الصحيح يعطي نقطة للفريق صاحب الدور، ويتبعه تصفيق. والخطأ يُظهر الإجابة بدون تصفيق.</p>
- <p>• <b>الدروس:</b> كل درس: انظري، الكلمات، استكشفي، المطوية، الأسئلة، الألعاب، الملخص، مع رقم صفحة الكتاب.</p>
- <p>• <b>اختبارات الفصول:</b> مأخوذة من نماذج الكتاب، تُحَلّ كاملة ثم تُصحَّح.</p></div></details>`);
+ <details class="card" id="guide"><summary><b>📖 دليل المعلمة: ما هذا الموقع وكيف أستخدمه؟</b></summary><div style="margin-top:8px;line-height:2.1">
+<p><b>ما هذا الموقع؟</b> موقع لمادة العلوم للصف الرابع الابتدائي (الفصل الدراسي الأول)، مأخوذ كله من كتاب العلوم، وعلى كل معلومة رقم صفحتها من الكتاب. تفتحينه على السبورة الذكية أو الآيباد، وتستخدمينه مع الطالبات في الحصة.</p>
+<p><b>١) الدروس والأنشطة:</b> اختاري الفصل ثم الدرس. في كل درس تبويبات: انظري، استكشفي، المطوية، من الكتاب (الأنشطة والجداول والأسئلة المفتوحة)، أسئلة، ألعاب، ملخص. ويمكنكِ الضغط على 🔊 لسماع الكلمة ومعناها.</p>
+<p><b>٢) مختبر المجسّمات:</b> مجسّمات حقيقية تدار بالإصبع: الخلية الحيوانية والنباتية، الضفدع، الفراشة، القلب، المجهر. وفيه «الخلية التعليمية» تفكّكينها بالمنزلق وتركّبينها، و«المجهر» يكبّر البصل والدم والبكتيريا، و«مستويات التنظيم» من الخلية إلى الجهاز.</p>
+<p><b>٣) ألعاب الفصل:</b> فرق بأسماء علمية (المخترعات، نجمات الفضاء، العالِمات، المستكشفات). اضغطي «🏆 الفرق» لتغيير الأسماء والنقاط. الإجابة الصحيحة تعطي نقطة للفريق صاحب الدور، ويتبعها صوت نجاح ثم تصفيق. الخطأ يُظهر الإجابة الصحيحة بلا تصفيق.</p>
+<p><b>٤) طالبات الفصل (4/1 و4/2):</b> «مَن تجيب؟» تختار طالبة وسؤالًا من الكتاب، وتوزيع الطالبات على الفرق الأربعة عشوائيًّا. ويمكنكِ إضافة أي اسم أو حذفه، وتُحفظ الأسماء على هذا الجهاز.</p>
+<p><b>٥) اختبارات الفصول:</b> نماذج الكتاب بعد كل فصل، تُحَلّ كاملة ثم تُصحَّح.</p>
+<p><b>٦) مرجعيات الكتاب:</b> مقدمة الكتاب (الطريقة العلمية، المهارات، السلامة) وملحقه (أجهزة الجسم، الغذاء، البيانات، المصطلحات).</p>
+<p class="muted" style="font-size:.85rem"><b>مصادر المجسّمات:</b> المجسّمات الستة منشورة بترخيص Creative Commons (CC BY) على موقع Sketchfab، وأصحابها: montanna (الخلية الحيوانية)، CVallance (الخلية النباتية)، grodan (الضفدع)، LasquetiSpice (الفراشة)، neshallads (القلب)، Eugen Vahrushin (المجهر).</p>
+</div></details>`);
  $$('[data-go]').forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==='#units')$('#units').scrollIntoView({behavior:'smooth'});else location.hash=g})};
 
 /* ---------- صفحة الفصل ---------- */

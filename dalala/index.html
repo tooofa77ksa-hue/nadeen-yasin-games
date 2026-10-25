@@ -655,7 +655,8 @@ function gBanner(){let b=$('#grpB');if(!b){b=document.createElement('div');b.id=
 function groupsPage(){$('#crumb').textContent='المجموعات';
  app.innerHTML=`<div><h2>اختاري فصلك ومجموعتك</h2><p class="lead">لكل فصل أربع مجموعات. المعلمة تحدد المجموعة وتضع الآيباد عند البنات.</p></div>
  ${['r1','r2'].map(c=>`<section class="card"><h3>${CL[c]}</h3><div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">${GN.map((g,i)=>`<button class="btn ${i%2?'sun':''}" data-c="${c}" data-k="${i+1}">${g[1]} ${g[0]}</button>`).join('')}</div></section>`).join('')}
- <section class="card"><h3>روابط المجموعات (للنسخ والإرسال)</h3>${['r1','r2'].map(c=>GN.map((g,i)=>`<p style="margin:4px 0"><b>${CL[c]} · ${g[0]}</b><br><small dir="ltr" style="word-break:break-all">${ART}#home&amp;g=${c}-${i+1}</small></p>`).join('')).join('')}<p class="lead">إذا ما فتح الرابط المجموعة تلقائيًا، تختار البنت مجموعتها من هذه الصفحة.</p></section>`;
+ <section class="card"><h3>روابط الطالبات (لوحة الأسئلة فقط)</h3><p class="lead">أرسلي لكل مجموعة رابطها. يفتح لها الأسئلة بأربع إجابات فقط، بدون أي تحكم في الموقع أو الأسماء.</p>${['r1','r2'].map(c=>GN.map((g,i)=>`<p style="margin:6px 0"><b>${CL[c]} · ${g[0]}</b><br><small dir="ltr" style="word-break:break-all">${ART}student/?g=${c}-${i+1}</small> <button class="btn ghost cpl" data-u="${ART}student/?g=${c}-${i+1}" style="min-height:34px;padding:2px 12px">نسخ</button></p>`).join('')).join('')}</section>`;
+ $$('.cpl',app).forEach(b=>b.onclick=()=>{const u=b.dataset.u;try{navigator.clipboard.writeText(u).then(()=>{b.textContent='✓ نُسخ'},()=>{prompt('انسخي الرابط:',u)})}catch(e){prompt('انسخي الرابط:',u)}});
  $$('[data-c]',app).forEach(b=>b.onclick=()=>{setGrp(b.dataset.c,+b.dataset.k);location.hash='home'})}
 
 
