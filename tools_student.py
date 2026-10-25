@@ -26,6 +26,8 @@ h1,h2{font-family:'Lalezar','Tajawal',sans-serif;font-weight:400;margin:.2em 0}
 .stars{font-size:2.4rem}
 .shake{animation:shk .35s}@keyframes shk{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .pop{animation:pp .35s}@keyframes pp{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+select,input.nm{font:700 1.1rem 'Tajawal',sans-serif;border:3px solid __INK__;border-radius:14px;padding:10px 12px;width:100%;margin:6px 0;background:#fff;color:__INK__}
+.sent{font-size:.9rem;opacity:.8}
 @media (max-width:480px){body{font-size:16px}.q{font-size:1.25rem}.opt{font-size:1.1rem}}
 </style></head><body><div id="app"></div><noscript>يلزم تشغيل جافاسكربت لفتح الأسئلة.</noscript>
 <script>
@@ -36,13 +38,21 @@ var app=document.getElementById('app');
 function qs(n){var m=location.search.match(new RegExp('[?&]'+n+'=([^&]*)'));return m?decodeURIComponent(m[1]):''}
 var g=qs('g');var gm=g.match(/^r([12])-([1-4])$/);
 var label=CFG.title;if(gm){label=CFG.classes[gm[1]]+' · '+CFG.groups[+gm[2]-1]}
-var muted=false;
+var muted=false;var ROSTER=__ROSTER__;var NAME='';var RID=Math.random().toString(36).slice(2,10);var SENT=true;
+function send(f){try{var x=new XMLHttpRequest();x.open('POST','https://ntfy.sh/'+CFG.topic,true);x.onreadystatechange=function(){if(x.readyState===4){SENT=(x.status>=200&&x.status<300);var e=document.getElementById('sent');if(e&&f)e.innerHTML=SENT?'✓ أُرسلت نتيجتكِ إلى شاشة المعلمة':'⚠ لم تصل النتيجة، تأكدي من الإنترنت'}};x.send(JSON.stringify({t:'p',s:CFG.subj,c:gm?gm[1]:'0',g:gm?+gm[2]:0,name:NAME,rid:RID,n:i,sc:sc,f:f?1:0,at:(new Date()).getTime()}))}catch(e){}}
 function snd(n,v,delay){if(muted)return;setTimeout(function(){try{var a=new Audio(CFG.sfx+n+'.mp3');a.volume=v;var p=a.play();if(p&&p.catch)p.catch(function(){})}catch(e){}},delay||0)}
 function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function ar(n){return String(n).replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.charAt(+d)})}
 var N=10,pool=shuf(DATA),pi=0,qs_=[],i=0,sc=0,mark=[];
-function newRound(){qs_=[];while(qs_.length<N){if(pi>=pool.length){pool=shuf(DATA);pi=0}var q=pool[pi++];var opts=[];for(var k=0;k<q.o.length;k++)opts.push({t:q.o[k],k:k});if(!q.fixed)opts=shuf(opts);qs_.push({q:q,o:opts})}i=0;sc=0;mark=[];draw()}
+function start(){
+ var cl=gm?gm[1]:'1';var list=ROSTER[cl]||[];var h=top()+'<div class="card center pop"><h2 style="font-size:1.8rem">مرحبًا! من أنتِ؟</h2><p>اختاري اسمكِ لتظهر نتيجتكِ على الشاشة.</p><select id="sel"><option value="">— اختاري اسمكِ —</option>';
+ for(var k=0;k<list.length;k++)h+='<option>'+esc(list[k])+'</option>';
+ h+='<option value="__o">اسم آخر…</option></select><input class="nm" id="oth" placeholder="اكتبي اسمكِ" style="display:none"><button class="btn" id="go">ابدأي المسابقة</button></div>';
+ app.innerHTML=h;bindTop();
+ var sel=document.getElementById('sel'),oth=document.getElementById('oth');sel.onchange=function(){oth.style.display=sel.value==='__o'?'block':'none'};
+ document.getElementById('go').onclick=function(){var v=sel.value==='__o'?oth.value.replace(/^\s+|\s+$/g,''):sel.value;if(!v){sel.style.borderColor='#e0483a';return}NAME=v;newRound()}}
+function newRound(){RID=Math.random().toString(36).slice(2,10);qs_=[];while(qs_.length<N){if(pi>=pool.length){pool=shuf(DATA);pi=0}var q=pool[pi++];var opts=[];for(var k=0;k<q.o.length;k++)opts.push({t:q.o[k],k:k});if(!q.fixed)opts=shuf(opts);qs_.push({q:q,o:opts})}i=0;sc=0;mark=[];draw()}
 function top(){return '<div class="top"><div class="t"><h1>'+esc(CFG.title)+'</h1><small>'+esc(label)+'</small></div><div class="m"><button class="snd" id="snd" aria-label="الصوت">'+(muted?'🔇':'🔊')+'</button></div></div>'}
 function bindTop(){var s=document.getElementById('snd');if(s)s.onclick=function(){muted=!muted;s.innerHTML=muted?'🔇':'🔊'}}
 function draw(){
@@ -55,31 +65,33 @@ function draw(){
  var btns=app.getElementsByClassName('opt');var done=false;
  for(var b=0;b<btns.length;b++)(function(btn){btn.onclick=function(){if(done)return;done=true;snd('pop',.4);var ok=(+btn.getAttribute('data-k')===q.a);
   for(var x=0;x<btns.length;x++){var kk=+btns[x].getAttribute('data-k');if(kk===q.a)btns[x].className+=' ok';else if(btns[x]===btn)btns[x].className+=' no shake';else btns[x].className+=' dim'}
-  mark[i]=ok;var fb=document.getElementById('fb');fb.style.display='block';
+  mark[i]=ok;if(ok)sc+=0;var fb=document.getElementById('fb');fb.style.display='block';
   if(ok){sc++;snd('correct',.6,0);snd('sparkle',.5,60);snd('clap',.5,420);fb.innerHTML='👏 أحسنتِ! '+esc(q.w||'')}
   else{snd('wrong',.5,0);fb.innerHTML='❌ الإجابة الصحيحة: <b>'+esc(q.o[q.a])+'</b>. '+esc(q.w||'')}
   fb.innerHTML+='<div class="center"><button class="btn" id="nx">'+(i+1<N?'السؤال التالي':'النتيجة')+'</button></div>';
-  document.getElementById('nx').onclick=function(){i++;draw();window.scrollTo(0,0)}}})(btns[b])}
+  document.getElementById('nx').onclick=function(){i++;if(i===5)send(false);draw();window.scrollTo(0,0)}}})(btns[b])}
 function end(){
- var st=sc>=9?3:sc>=7?2:sc>=5?1:0;var s='';for(var k=0;k<3;k++)s+=(k<st?'⭐':'☆');
- app.innerHTML=top()+'<div class="card center pop"><div class="big">'+ar(sc)+' من '+ar(N)+'</div><div class="stars">'+s+'</div><p style="font-size:1.3rem;font-weight:800">'+(sc>=9?'ممتاز! ما شاء الله':sc>=7?'أحسنتِ، جيّد جدًّا':sc>=5?'جيّد، نكمل ونتحسّن':'نعيد المحاولة معًا')+'</p><button class="btn" id="ag">لعب جديد</button></div>';
+ var st=sc>=9?3:sc>=7?2:sc>=5?1:0;send(true);var s='';for(var k=0;k<3;k++)s+=(k<st?'⭐':'☆');
+ app.innerHTML=top()+'<div class="card center pop"><div class="big">'+ar(sc)+' من '+ar(N)+'</div><div class="stars">'+s+'</div><p style="font-size:1.3rem;font-weight:800">'+(sc>=9?'ممتاز! ما شاء الله':sc>=7?'أحسنتِ، جيّد جدًّا':sc>=5?'جيّد، نكمل ونتحسّن':'نعيد المحاولة معًا')+'</p><p class="sent" id="sent">جارٍ إرسال النتيجة…</p><button class="btn" id="ag">لعب جديد</button></div>';
  bindTop();if(st>=1){snd('win',.6,0);snd('clap_long',.5,300)}else snd('wrong',.4,0);
  document.getElementById('ag').onclick=function(){newRound();window.scrollTo(0,0)}}
-newRound();
+start();
 })();
 </script></body></html>'''
+ROSTER={'1':['ألين بدير','تالا المستادي','ترف السلمي','حور الجغثمي','ردينا الصريمي','رغد الخطابي','رواسن المغربي','روز صيرفي','ريم الخطابي','ريما الشهري','ساره الحربي','سمر العمودي','غزل اليعقوبي','فجر الذبياني','قمر','لانا العميري','لينا الرشيدي','ماريا الشمراني','مريم بادنجكي','وجد خرمي'],'2':['أرام عسيري','أسيل وداد','تالا الشمراني','تالا القريقري','تيلا أبو صالح','جميلة السميري','جنى الشريف','حلا الغامدي','دانه اليوبي','روز الحمراني','ريتاج عواجي','ريما بن خميس','شدن الخرماني','شذى يونس','علا زهران','علويه الحداد','غني العوفي','لارين الشمري','لانا آل شبيب','لجين الحانطي','لميس اليوبي','لين بازهير','ماريا الحربي','مريم باشماخ','مشاعل ثابت','ميار الجهني','ندى السهلي','هديل الفارسي','ورد الزهراني']}
+TOPICS={'lugha':'nygs-lugha-9f3a2c71d8b4e605','sci':'nygs-science-4be7d0a3c915f862'}
 def build(out,title,data,cfg,theme):
-    t=TEMPLATE.replace('__TITLE__',title).replace('__DATA__',json.dumps(data,ensure_ascii=False,separators=(',',':'))).replace('__CFG__',json.dumps(cfg,ensure_ascii=False))
+    t=TEMPLATE.replace('__ROSTER__',json.dumps(ROSTER,ensure_ascii=False)).replace('__TITLE__',title).replace('__DATA__',json.dumps(data,ensure_ascii=False,separators=(',',':'))).replace('__CFG__',json.dumps(cfg,ensure_ascii=False))
     for k,v in theme.items():t=t.replace('__'+k+'__',v)
     open(out,'w',encoding='utf8').write(t);print(out,len(t)//1024,'KB',len(data),'questions')
 if __name__=='__main__':
     dq=json.load(open('/tmp/dq2.json'))
     build(HERE+'/dalala/student/index.html','لوحة الأسئلة · لغتي',dq,
-     {'title':'لوحة الأسئلة · لغتي','classes':{'1':'رابع 1','2':'رابع 2'},'groups':['الطموح 🎯','الإبداع 💡','التميّز 🏆','الإنجاز 📚'],'sfx':'../audio/sfx/','img':''},
+     {'title':'لوحة الأسئلة · لغتي','classes':{'1':'رابع 1','2':'رابع 2'},'groups':['الطموح 🎯','الإبداع 💡','التميّز 🏆','الإنجاز 📚'],'sfx':'../audio/sfx/','img':'','topic':TOPICS['lugha'],'subj':'lugha'},
      {'INK':'#1f2a5c','BODY':'background-color:#c9a368;background-image:repeating-linear-gradient(0deg,#5b3a1233 0 1.5px,transparent 1.5px 5px),repeating-linear-gradient(90deg,#5b3a1233 0 1.5px,transparent 1.5px 5px)','TOPBG':'#2a3c86','SHADOW':'#1b2a63','DASH':'#c9a368','OK':'#34c25a','BAD':'#ff6b4a','ACC':'#4f8fd6','OPT':'#fff6df'})
 
 def science():
     sq=json.load(open('/tmp/sq.json'))
     build(HERE+'/science/student/index.html','لوحة أسئلة العلوم',sq,
-     {'title':'لوحة أسئلة العلوم','classes':{'1':'4/1','2':'4/2'},'groups':['المخترعات 🔬','نجمات الفضاء 🚀','العالِمات 🧪','المستكشفات 🌿'],'sfx':'../hanan/sfx/','img':'../hanan/img/'},
+     {'title':'لوحة أسئلة العلوم','classes':{'1':'4/1','2':'4/2'},'groups':['المخترعات 🔬','نجمات الفضاء 🚀','العالِمات 🧪','المستكشفات 🌿'],'sfx':'../hanan/sfx/','img':'../hanan/img/','topic':TOPICS['sci'],'subj':'sci'},
      {'INK':'#2b1b10','BODY':'background-color:#ffc72c','TOPBG':'#34c25a','SHADOW':'#00000033','DASH':'#2b1b10','OK':'#34c25a','BAD':'#ff6b4a','ACC':'#3d7bff','OPT':'#ffffff'})

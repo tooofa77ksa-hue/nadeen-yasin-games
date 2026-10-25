@@ -56,7 +56,7 @@ SCI.pgSpan=pgSpan;
 /* ---------- الصفحة الرئيسية ---------- */
 SCI.routes.home=()=>{
  const units=[];CH.forEach(c=>{let u=units.find(x=>x.u===c.unit);if(!u){u={u:c.unit,cs:[]};units.push(u)}u.cs.push(c)});
- const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الصف الرابع','مَن تجيب؟ و4/1 و4/2','heart','#ff5a9d','groups'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref']];
+ const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الصف الرابع','مَن تجيب؟ و4/1 و4/2','heart','#ff5a9d','groups'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref'],['لوحة المسابقة','نتائج المجموعات والفائزة بالكأس','balanced_food','#ff8a1f','board']];
  SCI.page(`<section class="hero2"><div class="ht"><h1>مادة العلوم</h1><span class="tn" style="font-size:1.15rem">الصف الرابع الابتدائي · الفصل الدراسي الأول</span><br><span class="tn">معلمة المادة: حنان العمري</span></div><div class="hi"><img src="img/microscope.webp" alt=""><img src="img/frog.webp" alt=""></div></section>
  <div class="big4">${big.map(b=>`<button class="bigc" style="background:${b[3]}" data-go="${b[4]}"><img src="img/${b[2]==='trophy_x'?'balanced_food':b[2]}.webp" alt=""><b>${b[0]}</b><small>${b[1]}</small></button>`).join('')}</div>
  <section class="units" id="units">${units.map(u=>`<h2>${u.u}</h2><div class="chg">${u.cs.map((c,i)=>`<button class="chc" style="background:${c.color}" data-go="${c.id}"><img src="img/${c.icon}.webp" alt=""><span><small>${c.n} · ص${ar(c.pg)}</small><b>${c.title}</b></span></button>`).join('')}</div>`).join('')}</section>
@@ -70,7 +70,7 @@ SCI.routes.home=()=>{
 <p><b>٦) مرجعيات الكتاب:</b> مقدمة الكتاب (الطريقة العلمية، المهارات، السلامة) وملحقه (أجهزة الجسم، الغذاء، البيانات، المصطلحات).</p>
 <p class="muted" style="font-size:.85rem"><b>مصادر المجسّمات:</b> المجسّمات الستة منشورة بترخيص Creative Commons (CC BY) على موقع Sketchfab، وأصحابها: montanna (الخلية الحيوانية)، CVallance (الخلية النباتية)، grodan (الضفدع)، LasquetiSpice (الفراشة)، neshallads (القلب)، Eugen Vahrushin (المجهر).</p>
 </div></details>`);
- $$('[data-go]').forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==='#units')$('#units').scrollIntoView({behavior:'smooth'});else location.hash=g})};
+ $$('[data-go]').forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==='#units')$('#units').scrollIntoView({behavior:'smooth'});else if(g==='board')location.href='../board/index.html';else location.hash=g})};
 
 /* ---------- صفحة الفصل ---------- */
 const KIND={lesson:'درس',skill:'مهارة',reading:'قراءة علمية',review:'مراجعة واختبار'};
