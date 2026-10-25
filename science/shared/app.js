@@ -20,7 +20,7 @@ if(P==='yasin'){const MAP=[['أحسنتِ','أحسنتَ'],['بطلة','بطل']
 /* نجوم الخلفية */
 
 /* الأصوات */
-const AU={};['correct','wrong','win','cheer','clap'].forEach(n=>{try{const a=new Audio('../../shared/sfx/'+n+'.mp3');a.preload='auto';AU[n]=a}catch(e){}});
+const AU={};['correct','wrong','win','cheer','clap','sparkle','pop','tick','whoosh','fanfare','star'].forEach(n=>{try{const a=new Audio('../../shared/sfx/'+n+'.mp3');a.preload='auto';AU[n]=a}catch(e){}});
 let muted=LS.get('mute',false);
 function sfx(n){if(muted)return;try{const a=AU[n];if(a){a.currentTime=0;a.play().catch(()=>{})}}catch(e){}}
 function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
@@ -58,7 +58,7 @@ async function finish(game,label,sc,max){setMas('hide');
  const coins=LS.get('coins',0)+sc*2+st*5;LS.set('coins',coins);const before=rankOf(LS.get('stars',0));LS.set('stars',LS.get('stars',0)+st);const after=rankOf(LS.get('stars',0));
  const ok=await bus.send(rec);
  const wa='https://wa.me/?text='+encodeURIComponent(`نتيجة ${NAMES[P]} في «${label}»: ${sc} من ${max} ${'⭐'.repeat(st)}`);
- if(st>=2)sfx('win');else if(st===1)sfx('correct');else sfx('wrong');
+ if(st>=2){sfx('fanfare');setTimeout(()=>sfx('win'),300)}else if(st===1)sfx('correct');else sfx('wrong');
  app.innerHTML=`${topbar()}<div class="card center"><div class="hop" style="display:inline-block">${st>=2?spr(SEQ(P,'dance',4),150,P,.25):st===1?spr(SEQ(P,'clap',3),150,P,.3):avatar(130,P,'oops')}</div><h2>${st>=2?'أحسنتِ يا بطلة!':st===1?'محاولة جميلة!':'لا بأس، جرّبي مرة ثانية!'}</h2><div style="margin:6px 0">${starRow(st,3,56)}</div><h3>${label}: ${sc} من ${max}</h3><p class="muted">حصلتِ على ${sc*2+st*5} عملة 🪙${st?` و${st} ${st>2?'نجوم':st===2?'نجمتين':'نجمة'} ✨`:''}</p>${after>before?`<p class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">🎖️ رتبة جديدة: ${rankName(after)}</p>`:''}
  <p class="muted">${ok?'وصلت نتيجتك إلى المعلمة مها ✓':'ما وصلت النتيجة للمعلمة الآن؛ أرسليها بالواتساب أو جرّبي لاحقًا.'}</p>
  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" id="again">العبي مرة ثانية</button><button class="btn ghost" id="home">الرئيسية</button><a class="btn ghost" target="_blank" rel="noopener" href="${wa}">أرسلي لمعلمتك بالواتساب</a></div></div>`;
@@ -77,7 +77,7 @@ function ask(box,q,done,opts={}){
  let locked=false;
  setMas('think');
  $$('.opt',box).forEach(b=>b.onclick=()=>{if(locked)return;locked=true;const i=+b.dataset.i,ok=i===q.a;setMas(ok?'happy':'oops');$$('.opt',box).forEach(x=>{if(+x.dataset.i===q.a)x.classList.add('ok')});if(!ok)b.classList.add('no','shake');
-  sfx(ok?'correct':'wrong');
+  sfx(ok?'correct':'wrong');if(ok)setTimeout(()=>sfx('sparkle'),120);
   const src=q.src==='إ'?' · معلومة إضافية':q.pg||q.src_pg||q.p?` · ${q.pg||q.p||('ص'+q.src_pg)}`:'';
   $('#fb',box).innerHTML=`<div class="why">${ok?'✅ أحسنتِ! ':'❌ الإجابة الصحيحة: <b>'+esc(q.o[q.a])+'</b>. '}${q.w?esc(q.w):''}<span class="muted">${src}</span></div>`;
   setTimeout(()=>done(ok),opts.delay||(ok?1100:2600))})}

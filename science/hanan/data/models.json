@@ -1,0 +1,56 @@
+{
+ "animal_cell": {
+  "uid": "0d9f7f4257224975b2ef83a283709b2f",
+  "name": "Animal cell 2.0 - annotated in English",
+  "by": "montanna",
+  "lic": "CC Attribution",
+  "url": "https://sketchfab.com/3d-models/animal-cell-20-annotated-in-english-0d9f7f4257224975b2ef83a283709b2f",
+  "embed": "https://sketchfab.com/models/0d9f7f4257224975b2ef83a283709b2f/embed",
+  "anim": 0
+ },
+ "plant_cell": {
+  "uid": "e61e7bdf8c8449a583b364f05e70289b",
+  "name": "Plant Cell Organelles",
+  "by": "CVallance",
+  "lic": "CC Attribution",
+  "url": "https://sketchfab.com/3d-models/plant-cell-organelles-e61e7bdf8c8449a583b364f05e70289b",
+  "embed": "https://sketchfab.com/models/e61e7bdf8c8449a583b364f05e70289b/embed",
+  "anim": 0
+ },
+ "frog": {
+  "uid": "71fb7eaece254fb4821c14acd41d17e3",
+  "name": "frog 3d model",
+  "by": "grodan",
+  "lic": "CC Attribution",
+  "url": "https://sketchfab.com/3d-models/frog-3d-model-71fb7eaece254fb4821c14acd41d17e3",
+  "embed": "https://sketchfab.com/models/71fb7eaece254fb4821c14acd41d17e3/embed",
+  "anim": 0
+ },
+ "butterfly": {
+  "uid": "80f8d9a6dadc411e89ca366cb0cfb0d9",
+  "name": "Animated Flying Fluttering Butterfly Loop",
+  "by": "LasquetiSpice",
+  "lic": "CC Attribution",
+  "url": "https://sketchfab.com/3d-models/animated-flying-fluttering-butterfly-loop-80f8d9a6dadc411e89ca366cb0cfb0d9",
+  "embed": "https://sketchfab.com/models/80f8d9a6dadc411e89ca366cb0cfb0d9/embed",
+  "anim": 1
+ },
+ "heart": {
+  "uid": "3f8072336ce94d18b3d0d055a1ece089",
+  "name": "Realistic Human Heart",
+  "by": "neshallads",
+  "lic": "CC Attribution",
+  "url": "https://sketchfab.com/3d-models/realistic-human-heart-3f8072336ce94d18b3d0d055a1ece089",
+  "embed": "https://sketchfab.com/models/3f8072336ce94d18b3d0d055a1ece089/embed",
+  "anim": 0
+ },
+ "microscope": {
+  "uid": "9562226299a045bab13c3d66f8593208",
+  "name": "Microscope",
+  "by": "Eugen Vahrushin",
+  "lic": "CC Attribution",
+  "url": "https://sketchfab.com/3d-models/microscope-9562226299a045bab13c3d66f8593208",
+  "embed": "https://sketchfab.com/models/9562226299a045bab13c3d66f8593208/embed",
+  "anim": 0
+ }
+}

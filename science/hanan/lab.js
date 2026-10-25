@@ -44,11 +44,12 @@ function build(type){const root=new THREE.Group();const parts=[];
 /* ---------- صفحة المختبر ---------- */
 S.routes.lab=arg=>{if(stop){stop();stop=null}
  const [a,mode]=(arg||'').split('~');
+ if(a==='models')return S.routes.models(mode);
  if(a==='cell')return cellPage(mode==='assemble');
  if(a==='scope')return S.scopePage&&S.scopePage();
  if(a==='levels')return levelsPage();
  S.page(`<h2>🔬 مختبر المجسّمات</h2><p class="muted">مجسّمات تدور بالإصبع وتُكبَّر، والمحتوى من كتاب العلوم.</p>
- <div class="big4"><button class="bigc" style="background:#ff8a1f" data-l="cell"><img src="img/plant_cell.webp" alt=""><b>الخليّة 3D</b><small>فكّكي واستكشفي وركّبي</small></button>
+ <div class="big4"><button class="bigc" style="background:#ffc72c" data-l="models"><img src="img/frog.webp" alt=""><b>🧊 المجسّمات الأصلية</b><small>خلية، نبات، ضفدع، فراشة، قلب، مجهر</small></button><button class="bigc" style="background:#ff8a1f" data-l="cell"><img src="img/plant_cell.webp" alt=""><b>الخليّة التعليمية</b><small>فكّكي بالمنزلق وركّبي</small></button>
  <button class="bigc" style="background:#3d7bff" data-l="scope"><img src="img/microscope.webp" alt=""><b>المجهر</b><small>كبّري ما تريدين</small></button>
  <button class="bigc" style="background:#34c25a" data-l="levels"><img src="img/heart.webp" alt=""><b>مستويات التنظيم</b><small>من الخليّة إلى الجهاز</small></button>
  <button class="bigc" style="background:#ff5a9d" data-l="cell~assemble"><img src="img/animal_cell.webp" alt=""><b>لعبة ركّبي الخليّة</b><small>بالفرق والنقاط</small></button></div>`);

@@ -13,7 +13,7 @@ S.quiz=(box,items,{title='',teamsOn=true,onEnd}={})=>{items=items.filter(q=>q.o&
   const q=items[i];
   box.innerHTML=`<div class="card"><div class="bar" style="margin-bottom:8px"><i style="width:${i/items.length*100}%"></i></div>${teamsOn?turnTag():''}<p class="muted center" style="margin:0">سؤال ${ar(i+1)} من ${ar(items.length)} ${q.p?pgSpan(q.p):''}</p><div class="q-big">${q.q}</div>
   <div class="opts">${q.o.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('')}</div><div class="fb"></div></div>`;
-  let done=false;$$('.opt',box).forEach(b=>b.onclick=()=>{if(done)return;done=true;const k=+b.dataset.k,ok=k===q.a;
+  let done=false;$$('.opt',box).forEach(b=>b.onclick=()=>{if(done)return;done=true;S.sfx.pop();const k=+b.dataset.k,ok=k===q.a;
    $$('.opt',box).forEach((x,j)=>{if(j===q.a)x.classList.add('ok');else if(x===b)x.classList.add('no');else x.classList.add('dim')});
    if(ok){sc++;award(1);S.sfx.yes()}else S.sfx.no();
    $('.fb',box).innerHTML=`<div class="why">${ok?'👏 أحسنتم! ':'❌ الإجابة الصحيحة: <b>'+q.o[q.a]+'</b>. '}${q.w||''}</div><div class="center" style="margin-top:10px"><button class="btn" id="nx">${i+1<items.length?'السؤال التالي':'النتيجة'}</button></div>`;

@@ -14,7 +14,7 @@ Object.assign(SCI,{$,$$,ar,shuf,app,LS,CH,IMG,src});
 /* ---------- الصوت: التصفيق بعد الصحيح فقط ---------- */
 let muted=LS.get('muted',false);
 const play=(n,v=.6,fb)=>{if(muted)return;try{const a=new Audio('sfx/'+n+'.mp3');a.volume=v;const p=a.play();if(p&&p.catch)p.catch(()=>fb&&fb())}catch(e){}};
-SCI.sfx={yes(){play('correct',.6);setTimeout(()=>play('clap',.45),260)},no(){play('wrong',.5)},win(){play('win',.7);setTimeout(()=>play('clap_long',.5),300)},tick(){}};
+SCI.sfx={yes(){play('correct',.55);play('sparkle',.5);setTimeout(()=>play('clap',.45),380)},no(){play('wrong',.5)},win(){play('fanfare',.7);play('win',.5);setTimeout(()=>play('clap_long',.5),500)},tick(){play('tick',.5)},pop(){play('pop',.5)},whoosh(){play('whoosh',.35)},star(){play('star',.6)}};
 SCI.confetti=(n=60)=>{let c=$('#conf');if(!c){c=document.createElement('canvas');c.id='conf';c.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:80;width:100%;height:100%';document.body.appendChild(c)}
  const x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const cols=['#ffc72c','#3d7bff','#34c25a','#ff5a9d','#ff8a1f'];
  const ps=Array.from({length:n},()=>({x:Math.random()*c.width,y:-10,vx:Math.random()*2-1,vy:2+Math.random()*3,s:6+Math.random()*7,c:cols[Math.random()*5|0],r:Math.random()*6}));let f=0;
@@ -49,7 +49,7 @@ SCI.stopSpeak=()=>{try{speechSynthesis.cancel()}catch(e){}};
 /* ---------- الإطار العام ---------- */
 const KID=window.SCI_KID;const topbar=()=>`<div class="top"><div class="logo"><img src="img/microscope.webp" alt=""><div><b>${KID?'مختبر العلوم':'مادة العلوم'}</b><div class="muted" style="font-size:.85rem;line-height:1.2">${KID?'الصف الرابع':'المعلمة حنان العمري'}</div></div></div><div class="chips"><button class="tbtn" id="bHome">${KID?'⬅ ملعبي':'🏠 الرئيسية'}</button>${KID?'':'<button class="tbtn" id="bTeams">🏆 الفرق</button>'}<button class="tbtn" id="bSnd">${muted?'🔇':'🔊'}</button></div></div>`;
 SCI.page=(html,{teamsOn=false}={})=>{SCI.stopSpeak&&SCI.stopSpeak();const p=$('.panel');if(p)p.remove();app.innerHTML=topbar()+(teamsOn?SCI.teamsBar():'')+html;
- $('#bHome').onclick=()=>{if(KID)location.href='../'+KID+'/index.html';else location.hash='home'};if($('#bTeams'))$('#bTeams').onclick=teamsPanel;$('#bSnd').onclick=()=>{muted=!muted;LS.set('muted',muted);$('#bSnd').textContent=muted?'🔇':'🔊'};scrollTo(0,0)};
+ $('#bHome').onclick=()=>{if(KID)location.href='../'+KID+'/index.html';else location.hash='home'};if($('#bTeams'))$('#bTeams').onclick=teamsPanel;$('#bSnd').onclick=()=>{muted=!muted;LS.set('muted',muted);$('#bSnd').textContent=muted?'🔇':'🔊'};SCI.sfx.whoosh();scrollTo(0,0)};
 const pgSpan=p=>p?`<span class="pg">ص${ar(p).replace(/^ص/,'')}</span>`:'';
 SCI.pgSpan=pgSpan;
 
@@ -126,7 +126,7 @@ SCI.routes.part=(cid,pid)=>{const c=window.CHAPTERS[cid],p=c&&c.parts.find(x=>x.
 function route(){const h=(location.hash||(window.SCI_KID?'#lab':'#home')).slice(1).split('/');if(window.SCI_KID&&h[0]==='home')h[0]='lab';const R=SCI.routes;
  try{
   if(h[0]==='home'||h[0]==='')R.home();
-  else if(h[0]==='lab')R.lab&&R.lab(h[1]);
+  else if(h[0]==='lab')R.lab&&R.lab(h.slice(1).join('/'));
   else if(h[0]==='games')R.games&&R.games(h[1]);
   else if(h[0]==='g')R.game&&R.game(h[1],h[2]);
   else if(h[0]==='tests')R.tests&&R.tests();
