@@ -47,7 +47,7 @@ S.routes.lab=arg=>{if(stop){stop();stop=null}
  if(a==='cell')return cellPage(mode==='assemble');
  if(a==='scope')return S.scopePage&&S.scopePage();
  if(a==='levels')return levelsPage();
- S.page(`<div class="crumb"><button class="tbtn" onclick="location.hash='home'">↩ الرئيسية</button></div><h2>🔬 مختبر المجسّمات</h2><p class="muted">مجسّمات تدور بالإصبع وتُكبَّر، والمحتوى من كتاب العلوم.</p>
+ S.page(`<h2>🔬 مختبر المجسّمات</h2><p class="muted">مجسّمات تدور بالإصبع وتُكبَّر، والمحتوى من كتاب العلوم.</p>
  <div class="big4"><button class="bigc" style="background:#ff8a1f" data-l="cell"><img src="img/plant_cell.webp" alt=""><b>الخليّة 3D</b><small>فكّكي واستكشفي وركّبي</small></button>
  <button class="bigc" style="background:#3d7bff" data-l="scope"><img src="img/microscope.webp" alt=""><b>المجهر</b><small>كبّري ما تريدين</small></button>
  <button class="bigc" style="background:#34c25a" data-l="levels"><img src="img/heart.webp" alt=""><b>مستويات التنظيم</b><small>من الخليّة إلى الجهاز</small></button>

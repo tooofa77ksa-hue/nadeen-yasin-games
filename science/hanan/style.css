@@ -237,3 +237,5 @@ body.hanan{--ac:#34c25a}
 @media(max-width:640px){.hero2{flex-direction:column-reverse;text-align:center}.hero2 h1{font-size:2.3rem}.pt{flex-direction:column;align-items:center}}
 
 #lbls{position:absolute;inset:0;pointer-events:none}
+
+.bt{border-collapse:collapse;width:100%;font:500 1.1rem/1.8 'Noto Naskh Arabic',serif}.bt th{background:var(--f3);color:#fff;border:3px solid var(--ink);padding:6px 8px;font:400 1.15rem Lalezar}.bt td{border:3px solid var(--ink);padding:6px 8px;background:#fff;text-align:center}

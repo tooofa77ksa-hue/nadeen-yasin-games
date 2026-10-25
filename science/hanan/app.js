@@ -47,16 +47,16 @@ SCI.speak=t=>{try{const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,''))
 SCI.stopSpeak=()=>{try{speechSynthesis.cancel()}catch(e){}};
 
 /* ---------- الإطار العام ---------- */
-const topbar=()=>`<div class="top"><div class="logo"><img src="img/microscope.webp" alt=""><div><b>مادة العلوم</b><div class="muted" style="font-size:.85rem;line-height:1.2">المعلمة حنان العمري</div></div></div><div class="chips"><button class="tbtn" id="bHome">🏠 الرئيسية</button><button class="tbtn" id="bTeams">🏆 الفرق</button><button class="tbtn" id="bSnd">${muted?'🔇':'🔊'}</button></div></div>`;
+const KID=window.SCI_KID;const topbar=()=>`<div class="top"><div class="logo"><img src="img/microscope.webp" alt=""><div><b>${KID?'مختبر العلوم':'مادة العلوم'}</b><div class="muted" style="font-size:.85rem;line-height:1.2">${KID?'الصف الرابع':'المعلمة حنان العمري'}</div></div></div><div class="chips"><button class="tbtn" id="bHome">${KID?'⬅ ملعبي':'🏠 الرئيسية'}</button>${KID?'':'<button class="tbtn" id="bTeams">🏆 الفرق</button>'}<button class="tbtn" id="bSnd">${muted?'🔇':'🔊'}</button></div></div>`;
 SCI.page=(html,{teamsOn=false}={})=>{SCI.stopSpeak&&SCI.stopSpeak();const p=$('.panel');if(p)p.remove();app.innerHTML=topbar()+(teamsOn?SCI.teamsBar():'')+html;
- $('#bHome').onclick=()=>{location.hash='home'};$('#bTeams').onclick=teamsPanel;$('#bSnd').onclick=()=>{muted=!muted;LS.set('muted',muted);$('#bSnd').textContent=muted?'🔇':'🔊'};scrollTo(0,0)};
+ $('#bHome').onclick=()=>{if(KID)location.href='../'+KID+'/index.html';else location.hash='home'};if($('#bTeams'))$('#bTeams').onclick=teamsPanel;$('#bSnd').onclick=()=>{muted=!muted;LS.set('muted',muted);$('#bSnd').textContent=muted?'🔇':'🔊'};scrollTo(0,0)};
 const pgSpan=p=>p?`<span class="pg">ص${ar(p).replace(/^ص/,'')}</span>`:'';
 SCI.pgSpan=pgSpan;
 
 /* ---------- الصفحة الرئيسية ---------- */
 SCI.routes.home=()=>{
  const units=[];CH.forEach(c=>{let u=units.find(x=>x.u===c.unit);if(!u){u={u:c.unit,cs:[]};units.push(u)}u.cs.push(c)});
- const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units']];
+ const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الفصل','مَن تجيب؟ وتوزيع الفرق','heart','#ff5a9d','groups'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref']];
  SCI.page(`<section class="hero2"><div class="ht"><h1>مادة العلوم</h1><span class="tn" style="font-size:1.15rem">الصف الرابع الابتدائي · الفصل الدراسي الأول</span><br><span class="tn">معلمة المادة: حنان العمري</span></div><div class="hi"><img src="img/microscope.webp" alt=""><img src="img/frog.webp" alt=""></div></section>
  <div class="big4">${big.map(b=>`<button class="bigc" style="background:${b[3]}" data-go="${b[4]}"><img src="img/${b[2]==='trophy_x'?'balanced_food':b[2]}.webp" alt=""><b>${b[0]}</b><small>${b[1]}</small></button>`).join('')}</div>
  <section class="units" id="units">${units.map(u=>`<h2>${u.u}</h2><div class="chg">${u.cs.map((c,i)=>`<button class="chc" style="background:${c.color}" data-go="${c.id}"><img src="img/${c.icon}.webp" alt=""><span><small>${c.n} · ص${ar(c.pg)}</small><b>${c.title}</b></span></button>`).join('')}</div>`).join('')}</section>
@@ -86,14 +86,17 @@ let tab={};
 const exploreHTML=e=>!e?'':`<section class="card"><h3>🔬 ${e.t||'أستكشف'} ${pgSpan(e.pg)}</h3>${e.img?`<img class="bigimg" src="${src(e.img)}" alt="">`:''}${e.goal?`<p class="big-t"><b>الهدف:</b> ${e.goal}</p>`:''}${(e.need||[]).length?`<p><b>أحتاج:</b></p><div class="need">${e.need.map(n=>`<span>${n}</span>`).join('')}</div>`:''}<ol class="steps">${(e.steps||[]).map(s=>`<li>${s}</li>`).join('')}</ol>${(e.result||[]).length?`<div class="why">${e.result.map(r=>`<p style="margin:4px 0;font:500 1.15rem/2 'Noto Naskh Arabic',serif">${r}</p>`).join('')}</div>`:''}</section>`;
 const foldHTML=f=>!f?'':`<section class="card"><h3>📑 ${f.title} ${pgSpan(f.pg)}</h3>${f.rows.map((r,i)=>`<div class="acc ${i===0?'open':''}"><button>${r.icon?`<img src="${src(r.icon)}" alt="">`:''}${r.tab} <span class="pg">${r.pg||''}</span></button><div class="bd">${r.pts.map(p=>`<div class="pt">${p.img?`<img src="${src(p.img)}" alt="">`:''}<div><h4>${p.t} ${p.pg?pgSpan(p.pg):''}</h4><p>${p.x||''}</p>${p.list?`<ul class="sub">${p.list.map(l=>`<li>${l[0]?`<img src="${src(l[0])}" alt="" style="width:46px;height:46px;object-fit:contain;vertical-align:middle;margin-inline-end:6px">`:''}<b>${l[1]}</b>: ${l[2]||''}</li>`).join('')}</ul>`:''}</div></div>`).join('')}</div></div>`).join('')}</section>`;
 const wordsHTML=(ws,id)=>!ws||!ws.length?'':`<section class="card"><h3>🔑 كلمات الدرس <small class="muted">اضغطي لترى المعنى</small></h3><div class="wordg">${ws.map((w,i)=>`<div class="wc" data-i="${i}" role="button" tabindex="0"><button class="sp" data-s="${i}">🔊</button><b>${w[0]}</b><small>${pgSpan(w[2])}</small><div class="d" hidden>${w[1]}</div></div>`).join('')}</div></section>`;
+const KB={discuss:'💬 للنقاش',activity:'🧪 نشاط',table:'📊 جدول',write:'✍ كتابة علمية',math:'➗ علوم ورياضيات',fact:'💡 حقيقة',skill:'🎯 مهارة',vocab:'🔑 مفردة'};
+const bookHTML=b=>!b||!b.length?'':b.map((x,i)=>`<section class="card"><h3>${KB[x.k]||'📌'} ${x.t||''} ${x.pg?pgSpan(x.pg):''}</h3>${x.img?`<img class="bigimg" style="max-height:240px" src="${src(x.img)}" alt="">`:''}${x.x?`<p class="big-t">${x.x}</p>`:''}${(x.need||[]).length?`<div class="need">${x.need.map(n=>`<span>${n}</span>`).join('')}</div>`:''}${(x.steps||[]).length?`<ol class="steps">${x.steps.map(t=>`<li>${t}</li>`).join('')}</ol>`:''}${x.rows?`<div style="overflow:auto"><table class="bt"><thead><tr>${(x.head||[]).map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${x.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:''}${(x.list||[]).length?`<ul class="sub">${x.list.map(l=>`<li>${l[0]?`<img src="${src(l[0])}" alt="" style="width:56px;height:56px;object-fit:contain;vertical-align:middle;margin-inline-end:8px">`:''}<b>${l[1]}</b>${l[2]?': '+l[2]:''}</li>`).join('')}</ul>`:''}${x.a?`<div class="center"><button class="btn gold bk" data-a="${i}">👁 الإجابة</button></div><div class="why" id="ba${i}" hidden>${x.a}</div>`:''}</section>`).join('');
+SCI.bookHTML=bookHTML;
 const readingHTML=p=>`<section class="card">${p.img?`<img class="bigimg" src="${src(p.img)}" alt="">`:''}${p.paras.map(t=>`<p class="big-t">${t}</p>`).join('')}${p.write?`<div class="why"><b>✍ اكتبي:</b> ${typeof p.write==='string'?p.write:(p.write.q||JSON.stringify(p.write))}</div>`:''}</section>`;
 const sumHTML=s=>!s||!s.length?'':`<section class="card"><h3>📝 ملخص</h3><ul>${s.map(t=>`<li class="big-t">${t}</li>`).join('')}</ul></section>`;
 SCI.routes.part=(cid,pid)=>{const c=window.CHAPTERS[cid],p=c&&c.parts.find(x=>x.id===pid);if(!p){location.hash='home';return}
  const T=[];
- if(p.kind==='lesson'){T.push(['look','👀 انظري'],['explore','🔬 استكشفي']);if(p.fold)T.push(['fold','📑 المطوية']);T.push(['qs','❓ أسئلة']);if((p.games||[]).length)T.push(['games','🎮 ألعاب']);T.push(['sum','📝 ملخص'])}
- else if(p.kind==='skill'){T.push(['intro','📖 المهارة']);if(p.explore)T.push(['explore','🔬 جرّبي']);if((p.games||[]).length)T.push(['games','🎮 ألعاب'])}
- else if(p.kind==='reading'){T.push(['read','📖 اقرئي']);if((p.qs||[]).length)T.push(['qs','❓ أسئلة'])}
- else {T.push(['sum','📝 الملخص'],['test','📝 النموذج'])}
+ if(p.kind==='lesson'){T.push(['look','👀 انظري'],['explore','🔬 استكشفي']);if(p.fold)T.push(['fold','📑 المطوية']);if((p.book||[]).length)T.push(['book','📌 من الكتاب']);T.push(['qs','❓ أسئلة']);if((p.games||[]).length)T.push(['games','🎮 ألعاب']);T.push(['sum','📝 ملخص'])}
+ else if(p.kind==='skill'){T.push(['intro','📖 المهارة']);if(p.explore)T.push(['explore','🔬 جرّبي']);if((p.book||[]).length)T.push(['book','📌 من الكتاب']);if((p.games||[]).length)T.push(['games','🎮 ألعاب'])}
+ else if(p.kind==='reading'){T.push(['read','📖 اقرئي']);if((p.book||[]).length)T.push(['book','📌 من الكتاب']);if((p.qs||[]).length)T.push(['qs','❓ أسئلة'])}
+ else {T.push(['sum','📝 الملخص'],['test','📝 النموذج']);if((p.book||[]).length)T.push(['book','📌 من الكتاب'])}
  const k=cid+'/'+pid;if(!tab[k]||!T.some(t=>t[0]===tab[k]))tab[k]=T[0][0];
  const idx=c.parts.indexOf(p),nx=c.parts[idx+1],pv=c.parts[idx-1];
  SCI.page(`<div class="crumb"><button class="tbtn" data-go="${cid}">↩ ${c.title}</button><span class="pill">${KIND[p.kind]} · ${p.n}</span></div>
@@ -107,6 +110,7 @@ SCI.routes.part=(cid,pid)=>{const c=window.CHAPTERS[cid],p=c&&c.parts.find(x=>x.
   else if(t==='intro'){tp.innerHTML=`<section class="card"><p class="big-t">${p.intro||''}</p></section>`+(p.extra||[]).map(x=>`<section class="card"><h3>${x.t} ${pgSpan(x.pg)}</h3><p class="big-t">${x.x}</p>${x.list?`<ul class="sub">${x.list.map(l=>`<li>${l[0]?`<img src="${src(l[0])}" alt="" style="width:70px;height:70px;object-fit:contain;vertical-align:middle;margin-inline-end:8px">`:''}<b>${l[1]}</b>: ${l[2]||''}</li>`).join('')}</ul>`:''}</section>`).join('')}
   else if(t==='read')tp.innerHTML=readingHTML(p);
   else if(t==='sum')tp.innerHTML=sumHTML(p.summary);
+  else if(t==='book'){tp.innerHTML=bookHTML(p.book);$$('.bk',tp).forEach(b=>b.onclick=()=>{const e=$('#ba'+b.dataset.a,tp);e.hidden=!e.hidden})}
   else if(t==='qs'){SCI.quiz(tp,p.qs.map(q=>({q:q.q,o:q.o,a:q.a,w:q.w,p:q.p})),{title:p.title})}
   else if(t==='games'){SCI.gamesList(tp,p.games)}
   else if(t==='test'){SCI.testPaper(tp,p)}
@@ -119,13 +123,14 @@ SCI.routes.part=(cid,pid)=>{const c=window.CHAPTERS[cid],p=c&&c.parts.find(x=>x.
  draw()};
 
 /* ---------- التوجيه ---------- */
-function route(){const h=(location.hash||'#home').slice(1).split('/');const R=SCI.routes;
+function route(){const h=(location.hash||(window.SCI_KID?'#lab':'#home')).slice(1).split('/');if(window.SCI_KID&&h[0]==='home')h[0]='lab';const R=SCI.routes;
  try{
   if(h[0]==='home'||h[0]==='')R.home();
   else if(h[0]==='lab')R.lab&&R.lab(h[1]);
   else if(h[0]==='games')R.games&&R.games(h[1]);
   else if(h[0]==='g')R.game&&R.game(h[1],h[2]);
   else if(h[0]==='tests')R.tests&&R.tests();
+  else if(h[0]==='groups')R.groups&&R.groups();else if(h[0]==='ref')R.ref&&R.ref(h[1]);
   else if(h[0]==='t')R.test&&R.test(h[1]);
   else if(/^c\d$/.test(h[0]))h[1]?R.part(h[0],h[1]):R.chapter(h[0]);
   else R.home();
