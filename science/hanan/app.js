@@ -56,7 +56,7 @@ SCI.pgSpan=pgSpan;
 /* ---------- الصفحة الرئيسية ---------- */
 SCI.routes.home=()=>{
  const units=[];CH.forEach(c=>{let u=units.find(x=>x.u===c.unit);if(!u){u={u:c.unit,cs:[]};units.push(u)}u.cs.push(c)});
- const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الصف الرابع','مَن تجيب؟ و4/1 و4/2','heart','#ff5a9d','groups'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref'],['لوحة المسابقة','نتائج المجموعات والفائزة بالكأس','balanced_food','#ff8a1f','board']];
+ const big=[['مختبر المجسّمات','🔬 خلية تُفكَّك وتُركَّب، ومجهر','microscope','#ff8a1f','lab'],['ألعاب الفصل','فرق ونقاط وتصفيق','trophy_x','#3d7bff','games'],['اختبارات الفصول','نماذج الكتاب كاملة','test_tubes','#34c25a','tests'],['الدروس والأنشطة','كل فصول الكتاب','food_pyramid','#c9ee2b','#units'],['طالبات الصف الرابع','مَن تجيب؟ و4/1 و4/2','heart','#ff5a9d','groups'],['أصوات الحيوانات','🔊 استمعي ولعبة مَن صاحب الصوت؟','frog','#2ec4b6','sounds'],['مرجعيات الكتاب','المقدمة وأجهزة الجسم والمصطلحات','test_tubes','#ffc72c','ref'],['لوحة المسابقة','نتائج المجموعات والفائزة بالكأس','balanced_food','#ff8a1f','board']];
  SCI.page(`<section class="hero2"><div class="ht"><h1>مادة العلوم</h1><span class="tn" style="font-size:1.15rem">الصف الرابع الابتدائي · الفصل الدراسي الأول</span><br><span class="tn">معلمة المادة: حنان العمري</span></div><div class="hi"><img src="img/microscope.webp" alt=""><img src="img/frog.webp" alt=""></div></section>
  <div class="big4">${big.map(b=>`<button class="bigc" style="background:${b[3]}" data-go="${b[4]}"><img src="img/${b[2]==='trophy_x'?'balanced_food':b[2]}.webp" alt=""><b>${b[0]}</b><small>${b[1]}</small></button>`).join('')}</div>
  <section class="units" id="units">${units.map(u=>`<h2>${u.u}</h2><div class="chg">${u.cs.map((c,i)=>`<button class="chc" style="background:${c.color}" data-go="${c.id}"><img src="img/${c.icon}.webp" alt=""><span><small>${c.n} · ص${ar(c.pg)}</small><b>${c.title}</b></span></button>`).join('')}</div>`).join('')}</section>
@@ -69,7 +69,7 @@ SCI.routes.home=()=>{
 <p><b>٥) المسابقة (لوحة الأسئلة ولوحة النتائج):</b> في صفحة «طالبات الصف الرابع» رابط لكل مجموعة (أربع مجموعات لكل فصل). أرسلي الرابط لآيباد المجموعة؛ يفتح لها الأسئلة فقط بأربع إجابات، بدون أي تحكم في الموقع. وللإجابة الفردية: من «لوحة المسابقة» اضغطي «▶ اختاري طالبة»، فتدور الأسماء ثم تقف عند اسم ويظهر لها سؤال، وتضغطين «✅ أجابت صح» أو «❌ أخطأت». وأسماء الطالبات تُعدَّل وتُحذف من «✏ أسماء الصف» في اللوحة. وافتحي «لوحة المسابقة» على شاشتكِ: تظهر نقاط المجموعات والأفراد لحظةً بلحظة والكأس للمتصدرة، وبزر «إنهاء المسابقة» تُعلن الفائزة. جرّبي زر «تجربة الاتصال» قبل الحصة.</p>
 <p><b>٦) اختبارات الفصول:</b> نماذج الكتاب بعد كل فصل، تُحَلّ كاملة ثم تُصحَّح.</p>
 <p><b>٧) مرجعيات الكتاب:</b> مقدمة الكتاب (الطريقة العلمية، المهارات، السلامة) وملحقه (أجهزة الجسم، الغذاء، البيانات، المصطلحات).</p>
-<p class="muted" style="font-size:.85rem"><b>مصادر المجسّمات:</b> المجسّمات الستة منشورة بترخيص Creative Commons (CC BY) على موقع Sketchfab، وأصحابها: montanna (الخلية الحيوانية)، CVallance (الخلية النباتية)، grodan (الضفدع)، LasquetiSpice (الفراشة)، neshallads (القلب)، Eugen Vahrushin (المجهر).</p>
+<p class="muted" style="font-size:.85rem"><b>مصادر أصوات الحيوانات:</b> مقاطع من موقع SoundBible بترخيص Creative Commons (CC BY 3.0) أو ملكية عامة، وصوت الضفدع تسجيل خاص. <br><b>مصادر المجسّمات:</b> المجسّمات الستة منشورة بترخيص Creative Commons (CC BY) على موقع Sketchfab، وأصحابها: montanna (الخلية الحيوانية)، CVallance (الخلية النباتية)، grodan (الضفدع)، LasquetiSpice (الفراشة)، neshallads (القلب)، Eugen Vahrushin (المجهر).</p>
 </div></details>`);
  $$('[data-go]').forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==='#units')$('#units').scrollIntoView({behavior:'smooth'});else if(g==='board')location.href='../board/index.html';else location.hash=g})};
 
@@ -141,7 +141,7 @@ function route(){const h=(location.hash||(window.SCI_KID?'#lab':'#home')).slice(
   else if(h[0]==='g')R.game&&R.game(h[1],h[2]);
   else if(h[0]==='tests')R.tests&&R.tests();
   else if(h[0]==='groups')R.groups&&R.groups();else if(h[0]==='ref')R.ref&&R.ref(h[1]);
-  else if(h[0]==='t')R.test&&R.test(h[1]);
+  else if(h[0]==='sounds')R.sounds&&R.sounds();else if(h[0]==='t')R.test&&R.test(h[1]);
   else if(/^c\d$/.test(h[0]))h[1]?R.part(h[0],h[1]):R.chapter(h[0]);
   else R.home();
  }catch(e){console.error(e);app.innerHTML='<div class="card center"><h3>حدث خطأ</h3><button class="btn" onclick="location.hash=\'home\'">الرئيسية</button></div>'}}
