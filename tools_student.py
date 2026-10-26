@@ -33,48 +33,69 @@ select,input.nm{font:700 1.1rem 'Tajawal',sans-serif;border:3px solid __INK__;bo
 <script>
 var DATA=__DATA__;
 var CFG=__CFG__;
+var ROSTER=__ROSTER__;
 (function(){
 var app=document.getElementById('app');
 function qs(n){var m=location.search.match(new RegExp('[?&]'+n+'=([^&]*)'));return m?decodeURIComponent(m[1]):''}
-var g=qs('g');var gm=g.match(/^r([12])-([1-4])$/);
+var g=qs('g');var gm=g.match(/^r([12])-([1-4])$/);var IND=(qs('i')==='1')||!gm;
 var label=CFG.title;if(gm){label=CFG.classes[gm[1]]+' · '+CFG.groups[+gm[2]-1]}
-var muted=false;var ROSTER=__ROSTER__;var NAME='';var RID=Math.random().toString(36).slice(2,10);var SENT=true;
-function send(f){try{var x=new XMLHttpRequest();x.open('POST','https://ntfy.sh/'+CFG.topic,true);x.onreadystatechange=function(){if(x.readyState===4){SENT=(x.status>=200&&x.status<300);var e=document.getElementById('sent');if(e&&f)e.innerHTML=SENT?'✓ أُرسلت نتيجتكِ إلى شاشة المعلمة':'⚠ لم تصل النتيجة، تأكدي من الإنترنت'}};x.send(JSON.stringify({t:'p',s:CFG.subj,c:gm?gm[1]:'0',g:gm?+gm[2]:0,name:NAME,rid:RID,n:i,sc:sc,f:f?1:0,at:(new Date()).getTime()}))}catch(e){}}
+var muted=false,NAME='',RID=rid(),LOAD=(new Date()).getTime();
+var N=10,pool=shuf(DATA),pi=0,Q=[],i=0,sc=0,mark=[],mode='free',TID='',lastTid='';
+function rid(){return Math.random().toString(36).slice(2,10)}
 function snd(n,v,delay){if(muted)return;setTimeout(function(){try{var a=new Audio(CFG.sfx+n+'.mp3');a.volume=v;var p=a.play();if(p&&p.catch)p.catch(function(){})}catch(e){}},delay||0)}
-function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function shuf(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var t=a[k];a[k]=a[j];a[j]=t}return a}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function ar(n){return String(n).replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.charAt(+d)})}
-var N=10,pool=shuf(DATA),pi=0,qs_=[],i=0,sc=0,mark=[];
+function post(o,cb){try{var x=new XMLHttpRequest();x.open('POST','https://ntfy.sh/'+CFG.topic,true);x.onreadystatechange=function(){if(x.readyState===4&&cb)cb(x.status>=200&&x.status<300)};x.send(JSON.stringify(o))}catch(e){if(cb)cb(false)}}
+function base(){return {s:CFG.subj,c:gm?gm[1]:'0',g:gm?+gm[2]:0,name:NAME,at:(new Date()).getTime()}}
+function sendP(f,cb){var o=base();o.t='p';o.rid=RID;o.n=i;o.sc=sc;o.f=f?1:0;post(o,cb)}
+function sendA(tid,qi,ok){var o=base();o.t='a';o.tid=tid;o.qi=qi;o.ok=ok?1:0;post(o)}
+function top(){return '<div class="top"><div class="t"><h1>'+esc(CFG.title)+'</h1><small>'+esc(label)+'</small></div><div class="m"><button class="snd" id="snd" aria-label="الصوت">'+(muted?'🔇':'🔊')+'</button></div></div>'}
+function bindTop(){var s=document.getElementById('snd');if(s)s.onclick=function(){muted=!muted;s.innerHTML=muted?'🔇':'🔊'}}
+function mk(q){var opts=[];for(var k=0;k<q.o.length;k++)opts.push({t:q.o[k],k:k});if(!q.fixed)opts=shuf(opts);return {q:q,o:opts}}
+function newRound(){RID=rid();Q=[];while(Q.length<N){if(pi>=pool.length){pool=shuf(DATA);pi=0}Q.push(mk(pool[pi++]))}i=0;sc=0;mark=[];mode='free';draw()}
+/* شاشة الانتظار (مجموعة) */
+function waiting(msg){mode='wait';app.innerHTML=top()+'<div class="card center pop"><div class="big" style="font-size:2rem">'+(msg||'بانتظار سؤال المعلمة…')+'</div><p style="font-size:1.1rem">سيظهر السؤال هنا تلقائيًّا حين ترسله المعلمة. ابقي في هذه الصفحة.</p><div class="stars">⏳</div><button class="btn" id="fr">لعب حرٌّ (١٠ أسئلة)</button></div>';bindTop();document.getElementById('fr').onclick=function(){newRound()}}
 function start(){
+ if(!IND){waiting();listen();return}
  var cl=gm?gm[1]:'1';var list=ROSTER[cl]||[];var h=top()+'<div class="card center pop"><h2 style="font-size:1.8rem">مرحبًا! من أنتِ؟</h2><p>اختاري اسمكِ لتظهر نتيجتكِ على الشاشة.</p><select id="sel"><option value="">— اختاري اسمكِ —</option>';
  for(var k=0;k<list.length;k++)h+='<option>'+esc(list[k])+'</option>';
  h+='<option value="__o">اسم آخر…</option></select><input class="nm" id="oth" placeholder="اكتبي اسمكِ" style="display:none"><button class="btn" id="go">ابدأي المسابقة</button></div>';
- app.innerHTML=h;bindTop();
- var sel=document.getElementById('sel'),oth=document.getElementById('oth');sel.onchange=function(){oth.style.display=sel.value==='__o'?'block':'none'};
+ app.innerHTML=h;bindTop();var sel=document.getElementById('sel'),oth=document.getElementById('oth');sel.onchange=function(){oth.style.display=sel.value==='__o'?'block':'none'};
  document.getElementById('go').onclick=function(){var v=sel.value==='__o'?oth.value.replace(/^\s+|\s+$/g,''):sel.value;if(!v){sel.style.borderColor='#e0483a';return}NAME=v;newRound()}}
-function newRound(){RID=Math.random().toString(36).slice(2,10);qs_=[];while(qs_.length<N){if(pi>=pool.length){pool=shuf(DATA);pi=0}var q=pool[pi++];var opts=[];for(var k=0;k<q.o.length;k++)opts.push({t:q.o[k],k:k});if(!q.fixed)opts=shuf(opts);qs_.push({q:q,o:opts})}i=0;sc=0;mark=[];draw()}
-function top(){return '<div class="top"><div class="t"><h1>'+esc(CFG.title)+'</h1><small>'+esc(label)+'</small></div><div class="m"><button class="snd" id="snd" aria-label="الصوت">'+(muted?'🔇':'🔊')+'</button></div></div>'}
-function bindTop(){var s=document.getElementById('snd');if(s)s.onclick=function(){muted=!muted;s.innerHTML=muted?'🔇':'🔊'}}
+/* عرض سؤال */
 function draw(){
- if(i>=N){return end()}
- var it=qs_[i],q=it.q,dots='';for(var d=0;d<N;d++)dots+='<i class="'+(d<i?(mark[d]?'on':'no'):(d===i?'cur':''))+'"></i>';
- var h=top()+'<div class="card pop"><div class="dots">'+dots+'</div><p class="center" style="margin:0;opacity:.75">السؤال '+ar(i+1)+' من '+ar(N)+'</p>'+(q.img?'<img class="pic" src="'+CFG.img+q.img+'.webp" alt="">':'')+'<div class="q">'+esc(q.q)+'</div><div class="opts">';
+ if(i>=Q.length){return end()}
+ var it=Q[i],q=it.q,dots='';for(var d=0;d<Q.length;d++)dots+='<i class="'+(d<i?(mark[d]?'on':'no'):(d===i?'cur':''))+'"></i>';
+ var h=top()+'<div class="card pop">'+(mode==='teacher'?'<p class="center" style="margin:0"><span class="badge" style="background:#ffe08a;border-radius:99px;padding:2px 14px;font-weight:800">سؤال من المعلمة</span></p>':'')+'<div class="dots">'+dots+'</div><p class="center" style="margin:0;opacity:.75">السؤال '+ar(i+1)+' من '+ar(Q.length)+'</p>'+(q.img?'<img class="pic" src="'+CFG.img+q.img+'.webp" alt="">':'')+'<div class="q">'+esc(q.q)+'</div><div class="opts">';
  for(var k=0;k<it.o.length;k++)h+='<button class="opt" data-k="'+it.o[k].k+'">'+esc(it.o[k].t)+'</button>';
  h+='</div><div class="fb" id="fb" style="display:none"></div></div>';
  app.innerHTML=h;bindTop();
  var btns=app.getElementsByClassName('opt');var done=false;
  for(var b=0;b<btns.length;b++)(function(btn){btn.onclick=function(){if(done)return;done=true;snd('pop',.4);var ok=(+btn.getAttribute('data-k')===q.a);
   for(var x=0;x<btns.length;x++){var kk=+btns[x].getAttribute('data-k');if(kk===q.a)btns[x].className+=' ok';else if(btns[x]===btn)btns[x].className+=' no shake';else btns[x].className+=' dim'}
-  mark[i]=ok;if(ok)sc+=0;var fb=document.getElementById('fb');fb.style.display='block';
-  if(ok){sc++;snd('correct',.6,0);snd('sparkle',.5,60);snd('clap',.5,420);fb.innerHTML='👏 أحسنتِ! '+esc(q.w||'')}
+  mark[i]=ok;if(ok)sc++;var fb=document.getElementById('fb');fb.style.display='block';
+  if(mode==='teacher')sendA(TID,i,ok);
+  if(ok){snd('correct',.6,0);snd('sparkle',.5,60);snd('clap',.5,420);fb.innerHTML='👏 أحسنتم! '+esc(q.w||'')}
   else{snd('wrong',.5,0);fb.innerHTML='❌ الإجابة الصحيحة: <b>'+esc(q.o[q.a])+'</b>. '+esc(q.w||'')}
-  fb.innerHTML+='<div class="center"><button class="btn" id="nx">'+(i+1<N?'السؤال التالي':'النتيجة')+'</button></div>';
-  document.getElementById('nx').onclick=function(){i++;if(i===5)send(false);draw();window.scrollTo(0,0)}}})(btns[b])}
+  var last=(i+1>=Q.length);
+  fb.innerHTML+='<div class="center"><button class="btn" id="nx">'+(last?(mode==='teacher'?'بانتظار المعلمة':'النتيجة'):'السؤال التالي')+'</button></div>';
+  document.getElementById('nx').onclick=function(){i++;if(mode==='free'&&i===5)sendP(false);draw();window.scrollTo(0,0)}}})(btns[b])}
 function end(){
- var st=sc>=9?3:sc>=7?2:sc>=5?1:0;send(true);var s='';for(var k=0;k<3;k++)s+=(k<st?'⭐':'☆');
- app.innerHTML=top()+'<div class="card center pop"><div class="big">'+ar(sc)+' من '+ar(N)+'</div><div class="stars">'+s+'</div><p style="font-size:1.3rem;font-weight:800">'+(sc>=9?'ممتاز! ما شاء الله':sc>=7?'أحسنتِ، جيّد جدًّا':sc>=5?'جيّد، نكمل ونتحسّن':'نعيد المحاولة معًا')+'</p><p class="sent" id="sent">جارٍ إرسال النتيجة…</p><button class="btn" id="ag">لعب جديد</button></div>';
+ if(mode==='teacher'){waiting('أحسنتم! بانتظار السؤال التالي');return}
+ var st=sc>=9?3:sc>=7?2:sc>=5?1:0;var s='';for(var k=0;k<3;k++)s+=(k<st?'⭐':'☆');
+ app.innerHTML=top()+'<div class="card center pop"><div class="big">'+ar(sc)+' من '+ar(Q.length)+'</div><div class="stars">'+s+'</div><p style="font-size:1.3rem;font-weight:800">'+(sc>=9?'ممتاز! ما شاء الله':sc>=7?'أحسنتم، جيّد جدًّا':sc>=5?'جيّد، نكمل ونتحسّن':'نعيد المحاولة معًا')+'</p><p class="sent" id="sent">جارٍ إرسال النتيجة…</p><button class="btn" id="ag">لعب جديد</button>'+(IND?'':'<button class="btn" id="bk" style="background:#ff8a1f">انتظار أسئلة المعلمة</button>')+'</div>';
  bindTop();if(st>=1){snd('win',.6,0);snd('clap_long',.5,300)}else snd('wrong',.4,0);
- document.getElementById('ag').onclick=function(){newRound();window.scrollTo(0,0)}}
+ sendP(true,function(ok){var e=document.getElementById('sent');if(e)e.innerHTML=ok?'✓ أُرسلت النتيجة إلى شاشة المعلمة':'⚠ لم تصل النتيجة، تأكدي من الإنترنت'});
+ document.getElementById('ag').onclick=function(){newRound();window.scrollTo(0,0)};
+ var bk=document.getElementById('bk');if(bk)bk.onclick=function(){waiting()}}
+/* استقبال أسئلة المعلمة */
+function onMsg(m){if(!m||m.t!=='q'||!m.qs||!m.id)return;if(m.id===lastTid)return;if(m.at<LOAD-90000)return;if(m.c&&m.c!=='0'&&gm&&m.c!==gm[1])return;
+ lastTid=m.id;TID=m.id;mode='teacher';Q=[];for(var k=0;k<m.qs.length;k++){var q=DATA[m.qs[k]];if(q)Q.push(mk(q))}if(!Q.length)return;i=0;sc=0;mark=[];snd('whoosh',.4);draw();window.scrollTo(0,0)}
+function listen(){var url='https://ntfy.sh/'+CFG.topic+'/sse?since=2m';
+ if(window.EventSource){try{var es=new EventSource(url);es.onmessage=function(ev){try{var d=JSON.parse(ev.data);if(d.event==='message')onMsg(JSON.parse(d.message))}catch(e){}};return}catch(e){}}
+ var since=Math.floor(LOAD/1000)-120;function poll(){try{var x=new XMLHttpRequest();x.open('GET','https://ntfy.sh/'+CFG.topic+'/json?poll=1&since='+since,true);x.onreadystatechange=function(){if(x.readyState===4&&x.status===200){var ls=x.responseText.split('\n');for(var k=0;k<ls.length;k++){if(!ls[k])continue;try{var d=JSON.parse(ls[k]);if(d.time>since)since=d.time;if(d.event==='message')onMsg(JSON.parse(d.message))}catch(e){}}}};x.send()}catch(e){}}
+ setInterval(poll,4000);poll()}
 start();
 })();
 </script></body></html>'''

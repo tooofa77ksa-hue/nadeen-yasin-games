@@ -33,6 +33,7 @@ table{width:100%;border-collapse:collapse}td,th{padding:6px 10px;text-align:righ
 </style></head><body><div id="app"></div>
 <script>
 var CFG=__CFG__;
+var QD=__DATA__;
 (function(){
 var app=document.getElementById('app');
 var KEY='board_'+CFG.subj;
@@ -45,23 +46,35 @@ function ar(n){return String(n).replace(/\d/g,function(d){return '٠١٢٣٤٥٦
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function snd(n,v){if(!sound)return;try{var a=new Audio(CFG.sfx+n+'.mp3');a.volume=v||.6;var p=a.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
 function confetti(n){var c=document.getElementById('cf');if(!c){c=document.createElement('canvas');c.id='cf';c.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:100%';document.body.appendChild(c)}var x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;var cols=['#ffc72c','#3d7bff','#34c25a','#ff5a9d','#ff8a1f'],ps=[];for(var i=0;i<n;i++)ps.push({x:Math.random()*c.width,y:-10,vx:Math.random()*2-1,vy:2+Math.random()*4,s:7+Math.random()*8,c:cols[i%5],r:Math.random()*6});var f=0;(function st(){x.clearRect(0,0,c.width,c.height);for(var k=0;k<ps.length;k++){var p=ps[k];p.x+=p.vx;p.y+=p.vy;p.r+=.1;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore()}if(++f<160)requestAnimationFrame(st);else x.clearRect(0,0,c.width,c.height)})()}
-function ingest(m){if(!m||m.t!=='p'||!m.rid||m.at<start)return false;var o=R[m.rid];if(o&&(o.f>m.f||(o.f===m.f&&o.n>m.n)))return false;R[m.rid]=m;lastMsg=(new Date()).getTime();return true}
-function agg(){var G={},P={};for(var id in R){var m=R[id];if(cls!=='all'&&m.c!==cls)continue;var gk=m.c+'-'+m.g;var g=G[gk]||(G[gk]={c:m.c,g:m.g,pts:0,ans:0,names:{},rounds:0});g.pts+=m.sc;g.ans+=m.n;g.rounds++;g.names[m.name]=1;var pk=m.c+'|'+m.name;var p=P[pk]||(P[pk]={name:m.name,c:m.c,g:m.g,pts:0,ans:0});p.pts+=m.sc;p.ans+=m.n}
+function ingest(m){if(!m||m.at<start)return false;if(m.t==='a'){if(!m.tid)return false;var k='a|'+m.tid+'|'+m.qi+'|'+m.c+'|'+m.g;if(R[k])return false;R[k]=m;lastMsg=(new Date()).getTime();return true}
+ if(m.t!=='p'||!m.rid)return false;var o=R[m.rid];if(o&&(o.f>m.f||(o.f===m.f&&o.n>m.n)))return false;R[m.rid]=m;lastMsg=(new Date()).getTime();return true}
+function agg(){var G={},P={};for(var id in R){var m=R[id];if(cls!=='all'&&m.c!==cls)continue;if(!m.g)continue;var gk=m.c+'-'+m.g;var g=G[gk]||(G[gk]={c:m.c,g:m.g,pts:0,ans:0,names:{},rounds:0});var pts=m.t==='a'?(m.ok?1:0):m.sc,an=m.t==='a'?1:m.n;g.pts+=pts;g.ans+=an;g.rounds++;if(m.name){g.names[m.name]=1;var pk=m.c+'|'+m.name;var p=P[pk]||(P[pk]={name:m.name,c:m.c,g:m.g,pts:0,ans:0});p.pts+=pts;p.ans+=an}}
  return {G:G,P:P}}
 function groupList(){var A=agg().G,L=[];var cl=cls==='all'?['1','2']:[cls];for(var a=0;a<cl.length;a++)for(var k=1;k<=4;k++){var g=A[cl[a]+'-'+k]||{c:cl[a],g:k,pts:0,ans:0,names:{},rounds:0};g.n=0;for(var nm in g.names)g.n++;L.push(g)}
  L.sort(function(x,y){return y.pts-x.pts||(y.ans?y.pts/y.ans:0)-(x.ans?x.pts/x.ans:0)});return L}
+function activeG(){var n=0,A=agg().G;for(var k in A)if(A[k].ans>0)n++;return n}
+var SENT={},CUR=null,REVEAL=false;
+function labels(){var L={},o=[];for(var i=0;i<QD.length;i++){var l=QD[i].l||'';(L[l]=L[l]||[]).push(i)}for(var k in L)o.push({l:k,idx:L[k]});o.sort(function(a,b){return b.idx.length-a.idx.length});return o}
+function pickIdx(lbl,n){var all=[];if(lbl==='__all'){for(var i=0;i<QD.length;i++)all.push(i)}else{var ls=labels();for(var j=0;j<ls.length;j++)if(ls[j].l===lbl)all=ls[j].idx.slice()}var fresh=[],used=[];for(var k=0;k<all.length;k++)(SENT[all[k]]?used:fresh).push(all[k]);var pool=fresh.length>=n?fresh:fresh.concat(used);pool.sort(function(){return Math.random()-.5});return pool.slice(0,n)}
+function sendQ(n){var sel=document.getElementById('lbl');var idx=pickIdx(sel.value,n);if(!idx.length)return;var id='q'+(new Date()).getTime().toString(36);for(var i=0;i<idx.length;i++)SENT[idx[i]]=1;CUR={id:id,qs:idx,label:sel.options[sel.selectedIndex].text};REVEAL=false;var x=new XMLHttpRequest();x.open('POST','https://ntfy.sh/'+CFG.topic,true);x.send(JSON.stringify({t:'q',s:CFG.subj,c:cls==='all'?'0':cls,id:id,qs:idx,label:CUR.label,at:(new Date()).getTime()}));snd('whoosh',.5);render()}
+function groupList2(){var o=[],cl=cls==='all'?['1','2']:[cls];for(var a=0;a<cl.length;a++)for(var k=1;k<=4;k++)o.push({c:cl[a],g:k});return o}
+function panel(){var ls=labels(),h='<div class="card"><h3>🎯 إرسال الأسئلة للمجموعات</h3><p class="muted" style="margin:0">اختاري نوع الأسئلة ثم أرسليها؛ تظهر في أجهزة المجموعات في الحال، بنفس الترتيب.</p><select id="lbl" style="font:700 1.1rem Tajawal;border:3px solid '+CFG.ink+';border-radius:12px;padding:6px 10px;width:100%;margin:8px 0"><option value="__all">كل الأسئلة ('+ar(QD.length)+')</option>';for(var i=0;i<ls.length;i++)h+='<option value="'+esc(ls[i].l)+'">'+esc(ls[i].l)+' ('+ar(ls[i].idx.length)+')</option>';h+='</select><button class="btn" id="q1">سؤال واحد</button><button class="btn" id="q10">جولة ١٠ أسئلة</button>';
+ if(CUR){var A=[];for(var k in R){var m=R[k];if(m.t==='a'&&m.tid===CUR.id&&(cls==='all'||m.c===cls))A.push(m)}var gs=groupList2();h+='<div class="win" style="text-align:right"><b>آخر إرسال:</b> '+esc(CUR.label)+' · '+ar(CUR.qs.length)+' سؤال';if(CUR.qs.length===1){var q=QD[CUR.qs[0]];h+='<div style="font-size:1.5rem;margin:8px 0;font-family:Noto Naskh Arabic,serif">'+esc(q.q)+'</div><div>';for(var o=0;o<q.o.length;o++)h+='<span class="tag" style="display:inline-block;margin:3px;'+(REVEAL&&o===q.a?'background:#bff0cc;border:3px solid #1f9d4a':'')+'">'+esc(q.o[o])+'</span>';h+='</div>'}
+ h+='<div style="margin-top:8px">';for(var z=0;z<gs.length;z++){var gg=gs[z],cnt=0,okc=0;for(var y=0;y<A.length;y++)if(A[y].c===gg.c&&+A[y].g===gg.g){cnt++;if(A[y].ok)okc++}h+='<span class="tag" style="display:inline-block;margin:3px">'+CFG.groups[gg.g-1]+' ('+CFG.cl[gg.c]+'): '+(cnt?(CUR.qs.length>1?ar(okc)+' / '+ar(cnt):(REVEAL?(okc?'✅':'❌'):'أجابت')):'…')+'</span>'}h+='</div>';if(CUR.qs.length===1)h+='<button class="btn gold" id="rv">'+(REVEAL?'إخفاء':'كشف الإجابة')+'</button>';h+='</div>'}
+ return h+'</div>'}
+function bind2(){var a=document.getElementById('q1'),b=document.getElementById('q10'),r=document.getElementById('rv');if(a)a.onclick=function(){sendQ(1)};if(b)b.onclick=function(){sendQ(10)};if(r)r.onclick=function(){REVEAL=!REVEAL;if(REVEAL)snd('sparkle',.5);render()}}
 function render(){
  var L=groupList(),max=1;for(var i=0;i<L.length;i++)if(L[i].pts>max)max=L[i].pts;
  var P=agg().P,PL=[];for(var k in P)PL.push(P[k]);PL.sort(function(a,b){return b.pts-a.pts||a.ans-b.ans});
- var any=L.length&&L[0].pts>0;var h='<div class="top"><h1>'+CFG.title+'</h1><span class="tag"><i class="st'+(connected?' on':'')+'"></i>'+(connected?'متصل':'غير متصل')+'</span><span class="tag">لاعبات: '+ar(PL.length)+'</span><button class="btn g" id="snd">'+(sound?'🔊':'🔇')+'</button></div>';
- h+='<div class="tabs">';var cs=[['all','الصفان'],['1','الصف '+CFG.cl['1']],['2','الصف '+CFG.cl['2']]];for(var c=0;c<3;c++)h+='<button data-c="'+cs[c][0]+'" class="'+(cls===cs[c][0]?'on':'')+'">'+cs[c][1]+'</button>';
+ var any=L.length&&L[0].pts>0;var h='<div class="top"><h1>'+CFG.title+'</h1><span class="tag"><i class="st'+(connected?' on':'')+'"></i>'+(connected?'متصل':'غير متصل')+'</span><span class="tag">مجموعات نشطة: '+ar(activeG())+'</span><button class="btn g" id="snd">'+(sound?'🔊':'🔇')+'</button></div>';
+ h+=panel();h+='<div class="tabs">';var cs=[['all','الصفان'],['1','الصف '+CFG.cl['1']],['2','الصف '+CFG.cl['2']]];for(var c=0;c<3;c++)h+='<button data-c="'+cs[c][0]+'" class="'+(cls===cs[c][0]?'on':'')+'">'+cs[c][1]+'</button>';
  h+='<span style="flex:1"></span><button data-m="g" class="'+(mode==='g'?'on':'')+'">🏆 المجموعات</button><button data-m="p" class="'+(mode==='p'?'on':'')+'">⭐ الأفراد</button></div>';
  if(ended&&any){var w=L[0],tie=L.length>1&&L[1].pts===w.pts;h+='<div class="win pop"><img src="'+CFG.cup+'" alt=""><h2>'+(tie?'تعادل!':'المجموعة الفائزة')+'</h2><h2 style="color:'+CFG.acc+'">'+CFG.groups[w.g-1]+(cls==='all'?' · الصف '+CFG.cl[w.c]:'')+'</h2><div class="muted" style="font-size:1.2rem">'+ar(w.pts)+' نقطة</div>'+(PL.length?'<h3 style="margin-top:10px">⭐ نجمة المسابقة: '+esc(PL[0].name)+' ('+ar(PL[0].pts)+')</h3>':'')+'</div>'}
  if(mode==='g'){h+='<div class="grid">';for(var i=0;i<L.length;i++){var g=L[i];var lead=(i===0&&g.pts>0);h+='<div class="gc'+(lead?' lead':'')+'">'+(lead?'<img class="cup" src="'+CFG.cup+'" alt="">':'')+'<span class="rank">'+ar(i+1)+'</span><h3>'+CFG.groups[g.g-1]+'</h3><div class="meta">الصف '+CFG.cl[g.c]+' · '+ar(g.n)+' لاعبة</div><div class="pts">'+ar(g.pts)+'</div><div class="meta">إجابة صحيحة من '+ar(g.ans)+'</div><div class="bar"><i style="width:'+Math.round(g.pts/max*100)+'%"></i></div></div>'}h+='</div>'}
  else{h+='<div class="card"><h2>⭐ المتصدرات</h2><table><tr><th>#</th><th>الاسم</th><th>المجموعة</th><th>النقاط</th></tr>';for(var j=0;j<Math.min(PL.length,12);j++){var p=PL[j];h+='<tr><td>'+(j===0?'🏆':ar(j+1))+'</td><td>'+esc(p.name)+'</td><td>'+CFG.groups[p.g-1]+' ('+CFG.cl[p.c]+')</td><td><b>'+ar(p.pts)+'</b> / '+ar(p.ans)+'</td></tr>'}if(!PL.length)h+='<tr><td colspan="4" class="muted">لم تبدأ أي لاعبة بعد…</td></tr>';h+='</table></div>'}
  h+='<div class="center" style="text-align:center;margin-top:16px"><button class="btn gold" id="end">'+(ended?'✅ استمرار المسابقة':'🏆 إنهاء المسابقة وإعلان الفائزة')+'</button><button class="btn g" id="newc">🔄 مسابقة جديدة</button><button class="btn g" id="tst">🧪 تجربة الاتصال</button></div>';
  h+='<div class="card muted">كيف تعمل اللوحة: كل مجموعة تفتح رابطها وتجاوب ٢٠ سؤالاً، وتظهر نقاطها هنا تلقائيًّا. النقاط = عدد الإجابات الصحيحة. لا ترسلي رابط هذه اللوحة للطالبات.</div>';
- app.innerHTML=h;bind()}
+ app.innerHTML=h;bind();bind2()}
 function bind(){var q=function(s){return app.querySelectorAll(s)};
  var tb=q('.tabs button');for(var i=0;i<tb.length;i++)(function(b){b.onclick=function(){if(b.getAttribute('data-c')){cls=b.getAttribute('data-c');ss('cls',cls)}else{mode=b.getAttribute('data-m');ss('mode',mode)}render()}})(tb[i]);
  document.getElementById('snd').onclick=function(){sound=!sound;render()};
@@ -73,12 +86,12 @@ var es;function connect(){try{es=new EventSource('https://ntfy.sh/'+CFG.topic+'/
 render();connect();
 })();
 </script></body></html>'''
-def build(out,title,cfg,theme):
-    t=T.replace('__TITLE__',title).replace('__CFG__',json.dumps(cfg,ensure_ascii=False))
+def build(out,title,cfg,theme,data):
+    t=T.replace('__DATA__',json.dumps(data,ensure_ascii=False,separators=(',',':'))).replace('__TITLE__',title).replace('__CFG__',json.dumps(cfg,ensure_ascii=False))
     for k,v in theme.items():t=t.replace('__'+k+'__',v)
     os.makedirs(os.path.dirname(out),exist_ok=True);open(out,'w',encoding='utf8').write(t);print(out,len(t)//1024,'KB')
 import tools_student as S
-build(HERE+'/dalala/board/index.html','لوحة المسابقة · لغتي',{'title':'🏆 مسابقة لغتي','subj':'lugha','topic':S.TOPICS['lugha'],'cl':{'1':'4/1','2':'4/2'},'groups':['الطموح 🎯','الإبداع 💡','التميّز 🏆','الإنجاز 📚'],'sfx':'../audio/sfx/','cup':'../assets/trophy.webp','acc':'#2a3c86'},
- {'INK':'#1f2a5c','BODY':'background-color:#c9a368;background-image:repeating-linear-gradient(0deg,#5b3a1233 0 1.5px,transparent 1.5px 5px),repeating-linear-gradient(90deg,#5b3a1233 0 1.5px,transparent 1.5px 5px)','TOPBG':'#2a3c86','SHADOW':'#1b2a63','ACC':'#4f8fd6'})
-build(HERE+'/science/board/index.html','لوحة المسابقة · العلوم',{'title':'🏆 مسابقة العلوم','subj':'sci','topic':S.TOPICS['sci'],'cl':{'1':'4/1','2':'4/2'},'groups':['المخترعات 🔬','نجمات الفضاء 🚀','العالِمات 🧪','المستكشفات 🌿'],'sfx':'../hanan/sfx/','cup':'../../shared/img/trophy.webp','acc':'#2f8f3f'},
- {'INK':'#2b1b10','BODY':'background-color:#ffc72c','TOPBG':'#34c25a','SHADOW':'#00000033','ACC':'#3d7bff'})
+build(HERE+'/dalala/board/index.html','لوحة المسابقة · لغتي',{'title':'🏆 مسابقة لغتي','subj':'lugha','topic':S.TOPICS['lugha'],'cl':{'1':'4/1','2':'4/2'},'groups':['الطموح 🎯','الإبداع 💡','التميّز 🏆','الإنجاز 📚'],'sfx':'../audio/sfx/','cup':'../assets/trophy.webp','acc':'#2a3c86','ink':'#1f2a5c'},
+ {'INK':'#1f2a5c','BODY':'background-color:#c9a368;background-image:repeating-linear-gradient(0deg,#5b3a1233 0 1.5px,transparent 1.5px 5px),repeating-linear-gradient(90deg,#5b3a1233 0 1.5px,transparent 1.5px 5px)','TOPBG':'#2a3c86','SHADOW':'#1b2a63','ACC':'#4f8fd6'},json.load(open('/tmp/dq2.json')))
+build(HERE+'/science/board/index.html','لوحة المسابقة · العلوم',{'title':'🏆 مسابقة العلوم','subj':'sci','topic':S.TOPICS['sci'],'cl':{'1':'4/1','2':'4/2'},'groups':['المخترعات 🔬','نجمات الفضاء 🚀','العالِمات 🧪','المستكشفات 🌿'],'sfx':'../hanan/sfx/','cup':'../../shared/img/trophy.webp','acc':'#2f8f3f','ink':'#2b1b10'},
+ {'INK':'#2b1b10','BODY':'background-color:#ffc72c','TOPBG':'#34c25a','SHADOW':'#00000033','ACC':'#3d7bff'},json.load(open('/tmp/sq.json')))
