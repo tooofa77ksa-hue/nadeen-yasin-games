@@ -149,11 +149,20 @@ function final(){var Q=[],sc=0,n=0,t=$('#tt');for(var k=0;k<10;k++)Q.push(k%2?'c
   var orig=fin;fin=function(box,ok,again){if(was)return;was=true;n++;if(ok)sc++;if(ok)clap();else fx('wrong');var m=document.createElement('div');m.className='card c';m.innerHTML=ok?'✅ '+pr(PRAISE):'❌ '+S[G.i][0];var b=document.createElement('button');b.className='btn pk';b.textContent='التالي ←';b.onclick=function(){fin=orig;next()};m.appendChild(b);box.appendChild(m)};
   if(Q[n]==='order')gOrder(q);else gCloze(q)})()}
 /* ---- الأغنية ---- */
-var LY=[["Verse",["I live with parents.","I wake up at six o'clock.","I brush my teeth then I eat my breakfast.","I walk to school."]],["Chorus",["Six-seven! Six-seven! My Family Routine!","Say it slow, say it loud, shine, shine, shine!"]],["Verse",["I help my mom.","I set the table for lunch and take out the trash.","I go to sleep at nine o'clock."]],["Chorus",["Six-seven! Six-seven! My Family Routine!","Say it slow, say it loud, shine, shine, shine!"]]];
-V.song=function(){var h='<div class="card c"><h2>🎵 أغنية الحفظ</h2><p>غنّي مع الأغنية ٣ مرات: الجمل نفسها في النص، بإيقاع سهل.</p><audio id="au" controls style="width:100%" src="audio/song.mp3"></audio><p class="muted" id="nf"></p><button class="btn pk" id="rd">▶ اقرئي الكلمات بصوت الجهاز (بدون لحن)</button></div>';
- LY.forEach(function(b){h+='<div class="card"><b>'+(b[0]==='Chorus'?'🎤 اللازمة':'📖 المقطع')+'</b><div class="en">'+b[1].map(esc).join('<br>')+'</div></div>'});
- app.innerHTML=h;var au=$('#au');au.onerror=function(){$('#nf').textContent='ملف الأغنية لم يُضَف بعد.'};
- $('#rd').onclick=function(){var t=LY.map(function(b){return b[1].join(' ')}).join(' ');tts(t,.75)}};
+var CUE=[[3.3,"I live with parents.",0],[6.0,"I wake up at six o'clock.",0],[9.8,"I brush my teeth then I eat my breakfast.",0],[13.9,"I walk to school.",0],[15.9,"Six-seven! Six-seven! My Family Routine!",1],[21.2,"Say it slow, say it loud, shine, shine, shine!",1],[25.4,"I help my mom.",0],[30.0,"I set the table for lunch and take out the trash.",0],[34.6,"I go to sleep at nine o'clock.",0],[40.2,"Six-seven! Six-seven! My Family Routine!",1],[45.8,"Say it slow, say it loud, shine, shine, shine!",1],[50.4,"Shine, shine, shine.",1]];
+var TI=null;
+V.song=function(){var IM='../../shared/img/';var h='<div class="card c"><h2>🎵 غنّي وارقصي مع نادين</h2><img id="dn" src="'+IM+'nadeen_idle.webp" alt="" style="width:170px;height:auto"><p class="muted">اضغطي ▶ ثم غنّي. السطر الملوّن هو اللي يُغنّى الآن. اضغطي على أي سطر لتسمعيه من جديد.</p><audio id="au" controls preload="auto" style="width:100%" src="audio/song.mp3"></audio><p class="muted" id="nf"></p><label class="chk"><input type="checkbox" id="lp"><span>🔁 كرّري السطر الذي أضغطه</span></label></div><div class="card" id="ly"></div>';
+ app.innerHTML=h;var au=$('#au'),dn=$('#dn'),ly=$('#ly');au.onerror=function(){$('#nf').textContent='ملف الأغنية لم يُضَف بعد.'};
+ ly.innerHTML=CUE.map(function(c,k){return '<div class="sent" data-c="'+k+'" style="cursor:pointer;padding:6px 8px;border-radius:12px"><div class="num">'+(k+1)+'</div><div class="en tx" style="'+(c[2]?'font-weight:800;color:#d6538f':'')+'">'+esc(c[1])+'</div></div>'}).join('');
+ var rows=ly.querySelectorAll('[data-c]'),at=-1,loop=-1,F=['nadeen_dance1','nadeen_dance2','nadeen_dance3','nadeen_dance4'],FC=['nadeen_jump1','nadeen_clap1','nadeen_jump2','nadeen_clap2'],fi=0;
+ for(var i=0;i<rows.length;i++)(function(r){r.onclick=function(){var k=+r.getAttribute('data-c');loop=$('#lp').checked?k:-1;au.currentTime=CUE[k][0];au.play()}})(rows[i]);
+ function upd(){var t=au.currentTime,k=-1;for(var i=0;i<CUE.length;i++)if(t>=CUE[i][0])k=i;
+  if(loop>=0){var end=loop+1<CUE.length?CUE[loop+1][0]:au.duration;if(t>=end-.05){au.currentTime=CUE[loop][0];return}}
+  if(k!==at){if(at>=0)rows[at].style.background='';if(k>=0){rows[k].style.background='#ffe27a';rows[k].scrollIntoView({block:'nearest',behavior:'smooth'})}at=k}}
+ au.ontimeupdate=upd;
+ function dance(){if(au.paused||au.ended){dn.src=IM+'nadeen_idle.webp';return}fi=(fi+1)%4;var ch=at>=0&&CUE[at][2];dn.src=IM+(ch?FC[fi]:F[fi])+'.webp'}
+ au.onplay=function(){clearInterval(TI);TI=setInterval(dance,375)};au.onpause=au.onended=function(){clearInterval(TI);dn.src=IM+'nadeen_idle.webp'};
+ var old=nav.querySelectorAll('[data-t]');for(var q=0;q<old.length;q++)old[q].addEventListener('click',function(){clearInterval(TI);try{au.pause()}catch(e){}})};
 go('home');
 })();
 </script></body></html>
