@@ -67,7 +67,7 @@ function norm(s){return s.toLowerCase().replace(/[^a-z0-9: ]/g,'').replace(/\s+/
 var PRAISE=["ركّزتِ فوصلتِ! بتوفيق الله","ممتاز! تعبكِ ظاهر","أحسنتِ، كملي بنفس الإصرار","رائع! الله يوفقكِ","كل مرة تتحسّنين أكثر"];
 var TRY=["لا بأس، جرّبي مرة ثانية","قريبة! ركّزي وأعيديها","المحاولة جزء من التعلّم"];
 function pr(a){return a[Math.floor(Math.random()*a.length)]}
-var TABS=[["home","🏠 خطتي"],["listen","🎧 استمعي"],["words","🔤 الكلمات"],["play","🎮 العبي"],["write","✏️ اكتبي"],["test","🏆 اختبري"],["song","🎵 الأغنية"]];
+var TABS=[["home","🏠 خطتي"],["listen","🎧 استمعي"],["words","🔤 الكلمات"],["play","🎮 العبي"],["write","✏️ اكتبي"],["test","🏆 اختبري"],["sheet","📋 ورقتي"],["song","🎵 الأغنية"]];
 var cur_t='home';
 function go(t){cur_t=t;nav.innerHTML=TABS.map(function(x){return '<button data-t="'+x[0]+'" class="'+(x[0]===t?'on':'')+'">'+x[1]+'</button>'}).join('')+'<button id="sn">'+(sound?'🔊':'🔇')+'</button>';
  var bs=nav.querySelectorAll('[data-t]');for(var i=0;i<bs.length;i++)(function(b){b.onclick=function(){go(b.getAttribute('data-t'))}})(bs[i]);
@@ -148,6 +148,26 @@ function final(){var Q=[],sc=0,n=0,t=$('#tt');for(var k=0;k<10;k++)Q.push(k%2?'c
   G.i=Math.floor(Math.random()*S.length);t.innerHTML='<div class="card c">سؤال '+(n+1)+' / 10 · النقاط '+sc+'</div><div id="q"></div>';var q=$('#q'),was=false;
   var orig=fin;fin=function(box,ok,again){if(was)return;was=true;n++;if(ok)sc++;if(ok)clap();else fx('wrong');var m=document.createElement('div');m.className='card c';m.innerHTML=ok?'✅ '+pr(PRAISE):'❌ '+S[G.i][0];var b=document.createElement('button');b.className='btn pk';b.textContent='التالي ←';b.onclick=function(){fin=orig;next()};m.appendChild(b);box.appendChild(m)};
   if(Q[n]==='order')gOrder(q);else gCloze(q)})()}
+/* ---- ورقتي: المطلوب من المعلمة ---- */
+var REC={},MR=null,MS=null;
+function recSupported(){return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)}
+V.sheet=function(){var CK=[['h','👂','سمعتها'],['p','🗣','نطقتها صح'],['m','🧠','حفظتها'],['f','⚡','قلتها بطلاقة']];
+ var h='<div class="card" style="background:#fff8d6"><h3>📋 ماذا طلبت المعلمة؟</h3><ul style="line-height:2.1;padding-right:20px"><li>حفظ التعبير <b>My Family Routine</b> <b>غيباً</b>.</li><li>بـ<b>نطق صحيح</b> و<b>طلاقة</b>.</li><li>المسابقة تنتهي <b>يوم الخميس ٢٤-٥-١٤٤٨هـ</b>.</li><li>أول ١٠ طالبات من الصفين يحفظن بنطق صحيح وطلاقة: <b>هدية + شهادة تكريم</b> 🎁</li></ul><p class="muted">املئي الورقة جملةً جملة. الحفظ بالتكرار الهادئ، والتوفيق من الله.</p></div>';
+ var tot=S.length*4,dn=0;S.forEach(function(x,i){CK.forEach(function(c){if(P['c'+i+c[0]])dn++})});
+ h+='<div class="card"><div class="bar"><i style="width:'+Math.round(dn*100/tot)+'%"></i></div><p class="c muted">'+dn+' من '+tot+'</p>'+(dn===tot?'<h3 class="c pop">🌟 ما شاء الله! أنتِ جاهزة للتسميع أمام المعلمة</h3>':'')+'</div>';
+ S.forEach(function(x,i){h+='<div class="card"><div class="sent"><div class="num">'+(i+1)+'</div><div class="tx"><div class="en">'+esc(x[0])+'</div><div class="ar">'+x[1]+'</div></div><div><button class="btn pk" data-s="'+i+'">🐢</button><button class="btn" data-n="'+i+'">🔊</button></div></div><div style="display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px">'+CK.map(function(c){return '<label class="chk" style="border:0"><input type="checkbox" data-c="c'+i+c[0]+'"'+(P['c'+i+c[0]]?' checked':'')+'><span>'+c[1]+' '+c[2]+'</span></label>'}).join('')+'</div>'+(recSupported()?'<div style="margin-top:4px"><button class="btn gh" data-r="'+i+'">🎙 سجّلي صوتكِ</button><button class="btn gh" data-pl="'+i+'"'+(REC[i]?'':' disabled')+'>▶ اسمعي تسجيلكِ</button><span class="muted" id="rm'+i+'"></span></div>':'')+'</div>'});
+ if(recSupported())h+='<div class="card c muted">التسجيل يبقى في جهازكِ فقط ولا يُرسَل لأحد. اسمعي الصوت النموذجي 🔊 ثم تسجيلكِ وقارني.</div>';
+ app.innerHTML=h;
+ var q=function(sel,f){var l=app.querySelectorAll(sel);for(var i=0;i<l.length;i++)(function(x){x.onclick=function(){f(x)}})(l[i])};
+ q('[data-s]',function(x){sSlow(+x.getAttribute('data-s'))});q('[data-n]',function(x){sNorm(+x.getAttribute('data-n'))});
+ var cs=app.querySelectorAll('[data-c]');for(var i=0;i<cs.length;i++)(function(c){c.onchange=function(){P[c.getAttribute('data-c')]=c.checked;sv();if(c.checked)fx('pop');V.sheet()}})(cs[i]);
+ q('[data-pl]',function(x){var i=+x.getAttribute('data-pl');if(REC[i]){try{if(cur)cur.pause()}catch(e){}new Audio(REC[i]).play()}});
+ q('[data-r]',function(x){var i=+x.getAttribute('data-r'),em=$('#rm'+i);
+  if(MR&&MR.state==='recording'){MR.stop();return}
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(st){MS=st;var ch=[];MR=new MediaRecorder(st);MR.ondataavailable=function(e){if(e.data.size)ch.push(e.data)};
+   MR.onstop=function(){st.getTracks().forEach(function(t){t.stop()});REC[i]=URL.createObjectURL(new Blob(ch,{type:MR.mimeType||'audio/mp4'}));x.textContent='🎙 سجّلي صوتكِ';var b=app.querySelector('[data-pl="'+i+'"]');if(b)b.disabled=false;if(em)em.textContent=' ✅ تم التسجيل'};
+   MR.start();x.textContent='⏹ إيقاف';if(em)em.textContent=' ... جاري التسجيل، قولي الجملة'}).catch(function(){if(em)em.textContent=' لم يُسمح باستخدام المايكروفون'})});
+};
 /* ---- الأغنية ---- */
 var CUE=[[3.3,"I live with parents.",0],[6.0,"I wake up at six o'clock.",0],[9.8,"I brush my teeth then I eat my breakfast.",0],[13.9,"I walk to school.",0],[15.9,"Six-seven! Six-seven! My Family Routine!",1],[21.2,"Say it slow, say it loud, shine, shine, shine!",1],[25.4,"I help my mom.",0],[30.0,"I set the table for lunch and take out the trash.",0],[34.6,"I go to sleep at nine o'clock.",0],[40.2,"Six-seven! Six-seven! My Family Routine!",1],[45.8,"Say it slow, say it loud, shine, shine, shine!",1],[50.4,"Shine, shine, shine.",1]];
 var TI=null;
