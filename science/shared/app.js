@@ -176,15 +176,19 @@ const PL=[
  ['planet:fill','أكملي','الكلمة الصحيحة','gem'],
  ['lab','الخلية 3D','فكّكي الخلية وركّبيها','bag']];
 const TIPS=['اقرئي السؤال ببطء مرتين قبل أن تختاري الإجابة.','إذا أخطأتِ فلا بأس؛ اقرئي الشرح الذي يظهر، فهو يعلّمك الصواب.','ابدئي بالمفردات؛ فهي مفتاح فهم الدرس.','انظري إلى الصورة جيدًا، فهي تساعدك على الإجابة.','العبي كل يوم قليلًا، فالتكرار يثبّت المعلومة بإذن الله.'];
+function progCard(){return P==='nadeen'?`<div class="card center" style="background:#e9fbe9;border:4px solid #34c25a"><button class="btn" id="spM" style="background:#34c25a">📤 أرسلي تقدمي لمها</button><p class="muted" id="spS" style="margin:6px 0 0">يصل ملخص نتائجكِ إلى المعلمة مها.</p></div>`:''}
+function bindProg(){const b=$('#spM');if(!b)return;b.onclick=async()=>{const hist=LS.get('hist',[]);const last=hist.slice(-5).map(h=>`${h.label.replace(/\s+/g,' ')}: ${h.score}/${h.max}`).join('، ');const txt=`ملخص تقدم ${NAMES[P]} (العلوم): ${hist.length?last:'لا توجد ألعاب بعد'}. عدد الألعاب: ${hist.length}`;
+ const rec={t:'res',p:P,name:NAMES[P],game:'progress',label:txt,score:0,max:0,stars:0};
+ try{const ok=await bus.send(rec);$('#spS').innerHTML=ok?'✅ وصل الملخص للمعلمة مها':`لم يصل تلقائيًا. <a target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(txt)}">أرسليه بالواتساب</a>`}catch(e){$('#spS').innerHTML=`لم يصل تلقائيًا. <a target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(txt)}">أرسليه بالواتساب</a>`}}}
 function home(){setMas('hide');
  const hist=LS.get('hist',[]);const asg=LS.get('assign',null);
  app.innerHTML=`${topbar()}<div class="heroc"><div class="hop avw">${spr([P+'_wave1',P+'_wave2'],150,P)}</div><div class="ht"><h1>أهلًا ${NAMES[P]}!</h1><span class="pill">🔬 مادة العلوم · الصف الرابع</span><span class="pill">اختاري لعبة وابدئي</span><span class="pill">كل نتيجة تصل إلى المعلمة مها</span></div><span class="hb">${spr(['bee_fly1','bee_fly2'],130,'bee')}</span></div><div class="card center" style="margin-top:0;display:none"></div>${asg?`<div class="chip" style="display:inline-block;background:var(--gold);color:#3b2400">📣 المعلمة طلبت: ${esc(asg.label)} <button class="btn gold" id="goA" style="min-height:36px;padding:4px 14px;margin-right:8px">ابدئي</button></div>`:''}</div>
- <div class="grid">${PL.map((p,i)=>`<div class="planet f${i%4}" data-g="${p[0]}"><img class="stk" src="${IMG}${p[3]}.webp" alt=""><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
+ ${progCard()}<div class="grid">${PL.map((p,i)=>`<div class="planet f${i%4}" data-g="${p[0]}"><img class="stk" src="${IMG}${p[3]}.webp" alt=""><b>${p[1]}</b><small>${p[2]}</small></div>`).join('')}</div>
  ${hist.length?`<div class="card"><h3>آخر نتائجك</h3>${hist.slice(-4).reverse().map(h=>`<div class="clue"><b>${h.stars?starRow(h.stars,h.stars,16):'—'}</b><span>${esc(h.label)}: ${h.score}/${h.max}</span></div>`).join('')}</div>`:''}
  <div class="card"><h3>📚 اختبري نفسك على درس</h3><p class="muted" style="margin:0 0 8px">أسئلة من كل درس في الكتاب، مع الشرح بعد كل إجابة.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${(QD.LQ||[]).map(l=>`<button class="btn ghost lq" data-id="${l.id}">${l.title}</button>`).join('')}</div></div>
  <div class="card"><h3>📝 الاختبارات المركزية</h3><p class="muted" style="margin:0 0 8px">ورقة لكل فصل من نماذج الكتاب: أكملي، صحيحة أم خاطئة، اختاري. تظهر النتيجة والمراجعة في النهاية.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${centralPapers().map((p,i)=>`<button class="btn ghost cp" data-i="${i}">اختبار ${p.n}: ${p.title}</button>`).join('')}</div></div>
  ${skyCard()}
- <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();
+ <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();bindProg();
  $$('.planet').forEach(el=>el.onclick=()=>{const [g,k]=el.dataset.g.split(':');if(g==='lab'){location.href='../lab/index.html?p='+P}else GAMES[g].start(k)});
  $$('.cp').forEach(b=>b.onclick=()=>GAMES.central.start(+b.dataset.i));
  $$('.lq').forEach(b=>b.onclick=()=>GAMES.lesson.start(b.dataset.id));
