@@ -69,7 +69,7 @@ function bindTop(){const m=$('#mt');if(m)m.onclick=()=>{muted=!muted;LS.set('mut
 /* أسئلة */
 const KINDS={antonym:'الأضداد',synonym:'المرادفات',irab:'الإعراب',plural:'الجموع',comp:'فهم المقروء',spelling:'الإملاء',grammar:'القواعد'};
 const LKIND={spelling:['imla1','imla2','imla3','imla4'],grammar:['nahw1','nahw4','rasm'],irab:['nahw2','nahw3','nahw5','nahw6'],comprehension:['poem','entry']};
-function lessonItems(id){const L=(QD.LQ||[]).find(x=>x.id===id);return L?L.items.map(x=>({...x,kind:'lesson',pg:L.pg?('ص'+L.pg):''})):[]}
+function lessonItems(id){const L=(QD.LQ||[]).find(x=>x.id===id);return L?L.items.map(x=>({...x,kind:'lesson',lid:id,pg:L.pg?('ص'+L.pg):''})):[]}
 function pool(kind){
  const q=QD.Q.filter(x=>x.kind===kind);const e=QD.EX.filter(x=>x.kind===kind);
  const k2=kind==='comp'?'comprehension':kind;const ls=(LKIND[k2]||[]).flatMap(lessonItems);
@@ -84,7 +84,7 @@ function ask(box,q,done,opts={}){
  $$('.opt',box).forEach(b=>b.onclick=()=>{if(locked)return;locked=true;const i=+b.dataset.i,ok=i===q.a;setMas(ok?'happy':'oops');$$('.opt',box).forEach(x=>{if(+x.dataset.i===q.a)x.classList.add('ok')});if(!ok)b.classList.add('no','shake');
   sfx(ok?'correct':'wrong');
   const src=q.src==='إ'?' · معلومة إضافية':q.pg||q.src_pg||q.p?` · ${q.pg||q.p||('ص'+q.src_pg)}`:'';
-  $('#fb',box).innerHTML=`<div class="why">${ok?'✅ أحسنتِ! ':'❌ الإجابة الصحيحة: <b>'+esc(q.o[q.a])+'</b>. '}${q.w?esc(q.w):''}<span class="muted">${src}</span></div>`;
+  $('#fb',box).innerHTML=`<div class="why">${ok?'✅ أحسنتِ! ':'❌ الإجابة الصحيحة: <b>'+esc(q.o[q.a])+'</b>. '}${q.w?esc(q.w):''}<span class="muted">${src}</span></div>${!ok&&window.BULBS&&q.lid&&window.BULBS[q.lid]?`<div class="why" style="background:#fff8c4;border:3px solid #ffc72c">💡 <b>تذكّري:</b> ${window.BULBS[q.lid].mem}</div>`:''}`;
   setTimeout(()=>done(ok),opts.delay||(ok?1100:2600))})}
 /* اللعبة العامة: كوكب */
 const GAMES={};

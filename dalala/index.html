@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>لغتي الجميلة · الصف الرابع</title>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script src="bulbs.js"></script></head><body><title>لغتي الجميلة · الصف الرابع</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Naskh+Arabic:wght@500;700&family=Tajawal:wght@400;500;700;800&display=swap">
 <style>
@@ -263,7 +263,7 @@ footer{background:#fff6dfcc;border-radius:16px;padding:8px}
   <main id="app"></main>
   <details class="card" id="tGuide" style="margin:14px 0;cursor:pointer"><summary style="font-weight:800">📖 دليل استخدام المعلمة</summary><div style="margin-top:10px;line-height:2">
    <p><b>١) بداية الحصة:</b> افتحي الرابط على الآيباد أو شاشة الفصل. زر «وضع الفصل» في الأعلى يكبّر الخط لتراه الطالبات من بعيد.</p>
-   <p><b>٢) الدروس:</b> اضغطي «افتحي الدرس»، ورقم صفحته في الكتاب مكتوب بجانبه. في كل درس تبويبات: «تعلّمي» للشرح، و«إملاء» للإملاء، و«افهمي المطلوب» لتوضيح صيغ الأسئلة، و«العبي» لأسئلة وألعاب الدرس، و«تحدّي الدرس» أسئلة بمستويات، و«ألعاب مبهرة». وزر 🔊 يقرأ النص بصوت نورة.</p>
+   <p><b>٢) الدروس:</b> اضغطي «افتحي الدرس»، ورقم صفحته في الكتاب مكتوب بجانبه. في كل درس تبويبات: «تعلّمي» للشرح، و«إملاء» للإملاء، و«افهمي المطلوب» لتوضيح صيغ الأسئلة، و«العبي» لأسئلة وألعاب الدرس، و«تحدّي الدرس» أسئلة بمستويات، و«ألعاب مبهرة»، وتبويب «💡 لمبة الواقع» يربط القاعدة بشيء من حياة الطالبة (مثل: المبتدأ يضمّ الخبر كحضن الأم)، ويظهر تذكير منه تحت كل إجابة خاطئة. وزر 🔊 يقرأ النص بصوت نورة.</p>
    <p><b>٣) مجموعات الفصل:</b> اختاري الفصل (رابع 1 أو رابع 2) ثم المجموعة، فيظهر اسمها في أعلى الصفحة، وتسلّمين الآيباد لطالبات المجموعة. «تغيير المجموعة» تعيدك إلى الاختيار. وفي أسفل صفحة المجموعات ثمانية روابط، لكل مجموعة رابط، يمكنك نسخه وإرساله.</p>
    <p><b>٤) مَن ستجيب؟:</b> اختاري الفصل ثم «ابدئي»؛ يمرّ العدّاد على الأسماء ثم يقف على طالبة، ويظهر تحته <b>سؤال لها</b>. اقرئي السؤال بصوت مسموع، واستمعي إلى إجابتها، ثم اضغطي «أظهري الإجابة». وإذا أجابت إجابة صحيحة فاضغطي «أجابت إجابة صحيحة» ليبدأ التصفيق. «📞 الاتصال بصديقة» يجعل الهاتف يرنّ ثم تردّ زميلة: تُختار عشوائيًا مثل العدّاد، أو تختارها الطالبة بنفسها. «سؤال آخر» يغيّر السؤال، ومن القائمة أسفله تختارين درسًا معيّنًا. يُشطب اسم من وقع عليها الاختيار حتى تنال كل طالبة فرصتها، و«إرجاع الكل» يعيد جميع الأسماء.</p>
    <p><b>٥) تحرير الأسماء:</b> اضغطي «✏️ تحرير الأسماء» ثم اضغطي اسمًا لتعديله، أو اتركي الخانة فارغة لحذفه. ولإضافة طالبة اكتبي اسمها وسط «إضافة»، أو الصقي قائمة كاملة في الخانة الكبيرة (اسم في كل سطر). تُحفظ التعديلات على هذا الجهاز فقط.</p>
@@ -509,7 +509,7 @@ function bubble(h){const b=document.createElement('div');b.className='bubble pop
 
 /* ---- التوجيه ---- */
 const app=$('#app');let tab='read';
-function route(){stopVoice();let h=(location.hash||'#home').slice(1);const gm=h.match(/&g=(r[12])-([1-4])$/);if(gm){h=h.slice(0,gm.index)||'home';setGrp(gm[1],+gm[2])}else if(typeof gBanner==='function')gBanner();scrollTo(0,0);
+function route(){window.CURB=null;stopVoice();let h=(location.hash||'#home').slice(1);const gm=h.match(/&g=(r[12])-([1-4])$/);if(gm){h=h.slice(0,gm.index)||'home';setGrp(gm[1],+gm[2])}else if(typeof gBanner==='function')gBanner();scrollTo(0,0);
   if(h==='listen')listenPage();else if(h==='groups')groupsPage();else if(h==='pick')pickPage();else if(h==='lesson')lessonPage();else if(h==='million')millionPage();else if(h.startsWith('central'))centralPage();else if(h.startsWith('L-')){const q=h.slice(2).split('~');if(q[1])window.PRETAB=q[1];genLesson(q[0])}else homePage();
   pruneEars(app)}
 addEventListener('hashchange',route);
@@ -555,7 +555,7 @@ function tRead(p){
 function mcRun(box,items,{shuffleOpts=false,title='',onEnd}={}){
   let i=0,sc=0;items=items.map(q=>{if(!shuffleOpts)return q;const idx=shuf(q.o.map((_,k)=>k));return {...q,o:idx.map(k=>q.o[k]),a:idx.indexOf(q.a)}});
   const draw=()=>{const q=items[i];box.innerHTML=`<div class="dots" aria-hidden="true">${items.map((_,k)=>`<i class="${k<i?'on':''}"></i>`).join('')}</div>${q.html||''}<div class="qtxt">${q.say===false?'':ear(q.say||q.q)}<span>${q.q} ${q.p?`<span class="pg">${typeof q.p==='number'?'ص'+ar(q.p):q.p}</span>`:''}</span></div><div class="opts">${q.o.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('')}</div><div class="fb" aria-live="polite"></div>`;pruneEars(box);
-    let miss=0,done=0;$$('.opt',box).forEach(b=>b.onclick=()=>{if(done)return;if(+b.dataset.k===q.a){done=1;b.classList.add('ok');if(!miss)sc++;$('.fb',box).className='fb ok';$('.fb',box).textContent='👏 أحسنتِ! '+(q.w||'');sfx('yes');setTimeout(()=>{i++;if(i<items.length)draw();else fin()},q.w&&q.w.length>40?2600:1900)}else{miss=1;b.classList.add('no');$('.fb',box).className='fb no';$('.fb',box).textContent='حاولي مرة أخرى';sfx('no');setTimeout(()=>b.classList.remove('no'),400)}})};
+    let miss=0,done=0;$$('.opt',box).forEach(b=>b.onclick=()=>{if(done)return;if(+b.dataset.k===q.a){done=1;b.classList.add('ok');if(!miss)sc++;$('.fb',box).className='fb ok';$('.fb',box).textContent='👏 أحسنتِ! '+(q.w||'');sfx('yes');setTimeout(()=>{i++;if(i<items.length)draw();else fin()},q.w&&q.w.length>40?2600:1900)}else{miss=1;b.classList.add('no');$('.fb',box).className='fb no';$('.fb',box).innerHTML='حاولي مرة أخرى'+(window.CURB?'<br>💡 تذكّري: '+window.CURB.mem:'');sfx('no');setTimeout(()=>b.classList.remove('no'),400)}})};
   const fin=()=>{box.innerHTML=`<div class="center card pop"><h3>${title?title+': ':''}أنهيتِ! ${ar(sc)} من ${ar(items.length)} من أول محاولة</h3><button class="btn sun" id="again">العبي مرة أخرى</button></div>`;if(sc>=Math.ceil(items.length*.6)){confetti(40);sfx('win')}else sfx('yes');$('#again',box).onclick=()=>mcRun(box,items,{shuffleOpts,title,onEnd});if(onEnd)onEnd(sc)};
   draw()}
 function holder(p,h){const d=document.createElement('section');d.className='card game';d.innerHTML=`<h3>${h}</h3><div class="gb game"></div>`;p.appendChild(d);return $('.gb',d)}
@@ -878,14 +878,15 @@ function homePage(){$('#crumb').textContent='لغتي الجميلة';
 let gtab='learn',glesson='';
 function genLesson(id){const L=LBY[id];if(!L){location.hash='home';return}
   if(glesson!==id){glesson=id;gtab='learn'}if(window.PRETAB){gtab=window.PRETAB;window.PRETAB=null}
-  $('#crumb').textContent=L.title;
-  const T=[['learn','تعلّمي']];if((L.wants||[]).length)T.push(['ask','افهمي المطلوب']);if((L.games||[]).length)T.push(['play','العبي']);if((L.million||[]).length>=5)T.push(['mil','تحدّي الدرس']);if(imlaBank(L).length>=5)T.splice(1,0,['imla','إملاء ✍️']);if(funPool(L).length>=4)T.push(['fun','ألعاب مبهرة 🎮']);
+  $('#crumb').textContent=L.title;window.CURB=(window.BULBS&&window.BULBS[id])||null;
+  const T=[['learn','تعلّمي']];if(window.CURB)T.push(['bulb','💡 لمبة الواقع']);if((L.wants||[]).length)T.push(['ask','افهمي المطلوب']);if((L.games||[]).length)T.push(['play','العبي']);if((L.million||[]).length>=5)T.push(['mil','تحدّي الدرس']);if(imlaBank(L).length>=5)T.splice(1,0,['imla','إملاء ✍️']);if(funPool(L).length>=4)T.push(['fun','ألعاب مبهرة 🎮']);
   if(!T.some(t=>t[0]===gtab))gtab='learn';
   app.innerHTML=`<div><h2>${L.title} <span class="pg">ص${L.pg.replace(/^ص/,'')}</span></h2><p class="lead">${L.unit} · الوحدة الأولى</p></div>
   <div class="tabs" role="tablist">${T.map(t=>`<button role="tab" data-t="${t[0]}" aria-selected="${t[0]===gtab}">${t[1]}</button>`).join('')}</div><div id="pane" class="game"></div>`;
-  const draw=()=>{stopVoice();const p=$('#pane');p.innerHTML='';({learn:gLearn,ask:gAsk,play:gPlay,mil:gMil,imla:gImla,fun:gFun})[gtab](p,L);pruneEars(p)};
+  const draw=()=>{stopVoice();const p=$('#pane');p.innerHTML='';({learn:gLearn,bulb:gBulb,ask:gAsk,play:gPlay,mil:gMil,imla:gImla,fun:gFun})[gtab](p,L);pruneEars(p)};
   $$('.tabs button').forEach(b=>b.onclick=()=>{gtab=b.dataset.t;$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));draw();scrollTo(0,0)});
   draw()}
+function gBulb(p,L){const B=window.CURB;if(!B)return;p.innerHTML=`<div class="card" style="text-align:center;background:linear-gradient(180deg,#fff8c4,#ffe27a);border:5px solid #ffc72c"><div style="font-size:4.5rem;filter:drop-shadow(0 0 16px #ffd54a)">💡</div><h3 style="margin:0;font-size:1.7rem">${B.t}</h3><p class="lt" style="font-size:1.2rem">${B.big}</p><span class="pg">ص${B.pg.replace(/^ص/,'')}</span></div>${B.steps.map(x=>`<div class="card" style="display:flex;gap:12px;align-items:flex-start"><div style="font-size:2.4rem">${x[0]}</div><div><h3 style="margin:0">${x[1]}</h3><p class="lt" style="margin:2px 0">${x[2]}</p></div></div>`).join('')}<div class="card" style="text-align:center;background:#d9f7d9;border:4px solid #34c25a"><b>للحفظ:</b><div style="font-size:1.4rem;font-weight:800">${B.mem}</div></div>`}
 function gLearn(p,L){
   if(L.intro)p.innerHTML+=`<div class="tip qtxt">${ear(L.intro)}<span>${L.intro}</span></div>`;
   (L.learn||[]).forEach(c=>{p.innerHTML+=`<div class="card learn"><div class="lh"><h3>${c.h||''} ${c.p?`<span class="pg">${c.p}</span>`:''}${c.src==='إ'?' <span class="pg" style="background:var(--sun-t);color:#7a5200">معلومة إضافية</span>':''}</h3>${ear(D.cardSay(c))}</div><p class="lt">${c.t}</p>${(c.ex||[]).length?`<div class="exs">${c.ex.map(e=>`<span class="exc">${e}</span>`).join('')}</div>`:''}</div>`});
