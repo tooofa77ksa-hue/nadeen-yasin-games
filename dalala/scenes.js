@@ -58,7 +58,7 @@ window.renderScene=function(el,id,o){var S=window.SCENES[id];if(!S)return;o=o||{
   if(s.mk){(Array.isArray(s.mk)?s.mk:[s.mk]).forEach(function(i){var e=el.querySelector('#sw'+i);if(!e)return;var t=sent[i],L=t.length;e.innerHTML=t.slice(0,L-2).replace(/</g,'&lt;')+'<span class="mk">'+t.slice(L-2)+'</span>';var lb=document.createElement('div');lb.className='lab';lb.textContent=s.anim==='tent'?'فتحة ⛺':(s.anim==='pull'?'كسرة 🏺':(s.anim==='hug'?'ضمة 🤗':'العلامة'));e.appendChild(lb)})}
   var ex=el.querySelector('#ex');ex.innerHTML='';if(s.card){var C={what:0};s.card.forEach(function(i){ex.innerHTML+='<div class="cardx">🪪 <b>'+sent[i]+'</b></div>'})}
   var a=s.anim;if(a==='hug'){fly('heart','🤗');fly('heart','❤️');el.querySelector('.scn').classList.add('hugA');if(o.sfx)o.sfx('correct')}
-  if(a==='kick'){fly('kick','⚽')}if(a==='run'){fly('runr','🏃‍♀️')}if(a==='rope'||a==='pull'){fly('rope','🪢')}if(a==='tent'){fly('tentf','⛺')}if(a==='whistle'){fly('whis','📣');if(o.sfx)o.sfx('whistle')}
+  if(a==='kick'){fly('kick','⚽')}if(a==='run'){fly('runr','🏃‍♀️')}if(a==='rope'||a==='pull'){fly('rope','🪢')}if(a==='tent'){fly('tentf','⛺')}if(a==='whistle'){fly('whis','📣');if(o.sfx)o.sfx('cheer')}
   if(a==='bob'){var p2=el.querySelector('#pic');if(p2){p2.style.transition='transform .4s';p2.style.transform='scale(1.04)';setTimeout(function(){p2.style.transform=''},500)}}
   if(a==='kick'&&o.sfx)setTimeout(function(){o.sfx('pop')},900)
  }

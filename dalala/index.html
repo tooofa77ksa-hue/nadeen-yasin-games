@@ -869,10 +869,11 @@ function homePage(){$('#crumb').textContent='لغتي الجميلة';
   <button class="big" data-go="pick"><img class="ic stk" src="assets/magnifier.webp" alt=""><span><b>مَن ستجيب؟</b><small>عدّاد يمشي ويقف على اسم طالبة، ثم سؤال لها</small></span></button>
   <button class="big" data-go="central"><img class="ic stk" src="assets/trophy.webp" alt=""><span><b>الاختبارات المركزية</b><small>سبع أوراق بنمط الاختبار، تُصحَّح دفعة واحدة</small></span></button>
   <button class="big" onclick="location.href='board/'"><img class="ic stk" src="assets/trophy.webp" alt=""><span><b>لوحة المسابقة</b><small>تظهر هنا نتائج المجموعات والفائزة بالكأس لحظة بلحظة</small></span></button>
+  <button class="big" id="goI"><span style="font-size:2.4rem">🧭</span><span><b>ركن الإعراب بالواقع</b><small>وش معنى إعراب؟ المبتدأ والخبر والفاعل والمفعول به والمجرور والأفعال، بأمثلة من النادي والفصل</small></span></button>
   <button class="big" id="goM"><img class="ic stk" src="assets/star.webp" alt=""><span><b>من سيربح مليون نجمة؟</b><small>أسئلة من كل الدروس، العبي وحدك أو مع صاحبتك</small></span></button>
   <section class="units"><h2>الوحدة الأولى: صحتي وبيئتي</h2>${SECTIONS.map(s=>`<div class="sec"><h3>${ICO[s.u]?`<img class="stk" src="assets/${ICO[s.u]}.webp" alt="">`:''}${s.u}</h3>${s.items.map(row).join('')}</div>`).join('')}</section>
   <p class="lead">الدروس من كتاب لغتي الجميلة (١٤٤٨) وأوراق العمل، وعلى كل درس رقم صفحته في الكتاب.</p>`;
-  $('#goM').onclick=()=>{window.MSEL='all';location.hash='million'};$('#goI').onclick=()=>{location.hash='irab'};
+  $('#goM').onclick=()=>{window.MSEL='all';location.hash='million'};if($('#goI'))$('#goI').onclick=()=>{location.hash='irab'};
   $$('[data-go]').forEach(b=>b.onclick=()=>{location.hash=b.dataset.go})}
 
 function irabPage(){$('#crumb').textContent='ركن الإعراب';const O=window.SCENE_ORDER||[];
