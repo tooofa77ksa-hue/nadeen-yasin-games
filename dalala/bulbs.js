@@ -147,7 +147,7 @@ window.bulbCWList=function(B){var e=B&&B.en;if(!e)return [];var L=[];e.w.forEach
 
 window.BULB_IMG=window.BULB_IMG||'../shared/img/bulb/';
 window.BULB_PICS={nahw2:{0:'hug'},nahw3:{0:'horse',1:'jar'},harakat:{0:'hug',1:'tent',2:'jar'},nahw6:{1:'tent'},imla1:{0:'bread',1:'charger'},imla4:{0:'sugar'}};
-window.stepImg=function(id,i){var p=window.BULB_PICS&&window.BULB_PICS[id]&&window.BULB_PICS[id][i];return p?'<img src="'+window.BULB_IMG+p+'.webp" alt="" loading="lazy" style="width:100%;max-width:300px;border-radius:16px;display:block;margin:6px auto 0" onerror="this.style.display=\'none\'">':''};
+window.stepImg=function(id,i){var p=window.BULB_PICS&&window.BULB_PICS[id]&&window.BULB_PICS[id][i];if(p&&window.BULB_PRE==='f_')p=p.replace(/^c_/,'f_');return p?'<img src="'+window.BULB_IMG+p+'.webp" alt="" loading="lazy" style="width:100%;max-width:300px;border-radius:16px;display:block;margin:6px auto 0" onerror="this.style.display=\'none\'">':''};
 /* الإعراب بالواقع: لمبة مستقلة، وخطوة إعراب في كل درس نحو */
 (function(B){
 B.irab={n:'كَيْفَ أُعْرِبُ؟',t:'الإِعْرَابُ بِطَاقَةُ هَوِيَّةٍ لِلْكَلِمَةِ!',pg:'ص٨٢ وَص٨٩',

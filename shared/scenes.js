@@ -3,9 +3,11 @@
 window.SCENES={
 what:{t:'وَشْ مَعْنَى إِعْرَابٍ؟',img:'classroom',sent:['السَّبُّورَةُ','نَظِيفَةٌ'],steps:[
  {x:'كَلِمَةُ «إِعْرَابٍ» مَعْنَاهَا فِي اللُّغَةِ: إِيضَاحٌ وَبَيَانٌ. مِنْ «أَعْرَبَ»: أَوْضَحَ وَبَيَّنَ.',w:1},
- {x:'وَبِالعَامِّيَّةِ: نَسْأَلُ كُلَّ كَلِمَةٍ فِي الجُمْلَةِ: وَشْ شُغْلَتُكِ هُنَا؟ وَإِيشْ لِبَاسُكِ؟',hl:[0,1]},
- {x:'مِثْلُ بِطَاقَةِ لَاعِبَةٍ فِي النَّادِي: اسْمُهَا وَدَوْرُهَا (حَارِسَةٌ؟ مُهَاجِمَةٌ؟) وَزِيُّهَا. وَالكَلِمَةُ لَهَا بِطَاقَةٌ مِنْ ثَلَاثِ خَانَاتٍ: الدَّوْرُ، الحَالَةُ، العَلَامَةُ.',card:[0]},
- {x:'«السَّبُّورَةُ»: دَوْرُهَا مُبْتَدَأٌ، حَالَتُهَا مَرْفُوعٌ، وَلِبَاسُهَا الضَّمَّةُ.',card:[0],mk:0,anim:'bob'}]},
+ {x:'وَبِالعَامِّيَّةِ: الإِعْرَابُ يَعْنِي وَشْ شُغْلَةُ الكَلِمَةِ؟ وَشْ وَظِيفَتُهَا فِي الجُمْلَةِ؟',hl:[0,1],tag:'الإِعْرَابُ = وَظِيفَةُ الكَلِمَةِ'},
+ {x:'مِثْلُ النَّاسِ: أَنْتِ وَظِيفَتُكِ طَالِبَةٌ، وَالمُعَلِّمَةُ وَظِيفَتُهَا تُعَلِّمُ، وَالمُدَرِّبَةُ تُدَرِّبُ، وَاللَّاعِبَةُ تَلْعَبُ. كُلُّ وَاحِدٍ لَهُ وَظِيفَةٌ، وَكَذَلِكَ كُلُّ كَلِمَةٍ فِي الجُمْلَةِ لَهَا وَظِيفَةٌ: مُبْتَدَأٌ، خَبَرٌ، فَاعِلٌ، مَفْعُولٌ بِهِ، مَجْرُورٌ.',img:'team_hug',anim:'bob'},
+ {x:'وَفِي رُوبْلُوكْسَ: كُلُّ لَاعِبٍ لَهُ وَظِيفَةٌ (شُرْطِيٌّ، طَبِيبٌ، سَائِقٌ) وَلَهُ زِيٌّ يَلْبَسُهُ حَسَبَ وَظِيفَتِهِ. وَالكَلِمَةُ كَذَلِكَ: لَهَا وَظِيفَةٌ وَلَهَا لِبَاسٌ، وَلِبَاسُهَا هُوَ الحَرَكَةُ عَلَى آخِرِهَا.',imgK:'nadeen_happy',anim:'bob'},
+ {x:'يَاسِينُ يَلْعَبُ وَنَادِينُ تَكْتُبُ: كُلُّ وَاحِدٍ وَظِيفَتُهُ، وَالكَلِمَةُ لَهَا بِطَاقَةٌ: وَظِيفَتُهَا (الدَّوْرُ)، وَحَالَتُهَا، وَلِبَاسُهَا (العَلَامَةُ).',imgK:'yasin_happy',img:'classroom',card:[0]},
+ {x:'«السَّبُّورَةُ»: وَظِيفَتُهَا مُبْتَدَأٌ، حَالَتُهَا مَرْفُوعٌ، وَلِبَاسُهَا الضَّمَّةُ.',img:'classroom',card:[0],mk:0,anim:'bob'}]},
 nahw2:{t:'المُبْتَدَأُ وَالخَبَرُ وَالضَّمَّةُ',img:'team_hug',sent:['السَّبُّورَةُ','نَظِيفَةٌ'],steps:[
  {x:'اقْرَئِي: «السَّبُّورَةُ نَظِيفَةٌ». عَنْ مَاذَا نَتَكَلَّمُ؟ عَنِ السَّبُّورَةِ.',w:1,hl:[0],tag:'مُبْتَدَأٌ: الِاسْمُ الَّذِي نَبْدَأُ بِهِ'},
  {x:'ثُمَّ قُلْنَا عَنْهَا شَيْئًا يُكْمِلُ المَعْنَى: «نَظِيفَةٌ».',hl:[1],tag:'خَبَرٌ: يُكْمِلُ المَعْنَى'},
@@ -46,8 +48,8 @@ window.renderScene=function(el,id,o){var S=window.SCENES[id];if(!S)return;o=o||{
  function type(i,txt){var e=el.querySelector('#sw'+i);if(!e)return;e.textContent='';var k=0;clearInterval(timer);timer=setInterval(function(){e.textContent=txt.slice(0,++k);if(o.sfx&&k%2===0)o.sfx('tick');if(k>=txt.length)clearInterval(timer)},70)}
  function fly(cls,emo){var stg=el.querySelector('#stg');var d=document.createElement('div');d.className='fl '+cls;d.textContent=emo;stg.appendChild(d);setTimeout(function(){if(d.parentNode)d.parentNode.removeChild(d)},5000)}
  function next(){step++;if(step>=S.steps.length){step=S.steps.length-1;if(o.sfx)o.sfx('clap');el.querySelector('#nx').textContent='✅ أحسنتِ!';return}
-  var s=S.steps[step];if(s.sent){sent=s.sent;img=s.img||img}else if(s.img){img=s.img}
-  if(s.sent||s.img){var wd=el.querySelector('#wd');wd.innerHTML=words();var p=el.querySelector('#pic');if(p){p.style.display='';p.src=base+pre+img+'.webp'}fill()}
+  var s=S.steps[step];if(s.sent){sent=s.sent;img=s.img||img}else if(s.img){img=s.img}if(o.kid&&s.imgK){img=s.imgK}
+  if(s.sent||s.img||(o.kid&&s.imgK)){var wd=el.querySelector('#wd');wd.innerHTML=words();var p=el.querySelector('#pic');if(p){p.style.display='';p.src=base+pre+img+'.webp'}fill()}
   el.querySelector('#nx').textContent=step===S.steps.length-1?'✅ تمّ':'التالي ←';
   el.querySelector('#sy').textContent=s.x;
   sent.forEach(function(w,i){var e=el.querySelector('#sw'+i);if(!e)return;e.classList.toggle('on',(s.hl||[]).indexOf(i)>=0);var old=e.querySelector('.lab');if(old)e.removeChild(old)});

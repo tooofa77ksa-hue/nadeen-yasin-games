@@ -255,7 +255,7 @@ GAMES.irab={start(){const D=window.IRAB||[];const S=pick(D,4);let i=0,sc=0,tot=0
 GAMES.scene={start(id){const sc=window.SCENES&&window.SCENES[id];if(!sc)return GAMES.irabhub.start();
  app.innerHTML=`${topbar()}<div id="scnbox" class="card"></div><div class="center" style="margin:10px 0"><button class="btn ghost" id="bk">↩ ركن الإعراب</button> <button class="btn gold" id="gm">🪪 بطاقة هوية الكلمة</button></div>`;bindTop();
  const sf=n=>{try{const a=new Audio('../shared/sfx/'+n+'.mp3');a.volume=.5;a.play().catch(()=>{})}catch(e){}};
- window.renderScene($('#scnbox'),id,{imgBase:'../shared/img/scn/',imgPre:'c_',sfx:sf});$('#bk').onclick=()=>GAMES.irabhub.start();$('#gm').onclick=()=>GAMES.irab.start()}};
+ window.renderScene($('#scnbox'),id,{imgBase:'../shared/img/scn/',imgPre:'c_',sfx:sf,kid:true});$('#bk').onclick=()=>GAMES.irabhub.start();$('#gm').onclick=()=>GAMES.irab.start()}};
 GAMES.irabhub={start(){const O=window.SCENE_ORDER||[];
  app.innerHTML=`${topbar()}<div class="card center" style="background:linear-gradient(135deg,#fff8c4,#e6f0ff);border:5px solid #3d7bff"><h2 style="margin:0">🧭 ركن الإعراب</h2><p>الإعراب: نوضّح لكل كلمة دورها ولباسها، مثل بطاقة اللاعبة في النادي.</p></div>${O.map((k,i)=>`<div class="card" style="display:flex;align-items:center;justify-content:space-between"><b>${i+1}. ${window.SCENES[k].t}</b><button class="btn" data-sc="${k}">ابدئي</button></div>`).join('')}<div class="card center"><button class="btn gold" id="gm">🪪 بطاقة هوية الكلمة (تدريب)</button></div>`;bindTop();
  $$('[data-sc]').forEach(b=>b.onclick=()=>GAMES.scene.start(b.dataset.sc));$('#gm').onclick=()=>GAMES.irab.start()}};
