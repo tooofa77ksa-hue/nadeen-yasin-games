@@ -336,5 +336,5 @@ function home(){setMas('hide');
  $$('.lq').forEach(b=>b.onclick=()=>GAMES.lesson.start(b.dataset.id));
  const a=$('#goA');if(a)a.onclick=()=>{LS.set('assign',null);const [g,k]=asg.game.split(':');GAMES[g].start(k)}}
 window.GAMES=GAMES;window.home=home;window.NYG={CFG,bus,LS,NAMES,esc,avatar,alienSvg,confetti,topbar,bindTop,sfx,toast,QD,$,$$};
-if(P!=='maha'){home();bus.listen(m=>{if(m.t==='assign'&&(m.to===P||m.to==='both')){LS.set('assign',m);toast('📣 رسالة من المعلمة مها');if($('.grid')&&$('h1'))home()}})}
+if(P!=='maha'){home();try{const go=new URLSearchParams(location.search).get('go');if(go){const [k,v]=go.split(':');setTimeout(()=>{try{if(k==='ls')GAMES.lessonhub.start(v);else if(k==='bulb')GAMES.bulb.start(v,home);else if(k==='rl')GAMES.bulb.start(v,()=>GAMES.review.start());else if(k==='rv')GAMES.review.start(v);else if(k==='fatra')GAMES.fatra.start();else if(k==='irab')GAMES.irabhub.start()}catch(e){}},300)}}catch(e){}bus.listen(m=>{if(m.t==='assign'&&(m.to===P||m.to==='both')){LS.set('assign',m);toast('📣 رسالة من المعلمة مها');if($('.grid')&&$('h1'))home()}})}
 })();
