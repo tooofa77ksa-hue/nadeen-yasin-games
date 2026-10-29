@@ -1,3 +1,8 @@
+@font-face{font-family:'Baloo Bhaijaan 2';font-weight:400;font-display:swap;src:url('fonts/Baloo-Regular.ttf') format('truetype')}
+@font-face{font-family:'Baloo Bhaijaan 2';font-weight:500;font-display:swap;src:url('fonts/Baloo-Medium.ttf') format('truetype')}
+@font-face{font-family:'Baloo Bhaijaan 2';font-weight:600;font-display:swap;src:url('fonts/Baloo-SemiBold.ttf') format('truetype')}
+@font-face{font-family:'Baloo Bhaijaan 2';font-weight:700;font-display:swap;src:url('fonts/Baloo-Bold.ttf') format('truetype')}
+@font-face{font-family:'Baloo Bhaijaan 2';font-weight:800;font-display:swap;src:url('fonts/Baloo-ExtraBold.ttf') format('truetype')}
 /* ملعب نادين وياسين: أسلوب مجسّمات الصلصال (إطار أصفر، حقول ملوّنة، ملصقات بحافة بيضاء) */
 :root{--bg:#ffc72c;--card:#fff;--ink:#2b1b10;--mut:#6a4a26;--gold:#ffd54a;--ok:#34c25a;--bad:#ff6b4a;--ac:#ff8bb8;--ac2:#b87bff;--line:#2b1b10;--r:18px;--f1:#ff8a1f;--f2:#3d7bff;--f3:#34c25a;--f4:#c9ee2b}
 body.yasin{--ac:#ff5a4d;--ac2:#3d7bff}
@@ -5,9 +10,9 @@ body.maha{--ac:#ff8a1f;--ac2:#3d7bff}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%}
 html{background:#ffc72c}
-body{font:400 17px/1.7 'Tajawal',system-ui,sans-serif;color:var(--ink);background-color:var(--bg);background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .5  0 0 0 0 .35  0 0 0 0 0  0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");direction:rtl;overflow-x:hidden}
+body{font:400 17px/1.7 'Baloo Bhaijaan 2',system-ui,sans-serif;color:var(--ink);background-color:var(--bg);background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .5  0 0 0 0 .35  0 0 0 0 0  0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");direction:rtl;overflow-x:hidden}
 #app{position:relative;max-width:1060px;margin:0 auto;padding:12px 16px 80px}
-h1,h2,h3{font-family:'Lalezar','Tajawal',sans-serif;font-weight:400;margin:.2em 0;letter-spacing:.2px;color:var(--ink)}
+h1,h2,h3{font-family:'Baloo Bhaijaan 2',sans-serif;font-weight:800;margin:.2em 0;letter-spacing:.2px;color:var(--ink)}
 h1{font-size:2.3rem}h2{font-size:1.7rem}h3{font-size:1.3rem}
 .stk{filter:drop-shadow(0 6px 4px #0003)}
 .av{display:block;filter:drop-shadow(0 6px 4px #0003)}
@@ -17,7 +22,7 @@ h1{font-size:2.3rem}h2{font-size:1.7rem}h3{font-size:1.3rem}
 .chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .chip{background:#ffe08a;color:var(--ink);border:3px solid var(--ink);padding:2px 12px;border-radius:99px;font-weight:800;box-shadow:0 3px 0 var(--ink);display:inline-flex;gap:6px;align-items:center}
 .card{background:#fff;border:0;border-radius:var(--r);padding:18px;box-shadow:0 7px 0 #0002;margin:14px 0;color:var(--ink)}
-.btn{font:800 1.05rem 'Tajawal',sans-serif;color:#fff;background:var(--f2);border:3px solid #fff;border-radius:999px;padding:11px 22px;min-height:48px;cursor:pointer;box-shadow:0 6px 0 #1f4fc0,0 8px 0 #0002;transition:transform .12s}
+.btn{font:800 1.05rem 'Baloo Bhaijaan 2',sans-serif;color:#fff;background:var(--f2);border:3px solid #fff;border-radius:999px;padding:11px 22px;min-height:48px;cursor:pointer;box-shadow:0 6px 0 #1f4fc0,0 8px 0 #0002;transition:transform .12s}
 .btn:active{transform:translateY(3px)}
 .btn.ghost{background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:0 5px 0 var(--ink)}
 .btn.gold{background:#ffb02e;color:var(--ink);box-shadow:0 6px 0 #c47d0a,0 8px 0 #0002}
@@ -42,13 +47,13 @@ h1{font-size:2.3rem}h2{font-size:1.7rem}h3{font-size:1.3rem}
 .planet:active{transform:translateY(3px)}
 .planet .stk{width:104px;height:104px;object-fit:contain;animation:bob 4s ease-in-out infinite;margin-bottom:6px}
 .planet:nth-child(2n) .stk{animation-delay:.7s}.planet:nth-child(3n) .stk{animation-delay:1.3s}
-.planet b{font:400 1.35rem/1.2 'Lalezar';background:#fff;border-radius:16px;padding:4px 14px;box-shadow:0 4px 0 #0002;display:block}
+.planet b{font:400 1.35rem/1.2 'Baloo Bhaijaan 2';background:#fff;border-radius:16px;padding:4px 14px;box-shadow:0 4px 0 #0002;display:block}
 .planet small{background:#fff9;border-radius:99px;padding:0 10px;color:var(--ink);font-weight:700;margin-top:4px}
 /* الأسئلة */
-.q{font:500 1.3rem/2.1 'Noto Naskh Arabic','Tajawal',serif;color:var(--ink)}
-.pass{background:#fff6d6;border:3px dashed var(--ink);padding:12px 16px;border-radius:14px;font:500 1.34rem/2.4 'Noto Naskh Arabic',serif;max-height:270px;overflow:auto;white-space:pre-wrap}
+.q{font:500 1.3rem/2.1 'Baloo Bhaijaan 2','Baloo Bhaijaan 2',serif;color:var(--ink)}
+.pass{background:#fff6d6;border:3px dashed var(--ink);padding:12px 16px;border-radius:14px;font:500 1.34rem/2.4 'Baloo Bhaijaan 2',serif;max-height:270px;overflow:auto;white-space:pre-wrap}
 .opts{display:grid;gap:12px;margin-top:10px}
-.opt{font:500 1.15rem/1.7 'Noto Naskh Arabic','Tajawal',serif;text-align:right;color:var(--ink);background:#fff;border:0;border-radius:18px;padding:12px 16px;min-height:56px;cursor:pointer;box-shadow:0 6px 0 #0002;border-inline-start:14px solid var(--f1);transition:.15s}
+.opt{font:500 1.15rem/1.7 'Baloo Bhaijaan 2','Baloo Bhaijaan 2',serif;text-align:right;color:var(--ink);background:#fff;border:0;border-radius:18px;padding:12px 16px;min-height:56px;cursor:pointer;box-shadow:0 6px 0 #0002;border-inline-start:14px solid var(--f1);transition:.15s}
 .opts .opt:nth-child(4n+2){border-inline-start-color:var(--f2)}.opts .opt:nth-child(4n+3){border-inline-start-color:var(--f3)}.opts .opt:nth-child(4n){border-inline-start-color:var(--f4)}
 .opt:active{transform:translateY(3px)}
 .opt.ok{background:#bff0cc;box-shadow:0 0 0 4px var(--ok),0 6px 0 #0002}
@@ -73,7 +78,7 @@ h1{font-size:2.3rem}h2{font-size:1.7rem}h3{font-size:1.3rem}
 .ptr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:36px solid var(--ink);z-index:2}
 .cw{display:inline-grid;gap:3px;direction:ltr;margin:6px}
 .cw .c{width:var(--cs,38px);height:var(--cs,38px);position:relative}
-.cw input{width:100%;height:100%;text-align:center;font:700 calc(var(--cs,38px)*.55) 'Noto Naskh Arabic',serif;border:3px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);padding:0;direction:rtl}
+.cw input{width:100%;height:100%;text-align:center;font:700 calc(var(--cs,38px)*.55) 'Baloo Bhaijaan 2',serif;border:3px solid var(--ink);border-radius:8px;background:#fff;color:var(--ink);padding:0;direction:rtl}
 .cw input.good{background:#bff0cc}.cw input.bad{background:#ffd0c6}
 .cw .n{position:absolute;top:1px;right:4px;font-size:.6rem;color:#555;pointer-events:none}
 .cw .e{width:var(--cs,38px);height:var(--cs,38px)}
@@ -90,7 +95,7 @@ h1{font-size:2.3rem}h2{font-size:1.7rem}h3{font-size:1.3rem}
 .rankbar i{display:block;height:100%;background:linear-gradient(90deg,#ffd54a,#ff8a1f)}
 details.card summary{font-weight:800;cursor:pointer}
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#fff;color:var(--ink);border:3px solid var(--ink);padding:8px 18px;border-radius:99px;z-index:20;font-weight:800;box-shadow:0 5px 0 #0003}
-textarea,input[type=text]{font:600 1rem 'Tajawal';padding:10px 12px;border-radius:12px;border:3px solid var(--ink);background:#fff;color:var(--ink);width:100%}
+textarea,input[type=text]{font:600 1rem 'Baloo Bhaijaan 2';padding:10px 12px;border-radius:12px;border:3px solid var(--ink);background:#fff;color:var(--ink);width:100%}
 select.chip{font:inherit;color:var(--ink)}
 table.t{width:100%;border-collapse:collapse}
 table.t td,table.t th{padding:8px 10px;border-bottom:2px dashed #e9c866;text-align:right}
@@ -108,23 +113,23 @@ a.btn{display:inline-block;text-decoration:none}
  body.pr-cert #app>.cert-print{display:block!important}
  body.pr-rep #app>.rep-print{display:block!important}
  @page{size:A4 landscape;margin:0}
- .cert{display:block!important;page-break-after:always;break-after:page;width:297mm;height:209mm;overflow:hidden;box-sizing:border-box;padding:9mm;background:#ffc72c;color:#2b1b10;font-family:'Tajawal',sans-serif}
+ .cert{display:block!important;page-break-after:always;break-after:page;width:297mm;height:209mm;overflow:hidden;box-sizing:border-box;padding:9mm;background:#ffc72c;color:#2b1b10;font-family:'Baloo Bhaijaan 2',sans-serif}
  .cert-print .cert:last-child{page-break-after:auto;break-after:auto}
  .cert .paper{position:relative;width:100%;height:100%;box-sizing:border-box;background:#fff;border-radius:8mm;border:2.5mm dashed #ff8a1f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8mm 62mm;text-align:center}
- .cert h1{font-family:'Lalezar';font-size:46pt;margin:0 0 3mm;color:#ff8a1f;text-shadow:2px 0 0 #2b1b10,-2px 0 0 #2b1b10,0 2px 0 #2b1b10,0 -2px 0 #2b1b10}
- .cert .nm{font-family:'Lalezar';font-size:50pt;color:#3d7bff;margin:4mm 0}
+ .cert h1{font-family:'Baloo Bhaijaan 2';font-size:46pt;margin:0 0 3mm;color:#ff8a1f;text-shadow:2px 0 0 #2b1b10,-2px 0 0 #2b1b10,0 2px 0 #2b1b10,0 -2px 0 #2b1b10}
+ .cert .nm{font-family:'Baloo Bhaijaan 2';font-size:50pt;color:#3d7bff;margin:4mm 0}
  .cert p{font-size:18pt;margin:2mm 0;line-height:1.8}
  .cert .sig{display:flex;justify-content:space-between;gap:12mm;width:100%;margin-top:8mm;font-size:14pt;font-weight:700}
  .cert .cs{position:absolute;filter:drop-shadow(0 2mm 2mm #0003)}
  .cert .cs1{left:12mm;bottom:10mm;width:46mm}.cert .cs2{right:14mm;top:12mm;width:36mm}.cert .cs3{left:16mm;top:14mm;width:28mm}.cert .cs4{right:16mm;bottom:12mm;width:32mm}
- .rep{width:297mm;height:209mm;box-sizing:border-box;padding:9mm;background:#ffc72c;font-family:'Tajawal',sans-serif;color:#2b1b10}
+ .rep{width:297mm;height:209mm;box-sizing:border-box;padding:9mm;background:#ffc72c;font-family:'Baloo Bhaijaan 2',sans-serif;color:#2b1b10}
  .rep .sheet{height:100%;box-sizing:border-box;background:#fff;border-radius:7mm;padding:8mm 12mm;position:relative}
- .rep h1{font-family:'Lalezar';font-size:28pt;margin:0;color:#ff8a1f;text-shadow:1.5px 0 0 #2b1b10,-1.5px 0 0 #2b1b10,0 1.5px 0 #2b1b10,0 -1.5px 0 #2b1b10}
+ .rep h1{font-family:'Baloo Bhaijaan 2';font-size:28pt;margin:0;color:#ff8a1f;text-shadow:1.5px 0 0 #2b1b10,-1.5px 0 0 #2b1b10,0 1.5px 0 #2b1b10,0 -1.5px 0 #2b1b10}
  .rep .sub{font-size:12pt;margin:1mm 0 4mm}
  .rep .row2{display:flex;gap:8mm;margin-bottom:4mm}
  .rep .box{flex:1;border-radius:5mm;padding:4mm 6mm;color:#2b1b10;border:1.2mm solid #2b1b10}
  .rep .b-n{background:#ffd6ea}.rep .b-y{background:#cfe0ff}
- .rep .box h2{font-family:'Lalezar';font-size:18pt;margin:0}
+ .rep .box h2{font-family:'Baloo Bhaijaan 2';font-size:18pt;margin:0}
  .rep .box .big{font-size:20pt;font-weight:800}
  .rep table{width:100%;border-collapse:collapse;font-size:11pt}
  .rep th{background:#3d7bff;color:#fff;padding:2mm;text-align:right}
