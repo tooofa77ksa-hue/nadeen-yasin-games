@@ -3,7 +3,7 @@ HERE='/tmp/story/'
 LAY=HERE+'lay'; VOX=HERE+'vox'
 TEXT=json.load(open(VOX+'/text.json',encoding='utf-8'))
 COLOR=(255,138,61)
-MARK='إهداءٌ من نادين إلى صديقاتها ومعلّمتها الأستاذة دلال السناني · كتاب لغتي الصف الرابع'
+MARK='تصميم عواطف الجهني · جميع الحقوق محفوظة  |  إهداء من نادين إلى صديقاتها ومعلمتها الأستاذة دلال السناني'
 CH={'past':(214,25,95),'present':(47,123,216),'amr':(26,154,74),'maful':(225,29,72),'harf':(123,69,201),'majrur':(70,70,90)}
 def blend_bg(name2, t_from, t_to):
     def draw(f,d,lt,sc,G):
