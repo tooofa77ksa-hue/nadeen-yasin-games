@@ -37,8 +37,11 @@
 وحرفُ الجرِّ جرّْ… وحرفُ الجرِّ جرّْ!
 
 ────────────────
-وصف الأسلوب للصق في موقع أغاني (Suno أو غيره):
-Cheerful upbeat children's educational song in Arabic, simple catchy melody, clapping rhythm, a group of kids singing together with a lead girl voice, playful, slow clear pronunciation, 100 BPM, major key, no English words.
+وصف الأسلوب للصق في موقع أغاني (Suno أو غيره) — نشيد بالأصوات البشرية والدفوف فقط، بدون موسيقى:
+A cappella children's nasheed in Arabic, human voices only: a group of kids singing together with a lead girl voice, humming and vocal harmonies ("mm", "oh"), hand claps and daf (frame drum) percussion only. NO musical instruments, NO synths, NO guitar, NO piano, NO strings, NO background music. Cheerful, simple catchy melody, slow clear pronunciation, 100 BPM, no English words.
+
+في النظام: [Instrumental: none] [No instruments] [A cappella] [Vocals, humming, claps, daf only]
+بعد التوليد: لو ظهرت آلة، أعيدي التوليد أو أزيل الموسيقى وأبقي الأصوات (voice-isolator) — مجاني.
 
 ملاحظة: التشكيل في الكلمات للنطق، وكل حكم فيها بصيغة الكتاب (ص٩٥ و١٠٠).
 تصميم عواطف الجهني · جميع الحقوق محفوظة
