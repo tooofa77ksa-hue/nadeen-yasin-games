@@ -16,7 +16,7 @@ def cap(text,credit=True):
     if credit: add_credit(d)
     return im
 def add_credit(d):
-    f=F(18,FM); t='تصميم عواطف الجهني'; b=sz(d,t,f); d.text((20-b[0],H-34-b[1]),t,font=f,fill=(255,255,255,200),direction='rtl',language='ar')
+    f=F(12,FM); t='تصميم عواطف الجهني · جميع الحقوق محفوظة'; b=sz(d,t,f); d.text((12-b[0],H-20-b[1]),t,font=f,fill=(150,150,150,190),direction='rtl',language='ar')
 def card(lines,bg,name):
     im=Image.open(bg).convert('RGB').resize((W,H)).filter(ImageFilter.GaussianBlur(6)).convert('RGBA')
     ov=Image.new('RGBA',(W,H),(30,20,10,150)); im=Image.alpha_composite(im,ov); d=ImageDraw.Draw(im)
