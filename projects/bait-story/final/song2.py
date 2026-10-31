@@ -5,7 +5,7 @@ from PIL import Image,ImageDraw,ImageFont,ImageChops
 C='/tmp/story/k3/clips/'; D='/tmp/story/k3/orig/'
 FBB='/home/user/nadeen-yasin-games/shared/fonts/Baloo-ExtraBold.ttf'
 MARKS={'fatha':('فَتْحَة','ـَ',(255,138,61)),'damma':('ضَمَّة','ـُ',(61,123,255)),'sukun':('سُكُون','ـْ',(46,170,90)),'kasra':('كَسْرَة','ـِ',(150,90,230))}
-S=420;FR=58
+S=420;FR=43
 def ease(x): return 1-(1-x)**3
 def thick(d,pts,w,col):
     d.line(pts,fill=col,width=w,joint='curve')
@@ -13,18 +13,18 @@ def thick(d,pts,w,col):
 def shape(kind,col,prog):
     """draw mark progressively: returns RGBA layer SxS"""
     L=Image.new('RGBA',(S,S),(0,0,0,0)); d=ImageDraw.Draw(L); c=col+(255,)
-    d.line((70,205,350,205),fill=(210,210,210,255),width=18)  # baseline (tatweel)
-    if kind=='fatha': thick(d,[(130,135),(290,85)],40,c)
-    elif kind=='kasra': thick(d,[(130,255),(290,305)],40,c); 
+    d.line((70,190,350,190),fill=(210,210,210,255),width=18)
+    if kind=='fatha': thick(d,[(130,125),(290,75)],40,c)
+    elif kind=='kasra': thick(d,[(130,225),(290,275)],40,c)
     elif kind=='damma':
-        d.ellipse((190,70,260,140),fill=c); thick(d,[(255,110),(285,150),(255,200)],34,c)
+        d.ellipse((215,60,285,130),fill=c); thick(d,[(222,125),(200,165),(160,185),(125,170)],28,c)
     else: d.ellipse((165,60,255,150),outline=c,width=26)
     # reveal: wipe
     m=Image.new('L',(S,S),0); w=int(S*ease(prog))
-    ImageDraw.Draw(m).rectangle((0,0,w,S) if kind!='kasra' else (0,0,S,200+int(110*ease(prog))),fill=255)
+    ImageDraw.Draw(m).rectangle((0,0,w,S) if kind!='kasra' else (0,0,S,195+int(100*ease(prog))),fill=255)
     if kind!='kasra':
         # baseline always visible
-        base=Image.new('RGBA',(S,S),(0,0,0,0)); ImageDraw.Draw(base).line((70,205,350,205),fill=(210,210,210,255),width=18)
+        base=Image.new('RGBA',(S,S),(0,0,0,0)); pass
     al=ImageChops.multiply(L.split()[3],m); L.putalpha(al)
     return L
 def sticker(kind):
@@ -46,7 +46,7 @@ def sticker(kind):
         out.save(f'st_{kind}/{f:03d}.png')
 for k in MARKS: sticker(k)
 # sections: (start,end,clip,caption,loop)
-SEC=[(0,16.76,C+'dance.mp4','بيتُ القواعدِ… كلُّنا فيهِ'),(16.76,22.0,D+'s4.mp4','الماضي: بنى · مبنيٌّ على الفتح'),(22.0,26.5,D+'s5.mp4','المضارع: رفع · مرفوع علامته الضمة'),(26.5,31.4,D+'s7.mp4','الأمر: سكن · مبنيٌّ على السكون'),(31.4,36.0,D+'s4.mp4','المفعول به: نصب · منصوب علامته الفتحة'),(36.0,40.66,D+'s10.mp4','حرف الجر: جرّ · مجرور علامته الكسرة'),(40.66,55.3,C+'dance.mp4','الماضي بنى وفتح · المضارع رفع · الأمر سكن · المفعول به نصب وفتح · حرف الجر جرّ')]
+SEC=[(0,16.76,C+'dance.mp4','بيتُ القواعدِ… كلُّنا فيهِ'),(16.76,22.0,D+'s4.mp4','الماضي: بنى · مبنيٌّ على الفتح'),(22.0,26.5,D+'s5.mp4','المضارع: رفع · مرفوع علامته الضمة'),(26.5,31.4,D+'s7.mp4','الأمر: سكن · مبنيٌّ على السكون'),(31.4,36.2,D+'s4.mp4','المفعول به: نصب · منصوب علامته الفتحة'),(36.2,41.3,D+'s10.mp4','حرف الجر: جرّ · مجرور علامته الكسرة'),(41.3,55.3,C+'dance.mp4','الماضي بنى وفتح · المضارع رفع · الأمر سكن · المفعول به نصب وفتح · حرف الجر جرّ')]
 ST=[('fatha',20.2),('damma',25.0),('sukun',29.6),('fatha',34.5),('kasra',39.4)]
 cmd=['ffmpeg','-y','-loglevel','error']; n=len(SEC)+1
 for a,b,cl,t in SEC: cmd+=['-stream_loop','-1','-t',str(b-a),'-i',cl]
@@ -63,8 +63,8 @@ fc.append(''.join(f'[c{i}]' for i in range(len(SEC)))+'[ce]'+f'concat=n={n}:v=1:
 cur='bg'
 for k,(kind,t) in enumerate(ST):
     idx=base+k
-    fc.append(f'[{idx}:v]setpts=PTS+{t}/TB[s{k}]')
-    fc.append(f'[{cur}][s{k}]overlay=x=({W}-{S})/2:y=30:eof_action=pass:repeatlast=0[o{k}]'); cur=f'o{k}'
+    fc.append(f'[{idx}:v]scale=250:250,setpts=PTS+{t}/TB[s{k}]')
+    fc.append(f'[{cur}][s{k}]overlay=x={W}-250-22:y=22:eof_action=pass:repeatlast=0[o{k}]'); cur=f'o{k}'
 cmd+=['-filter_complex',';'.join(fc),'-map',f'[{cur}]','-map',f'{n}:a','-t','60.84','-c:v','libx264','-crf','20','-c:a','aac','-b:a','160k',f'song_{variant}_v4.mp4']
 subprocess.check_call(cmd)
 tot=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','csv=p=0',f'story_{variant}_v2.mp4']).decode())-5
