@@ -17,7 +17,7 @@ def shape(kind,col,prog):
     if kind=='fatha': thick(d,[(130,125),(290,75)],40,c)
     elif kind=='kasra': thick(d,[(130,225),(290,275)],40,c)
     elif kind=='damma':
-        d.ellipse((215,60,285,130),fill=c); thick(d,[(222,125),(200,165),(160,185),(125,170)],28,c)
+        d.ellipse((205,50,275,120),outline=c,width=24); thick(d,[(222,116),(212,140),(190,156)],22,c)
     else: d.ellipse((165,60,255,150),outline=c,width=26)
     # reveal: wipe
     m=Image.new('L',(S,S),0); w=int(S*ease(prog))
