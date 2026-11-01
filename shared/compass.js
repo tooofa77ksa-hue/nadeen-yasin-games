@@ -8,7 +8,7 @@ const POS={'الشمال':[230,60],'الشمال الشرقي':[360,100],'الش
 const COL={'الشمال':'#3d7bff','الشرق':'#ff8a3d','الجنوب':'#34c25a','الغرب':'#b04dff','الشمال الشرقي':'#18a8c9','الجنوب الشرقي':'#e0a100','الجنوب الغربي':'#d4577a','الشمال الغربي':'#7a63e0'};
 const S={st:0,pts:0,max:0,log:[]};
 const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-const STG=[['تعلّمي','📖'],['ركّبي','🧩'],['الخريطة','🗺️'],['مهمة اليوم','🏆']];
+const STG=[['تعلّمي','📖'],['ركّبي','🧩'],['الخريطة','🗺️'],['أنشطة الكتاب','🏆']];
 function css(){if(document.getElementById('cmpcss'))return;const s=document.createElement('style');s.id='cmpcss';s.textContent=`
 .cmp-dots{display:flex;gap:6px;justify-content:center;margin:6px 0;flex-wrap:wrap}.cmp-dot{padding:4px 12px;border-radius:999px;background:#eee;font-weight:800;font-size:.85rem}.cmp-dot.on{background:#1aa6b7;color:#fff}.cmp-dot.ok{background:#34c25a;color:#fff}
 .cmp-chip{border:3px solid #1aa6b7;background:#fff;border-radius:14px;padding:8px 12px;font:inherit;font-weight:800;font-size:1rem;cursor:pointer;margin:3px}.cmp-chip.sel{background:#1aa6b7;color:#fff}.cmp-chip.done{opacity:.35;pointer-events:none}.cmp-chip.bad{background:#ffd6d6;border-color:#e05555}.cmp-chip.good{background:#d9f7d9;border-color:#34c25a}
@@ -33,7 +33,7 @@ function roseSvg(opts){opts=opts||{};const c=230;let s=`<svg id="cmpsvg" viewBox
 /* ---------- المرحلة ١: أنا البوصلة ---------- */
 function st1(){S.theta=90;S.shown=90;S.quiz=0;
  app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">1️⃣ أنا البوصلة 🌅 <small class="muted">(ص٧٠)</small></h3>
- <div class="cmp-say">في الصباح تكون <b>الشمس أمامي</b> فهي في <b>الشرق</b>: الغرب خلفي، والشمال عن يساري، والجنوب عن يميني.</div>
+ <div class="cmp-say">حينما تكون <b>الشمس أمامي</b> في الصباح يكون <b>الغرب خلفي</b>، و<b>الشمال عن يساري</b>، و<b>الجنوب عن يميني</b>. <small class="muted">(الجهات الأصلية: الشرق، الغرب، الشمال، الجنوب)</small></div>
  <div style="position:relative;max-width:420px;margin:auto;direction:ltr">${roseSvg({sun:1,labels:1})}</svg>
  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;text-align:center">${avatar(64,'nadeen','idle')}</div>
  <div style="position:absolute;left:50%;top:1%;transform:translateX(-50%);background:#ff8a3d;color:#fff;border-radius:12px;padding:2px 10px;font-weight:800;font-size:.8rem">⬆ أمامي</div></div>
@@ -56,21 +56,23 @@ function quiz(){const el=$('#cmpq');if(!el)return;if(S.quiz>=Q1.length){el.inner
  const q=Q1[S.quiz];let first=true;el.innerHTML=`<div class="cmp-box"><b>سؤال ${S.quiz+1} من ${Q1.length}:</b> ${q[0]}<div>${sh(q[1]).map(o=>`<button class="cmp-chip">${o}</button>`).join('')}</div></div>`;
  $$('#cmpq .cmp-chip').forEach(b=>b.onclick=()=>{if(b.textContent===q[2]){b.classList.add('good');good();point(1,first);setTimeout(()=>{S.quiz++;quiz()},700)}else{first=false;b.classList.add('bad');bad(b)}})}
 /* ---------- المرحلة ٢: ركّبي البوصلة ---------- */
-function st2(){S.ph=0;S.placed={};S.sel=null;
- app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">2️⃣ ركّبي البوصلة بنفسك 🧩 <small class="muted">(ص٧٠)</small></h3>
- <div class="cmp-say" id="cmpmsg"></div><div style="max-width:420px;margin:auto">${roseSvg({sun:1}) }<g id="slots"></g></svg></div>
+function bookSvg(){const c=230;return `<svg id="cmpsvg" viewBox="-30 -30 520 520" style="width:100%;max-width:420px;display:block;margin:auto;direction:ltr"><circle cx="${c}" cy="${c}" r="24" fill="#fff" stroke="#222" stroke-width="3"/>${[[230,206,230,110],[254,230,350,230],[206,230,110,230],[230,254,230,350]].map(l=>`<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}" stroke="#222" stroke-width="3" stroke-dasharray="3 6"/>`).join('')}`}
+function st2(){S.ph=0;S.placed={'الشمال':1};S.sel=null;S.tries={};
+ app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">2️⃣ ركّبي البوصلة بنفسك 🧩 <small class="muted">(ص٧٠ · تقويم الوحدة الثالثة ص٨٦)</small></h3>
+ <div class="cmp-say" id="cmpmsg"></div><div id="cmpmap" style="max-width:420px;margin:auto"></div>
  <div id="cmpbank" class="center"></div><div id="cmpnx" class="center"></div></div>`;css();draw2()}
-function draw2(){const main=S.ph===0,names=main?MAIN:SUB;const msg=$('#cmpmsg');
- msg.innerHTML=main?'اضغطي على اسم الجهة ثم على مكانها في البوصلة. <b>الشمس تشرق من الشرق ☀️</b>':'الجهات الفرعية تتكوّن من <b>جهتين معًا</b>: نبدأ بالشمال والجنوب، فنقول: الشمال الشرقي، الجنوب الغربي...';
+function draw2(){const main=S.ph===0,names=main?MAIN.filter(n=>n!=='الشمال'):SUB;const msg=$('#cmpmsg');
+ if(!$('#cmpmsg').dataset.set||true)msg.innerHTML=main?'<b>يحدّد الطلبة الجهات الأصلية:</b> الشمال مكتوب لك. اضغطي على اسم الجهة ثم على مكانها. <b>الشمس تشرق من الشرق ☀️</b>':'<b>الجهات الفرعية:</b> لتحديد الجهات الفرعية نبدأ بجهتَي الشمال والجنوب، فيكون لدينا: الشمال الشرقي، الجنوب الشرقي، الشمال الغربي، الجنوب الغربي.';
+ $('#cmpmap').innerHTML=(main?bookSvg():roseSvg({sun:1}))+'<g id="slots"></g></svg>';
  const sl=$('#slots');const all=MAIN.concat(S.ph?SUB:[]);
- sl.innerHTML=all.map(n=>{const [x,y]=POS[n],p=S.placed[n],w=n.length>8?96:70;return `<g class="slot" data-n="${n}" style="cursor:pointer"><rect x="${x-w/2}" y="${y-19}" width="${w}" height="38" rx="14" fill="${p?COL[n]:'#fff'}" stroke="${COL[n]}" stroke-width="4" ${p?'':'stroke-dasharray="7 5"'}/><text x="${x}" y="${y+7}" text-anchor="middle" font-size="${n.length>8?15:19}" font-weight="800" fill="${p?'#fff':'#bbb'}">${p?n:'؟'}</text></g>`}).join('');
+ sl.innerHTML=all.map(n=>{const [x,y]=POS[n],p=S.placed[n],w=n.length>8?96:70;return `<g class="slot" data-n="${n}" style="cursor:pointer"><rect x="${x-w/2}" y="${y-19}" width="${w}" height="38" rx="${main?19:14}" fill="${p?(main&&n==='الشمال'?'#fff':COL[n]):'#fff'}" stroke="${main?'#222':COL[n]}" stroke-width="${main?3:4}" ${p?'':'stroke-dasharray="7 5"'}/><text x="${x}" y="${y+7}" text-anchor="middle" font-size="${n.length>8?15:19}" font-weight="800" fill="${p?(main&&n==='الشمال'?'#222':'#fff'):'#bbb'}">${p?n:'.....'}</text></g>`}).join('');
  const bank=$('#cmpbank');bank.innerHTML=sh(names).map(n=>`<button class="cmp-chip ${S.placed[n]?'done':''}" data-n="${n}">${n}</button>`).join('');
  $$('#cmpbank .cmp-chip').forEach(b=>b.onclick=()=>{S.sel=b.dataset.n;$$('#cmpbank .cmp-chip').forEach(x=>x.classList.toggle('sel',x===b))});
- $$('.slot').forEach(g=>g.onclick=()=>{const n=g.dataset.n;if(S.placed[n]||names.indexOf(n)<0&&true)return;if(!S.sel){const m=$('#cmpmsg');m.innerHTML='اختاري اسم الجهة من الأزرار أولًا 👇';return}
-  S.tries=S.tries||{};if(S.sel===n){S.placed[n]=1;point(1,!S.tries[n]);S.sel=null;good();draw2();chk()}else{S.tries[n]=1;S.tries[S.sel]=1;bad(g);const m=$('#cmpmsg');m.innerHTML=hint(S.sel)}});
+ $$('.slot').forEach(g=>g.onclick=()=>{const n=g.dataset.n;if(S.placed[n])return;if(!S.sel){$('#cmpmsg').innerHTML='اختاري اسم الجهة من الأزرار أولًا 👇';return}
+  S.tries=S.tries||{};if(S.sel===n){S.placed[n]=1;point(1,!S.tries[n]);S.sel=null;good();draw2();chk()}else{S.tries[n]=1;S.tries[S.sel]=1;bad(g);$('#cmpmsg').innerHTML=hint(S.sel)}});
 }
 function hint(s){return ({'الشمال':'الشمال فوق ⬆ مثل رأس السهم.','الجنوب':'الجنوب تحت ⬇ عكس الشمال.','الشرق':'الشرق جهة الشمس ☀️ (الجهة اليمنى).','الغرب':'الغرب عكس الشرق (الجهة اليسرى).','الشمال الشرقي':'بين الشمال والشرق: فوق ويمين.','الجنوب الشرقي':'بين الجنوب والشرق: تحت ويمين.','الجنوب الغربي':'بين الجنوب والغرب: تحت ويسار.','الشمال الغربي':'بين الشمال والغرب: فوق ويسار.'})[s]+' جرّبي مكانًا آخر.'}
-function chk(){const names=S.ph?SUB:MAIN;if(names.every(n=>S.placed[n])){sfx('win');confetti(30);if(!S.ph){$('#cmpnx').innerHTML=`<h3 style="margin:6px 0">أحسنتِ! الجهات الأصلية الأربع 🌟</h3><button class="btn" id="n2">الجهات الفرعية ▶</button>`;$('#n2').onclick=()=>{S.ph=1;S.sel=null;$('#cmpnx').innerHTML='';draw2()}}else{$('#cmpnx').innerHTML=`<h3 style="margin:6px 0">بوصلتك كاملة! ركّزتِ فوصلتِ 🧭</h3><button class="btn" id="n2">التالي: خريطة المملكة ▶</button>`;$('#n2').onclick=next}}}
+function chk(){const names=S.ph?SUB:MAIN;if(names.every(n=>S.placed[n])){sfx('win');confetti(30);if(!S.ph){$('#cmpnx').innerHTML=`<h3 style="margin:6px 0">أحسنتِ! حدّدتِ الجهات الأصلية 🌟</h3><button class="btn" id="n2">الجهات الفرعية ▶</button>`;$('#n2').onclick=()=>{S.ph=1;S.sel=null;$('#cmpnx').innerHTML='';draw2()}}else{$('#cmpnx').innerHTML=`<h3 style="margin:6px 0">بوصلتك كاملة! ركّزتِ فوصلتِ 🧭</h3><button class="btn" id="n2">التالي: خريطة المملكة ▶</button>`;$('#n2').onclick=next}}}
 /* ---------- المرحلة ٣: خريطة المملكة ---------- */
 const KQ=[['الرياض','المدينة المنورة','الغرب'],['الدمام','أبها','الجنوب الغربي'],['نجران','مكة المكرمة','الشمال الغربي',1],['جدة','أبها','الجنوب الشرقي'],['مكة المكرمة','المدينة المنورة','الشمال'],['جدة','مكة المكرمة','الشرق',1],['القصيم','الدمام','الشرق'],['جدة','القصيم','الشمال الشرقي'],['المدينة المنورة','مكة المكرمة','الجنوب']];
 function st3(){S.qi=0;S.qs=sh(KQ).slice(0,8);q3()}
@@ -84,40 +86,57 @@ function mapSvg(a,b,qibla){const K=window.KSA,C=K.cities;let s=`<svg viewBox="0 
  return s+'</svg>'}
 function q3(){if(S.qi>=S.qs.length){S.st=3;S.pre=1;return stage()}
  const [a,b,ans,qb]=S.qs[S.qi];let first=true;
- const qtxt=qb?`أنتِ في <b>${a}</b> وتريدين الصلاة. في أي جهة <b>القبلة</b>؟ (الكعبة المشرفة في مكة المكرمة 🕋)`:`في أي جهة تقع <b>${b}</b> بالنسبة إلى <b>${a}</b>؟`;
- app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">3️⃣ خريطة المملكة العربية السعودية 🗺️ <small class="muted">سؤال ${S.qi+1} من ${S.qs.length}</small></h3>
- <div class="cmp-say">${qtxt}</div>${mapSvg(a,b)}<div style="font-size:.85rem" class="muted center">🟢 المكان الذي تقفين فيه · 🟠 المكان الذي تبحثين عنه</div>
+ const qtxt=qb?`أنتِ في <b>${a}</b> وتريدين الصلاة. في أي جهة <b>القبلة</b>؟ — ص٧٠: «يساعدني تحديد الجهات على معرفة اتجاه القبلة، وهي الكعبة المشرفة في مكة المكرمة؛ لأداء الصلاة» 🕋`:`في أي جهة تقع <b>${b}</b> بالنسبة إلى <b>${a}</b>؟`;
+ app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">3️⃣ تدريب على خريطة المملكة العربية السعودية 🗺️ <small class="muted">سؤال ${S.qi+1} من ${S.qs.length}</small></h3>
+ <div class="cmp-say">${qtxt}</div><div class="muted" style="font-size:.82rem;margin:4px 0">📖 ص٦٩: «يقع وطني المملكة العربية السعودية في أقصى الجنوب الغربي من قارة آسيا، ويربط بين قارات إفريقيا وأوروبا وآسيا.»</div>${mapSvg(a,b)}<div style="font-size:.85rem" class="muted center">🟢 المكان الذي تقفين فيه · 🟠 المكان الذي تبحثين عنه</div>
  <div class="cmp-grid3" id="cmpa"></div><div id="cmpfb" class="center"></div></div>`;css();
  const cells=['الشمال الغربي','الشمال','الشمال الشرقي','الغرب','🧭','الشرق','الجنوب الغربي','الجنوب','الجنوب الشرقي'];
  $('#cmpa').innerHTML=cells.map(c=>c==='🧭'?`<div class="center" style="font-size:2rem">🧭</div>`:`<button class="cmp-chip" data-a="${c}">${c}</button>`).join('');
  $$('#cmpa .cmp-chip').forEach(b=>b.onclick=()=>{const v=b.dataset.a;if(v===ans){b.classList.add('good');good();point(1,first);$$('#cmpa .cmp-chip').forEach(x=>x.style.pointerEvents='none');$('#cmpfb').innerHTML=`<div class="cmp-say" style="border-color:#34c25a">✅ أحسنتِ! ${qb?'القبلة':b2(a,b)} في <b>${ans}</b>${qb?' من '+a:''}.</div><button class="btn" id="nq">التالي ▶</button>`;$('#nq').onclick=()=>{S.qi++;q3()}}else{first=false;b.classList.add('bad');bad(b);$('#cmpfb').innerHTML=`<div class="cmp-say">💡 انظري: هل ${qb?'مكة':b} فوق ${a} أم تحتها؟ على اليمين أم اليسار؟ (الشمال فوق، والشرق يمين)</div>`}})}
 function b2(a,b){return `${b} تقع`}
-/* ---------- المرحلة ٤: مهمة اليوم (نشاط ٢ ص٧١) ---------- */
-function st4(){S.p4=S.pre?0:S.p4||0;S.pre=0;if(S.p4===0)return st4a();if(S.p4===1)return st4b();return done()}
-function st4a(){S.ai=0;S.q4=[['👦','أحمد','تركتُ الشمس في الصباح <b>ورائي</b>، واتجهتُ إلى مدرستي.','الغرب','الشمس تشرق من الشرق وهي وراءه، فوجهه إلى الغرب.'],['👧','نورة','اتجهتُ <b>يسارًا</b> لأركب السيارة، والشمس <b>أمامي</b> صباحًا.','الشمال','الشمس في الشرق وهي أمامها، فالشمال عن يسارها.']];qa()}
-function qa(){if(S.ai>=S.q4.length){S.p4=1;return st4()}const [em,who,txt,ans,ex]=S.q4[S.ai];let first=true;
- app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">4️⃣ مهمة اليوم 🏆 <small class="muted">نشاط ٢ (أ) ص٧١</small></h3>
- <div class="cmp-say"><div style="font-size:2.4rem">${em}</div><b>${who}:</b> «${txt}»</div><p><b>اتجاه ${who} هو:</b></p><div class="center">${['شمال','جنوب','شرق','غرب'].map(o=>`<button class="cmp-chip" data-o="${o}">${o}</button>`).join('')}</div><div id="cmpfb"></div></div>`;css();
- $$('.cmp-chip').forEach(b=>b.onclick=()=>{if(('ال'+b.dataset.o)===ans){b.classList.add('good');good();point(1,first);$$('.cmp-chip').forEach(x=>x.style.pointerEvents='none');$('#cmpfb').innerHTML=`<div class="cmp-say" style="border-color:#34c25a">✅ ${ex}</div><button class="btn" id="nq">التالي ▶</button>`;$('#nq').onclick=()=>{S.ai++;qa()}}else{first=false;b.classList.add('bad');bad(b);$('#cmpfb').innerHTML='<div class="cmp-say">💡 تذكّري: الشمس صباحًا في الشرق. إذا كانت أمامك فالغرب خلفك والشمال عن يسارك.</div>'}})}
-function st4b(){S.bi=0;S.bq=[['البنك','🏦','هـ',6],['الفندق','🏨','ج',3],['مواقف السيارات','🅿️','ب',1],['المستشفى','🏥','ج',5]];qb2()}
-function qb2(){if(S.bi>=S.bq.length){S.p4=2;return st4()}const [nmq,ic,row,col]=S.bq[S.bi];let first=true;const rows=['أ','ب','ج','د','هـ'],ar=['١','٢','٣','٤','٥','٦'];
- const cw=70,ch=58,X0=10,Y0=40;let sv=`<svg viewBox="0 0 440 340" style="width:100%;max-width:440px;display:block;margin:auto;direction:ltr;background:#f2f2f2;border-radius:12px">`;
- // roads
+/* ---------- المرحلة ٤: أنشطة الكتاب (نشاط ١ ص٦٩، نشاط ٢ ص٧١) ---------- */
+function st4(){S.p4=S.pre?0:S.p4||0;S.pre=0;if(S.p4===0)return a1();if(S.p4===1)return st4a();if(S.p4===2)return st4b();return done()}
+function a1(){app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">4️⃣ أنشطة الكتاب 🏆 <small class="muted">نشاط ١ · ص٦٩</small></h3>
+ <div class="cmp-say"><b>يكتب الطلبة مثالًا واحدًا للأجهزة الحديثة المستعملة في تحديد الموقع.</b></div>
+ <p class="muted" style="margin:2px 0">تلميح: انظري إلى الصورة في صفحة ٦٩: ماذا يمسك الشخص في يده ويرى فيه الخريطة؟</p>
+ <input id="a1" type="text" placeholder="اكتبي هنا ..." style="width:100%;box-sizing:border-box;font:inherit;font-size:1.1rem;padding:10px;border:3px dotted #888;border-radius:12px;margin:6px 0"><div class="center"><button class="btn" id="a1ok">تحقق ✔</button></div><div id="cmpfb"></div></div>`;css();
+ $('#a1ok').onclick=()=>{const v=$('#a1').value.trim();if(v.length<2){bad($('#a1'));$('#cmpfb').innerHTML='<div class="cmp-say">اكتبي كلمة أو كلمتين أولًا ✍️</div>';return}good();point(1,true);$('#a1ok').style.display='none';$('#cmpfb').innerHTML=`<div class="cmp-say" style="border-color:#34c25a">✅ أحسنتِ! كتبتِ: «${esc(v)}». ومن الأمثلة: الهاتف الجوال (الذي في الصورة)، وجهاز تحديد المواقع.</div><button class="btn" id="nq">التالي ▶</button>`;$('#nq').onclick=()=>{S.p4=1;st4()}}}
+function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function st4a(){S.ai=0;S.q4=[['👦','أحمد','تركتُ الشمس في الصباح ورائي، واتجهتُ إلى مدرستي.','غرب','الشمس تشرق من الشرق وهي وراءه، فوجهه إلى الغرب.'],['👧','نورة','اتجهتُ يسارًا؛ لأركب السيارة، والشمس أمامي صباحًا.','شمال','الشمس في الشرق وهي أمامها، فالشمال عن يسارها.']];qa()}
+function qa(){if(S.ai>=S.q4.length){S.p4=2;return st4()}const [em,who,txt,ans,ex]=S.q4[S.ai];let first=true,sel=null;
+ app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">4️⃣ أنشطة الكتاب 🏆 <small class="muted">نشاط ٢ (أ) · ص٧١</small></h3>
+ <div class="muted" style="font-size:.85rem">يقرأ الطلبة ما يقوله أحمد، وتقوله نورة، ثم يحدّدون اتجاهيهما:</div>
+ <div class="cmp-say"><div style="font-size:2.4rem">${em}</div><b>${who}:</b> «${txt}»</div><p style="margin:4px 0"><b>اتجاه${who==='نورة'?'ها':'ه'} هو:</b></p>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;max-width:320px">${['شمال','جنوب','شرق','غرب'].map(o=>`<label class="cmp-chip" style="display:flex;align-items:center;gap:8px;cursor:pointer;margin:0"><input type="radio" name="r" value="${o}" style="width:22px;height:22px">${o}</label>`).join('')}</div>
+ <div class="center" style="margin-top:8px"><button class="btn" id="ck">تحقق ✔</button></div><div id="cmpfb"></div></div>`;css();
+ $('#ck').onclick=()=>{const r=document.querySelector('input[name=r]:checked');if(!r){$('#cmpfb').innerHTML='<div class="cmp-say">اختاري إجابة أولًا ○</div>';return}
+  if(r.value===ans){good();point(1,first);$('#ck').style.display='none';$$('input[name=r]').forEach(x=>x.disabled=true);$('#cmpfb').innerHTML=`<div class="cmp-say" style="border-color:#34c25a">✅ ${ex}</div><button class="btn" id="nq">التالي ▶</button>`;$('#nq').onclick=()=>{S.ai++;qa()}}else{first=false;bad($('#ck'));$('#cmpfb').innerHTML='<div class="cmp-say">💡 تذكّري: الشمس صباحًا في الشرق. إذا كانت أمامك فالغرب خلفك والشمال عن يسارك. جرّبي مرة ثانية.</div>'}}}
+function st4b(){S.bi=0;S.bq=[['أ','البنك','🏦','هـ','٦'],['ب','الفندق','🏨','ج','٣'],['ج','مواقف السيارات','🅿️','ب','١'],['د','المستشفى','🏥','ج','٥']];S.bdone=[];qb2()}
+const AD={'٠':0,'١':1,'٢':2,'٣':3,'٤':4,'٥':5,'٦':6,'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6};
+function qb2(){if(S.bi>=S.bq.length){S.p4=3;return st4()}const [lt,nmq,ic,row,col]=S.bq[S.bi];let first=true,val='';const rows=['أ','ب','ج','د','هـ'],ar=['١','٢','٣','٤','٥','٦'];
+ const cw=70,ch=58,X0=10,Y0=40;let sv=`<svg viewBox="0 0 480 340" style="width:100%;max-width:480px;display:block;margin:auto;direction:ltr;background:#f2f2f2;border-radius:12px">`;
  sv+=`<rect x="${X0+cw*1}" y="${Y0}" width="${cw*5}" height="${ch}" fill="#666"/><rect x="${X0+cw*4}" y="${Y0}" width="${cw}" height="${ch*3}" fill="#666"/><rect x="${X0}" y="${Y0+ch*3}" width="${cw*6}" height="${ch}" fill="#666"/>`;
- for(let c=0;c<6;c++){sv+=`<text x="${X0+c*cw+cw/2}" y="28" text-anchor="middle" font-size="22" font-weight="800">${ar[5-c]}</text>`}
- for(let r=0;r<5;r++){sv+=`<text x="${X0+cw*6+14}" y="${Y0+r*ch+ch/2+8}" font-size="22" font-weight="800">${rows[r]}</text>`}
- const B={'ج5':'🏥','ج3':'🏨','ب1':'🅿️','هـ6':'🏦'};
- for(let r=0;r<5;r++)for(let c=0;c<6;c++){const colNum=6-c,key=rows[r]+colNum;sv+=`<g class="gc" data-k="${rows[r]}|${colNum}" style="cursor:pointer"><rect x="${X0+c*cw}" y="${Y0+r*ch}" width="${cw}" height="${ch}" fill="rgba(255,255,255,.02)" stroke="#999" stroke-width="1.5"/>${B[key]?`<text x="${X0+c*cw+cw/2}" y="${Y0+r*ch+ch/2+10}" text-anchor="middle" font-size="30">${B[key]}</text>`:''}</g>`}
+ for(let c=0;c<6;c++)sv+=`<text x="${X0+c*cw+cw/2}" y="28" text-anchor="middle" font-size="22" font-weight="800">${ar[5-c]}</text>`;
+ for(let r=0;r<5;r++)sv+=`<text x="${X0+cw*6+14}" y="${Y0+r*ch+ch/2+8}" font-size="22" font-weight="800">${rows[r]}</text>`;
+ const B={'ج٥':'🏥','ج٣':'🏨','ب١':'🅿️','هـ٦':'🏦'},BN={'ج٥':'مستشفى','ج٣':'فندق','ب١':'مواقف','هـ٦':'بنك'};
+ for(let r=0;r<5;r++)for(let c=0;c<6;c++){const key=rows[r]+ar[5-c];sv+=`<rect x="${X0+c*cw}" y="${Y0+r*ch}" width="${cw}" height="${ch}" fill="none" stroke="#999" stroke-width="1.5"/>${B[key]?`<text x="${X0+c*cw+cw/2}" y="${Y0+r*ch+ch/2+4}" text-anchor="middle" font-size="28">${B[key]}</text><text x="${X0+c*cw+cw/2}" y="${Y0+r*ch+ch-6}" text-anchor="middle" font-size="12" font-weight="800" fill="#fff" stroke="#444" stroke-width="3" paint-order="stroke">${BN[key]}</text>`:''}`}
  sv+='</svg>';
- app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">4️⃣ مهمة اليوم 🏆 <small class="muted">نشاط ٢ (ب) ص٧١ · سؤال ${S.bi+1} من ${S.bq.length}</small></h3><div class="cmp-say">أين <b>${nmq}</b> ${ic}؟ اضغطي على المربع الصحيح. (الحرف للصف، والرقم للعمود)</div>${sv}<div id="cmpfb" class="center"></div></div>`;css();
- $$('.gc').forEach(g=>g.onclick=()=>{const [r,c]=g.dataset.k.split('|');if(r===row&&+c===col){good();point(1,first);$$('.gc').forEach(x=>x.style.pointerEvents='none');g.firstChild.setAttribute('fill','#9affc9');$('#cmpfb').innerHTML=`<div class="cmp-say" style="border-color:#34c25a">✅ ${nmq} في <b>${row}${ar[col-1]}</b></div><button class="btn" id="nq">التالي ▶</button>`;$('#nq').onclick=()=>{S.bi++;qb2()}}else{first=false;bad(g);g.firstChild.setAttribute('fill','#ffd6d6');$('#cmpfb').innerHTML='<div class="cmp-say">💡 ابحثي عن الحرف في الجانب، والرقم في الأعلى، ثم التقاء الصف والعمود.</div>'}})}
+ const keys=rows.concat(ar);
+ app.innerHTML=`${head()}<div class="card"><h3 style="margin:0 0 4px">4️⃣ أنشطة الكتاب 🏆 <small class="muted">نشاط ٢ (ب) · ص٧١ · ${S.bi+1} من ${S.bq.length}</small></h3>
+ <div class="cmp-say"><b>يحدّد الطلبة المواقع الآتية:</b> (الحرف للصف الأفقي، والرقم للعمود)</div>${sv}
+ <div style="margin:8px 0"><b>${lt}- ${nmq} ${ic}</b> <span id="bv" style="display:inline-block;min-width:90px;border-bottom:3px dotted #666;text-align:center;font-weight:800;font-size:1.3rem;margin-right:8px">&nbsp;</span></div>
+ <div class="center">${keys.map(k=>`<button class="cmp-chip kp" data-k="${k}" style="min-width:44px">${k}</button>`).join('')}<button class="cmp-chip kc" style="background:#ffd6d6">⌫</button></div>
+ <div class="center" style="margin-top:6px"><button class="btn" id="ck">تحقق ✔</button></div><div id="cmpfb"></div></div>`;css();
+ let L='',Dg='';const up=()=>{val=L+Dg;$('#bv').textContent=val||'\u00a0'};$$('.kp').forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(rows.indexOf(k)>=0)L=k;else Dg=k;up()});
+ $('.kc').onclick=()=>{val='';$('#bv').textContent=' '};
+ $('#ck').onclick=()=>{if(val===row+col){good();point(1,first);S.bdone.push(row+col);$('#ck').style.display='none';$$('.kp,.kc').forEach(x=>x.style.pointerEvents='none');$('#cmpfb').innerHTML=`<div class="cmp-say" style="border-color:#34c25a">✅ ${nmq}: <b>${val}</b></div><button class="btn" id="nq">التالي ▶</button>`;$('#nq').onclick=()=>{S.bi++;qb2()}}else{first=false;bad($('#ck'));$('#cmpfb').innerHTML='<div class="cmp-say">💡 ابحثي عن الرمز: الحرف من الجانب والرقم من الأعلى، ثم اكتبيهما معًا (مثل: ج٣). جرّبي مرة ثانية.</div>'}}}
 /* ---------- ورقة التسليم ---------- */
 async function done(){setMas('hide');const st=stars(S.pts,S.max),rec={t:'res',p:P,name:NAMES[P],game:'compass',label:'بوصلة نادين (الاجتماعيات)',score:S.pts,max:S.max,stars:st};
  const hist=LS.get('hist',[]);hist.push(rec);LS.set('hist',hist.slice(-60));LS.set('stars',LS.get('stars',0)+st);LS.set('cmpdone',(LS.get('cmpdone',0))+1);bus.send(rec);
  sfx('win');confetti(60);const d=new Date().toLocaleDateString('ar-SA');
  app.innerHTML=`${topbar()}<div class="cmp-sheet"><div class="center"><h2 style="margin:0;color:#1aa6b7">🧭 بوصلة نادين</h2><div class="muted">مهمة أدائية · الاجتماعيات · الصف الرابع / ٢</div></div>
  <div class="cmp-say"><div>الطالبة: <b>نادين الشمراني</b></div><div>المعلمة: <b>منيرة القحطاني</b></div><div>الدرس: العاشر «الموقع» (ص٦٩–٧١)</div><div>التاريخ: ${d}</div></div>
- <ul><li>✅ عرفتُ أن الشمس تشرق من الشرق، فالغرب خلفي والشمال عن يساري والجنوب عن يميني.</li><li>✅ ركّبتُ البوصلة: الجهات الأصلية الأربع والفرعية الأربع.</li><li>✅ حدّدتُ اتجاه المدن على خريطة المملكة، واتجاه القبلة نحو مكة المكرمة.</li><li>✅ أنجزتُ نشاط ٢ (ص٧١): اتجاه أحمد ونورة، وأماكن البنك والفندق والمواقف والمستشفى.</li></ul>
+ <ul><li>✅ عرفتُ أن الشمس تشرق من الشرق، فالغرب خلفي والشمال عن يساري والجنوب عن يميني.</li><li>✅ ركّبتُ البوصلة: الجهات الأصلية الأربع والفرعية الأربع.</li><li>✅ حدّدتُ اتجاه المدن على خريطة المملكة، واتجاه القبلة نحو مكة المكرمة.</li><li>✅ أنجزتُ نشاط ١ (ص٦٩) ونشاط ٢ (ص٧١): اتجاه أحمد ونورة، وأماكن البنك والفندق والمواقف والمستشفى.</li></ul>
  <div class="center" style="font-size:1.6rem">${starRow(st,3,34)}</div><div class="center"><b>نتيجتي: ${S.pts} من ${S.max}</b></div><div class="center muted" style="margin-top:6px">ركّزتُ فوصلتُ، والحمد لله ثم توفيقه 💗</div></div>
  <div class="cmp-np center" style="margin:10px 0"><button class="btn" id="pr">🖨️ اطبعي أو احفظي PDF</button> <button class="btn ghost" id="ag">العبي مرة ثانية</button> <button class="btn ghost" id="hh">الرئيسية</button><p class="muted">أو صوّري الشاشة وأرسليها للأبلة 📸</p></div>`;
  $('#pr').onclick=()=>window.print();$('#ag').onclick=()=>GAMES.compass.start();$('#hh').onclick=home;bindTop()}
