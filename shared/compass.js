@@ -142,5 +142,5 @@ async function done(){setMas('hide');const st=stars(S.pts,S.max),rec={t:'res',p:
  $('#pr').onclick=()=>window.print();$('#ag').onclick=()=>GAMES.compass.start();$('#hh').onclick=home;bindTop()}
 function stage(){window.scrollTo(0,0);[st1,st2,st3,st4][S.st]()}
 window.GAMES.compass={start(){css();S.st=0;S.pts=0;S.max=0;S.pre=0;S.p4=0;S.placed={};S.tries={};stage();bindTop()}};
-if(/[?&]go=compass/.test(location.search))setTimeout(()=>GAMES.compass.start(),80);
+if(window.AUTOSTART_COMPASS||/[?&]go=compass/.test(location.search))setTimeout(()=>GAMES.compass.start(),80);
 })();
