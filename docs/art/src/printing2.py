@@ -34,19 +34,19 @@ def mini_grid():
     cells=''.join('<div style="width:54px;height:54px;border:2px solid #666;display:inline-block;vertical-align:top;background:%s"></div>'%('#fff' if (i+j)%2==0 else '#3d7bff') for i in range(2) for j in range(2))
     return cells
 grid=''.join('<div class="cell">%s</div>'%('ش' if (i+j)%2==0 else 'أ') for i in range(3) for j in range(3))
-steps1=[('📕','١) اقصّي مربع من <b>ظهر الدفتر</b> القاسي (٦ سم). هذي القاعدة.'),('🟩','٢) انقلي الزهرة من الورقة بالقلم على <b>الإسفنج الأخضر</b> واقصّيها.'),('🧴','٣) <b>الصقي</b> الزهرة الخضراء على القاعدة، واتركيها تنشف.'),('🎨','٤) حطّي <b>لون خفيف</b> على الزهرة بفرشاة (بدون ماء كثير).'),('👇','٥) <b>اضغطي</b> بقوة على الورقة (جرّبي أول على ورقة مسودة).'),('🌼','٦) <b>ارفعيها</b>… طلعت الزهرة! كرّري.')]
+steps1=[('⬜','١) اقصّي <b>مربعين أبيضين</b> (٦ سم) والصقيهما فوق بعض. هذي القاعدة القوية.'),('🟩','٢) انقلي الزهرة بالقلم على الورق <b>الأخضر</b> واقصّيها <b>مرتين</b>.'),('🧴','٣) الصقي الزهرتين فوق بعض، ثم الصقيهما على القاعدة. اتركيها تنشف.'),('🎨','٤) حطّي <b>لون خفيف</b> على الزهرة بفرشاة (بدون ماء كثير).'),('📓','٥) في <b>كراستك</b>: حطّي ورقة قديمة تحت الصفحة، ثم <b>اضغطي</b> الزهرة بقوة.'),('🌼','٦) <b>ارفعيها</b> بسرعة… طلعت الزهرة! كرّري.')]
 st1=''.join(f'<div class="stp"><div class="e">{e}</div><div class="t">{t}</div></div>' for e,t in steps1)
 html=f'''<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{CSS}</style></head><body>
 <div class="pg"><h1>🎨 الطباعة بالقالب</h1><p class="s">الفنية · الرابع / ٢ · ص٥٥–٦٨</p>
 <div class="b"><h2>شو راح تسوين؟ هذا شكل الشغل بعد ما تخلصين 👇</h2><div class="big"><div class="card">{result_a()}<br>١) زهور مطبوعة بنفس القالب<br><small>(الدرس الأول)</small></div><div class="card">{result_b()}<br>٢) زهرة، ثم أرضية، بالتبادل<br><small>(الدرس الثاني)</small></div></div></div>
-<div class="b"><h2>تحتاجين من البيت</h2><div class="mat"><span>📕 ظهر دفتر قديم (القاعدة)</span><span>🟩 إسفنج أخضر (الزهرة)</span><span>🟦 إسفنج أزرق (إطار الأرضية)</span><span>✂️ مقص (مع ماما)</span><span>🧴 صمغ</span><span>🧽 إسفنجة</span><span>🎨 ألوان</span><span>📄 ورق أبيض</span></div></div>
+<div class="b"><h2>تحتاجين من البيت</h2><div class="mat"><span>⬜ ورق مقوى أبيض (القاعدة)</span><span>🟩 ورق مقوى أخضر (الزهرة)</span><span>🟦 ورق مقوى أزرق (الأرضية)</span><span>📓 كراستك</span><span>🖌️ فرشاة</span><span>✂️ مقص (مع ماما)</span><span>🧴 صمغ</span><span>🎨 ألوان</span><span>📰 ورقة قديمة تحت الصفحة</span></div></div>
 <div class="safe">⚠️ المقص حاد: استعمليه مع ماما.</div></div>
 <div class="pg"><h1>١) القالب الأول: الزهرة</h1><p class="s">اتبعي الخطوات بالترتيب</p><div class="b">{st1}</div>
 <div class="b"><div class="big"><div class="card">{mold('shape')}<br><small>قالبك جاهز</small></div><div class="card" style="font-size:40px;align-self:center">⬅️</div><div class="card">{print_result('shape')}<br><small>هذا اللي يطلع على الورقة</small></div></div></div></div>
 <div class="pg"><h1>✂️ نموذج جاهز للقص</h1><p class="s">قصّي الزهرة من الورقة، والورقة اللي فيها الفتحة احتفظي فيها</p><div class="row">{fl}{st}</div>
-<div class="b"><h2>٢) قالب الأرضية 🔲</h2><div class="big"><div class="card">{mold('ground')}<br><small>مربع من الإسفنج الأزرق فيه فتحة بشكل الزهرة، ملصوق على قاعدة</small></div><div class="card" style="font-size:40px;align-self:center">⬅️</div><div class="card">{print_result('ground')}<br><small>اللون حول الزهرة، والزهرة بيضاء</small></div></div></div>
-<div class="b"><div class="stp"><div class="e">✂️</div><div class="t">الزهرة المقصوصة = قالب <b>الشكل</b>.</div></div><div class="stp"><div class="e">🔲</div><div class="t">الورقة اللي فيها فتحة = قالب <b>الأرضية</b>.</div></div></div></div>
-<div class="pg"><h1>🟦 ورقة الطباعة بالتبادل</h1><p class="s"><span class="tag">ش</span>اطبعي بقالب <b>الشكل</b> &nbsp; <span class="tag">أ</span>اطبعي بقالب <b>الأرضية</b></p>
-<div class="g">{grid}</div><p class="cap" style="font-size:18px">هكذا بيطلع ورقتك: زهرة ثم أرضية ثم زهرة… 🌈</p></div>
+<div class="b"><h2>٢) قالب الأرضية 🔲</h2><div class="big"><div class="card">{mold('ground')}<br><small>مربع أزرق فيه فتحة بشكل الزهرة، ملصوق على قاعدة بيضاء</small></div><div class="card" style="font-size:40px;align-self:center">⬅️</div><div class="card">{print_result('ground')}<br><small>اللون حول الزهرة، والزهرة بيضاء</small></div></div></div>
+<div class="b"><div class="stp"><div class="e">🟩</div><div class="t">الزهرة الخضراء = قالب <b>الشكل</b>.</div></div><div class="stp"><div class="e">🟦</div><div class="t">اقصّي مربعاً أزرق، واقطعي منه الزهرة (تصير <b>فتحة</b>)، والصقيه <b>بطبقتين</b> على قاعدة بيضاء: هذا قالب <b>الأرضية</b>.</div></div></div></div>
+<div class="pg"><h1>📓 اطبعي في كراستك</h1><p class="s"><span class="tag">ش</span>اطبعي بقالب <b>الشكل</b> &nbsp; <span class="tag">أ</span>اطبعي بقالب <b>الأرضية</b></p>
+<div class="g">{grid}</div><p class="cap" style="font-size:18px">قسّمي صفحة كراستك بالقلم الرصاص لمربعات بحجم القالب، ثم اطبعي بالتبادل: زهرة، أرضية، زهرة… 🌈<br><small>حطّي ورقة قديمة تحت الصفحة، واتركيها تنشف قبل ما تقفلين الكراسة.</small></p></div>
 </body></html>'''
 open('/home/user/nadeen-yasin-games/docs/art/printing.html','w',encoding='utf-8').write(html)
