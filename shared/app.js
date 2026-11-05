@@ -115,6 +115,13 @@ GAMES.lesson={start(id){id=id||GAMES._lid;GAMES._lid=id;const L=(QD.LQ||[]).find
  const step=()=>{if(i>=qs.length)return finish('lesson','درس: '+L.title.replace(/[\u064B-\u0652]/g,''),sc,qs.length);
   app.innerHTML=`${topbar()}<div class="card"><div class="bar"><i style="width:${i/qs.length*100}%"></i></div><p class="muted">${esc(L.title)} · سؤال ${i+1} من ${qs.length}</p><div id="qb"></div></div>`;bindTop();
   ask($('#qb'),qs[i],ok=>{if(ok)sc++;i++;step()})};step()}};
+/* اختبار القواعد بعد كل درسين (حسب طلب معلمة لغتي) */
+GAMES.pairtest={_k:0,start(k){if(k==null)k=this._k;this._k=k;const P=window.PT_PAIRS||[],pair=P[k];if(!pair)return home();
+ const per=Math.ceil(10/pair.length);let items=[];pair.forEach(id=>{items=items.concat(pick(lessonItems(id),per))});
+ const qs=shuf(items).slice(0,10).map(prep);if(!qs.length)return home();let i=0,sc=0;
+ const step=()=>{if(i>=qs.length){const need=Math.ceil(qs.length*.7);if(sc>=need){const d=LS.get('ptdone',{});d[k]=1;LS.set('ptdone',d)}return finish('pairtest','اختبار القواعد: '+window.ptTitle(k).replace(/[ً-ْ]/g,''),sc,qs.length)}
+  app.innerHTML=`${topbar()}<div class="card center" style="background:#fff6ee;border:4px dashed #ff8a3d"><b>🏁 اختبار القواعد</b><div class="muted">${esc(window.ptTitle(k))}</div></div><div class="card"><div class="bar"><i style="width:${i/qs.length*100}%"></i></div><p class="muted">سؤال ${i+1} من ${qs.length}</p><div id="qb"></div></div>`;bindTop();
+  ask($('#qb'),qs[i],ok=>{if(ok)sc++;i++;step()})};step()}};
 /* العجلة */
 const WH=[['antonym','أضداد','#ff7ac8'],['synonym','مرادفات','#8f6bff'],['irab','إعراب','#39b6ff'],['plural','جموع','#27e0c0'],['comp','فهم مقروء','#ffd54a'],['mix','اختبار منوّع','#ff9f43']];
 GAMES.wheel={start(){const n=WH.length,ang=360/n;
@@ -440,7 +447,7 @@ function home(){setMas('hide');
  <div class="card"><h3>📚 اختبري نفسك على درس</h3><p class="muted" style="margin:0 0 8px">أسئلة من كل درس في الكتاب، مع الشرح بعد كل إجابة.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${(QD.LQ||[]).filter(l=>!l.id.startsWith('rc')).map(l=>`<button class="btn ghost lq" data-id="${l.id}">${l.title}</button>`).join('')}</div></div>
  <div class="card"><h3>📝 الاختبارات المركزية</h3><p class="muted" style="margin:0 0 8px">ورقة كاملة بنمط الاختبار: قطعة قراءة، ثم قواعد وإعراب، ثم إملاء ومفردات. تظهر النتيجة والمراجعة في النهاية.</p><div style="display:flex;flex-wrap:wrap;gap:8px">${centralPapers().map((p,i)=>`<button class="btn ghost cp" data-i="${i}">اختبار ${p.n}: ${p.title}</button>`).join('')}</div></div>
  ${skyCard()}
- <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();bindProg();bindStart();{const gr=$('#goR');if(gr)gr.onclick=()=>GAMES.review.start();const gh=$('#goHW');if(gh)gh.onclick=()=>GAMES.howto.start();const gst=$('#goSt');if(gst)gst.onclick=()=>GAMES.story.start();const gcm=$('#goCmp');if(gcm)gcm.onclick=()=>GAMES.compass.start();const gm=$('#goMM');if(gm)gm.onclick=()=>GAMES.mental.start()}$$('[data-ls]').forEach(b=>b.onclick=()=>GAMES.lessonhub.start(b.dataset.ls));if(P==='nadeen'){bindExam();bindBulbs();const gi=$('#goI');if(gi)gi.onclick=()=>GAMES.irabhub.start();const gf=$('#goF');if(gf)gf.onclick=()=>GAMES.fatra.start()}
+ <details class="card" style="cursor:pointer"><summary><b>💡 نصائح للعب</b></summary><div style="margin-top:8px">${TIPS.map(t=>`<div class="clue"><b>•</b><span>${t}</span></div>`).join('')}</div></details>`;bindTop();bindProg();bindStart();{const gr=$('#goR');if(gr)gr.onclick=()=>GAMES.review.start();const gh=$('#goHW');if(gh)gh.onclick=()=>GAMES.howto.start();const gst=$('#goSt');if(gst)gst.onclick=()=>GAMES.story.start();const gcm=$('#goCmp');if(gcm)gcm.onclick=()=>GAMES.compass.start();const gm=$('#goMM');if(gm)gm.onclick=()=>GAMES.mental.start()}$$('[data-ls]').forEach(b=>b.onclick=()=>GAMES.lessonhub.start(b.dataset.ls));$$('[data-pt]').forEach(b=>b.onclick=()=>GAMES.pairtest.start(+b.dataset.pt));if(P==='nadeen'){bindExam();bindBulbs();const gi=$('#goI');if(gi)gi.onclick=()=>GAMES.irabhub.start();const gf=$('#goF');if(gf)gf.onclick=()=>GAMES.fatra.start()}
  $$('.planet').forEach(el=>el.onclick=()=>{const [g,k]=el.dataset.g.split(':');GAMES[g].start(k)});
  $$('.cp').forEach(b=>b.onclick=()=>GAMES.central.start(+b.dataset.i));
  $$('.lq').forEach(b=>b.onclick=()=>GAMES.lesson.start(b.dataset.id));
