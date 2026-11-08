@@ -20,3 +20,16 @@
 
 ## اختبار القواعد كل درسين (طلب معلمة لغتي)
 - المعلمة قالت: بعد كل درسين اختبار قواعد. في موقع نادين صفوف «🏁 اختبار القواعد» داخل «دروسي بالترتيب» بعد كل زوج: (أنواع الكلمة + أنواع الفعل)، (المبتدأ والخبر + الجار والمجرور)، (الفاعل + المفعول به). ١٠ أسئلة من أسئلة الكتاب، والنجاح ٧ من ١٠. الأزواج في `window.PT_PAIRS` داخل `shared/lessonhub.js`، وتتعدل حسب خطة المعلمة.
+
+## روابط نادين الثابتة (طلب ولي الأمر: ثبّتي كل رابط يخص نادين)
+- مجلد كتب صالح ونادين وبدر (درايف): https://drive.google.com/drive/folders/1XUpwmx3Vv5r2N1yT_rhUBMH1_6xsT2Jq
+- موقع نادين (الرئيسية): https://tooofa77ksa-hue.github.io/nadeen-yasin-games/nadeen/
+- بوصلة نادين (اجتماعيات، مهمة أدائية): https://tooofa77ksa-hue.github.io/nadeen-yasin-games/bosla/
+- موقع المعلمة مها: https://tooofa77ksa-hue.github.io/nadeen-yasin-games/maha/
+- الفنية كاملة (PDF): https://tooofa77ksa-hue.github.io/nadeen-yasin-games/docs/art/fanniyat_kamila.pdf
+- ورقة الطباعة (PDF): https://tooofa77ksa-hue.github.io/nadeen-yasin-games/docs/art/printing.pdf
+- كيف أرسم القالب (PDF): https://tooofa77ksa-hue.github.io/nadeen-yasin-games/docs/art/draw_guide.pdf
+- فيديو الطباعة بالفوم: https://tooofa77ksa-hue.github.io/nadeen-yasin-games/docs/art/foam_printing.mp4
+- بطاقة نادين لمها (PDF): https://tooofa77ksa-hue.github.io/nadeen-yasin-games/docs/nadeen_card_maha.pdf
+- خطة الأسبوع القادم (٢٨/٥ إلى ٢/٦/١٤٤٨): الفنية «الطباعة بقوالب الشكل والأرضية»، رياضيات «جداول الضرب والقسمة + اختبار الفصل التراكمي»، لغتي «الفاعل ثم المفعول به»، علوم «تغيرات النظام البيئي»، اجتماعيات «المكان».
+- اختبار الرياضيات المركزي (رابع، الفصل الأول): ولي الأمر سترسل نماذج الاختبارات السابقة، ونبني عليها أسئلة وإجابات نموذجية وألعاب وفيديو وأنشودة.
