@@ -9,6 +9,7 @@ const K=1.7/2.75; // adult avatar -> 1.7 m
 function build(name){
   let g, n;
   if(name==='mother') g=A.makeMother().group;
+  else if(name==='daughter') g=A.makeDaughter().group;
   else if(name==='son') g=A.makeSon().group;
   else if(name==='boy_thobe') g=A.makeBoyThobe(true).group;
   else if(name==='rope') g=A.makeRope(4);

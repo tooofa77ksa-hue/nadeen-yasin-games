@@ -159,7 +159,7 @@ export function makeAvatar(opts = {}) {
     female: false, mother: false, scale: 1, headScale: 1,
     scarf: null,          // hijab color
     dress: null,          // long dress color (covers legs)
-    thobe: false, cap: null, baseCap: null, backpack: null, bib: null, hood: null, tee: null, shortSleeves: false, dressLen: 1, sideHair: false, longHair: false, trim: null, hasGlass: false,
+    thobe: false, cap: null, baseCap: null, backpack: null, bib: null, hood: null, tee: null, shortSleeves: false, dressLen: 1, sideHair: false, braids: false, longHair: false, trim: null, hasGlass: false,
   }, opts);
   const LEG = 0.95, TH = 1.0, TW = 0.95, TD = 0.52;
   const skin = M(o.skin, 0.6), shirt = M(o.thobe ? '#ffffff' : (o.dress || o.shirt), 0.5), pants = M(o.pants, 0.6);
@@ -203,6 +203,7 @@ export function makeAvatar(opts = {}) {
     head.add(place(rbox(0.84, 0.34, 0.76, hairM, 0.13), 0, 0.64, -0.03));
     head.add(place(rbox(0.8, 0.11, 0.06, hairM, 0.03), 0, 0.76, 0.34));
     if (o.longHair) head.add(place(rbox(0.86, 1.0, 0.3, hairM, 0.12), 0, 0.2, -0.3));
+    if (o.braids) for (const sx of [-1, 1]) for (let i = 0; i < 4; i++) head.add(place(rbox(0.15 - i * 0.01, 0.2, 0.15, hairM, 0.06), sx * 0.46, -0.0 - i * 0.2, 0.05 - i * 0.01));
     if (o.sideHair) for (const sx of [-1, 1]) head.add(place(rbox(0.13, 0.95, 0.55, hairM, 0.06), sx * 0.435, 0.14, -0.08));
   }
 
@@ -428,3 +429,5 @@ export function makeRope(len = 4) {
   loop.position.set(0, 0.06, n * 0.12 + 0.22); loop.rotation.x = Math.PI / 2; loop.castShadow = true; loop.rotation.y = 0; g.add(loop);
   return g;
 }
+
+export const makeDaughter = () => makeAvatar({ female: true, scale: 0.6, headScale: 1.1, dress: '#f06ca8', dressLen: 0.5, pants: '#ffffff', trim: null, longHair: true, braids: true, hair: '#4a2c17', skin: '#e9b98f', shoes: '#f4e3ee' });
