@@ -11,9 +11,12 @@ function build(name){
   if(name==='mother') g=A.makeMother().group;
   else if(name==='son') g=A.makeSon().group;
   else if(name==='boy_thobe') g=A.makeBoyThobe(true).group;
+  else if(name==='rope') g=A.makeRope(4);
+  else if(name==='glass') g=A.makeGlass();
+  else if(A.FRIENDS[name]) g=A.FRIENDS[name]().group;
   else if(name==='horse_cart') g=A.makeHorseCart().group;
   else g=A.makeKids(7)[+name.slice(3)-1].group;
-  g.name=name; g.scale.setScalar(K); // note: scale baked on root node
+  g.name=name; if(!['rope','glass'].includes(name)) g.scale.setScalar(K); // note: scale baked on root node
   return g;
 }
 window.exportModel=(name)=>new Promise(res=>{
@@ -27,8 +30,8 @@ window.preview=async(b64,hy)=>{
   const sc=new THREE.Scene();sc.background=new THREE.Color('#cfe8f7');sc.add(new THREE.HemisphereLight('#fff','#c9b79a',1.6));
   const d=new THREE.DirectionalLight('#fff',2.2);d.position.set(3,6,8);sc.add(d);sc.add(gltf.scene);
   const bx=new THREE.Box3().setFromObject(gltf.scene),c=bx.getCenter(new THREE.Vector3()),sz=bx.getSize(new THREE.Vector3());
-  const cam=new THREE.PerspectiveCamera(30,480/540,.1,100);const D=Math.max(sz.y,sz.x*0.9)*2.15;
-  if(hy){cam.position.set(c.x+D*.55,c.y+sz.y*.1,c.z+D*.85);}else cam.position.set(c.x+D*.25,c.y+sz.y*.08,c.z+D);
+  const cam=new THREE.PerspectiveCamera(30,480/540,.1,100);const D=Math.max(sz.y,sz.x*0.9,sz.z*0.9)*2.15;
+  if(hy||window.side){cam.position.set(c.x+D*.55,c.y+sz.y*.1,c.z+D*.85);}else cam.position.set(c.x+D*.25,c.y+sz.y*.08,c.z+D);
   cam.lookAt(c);r.render(sc,cam);
   const names=[];gltf.scene.traverse(o=>o.name&&names.push(o.name));
   return {names,size:[sz.x,sz.y,sz.z],png:r.domElement.toDataURL()};

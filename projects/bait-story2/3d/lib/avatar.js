@@ -159,7 +159,7 @@ export function makeAvatar(opts = {}) {
     female: false, mother: false, scale: 1, headScale: 1,
     scarf: null,          // hijab color
     dress: null,          // long dress color (covers legs)
-    thobe: false, cap: null, longHair: false, trim: null, hasGlass: false,
+    thobe: false, cap: null, baseCap: null, backpack: null, bib: null, hood: null, tee: null, shortSleeves: false, dressLen: 1, sideHair: false, longHair: false, trim: null, hasGlass: false,
   }, opts);
   const LEG = 0.95, TH = 1.0, TW = 0.95, TD = 0.52;
   const skin = M(o.skin, 0.6), shirt = M(o.thobe ? '#ffffff' : (o.dress || o.shirt), 0.5), pants = M(o.pants, 0.6);
@@ -186,6 +186,12 @@ export function makeAvatar(opts = {}) {
     head.add(place(rbox(0.88, 0.3, 0.74, sc, 0.12), 0, -0.02, -0.03));          // under-chin / neck cover
     torso.add(place(rbox(1.02, 0.3, 0.62, sc, 0.12), 0, TH - 0.08, 0));         // shoulder cape
     torso.add(place(rbox(0.8, 0.5, 0.1, sc, 0.05), 0, TH - 0.36, TD / 2 + 0.03)); // chest drape
+  } else if (o.baseCap) {
+    const cm = M(o.baseCap, 0.55);
+    head.add(place(rbox(0.84, 0.3, 0.76, hairM, 0.12), 0, 0.62, -0.03));
+    const dome = new THREE.Mesh(new THREE.SphereGeometry(0.44, 20, 12, 0, TAU, 0, Math.PI / 2), M(o.baseCap, 0.55, { side: THREE.DoubleSide }));
+    dome.scale.set(1, 0.85, 1.0); dome.position.set(0, 0.69, -0.01); dome.castShadow = true; head.add(dome);
+    const brim = rbox(0.62, 0.05, 0.42, cm, 0.02); brim.position.set(0, 0.73, 0.5); brim.rotation.x = 0.12; head.add(brim);
   } else if (o.cap) {
     head.add(place(rbox(0.84, 0.3, 0.76, hairM, 0.12), 0, 0.64, -0.03));
     head.add(place(rbox(0.8, 0.1, 0.06, hairM, 0.03), 0, 0.77, 0.34));
@@ -196,9 +202,26 @@ export function makeAvatar(opts = {}) {
   } else {
     head.add(place(rbox(0.84, 0.34, 0.76, hairM, 0.13), 0, 0.64, -0.03));
     head.add(place(rbox(0.8, 0.11, 0.06, hairM, 0.03), 0, 0.76, 0.34));
-    if (o.longHair) head.add(place(rbox(0.86, 0.95, 0.3, hairM, 0.12), 0, 0.28, -0.3));
+    if (o.longHair) head.add(place(rbox(0.86, 1.0, 0.3, hairM, 0.12), 0, 0.2, -0.3));
+    if (o.sideHair) for (const sx of [-1, 1]) head.add(place(rbox(0.13, 0.95, 0.55, hairM, 0.06), sx * 0.435, 0.14, -0.08));
   }
 
+  if (o.backpack) {
+    const bm = M(o.backpack, 0.6);
+    torso.add(place(rbox(0.7, 0.8, 0.3, bm, 0.1), 0, 0.5, -TD / 2 - 0.14));
+    torso.add(place(rbox(0.3, 0.3, 0.12, bm, 0.05), 0, 0.3, -TD / 2 - 0.34));
+    for (const sx of [-0.25, 0.25]) torso.add(place(rbox(0.1, 0.8, 0.06, M('#222', 0.7), 0.02), sx, 0.58, TD / 2 + 0.01));
+  }
+  if (o.bib) {
+    const bb = M(o.bib, 0.6);
+    torso.add(place(rbox(0.56, 0.5, 0.05, bb, 0.02), 0, 0.62, TD / 2 + 0.02));
+    for (const sx of [-0.2, 0.2]) { torso.add(place(rbox(0.1, 0.3, 0.05, bb, 0.02), sx, 0.93, TD / 2 + 0.02)); const bt = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 6), M('#f5c518', 0.4)); bt.position.set(sx, 0.82, TD / 2 + 0.06); torso.add(bt); }
+  }
+  if (o.hood) {
+    torso.add(place(rbox(0.92, 0.3, 0.5, M(o.hood, 0.7), 0.12), 0, TH - 0.05, -0.1));
+    torso.add(place(rbox(0.55, 0.18, 0.05, M(o.hood, 0.7), 0.03), 0, 0.2, TD / 2 + 0.02));
+  }
+  if (o.tee) torso.add(place(rbox(0.3, 0.85, 0.04, M(o.tee, 0.6), 0.02), 0, 0.5, TD / 2 + 0.005));
   // arms
   const sleeve = M(o.thobe ? '#ffffff' : (o.dress || o.shirt), 0.5);
   function arm(side) {
@@ -207,6 +230,7 @@ export function makeAvatar(opts = {}) {
     const el = place(new THREE.Group(), 0, -0.45, 0); el.name='forearm_'+S; sh.add(el);
     el.add(place(rbox(0.3, 0.5, 0.3, sleeve, 0.09), 0, -0.2, 0));
     el.add(place(rbox(0.28, 0.2, 0.28, skin, 0.09), 0, -0.5, 0));
+    if (o.shortSleeves) el.add(place(rbox(0.315, 0.42, 0.315, skin, 0.09), 0, -0.29, 0.0));
     const hand = place(new THREE.Group(), 0, -0.52, 0); hand.name='hand_'+S; el.add(hand);
     return { sh, el, hand };
   }
@@ -226,11 +250,11 @@ export function makeAvatar(opts = {}) {
   // long dress / thobe skirt
   let stride = 1;
   if (o.dress || o.thobe) {
-    stride = 0.6;
-    const col = o.thobe ? '#ffffff' : o.dress, h = LEG - 0.02;
+    stride = o.dressLen < 1 ? 1 : 0.6;
+    const col = o.thobe ? '#ffffff' : o.dress, h = (LEG - 0.02) * o.dressLen;
     const sk = new THREE.Mesh(new THREE.CylinderGeometry(0.5, o.thobe ? 0.56 : 0.64, h, 24, 1), M(col, 0.55));
     sk.scale.z = 0.72; sk.position.set(0, 0.1 - h / 2 + 0.0, 0); sk.castShadow = sk.receiveShadow = true; body.add(sk);
-    if (o.trim || !o.thobe) {
+    if (o.dressLen === 1 && (o.trim || !o.thobe)) {
       const tr = new THREE.Mesh(new THREE.CylinderGeometry(0.64, 0.645, 0.07, 24, 1), M(o.trim || '#d9b45a', 0.4));
       tr.scale.z = 0.72; tr.position.set(0, -LEG + 0.1, 0); body.add(tr);
     }
@@ -374,4 +398,33 @@ export function makeHorseCart() {
       cart.position.y = 0.02 * Math.sin(ph * 2.3);
     },
   };
+}
+
+// ---------- the six friends of video 1 ----------
+export const FRIENDS = {
+  friend_past: () => makeAvatar({ baseCap: '#e53935', shirt: '#e53935', pants: '#2f5fa8', bib: '#2f5fa8', shoes: '#7a4a24', shortSleeves: true, scale: 0.85, skin: '#f0c49c' }),
+  friend_present: () => makeAvatar({ baseCap: '#1e6fe0', shirt: '#1e6fe0', pants: '#355a94', backpack: '#27487a', shoes: '#4a4a4a', scale: 0.85, skin: '#f0c49c' }),
+  friend_amr: () => makeAvatar({ baseCap: '#2e9c3f', shirt: '#2e9c3f', hood: '#2e9c3f', pants: '#56595e', backpack: '#245f2e', shoes: '#f2f2f2', scale: 0.85, skin: '#f0c49c' }),
+  friend_maful: () => makeAvatar({ female: true, dress: '#f5a31a', dressLen: 0.5, pants: '#f0c49c', shortSleeves: true, longHair: true, sideHair: true, hair: '#6b3f22', shoes: '#f3e6cf', scale: 0.85, skin: '#f0c49c' }),
+  friend_harf: () => makeAvatar({ baseCap: '#7b3fb8', shirt: '#7b3fb8', tee: '#ffffff', pants: '#2f5fa8', backpack: '#27487a', shoes: '#cfcfcf', scale: 0.85, skin: '#f0c49c' }),
+  friend_majrur: () => makeAvatar({ baseCap: '#ffffff', shirt: '#ffffff', pants: '#2b2d33', shortSleeves: true, shoes: '#eeeeee', scale: 0.85, skin: '#f0c49c' }),
+};
+
+// ---------- props ----------
+export function makeGlass() {
+  const g = new THREE.Group(); g.name = 'glass';
+  const mk = (geo, color, op, y) => { const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color, transparent: true, opacity: op, roughness: 0.1, side: THREE.DoubleSide })); m.position.y = y; m.castShadow = true; g.add(m); return m; };
+  mk(new THREE.CylinderGeometry(0.13, 0.1, 0.3, 20, 1, true), '#dff4ff', 0.35, 0.15).name = 'cup';
+  mk(new THREE.CylinderGeometry(0.1, 0.1, 0.03, 20), '#dff4ff', 0.5, 0.015);
+  mk(new THREE.CylinderGeometry(0.115, 0.095, 0.19, 20), '#4fb6ff', 0.75, 0.115).name = 'water';
+  return g;
+}
+export function makeRope(len = 4) {
+  const g = new THREE.Group(); g.name = 'rope';
+  const m = M('#a8743a', 0.85), m2 = M('#8a5b2b', 0.85);
+  const n = Math.round(len / 0.12);
+  for (let i = 0; i < n; i++) { const b = rbox(0.1, 0.1, 0.13, i % 2 ? m : m2, 0.04); b.position.set(0, 0.06, i * 0.12); b.rotation.z = (i % 2) * 0.5; g.add(b); }
+  const loop = new THREE.Mesh(new THREE.TorusGeometry(0.28, 0.05, 8, 20), m); loop.name = 'loop';
+  loop.position.set(0, 0.06, n * 0.12 + 0.22); loop.rotation.x = Math.PI / 2; loop.castShadow = true; loop.rotation.y = 0; g.add(loop);
+  return g;
 }
