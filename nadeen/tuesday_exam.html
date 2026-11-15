@@ -56,6 +56,18 @@ const EXP={v:o=>`يا نادين، الفعل كلمة تدل على <b>عمل</
 f:o=>`يا نادين، <b>الفاعل</b> هو الاسم الذي <b>قام بالفعل</b>، ويأتي <b>بعد الفعل</b>. اسألي نفسك: <b>مَن</b> ${o.v}؟ الجواب: <b>${o.f}</b> ← هو الفاعل. مثل (من كتابك): وصلَ مشعلٌ ← مَن وصل؟ مشعلٌ. والفاعل مرفوع وعلامته الضمة.`,
 m:o=>`يا نادين، <b>المفعول به</b> اسم منصوب يدل على <b>مَن أو ما وقع عليه فعل الفاعل</b>، ويأتي <b>بعد الفاعل</b> (في آخر الجملة). اسألي نفسك: <b>ماذا</b> ${o.v} ${o.f}؟ الجواب: <b>${o.m}</b> ← هو المفعول به. مثل (من كتابك): يقرأُ التلميذُ قصةً ← ماذا يقرأ؟ قصةً. وهو منصوب وعلامته الفتحة.`};
 const RHINT=EXP;
+
+const wOf=(o,r)=>r==='v'?o.v:r==='f'?o.f:o.m;
+function whyNotRole(o,c,r){const w=wOf(o,r);
+ if(c==='v')return `اخترتِ «فعل». اسألي نفسك: هل <b>${w}</b> عمل؟ الفعل هو العمل نفسه (<b>${o.v}</b>)، و${w} ليس عملاً ✗.`;
+ if(c==='f')return `اخترتِ «فاعل». اسألي نفسك: <b>مَن</b> ${o.v}؟ الجواب: <b>${o.f}</b>، و${w} ليس هو الجواب ✗.`;
+ return `اخترتِ «مفعول به». اسألي نفسك: <b>ماذا</b> ${o.v} ${o.f}؟ الجواب: <b>${o.m}</b>، و${w} ليس هو الجواب ✗.`}
+function explainA(it,c){const w=it.w,base=w.slice(0,-1);let no='';
+ if(c==='madi')no=it.t==='amr'?`اخترتِ «ماضٍ». اسألي نفسك: هل هو ماضٍ؟ هل هو شيء حدث قبل الكلام؟ لا، أنا <b>أطلب</b> بـ«${w}» ولا أخبر عن شيء حدث ✗.`:`اخترتِ «ماضٍ». اسألي نفسك: هل هو ماضٍ؟ أجرّب <b>تاء المتكلم</b>: «${base}تُ» ✗ ما تنفع، فليس ماضياً.`;
+ else if(c==='mud')no=`اخترتِ «مضارع». اسألي نفسك: هل هو مضارع؟ أجرّب <b>السين</b>: «س${w}» ✗ ما تنفع${it.t==='madi'&&'نأيت'.includes(w[0])?' (يبدأ بحرف من نأيت لكنه ماضٍ، لأن السين ما تنفع معه)':''}، فليس مضارعاً.`;
+ else no=`اخترتِ «أمر». اسألي نفسك: هل هو أمر؟ هل أطلب من أحد أن يسوّي شيئاً؟ لا، «${w}» ${it.t==='madi'?'خبر عن عمل حصل':'خبر عن عمل يحصل'}، ما أطلب منه شيئاً ✗.`;
+ const yes={madi:`<b>الإجابة الصحيحة: ماضٍ.</b> لأن العمل حصل قبل الكلام (أمس)، وأقدر أقول «<b>أنا ${base}تُ</b>» ✓ (تاء المتكلم في آخره). وآخره فتحة.`,mud:`<b>الإجابة الصحيحة: مضارع.</b> لأنه يبدأ بحرف من <b>(نأيت)</b> وهو «${w[0]}»، وأقدر أقول «<b>س${w}</b>» ✓ بالسين. وهو عمل في الحاضر أو المستقبل. وآخره ضمة.`,amr:`<b>الإجابة الصحيحة: أمر.</b> لأني <b>أطلب</b> منه عملاً: «<b>${w}!</b>» ✓. (وللبنت: ${base}ي). وآخره سكون.`}[it.t];
+ return no+'<br>'+yes}
 // ---- حالة الاختبار
 let S;
 function newTest(){
@@ -92,9 +104,9 @@ function result(){const pc=S.max?Math.round(S.score/S.max*100):0;const wk=Object
 function bind(){
  const A=$('#app');
  A.querySelectorAll('[data-a] .o').forEach(b=>b.onclick=()=>{const q=b.closest('[data-a]'),it=S.A[+q.dataset.a];if(q.dataset.done)return;const fb=q.querySelector('.fb');
-  if(b.dataset.k===it.t){b.classList.add('ok');q.dataset.done=1;fb.className='fb ok';fb.innerHTML=ok(VHINT[it.t])}else{b.classList.add('no');fb.className='fb no';fb.innerHTML=bad('ليس '+VT[b.dataset.k]+'. '+VHINT[it.t],'تصنيف الفعل (ماضٍ/مضارع/أمر)');q.dataset.done=1;A.querySelectorAll('[data-a="'+q.dataset.a+'"] .o').forEach(x=>{if(x.dataset.k===it.t)x.classList.add('ok')})}});
+  if(b.dataset.k===it.t){b.classList.add('ok');q.dataset.done=1;fb.className='fb ok';fb.innerHTML=ok(VHINT[it.t])}else{b.classList.add('no');fb.className='fb no';fb.innerHTML=bad(explainA(it,b.dataset.k),'تصنيف الفعل (ماضٍ/مضارع/أمر)');q.dataset.done=1;A.querySelectorAll('[data-a="'+q.dataset.a+'"] .o').forEach(x=>{if(x.dataset.k===it.t)x.classList.add('ok')})}});
  A.querySelectorAll('[data-b]').forEach(d=>d.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(d.dataset.done)return;const x=S.B[+d.dataset.b],r=x.r,fb=d.querySelector('.fb');d.dataset.done=1;
-  if(b.dataset.k===r){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');d.querySelectorAll('.o').forEach(y=>{if(y.dataset.k===r)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad(EXP[r](x.s),'تصنيف فعل/فاعل/مفعول به')}}));
+  if(b.dataset.k===r){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');d.querySelectorAll('.o').forEach(y=>{if(y.dataset.k===r)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad(whyNotRole(x.s,b.dataset.k,r)+'<br><b>الإجابة الصحيحة: '+ROLE[r]+'.</b> '+EXP[r](x.s),'تصنيف فعل/فاعل/مفعول به')}}));
  A.querySelectorAll('[data-c]').forEach(q=>q.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(q.dataset.done)return;q.dataset.done=1;const x=S.C[+q.dataset.c],want=x.r==='f'?DD:x.r==='m'?DM:(x.s.vt==='madi'?DM:DD),fb=q.querySelector('.fb');
   if(b.dataset.h===want){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');q.querySelectorAll('.o').forEach(y=>{if(y.dataset.h===want)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad((x.r==='f'?EXP.f(x.s)+' فآخره <b>ضمة</b>.':x.r==='m'?EXP.m(x.s)+' فآخره <b>فتحة</b>.':x.s.vt==='madi'?VHINT.madi:VHINT.mud),'ضبط آخر الكلمة')}}));
  A.querySelectorAll('[data-d]').forEach(d=>{const bt=d.querySelector('.chk');if(!bt)return;bt.onclick=()=>{const s=S.D[+d.dataset.d],r=d.dataset.r,w=r==='v'?s.v:r==='f'?s.f:s.m,model=r==='v'?IR[s.vt](w):IR[r](w),txt=d.querySelector('textarea').value,fb=d.querySelector('.fb');
