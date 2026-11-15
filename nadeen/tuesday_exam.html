@@ -49,10 +49,13 @@ const SB=['الولدُ','الطفلُ','الطالبُ','العاملُ','ال�
 const AM=['اكتبْ','اشربْ','افتحْ','احفظْ','اقرأْ','اسمعْ'];
 function sentence(){const v=rnd(VB),pres=Math.random()<.5;return{v:pres?v[1]:v[0],vt:pres?'mud':'madi',f:rnd(SB),m:rnd(v[2])}}
 const VT={madi:'ماضٍ',mud:'مضارع',amr:'أمر'};
-const VHINT={madi:'اسألي نفسك: هل أقدر أقول «أنا … تُ»؟ (أنا فتحتُ ✓) ← ماضٍ. والماضي آخره فتحة.',mud:'اسألي نفسك: هل يبدأ بحرف من «نأيت» أو أقدر أقول «سـ» قبله؟ ← مضارع.',amr:'اسألي نفسك: هل أطلب من أحد أن يسوّي شيئاً؟ ← أمر. (وآخره سكون)'};
+const VHINT={madi:'يا نادين، الفعل الماضي يدل على عمل حصل <b>قبل الكلام</b> (أمس). اسألي نفسك: هل أقدر أقول «<b>أنا … تُ</b>»؟ مثل: فهمَ ← أنا فهمتُ ✓ فهو ماضٍ. وآخره فتحة.',mud:'يا نادين، الفعل المضارع يدل على عمل في <b>الحاضر أو المستقبل</b>. اسألي نفسك: هل يبدأ بحرف من <b>(نأيت)</b>؟ هل أقدر أقول <b>سـ</b> قبله؟ مثل: يكتبُ ← سيكتبُ ✓ فهو مضارع. وآخره ضمة.',amr:'يا نادين، فعل الأمر <b>نطلب</b> به من المخاطب أن يسوّي عملاً. اسألي نفسك: هل أطلب من أحد؟ مثل: اكتبْ! اشربْ! ← أمر. وآخره سكون.'};
 const IR={madi:w=>w+': فعل ماضٍ مبني على الفتح.',mud:w=>w+': فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',amr:w=>w+': فعل أمر مبني على السكون.',f:w=>w+': فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',m:w=>w+': مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.'};
 const ROLE={v:'فعل',f:'فاعل',m:'مفعول به'};
-const RHINT={v:'الفعل: كلمة تدل على حدث (عمل).',f:'اسألي نفسك: مَن قام بالفعل؟ (مَن؟) ← فاعل مرفوع بالضمة.',m:'اسألي نفسك: ماذا وقع عليه الفعل؟ (ماذا؟) ← مفعول به منصوب بالفتحة.'};
+const EXP={v:o=>`يا نادين، الفعل كلمة تدل على <b>عمل</b> حصل، وهو أول كلمة في الجملة الفعلية. هنا العمل هو <b>${o.v}</b>، وبعده يأتي الفاعل.`,
+f:o=>`يا نادين، <b>الفاعل</b> هو الاسم الذي <b>قام بالفعل</b>، ويأتي <b>بعد الفعل</b>. اسألي نفسك: <b>مَن</b> ${o.v}؟ الجواب: <b>${o.f}</b> ← هو الفاعل. مثل (من كتابك): وصلَ مشعلٌ ← مَن وصل؟ مشعلٌ. والفاعل مرفوع وعلامته الضمة.`,
+m:o=>`يا نادين، <b>المفعول به</b> اسم منصوب يدل على <b>مَن أو ما وقع عليه فعل الفاعل</b>، ويأتي <b>بعد الفاعل</b> (في آخر الجملة). اسألي نفسك: <b>ماذا</b> ${o.v} ${o.f}؟ الجواب: <b>${o.m}</b> ← هو المفعول به. مثل (من كتابك): يقرأُ التلميذُ قصةً ← ماذا يقرأ؟ قصةً. وهو منصوب وعلامته الفتحة.`};
+const RHINT=EXP;
 // ---- حالة الاختبار
 let S;
 function newTest(){
@@ -91,9 +94,9 @@ function bind(){
  A.querySelectorAll('[data-a] .o').forEach(b=>b.onclick=()=>{const q=b.closest('[data-a]'),it=S.A[+q.dataset.a];if(q.dataset.done)return;const fb=q.querySelector('.fb');
   if(b.dataset.k===it.t){b.classList.add('ok');q.dataset.done=1;fb.className='fb ok';fb.innerHTML=ok(VHINT[it.t])}else{b.classList.add('no');fb.className='fb no';fb.innerHTML=bad('ليس '+VT[b.dataset.k]+'. '+VHINT[it.t],'تصنيف الفعل (ماضٍ/مضارع/أمر)');q.dataset.done=1;A.querySelectorAll('[data-a="'+q.dataset.a+'"] .o').forEach(x=>{if(x.dataset.k===it.t)x.classList.add('ok')})}});
  A.querySelectorAll('[data-b]').forEach(d=>d.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(d.dataset.done)return;const x=S.B[+d.dataset.b],r=x.r,fb=d.querySelector('.fb');d.dataset.done=1;
-  if(b.dataset.k===r){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');d.querySelectorAll('.o').forEach(y=>{if(y.dataset.k===r)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad(RHINT[r],'تصنيف فعل/فاعل/مفعول به')}}));
+  if(b.dataset.k===r){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');d.querySelectorAll('.o').forEach(y=>{if(y.dataset.k===r)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad(EXP[r](x.s),'تصنيف فعل/فاعل/مفعول به')}}));
  A.querySelectorAll('[data-c]').forEach(q=>q.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(q.dataset.done)return;q.dataset.done=1;const x=S.C[+q.dataset.c],want=x.r==='f'?DD:x.r==='m'?DM:(x.s.vt==='madi'?DM:DD),fb=q.querySelector('.fb');
-  if(b.dataset.h===want){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');q.querySelectorAll('.o').forEach(y=>{if(y.dataset.h===want)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad(x.r==='f'?'اسألي نفسك: مَن؟ الفاعل مرفوع ← ضمة':x.r==='m'?'اسألي نفسك: ماذا؟ المفعول به منصوب ← فتحة':x.s.vt==='madi'?'الفعل الماضي مبني على الفتح':'الفعل المضارع مرفوع ← ضمة','ضبط آخر الكلمة')}}));
+  if(b.dataset.h===want){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');q.querySelectorAll('.o').forEach(y=>{if(y.dataset.h===want)y.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad((x.r==='f'?EXP.f(x.s)+' فآخره <b>ضمة</b>.':x.r==='m'?EXP.m(x.s)+' فآخره <b>فتحة</b>.':x.s.vt==='madi'?VHINT.madi:VHINT.mud),'ضبط آخر الكلمة')}}));
  A.querySelectorAll('[data-d]').forEach(d=>{const bt=d.querySelector('.chk');if(!bt)return;bt.onclick=()=>{const s=S.D[+d.dataset.d],r=d.dataset.r,w=r==='v'?s.v:r==='f'?s.f:s.m,model=r==='v'?IR[s.vt](w):IR[r](w),txt=d.querySelector('textarea').value,fb=d.querySelector('.fb');
   const a=norm(txt).split(' ').filter(Boolean),m=norm(model).split(' ').filter(Boolean);const pool=a.slice();let hit=0;const miss=[];m.forEach(x=>{const i=pool.indexOf(x);if(i>=0){hit++;pool.splice(i,1)}else miss.push(x)});const p=Math.round(hit/m.length*100);
   if(d.dataset.counted!=='1'&&txt.trim()){d.dataset.counted='1';if(p>=90){S.score++;S.max++}else{S.max++;weak('الإعراب')}}
