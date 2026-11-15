@@ -59,6 +59,13 @@ select{border:3px solid #ddd;border-radius:10px;padding:6px;min-width:100px}
 <div class="tip">الفاعل: اسم يدلّ على مَن قام بالفعل، ويأتي بعد الفعل، ولكل فعل فاعل. (ص١٠٣–١١٠)</div>
 <div id="c5"></div><div class="sum" id="r5"></div><button class="go o2" data-ck="5">تحقّقي ✅</button></div>
 
+<div class="card" id="s6a" style="border-color:var(--o)"><h2 style="color:var(--o)">🗓️ الثلاثاء: الفاعل والمفعول به</h2>
+<div class="tip">المفعول به: اسم منصوب يدلّ على مَن وقع عليه فعل الفاعل، ونسأل عنه بـ«ماذا؟»، وعلامة نصبه الفتحة الظاهرة على آخره (ص١١٢–١١٨). <br>🔎 حيلة اللازم والمتعدّي (ص١١٦): أضيفي هاء الغائب لآخر الفعل: إن قبلها فهو <b>متعدٍّ</b> (سألَه، كتبَه) وإن لم يقبلها فهو <b>لازم</b> (ذهبَ، نامَ).</div>
+<h3 style="margin:4px 0">صنّفي: فعل لازم أم متعدٍّ؟</h3>
+<div id="c6a"></div><div class="sum" id="r6a"></div><button class="go o2" data-ck="6a">تحقّقي ✅</button></div>
+<div class="card" id="s6" style="border-color:var(--o)"><h2 style="color:var(--o)">أعربي: الفاعل والمفعول به</h2>
+<div class="tip">أسلوب ملزمة موضي: الكلمة ← إعرابها. مثال: كتبَ أحمدُ الدرسَ ← كتبَ: فعل ماضٍ مبني على الفتح الظاهر على آخره · أحمدُ: فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره · الدرسَ: مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.</div>
+<div id="c6"></div><div class="sum" id="r6"></div><button class="go o2" data-ck="6">تحقّقي ✅</button></div>
 <div class="card" style="text-align:center"><div class="sum" id="tot"></div>
 <button class="go" id="reset">🔁 أعيدي الورقة</button>
 <p style="font-size:.95rem">ثم ارجعي لها بعد يومين: ما أخطأتِ فيه يرجع لكِ 💗 ركّزتِ فوصلتِ بتوفيق الله.</p></div>
@@ -71,20 +78,22 @@ const D={
  '1':{opt:OPT.v,items:[['أكلتُ','ماضٍ','فعل ماضٍ: حدث أمس.'],['آكلُ','مضارع','فعل مضارع: الآن.'],['كُلي','أمر','فعل أمر: نطلب عملاً.'],['انطلقَ','ماضٍ','فعل ماضٍ آخره فتحة.'],['يتنفّسُ','مضارع','يبدأ بحرف المضارعة وآخره ضمة.'],['اشربي','أمر','فعل أمر: يقبل ياء المخاطبة.'],['سنصلُ','مضارع','دخلت عليه السين: مضارع.'],['اكتبْ','أمر','فعل أمر: آخره سكون.']]},
  '1b':{opt:OPT.ms,items:[['السماءُ','مبتدأ','الاسم الذي بدأنا به.'],['صافيةٌ','خبر','تخبر عن السماء.'],['الوطنُ','مبتدأ','الاسم الذي بدأنا به.'],['نعمةٌ','خبر','تخبر عن الوطن.'],['الشمسُ','مبتدأ','الاسم الذي بدأنا به.'],['مشرقةٌ','خبر','تخبر عن الشمس.']]},
  '1c':{opt:OPT.jr,items:[['على','حرف جر','من حروف الجر.'],['ظهرِهِ','اسم مجرور','بعد «على» وتحته كسرة.'],['في','حرف جر','من حروف الجر.'],['الحديقةِ','اسم مجرور','بعد «في» وتحتها كسرة.'],['إلى','حرف جر','من حروف الجر.'],['المدرسةِ','اسم مجرور','بعد «إلى» وتحتها كسرة.']]}};
+D['6a']={opt:['لازم','متعدٍّ'],items:[['نامَ','لازم','لا يقبل الهاء (نامه ✗): لازم.'],['كتبَ','متعدٍّ','يقبل الهاء (كتبَه ✓): متعدٍّ.'],['ذهبَ','لازم','لا يقبل الهاء: لازم.'],['فتحَ','متعدٍّ','يقبل الهاء (فتحَه ✓): متعدٍّ.']]};
+const G=[['زرعَ','فعل ماضٍ','مبني','الفتح'],['الفلاحُ','فاعل','مرفوع','الضمة'],['القمحَ','مفعول به','منصوب','الفتحة'],['يقرأُ','فعل مضارع','مرفوع','الضمة'],['التلميذُ','فاعل','مرفوع','الضمة'],['قصةً','مفعول به','منصوب','الفتحة'],['سافرَ','فعل ماضٍ','مبني','الفتح'],['المعلمُ','فاعل','مرفوع','الضمة']];
 const J=[['جملة اسمية فيها مبتدأ وخبر','الطيورُ مغرّدةٌ.'],['جملة فيها فعل ماضٍ','أكلتُ الخبزَ.'],['جملة فيها فعل مضارع','يتنفّسُ الإنسانُ.'],['جملة فيها فعل أمر','اكتبْ الدرسَ.'],['جملة فيها حرف جر واسم مجرور','جلستُ على الكرسيِّ.']];
 const V=[['الأمطار','ُ','مبتدأ: ضمّة (مرفوع)'],['غزيرة','ٌ','خبر: ضمّة (مرفوع)'],['في الحديقة','ِ','اسم مجرور بعد «في»: كسرة'],['ذهب','َ','فعل ماضٍ: فتحة'],['يلعب','ُ','فعل مضارع: ضمّة'],['اكتب','ْ','فعل أمر: سكون']];
 const VH=['ُ','َ','ِ','ْ'],VN=['ضمّة','فتحة','كسرة','سكون'];
 const E=[['الأمطارُ','مبتدأ','مرفوع','الضمة'],['غزيرةٌ','خبر','مرفوع','الضمة'],['على','حرف جر',null,null],['ظهرِهِ','اسم مجرور','مجرور','الكسرة'],['ذهبَ','فعل ماضٍ','مبني','الفتح'],['الوطنُ','مبتدأ','مرفوع','الضمة'],['نعمةٌ','خبر','مرفوع','الضمة']];
 const F=[['وصلَ','فعل ماضٍ','مبني','الفتح'],['مشعلٌ','فاعل','مرفوع','الضمة'],['إلى','حرف جر',null,null],['المكانِ','اسم مجرور','مجرور','الكسرة']];
 const R=['مبتدأ','خبر','فاعل','مفعول به','حرف جر','اسم مجرور','فعل ماضٍ','فعل مضارع'],H=['مرفوع','منصوب','مجرور','مبني','لا حالة لها'],M=['الضمة','الفتحة','الكسرة','الفتح','لا علامة لها'];
-const FORM=w=>w[1]==='حرف جر'?w[0]+': حرف جر.':w[1]==='فعل ماضٍ'?w[0]+': فعل ماضٍ مبني على الفتح.':w[1]==='اسم مجرور'?w[0]+': اسم مجرور وعلامة جرّه الكسرة الظاهرة تحت آخره.':w[0]+': '+w[1]+' مرفوع وعلامة رفعه الضمة الظاهرة على آخره.';
+const FORM=w=>w[1]==='فاعل'?w[0]+': فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره.':w[1]==='مفعول به'?w[0]+': مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.':w[1]==='فعل مضارع'?w[0]+': فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة على آخره.':w[1]==='حرف جر'?w[0]+': حرف جر.':w[1]==='فعل ماضٍ'?w[0]+': فعل ماضٍ مبني على الفتح.':w[1]==='اسم مجرور'?w[0]+': اسم مجرور وعلامة جرّه الكسرة الظاهرة تحت آخره.':w[0]+': '+w[1]+' مرفوع وعلامة رفعه الضمة الظاهرة على آخره.';
 const S=store.get();let score={};
 function sel(opts,items,id){ $('#c'+id).innerHTML=items.map((it,i)=>`<div class="it" data-i="${i}"><b>${it[0]}</b>${opts.map(o=>`<button class="o" data-v="${o}">${o}</button>`).join('')}<div class="fb" style="display:none"></div></div>`).join('')}
 Object.keys(D).forEach(k=>sel(D[k].opt,D[k].items,k));
 $('#c2').innerHTML=J.map((j,i)=>`<div class="it" style="display:block"><b style="font-size:1.05rem">${i+1}) ${j[0]}:</b><textarea placeholder="اكتبي هنا..."></textarea><label><input type="checkbox"> كتبتُ جملة فيها المطلوب</label> <button class="o ex" data-i="${i}">شوفي مثالاً</button><div class="fb ok" style="display:none">مثال: ${j[1]}</div></div>`).join('');
 $('#c3').innerHTML=V.map((v,i)=>`<div class="it" data-i="${i}"><b>${v[0]}<span style="color:#bbb">◻</span></b>${VH.map((h,k)=>`<button class="o" data-v="${h}" style="font-size:1.1rem"><span style="font-size:1.7rem">ـ${h}</span> ${VN[k]}</button>`).join('')}<div class="fb" style="display:none"></div></div>`).join('');
 const eRow=(w,i,pre)=>`<div class="it" style="display:block" data-i="${i}"><b>🪪 ${w[0]}</b><div class="grid"><div><small>الدور</small><select data-k="r"><option value="">اختاري...</option>${R.map(x=>`<option>${x}</option>`).join('')}</select></div><div><small>الحالة</small><select data-k="h"><option value="">اختاري...</option>${H.map(x=>`<option>${x}</option>`).join('')}</select></div><div><small>العلامة</small><select data-k="m"><option value="">اختاري...</option>${M.map(x=>`<option>${x}</option>`).join('')}</select></div></div><div class="fb" style="display:none"></div></div>`;
-$('#c4').innerHTML=E.map((w,i)=>eRow(w,i));$('#c5').innerHTML=F.map((w,i)=>eRow(w,i));
+$('#c4').innerHTML=E.map((w,i)=>eRow(w,i));$('#c5').innerHTML=F.map((w,i)=>eRow(w,i));$('#c6').innerHTML=G.map((w,i)=>eRow(w,i));
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  if(b.classList.contains('o')&&b.dataset.v!==undefined&&!b.classList.contains('ex')){const row=b.closest('.it');$$('.o',row).forEach(x=>x.classList.remove('sel'));b.classList.add('sel');return}
  if(b.classList.contains('ex')){const f=b.parentElement.querySelector('.fb');f.style.display='block';return}
@@ -94,7 +103,7 @@ function mark(row,ok,msg){const f=$('.fb',row);f.style.display='block';f.classNa
 function check(k){let ok=0,n=0;
  if(D[k]){D[k].items.forEach((it,i)=>{const row=$('#c'+k+' .it[data-i="'+i+'"]'),s=$('.o.sel',row),good=s&&s.dataset.v===it[1];n++;if(good)ok++;$$('.o',row).forEach(x=>{x.classList.remove('ok','no');if(x.dataset.v===it[1])x.classList.add('ok');else if(x===s)x.classList.add('no')});mark(row,good,(good?'':'الصحيح: '+it[1]+'. ')+it[2])})}
  else if(k==='3'){V.forEach((v,i)=>{const row=$('#c3 .it[data-i="'+i+'"]'),s=$('.o.sel',row),vv=v[1]==='ٌ'?'ُ':v[1],good=s&&s.dataset.v===vv;n++;if(good)ok++;mark(row,good,(good?'':'الصحيح: '+VN[VH.indexOf(vv)]+' ( ـ'+vv+' ). ')+'آخر الكلمة يخبرنا: '+v[2])})}
- else{const arr=k==='4'?E:F;arr.forEach((w,i)=>{const row=$('#c'+k+' .it[data-i="'+i+'"]'),r=$('[data-k=r]',row).value,h=$('[data-k=h]',row).value,m=$('[data-k=m]',row).value,good=w[2]===null?r===w[1]:(r===w[1]&&h===w[2]&&m===w[3]);n++;if(good)ok++;mark(row,good,'📖 '+FORM(w))})}
+ else{const arr=k==='4'?E:k==='5'?F:G;arr.forEach((w,i)=>{const row=$('#c'+k+' .it[data-i="'+i+'"]'),r=$('[data-k=r]',row).value,h=$('[data-k=h]',row).value,m=$('[data-k=m]',row).value,good=w[2]===null?r===w[1]:(r===w[1]&&h===w[2]&&m===w[3]);n++;if(good)ok++;mark(row,good,'📖 '+FORM(w))})}
  score[k]=[ok,n];$('#r'+k).textContent=ok+' من '+n+(ok===n?' 🌟 ممتاز!':'');
  const t=Object.values(score).reduce((a,x)=>a+x[0],0),m=Object.values(score).reduce((a,x)=>a+x[1],0);
  $('#tot').textContent='مجموعك: '+t+' من '+m;const st=Math.round(t/Math.max(m,1)*5);$('#stars').textContent='⭐ '+st;
