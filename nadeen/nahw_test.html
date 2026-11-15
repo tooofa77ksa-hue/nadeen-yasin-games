@@ -31,6 +31,9 @@ select{border:3px solid #ddd;border-radius:10px;padding:6px;min-width:100px}
 <div id="again"></div>
 <div class="tip">🧠 <b>طريقتي حتى لا أنسى:</b> ١) أحلّ بدون كتاب ← ٢) أصحّح وأقول الإعراب بصوتي ← ٣) أعيد ما أخطأت فيه ← ٤) أرجع للورقة بعد يومين. <br>🔍 <b>آخر الكلمة يخبرنا بوظيفتها:</b> الضمّة 🤗 مرفوعة (مبتدأ، خبر، فاعل) · الفتحة ⛺ منصوبة (مفعول به) · الكسرة 🏺 مجرورة بعد حرف الجر.</div>
 
+<div class="card" id="s0" style="border-color:var(--g)"><h2 style="color:var(--g)">🧠 احفظي التعريف مثل اسمك</h2>
+<div class="tip">لكل تعريف ٤ خطوات: ١) اقرئيه بصوتك ٣ مرات ← ٢) اضغطي «غطّي» ← ٣) اكتبيه من ذاكرتك ← ٤) اضغطي «قارني». الهدف: ٩٠٪ فأكثر 🌟</div>
+<div id="c0"></div></div>
 <div class="card" id="s1"><h2>١) صنّفي</h2>
 <div class="tip">ماضٍ: حدث أمس وآخره فتحة · مضارع: الآن (وتدخل عليه السين أو سوف) وآخره ضمة · أمر: نطلب به عملاً وآخره سكون.<br>علاماتها (ملزمة أ. موضي): الماضي يقبل تاء الفاعل أو التأنيث الساكنة (كتبتُ، كتبتْ) · المضارع يقبل السين أو سوف · الأمر يقبل ياء المخاطبة (اكتبي).</div>
 <div id="c1"></div><div class="sum" id="r1"></div><button class="go g" data-ck="1">تحقّقي ✅</button></div>
@@ -108,5 +111,20 @@ function check(k){let ok=0,n=0;
  const t=Object.values(score).reduce((a,x)=>a+x[0],0),m=Object.values(score).reduce((a,x)=>a+x[1],0);
  $('#tot').textContent='مجموعك: '+t+' من '+m;const st=Math.round(t/Math.max(m,1)*5);$('#stars').textContent='⭐ '+st;
  const o=store.get();o.last=new Date().toISOString().slice(0,10);o.score=score;store.set(o)}
+
+const DEF=[['المبتدأ','هو الاسم الذي تبدأ به الجملة الاسمية، ويكون مرفوعاً.'],['الخبر','هو الاسم الذي يخبر عن المبتدأ ويفيد معه معنى تاماً، ويكون مرفوعاً.'],['الفاعل','اسم مرفوع يدل على من قام بالفعل.'],['المفعول به','اسم منصوب يدل على من وقع عليه فعل الفاعل.'],['حروف الجر','حروف تجر الاسم الواقع بعدها: من، إلى، عن، على، في، الباء، اللام.'],['الاسم المجرور','هو الاسم الذي يقع بعد حرف الجر.'],['إعراب المرفوع','مبتدأ (أو خبر أو فاعل) مرفوع وعلامة رفعه الضمة الظاهرة على آخره.'],['إعراب المنصوب','مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.'],['إعراب المجرور','اسم مجرور وعلامة جره الكسرة الظاهرة تحت آخره.'],['إعراب الفعل الماضي','فعل ماض مبني على الفتح الظاهر على آخره.']];
+const norm=t=>t.replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[،,.:؛()«»]/g,' ').replace(/\s+/g,' ').trim();
+function pct(a,b){const A=norm(a).split(' ').filter(Boolean),B=norm(b).split(' ').filter(Boolean);if(!B.length)return 0;let hit=0;const pool=A.slice();B.forEach(w=>{const i=pool.indexOf(w);if(i>=0){hit++;pool.splice(i,1)}});return Math.round(hit/B.length*100)}
+const MEM=(store.get().mem)||{};
+function renderMem(){$('#c0').innerHTML=DEF.map((d,i)=>{const m=MEM[i]||{v:0,best:0};return `<div class="it" style="display:block" data-i="${i}"><b style="font-size:1.1rem">${d[0]}</b> <span class="muted" style="font-size:.85rem">قلتِها ${m.v} مرات · أفضل نتيجة ${m.best}٪</span>
+<div class="fb ok def" style="display:block;margin:4px 0">${d[1]}</div>
+<button class="o say">🔊 قلتُها بصوتي</button> <button class="o cov">🙈 غطّي</button>
+<textarea placeholder="اكتبيها من ذاكرتك..." style="display:none"></textarea>
+<button class="o cmp" style="display:none">✅ قارني</button><div class="fb res" style="display:none"></div></div>`}).join('')}
+renderMem();
+$('#c0').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.it'),i=+row.dataset.i;
+ if(b.classList.contains('say')){MEM[i]=Object.assign({v:0,best:0},MEM[i]);MEM[i].v++;const o=store.get();o.mem=MEM;store.set(o);$('.muted',row).textContent='قلتِها '+MEM[i].v+' مرات · أفضل نتيجة '+MEM[i].best+'٪'}
+ if(b.classList.contains('cov')){$('.def',row).style.visibility='hidden';$('textarea',row).style.display='block';$('.cmp',row).style.display='inline-block'}
+ if(b.classList.contains('cmp')){const t=$('textarea',row).value,r=pct(t,DEF[i][1]),f=$('.res',row);$('.def',row).style.visibility='visible';f.style.display='block';f.className='fb res '+(r>=90?'ok':'no');f.textContent=(r>=90?'🌟 ممتاز! ':'حاولي مرة ثانية: ')+r+'٪ من الكلمات صحيحة. اقرئيها بصوتك ثم أعيدي.';MEM[i]=Object.assign({v:0,best:0},MEM[i]);MEM[i].best=Math.max(MEM[i].best,r);const o=store.get();o.mem=MEM;store.set(o);$('.muted',row).textContent='قلتِها '+MEM[i].v+' مرات · أفضل نتيجة '+MEM[i].best+'٪'}});
 (function(){const o=store.get();if(o.last){const d=Math.floor((Date.now()-new Date(o.last).getTime())/864e5);$('#again').innerHTML=d>=2?`<div class="tip" style="border-color:var(--o);background:#fff2e6">⏰ مرّ ${d} أيام على آخر مرة! هذا وقت مراجعتكِ، أعيدي الورقة 💗</div>`:`<div class="tip">آخر مرة حللتِ فيها: ${o.last}. ارجعي لها بعد يومين 💗</div>`}})();
 </script></body></html>
