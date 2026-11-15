@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>اختبار الثلاثاء التفاعلي</title>
+<style>
+@font-face{font-family:'B';font-weight:500;src:url('../shared/fonts/Baloo-Medium.ttf')}
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+:root{--p:#7a5af8;--g:#34c25a;--r:#ff5a5a;--o:#ff8a3d}
+*{box-sizing:border-box}body{font-family:'B',sans-serif;font-weight:500;margin:0;background:#fff8e1;color:#222;font-size:19px;line-height:1.7;-webkit-text-size-adjust:100%}
+.w{max-width:760px;margin:0 auto;padding:12px 14px 70px}
+h1{font-weight:800;text-align:center;color:var(--p);margin:6px 0;font-size:1.6rem}.sub{text-align:center;color:#555;margin-bottom:8px}
+.card{background:#fff;border:4px solid var(--p);border-radius:18px;padding:10px 14px;margin:12px 0}
+.card h2{margin:0 0 4px;font-size:1.2rem;color:var(--p);font-weight:800}
+.tip{background:#eefaf0;border:3px solid var(--g);border-radius:14px;padding:6px 12px;margin:8px 0;font-size:.95rem}
+.top{display:flex;justify-content:space-between;align-items:center}.top a{color:var(--p);font-weight:800;text-decoration:none}
+button,select,textarea,input{font:inherit}
+.o{border:3px solid #ccc;background:#fafafa;border-radius:12px;padding:6px 14px;cursor:pointer;min-height:46px;margin:3px}
+.o.ok{border-color:var(--g);background:#dcf7e3}.o.no{border-color:var(--r);background:#ffe3e3}.o.sel{border-color:var(--p);background:#efeaff}
+.go{background:var(--p);color:#fff;border:0;border-radius:14px;padding:10px 22px;font-weight:800;cursor:pointer;margin:8px 4px;min-height:48px}
+.go.g{background:var(--g)}.go.o2{background:var(--o)}
+.fb{border-radius:10px;padding:5px 10px;margin-top:6px;font-size:.95rem;display:none}.fb.ok{background:#e8f9ec;display:block}.fb.no{background:#fff0e0;display:block}
+textarea{width:100%;border:3px solid #ddd;border-radius:12px;padding:8px;min-height:62px;font-size:1.05rem}
+.q{border-top:2px dashed #ddd;padding:8px 0}.q:first-of-type{border-top:0}
+.sent{font-size:1.5rem;font-weight:800;text-align:center;margin:6px 0}
+.w3{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0}
+.w3>div{text-align:center;border:3px solid #ddd;border-radius:14px;padding:4px 8px;min-width:120px}
+.w3 b{font-size:1.4rem;display:block}
+.ul{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px;color:#7a5af8}
+.bar{display:flex;gap:6px;justify-content:center;margin:6px 0;flex-wrap:wrap}.bar span{border-radius:10px;padding:2px 12px;font-size:.9rem;background:#eee}.bar span.on{background:var(--p);color:#fff}
+.ask{background:#fff8e6;border:3px solid #e0a800;border-radius:12px;padding:6px 12px;margin:6px 0;font-size:.95rem}
+.big{font-size:1.2rem;font-weight:800;text-align:center}
+</style></head><body><div class="w">
+<div class="top"><a href="./">← موقع نادين</a><span id="stars">⭐ 0</span></div>
+<h1>📝 اختبار الثلاثاء: الفعل والفاعل والمفعول به</h1>
+<div class="sub">بصيغة اختبار المعلمة: صنّفي · هاتي جملة · اضبطي · أعربي — وكل مرة جمل جديدة غير الأوراق</div>
+<div class="tip">🤔 <b>اسألي نفسك:</b> ماضٍ؟ هل أقدر أقول «أنا … تُ»؟ · مضارع؟ هل يبدأ بنأيت أو يقبل السين؟ · أمر؟ هل أطلب؟ · فاعل؟ مَن؟ · مفعول به؟ ماذا؟ <span style="color:#555">(الجمل هنا جديدة للتدريب 💡)</span></div>
+<div id="app"></div>
+</div>
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const norm=t=>t.replace(/[ً-ْـ]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[،,.:؛()«»]/g,' ').replace(/\s+/g,' ').trim();
+const LSK='nyg_nadeen_tueexam';
+const L={get(){try{return JSON.parse(localStorage.getItem(LSK)||'{}')}catch(e){return{}}},set(o){try{localStorage.setItem(LSK,JSON.stringify(o))}catch(e){}}};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const DM='َ',DD='ُ',DK='ِ',DS='ْ';
+// ---- بنك الجمل الجديدة
+const VB=[['فتحَ','يفتحُ',['البابَ']],['شربَ','يشربُ',['الحليبَ','الماءَ']],['حملَ','يحملُ',['الصندوقَ']],['سمعَ','يسمعُ',['الشرحَ']],['حفظَ','يحفظُ',['الدرسَ']],['كتبَ','يكتبُ',['الواجبَ','الدرسَ']],['أكلَ','يأكلُ',['الطعامَ']],['قرأَ','يقرأُ',['الكتابَ']]];
+const SB=['الولدُ','الطفلُ','الطالبُ','العاملُ','المعلمُ','الفلاحُ'];
+const AM=['اكتبْ','اشربْ','افتحْ','احفظْ','اقرأْ','اسمعْ'];
+function sentence(){const v=rnd(VB),pres=Math.random()<.5;return{v:pres?v[1]:v[0],vt:pres?'mud':'madi',f:rnd(SB),m:rnd(v[2])}}
+const VT={madi:'ماضٍ',mud:'مضارع',amr:'أمر'};
+const VHINT={madi:'اسألي نفسك: هل أقدر أقول «أنا … تُ»؟ (أنا فتحتُ ✓) ← ماضٍ. والماضي آخره فتحة.',mud:'اسألي نفسك: هل يبدأ بحرف من «نأيت» أو أقدر أقول «سـ» قبله؟ ← مضارع.',amr:'اسألي نفسك: هل أطلب من أحد أن يسوّي شيئاً؟ ← أمر. (وآخره سكون)'};
+const IR={madi:w=>w+': فعل ماضٍ مبني على الفتح.',mud:w=>w+': فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',amr:w=>w+': فعل أمر مبني على السكون.',f:w=>w+': فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',m:w=>w+': مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.'};
+const ROLE={v:'فعل',f:'فاعل',m:'مفعول به'};
+const RHINT={v:'الفعل: كلمة تدل على حدث (عمل).',f:'اسألي نفسك: مَن قام بالفعل؟ (مَن؟) ← فاعل مرفوع بالضمة.',m:'اسألي نفسك: ماذا وقع عليه الفعل؟ (ماذا؟) ← مفعول به منصوب بالفتحة.'};
+// ---- حالة الاختبار
+let S;
+function newTest(){
+ const t={part:0,score:0,max:0,weak:{},stars:0};
+ t.A=shuf([...[sentence(),sentence(),sentence()].map(s=>({w:s.v,t:s.vt})),{w:rnd(AM),t:'amr'},{w:rnd(AM),t:'amr'},{w:rnd(VB)[1],t:'mud'}]).slice(0,6);
+ t.B=[sentence(),sentence()];
+ t.C=[];shuf(['v','f','m']).forEach(()=>0);
+ const s=sentence();t.C=[{w:s.f,r:'f'},{w:s.m,r:'m'},{w:sentence().m,r:'m'},{w:sentence().f,r:'f'}].map(x=>({...x,ch:DM}));
+ t.D=[sentence(),sentence()];t.E={done:false};
+ return t}
+function weak(k){S.weak[k]=(S.weak[k]||0)+1}
+function ok(msg){S.score++;S.max++;return '✅ أحسنتِ! '+(msg||'')}
+function bad(msg,k){S.max++;weak(k);return '❌ '+msg}
+function stars(){$('#stars').textContent='⭐ '+(L.get().stars||0)}
+function bar(){const n=['صنّفي الأفعال','صنّفي الكلمات','اضبطي','أعربي','هاتي جملة','النتيجة'];return `<div class="bar">${n.map((x,i)=>`<span class="${i===S.part?'on':''}">${i+1}) ${x}</span>`).join('')}</div>`}
+function render(){
+ const A=$('#app');
+ if(S.part===0)A.innerHTML=bar()+partA();
+ else if(S.part===1)A.innerHTML=bar()+partB();
+ else if(S.part===2)A.innerHTML=bar()+partC();
+ else if(S.part===3)A.innerHTML=bar()+partD();
+ else if(S.part===4)A.innerHTML=bar()+partE();
+ else A.innerHTML=bar()+result();
+ window.scrollTo(0,0);bind()}
+// ---- أ: صنّفي الفعل
+function partA(){return `<div class="card"><h2>١) صنّفي الفعل: ماضٍ · مضارع · أمر</h2>${S.A.map((q,i)=>`<div class="q" data-a="${i}"><div class="big">${q.w}</div><div style="text-align:center">${['madi','mud','amr'].map(k=>`<button class="o" data-k="${k}">${VT[k]}</button>`).join('')}</div><div class="fb"></div></div>`).join('')}<div style="text-align:center"><button class="go" id="next">التالي ←</button></div></div>`}
+function partB(){return `<div class="card"><h2>٢) صنّفي: فعل · فاعل · مفعول به</h2><div class="tip">اضغطي على اختيار تحت كل كلمة.</div>${S.B.map((s,i)=>`<div class="q"><div class="sent">${s.v} ${s.f} ${s.m}</div><div class="w3">${[['v',s.v],['f',s.f],['m',s.m]].map(([r,w])=>`<div data-b="${i}" data-r="${r}"><b>${w}</b>${['v','f','m'].map(k=>`<button class="o" data-k="${k}">${ROLE[k]}</button>`).join('')}<div class="fb"></div></div>`).join('')}</div></div>`).join('')}<div style="text-align:center"><button class="go" id="next">التالي ←</button></div></div>`}
+function partC(){return `<div class="card"><h2>٣) اضبطي آخر الكلمة (الحركة الصحيحة)</h2><div class="tip">فكّري: الفاعل ← ضمة · المفعول به ← فتحة</div>${S.C.map((q,i)=>{const bare=q.w.slice(0,-1);return `<div class="q" data-c="${i}"><div class="big">${bare}<span class="ul">_</span> <span style="font-size:.9rem;color:#666">(${ROLE[q.r]})</span></div><div style="text-align:center">${[[DD,'ضمّة ُ'],[DM,'فتحة َ'],[DK,'كسرة ِ'],[DS,'سكون ْ']].map(([h,n])=>`<button class="o" data-h="${h}">${n}</button>`).join('')}</div><div class="fb"></div></div>`}).join('')}<div style="text-align:center"><button class="go" id="next">التالي ←</button></div></div>`}
+function partD(){return `<div class="card"><h2>٤) أعربي ما تحته خط</h2><div class="tip">اكتبي الإعراب كاملاً بيدك (من حفظك). ثم اضغطي «صحّحي». ٩٠٪ تكفي.</div>${S.D.map((s,i)=>{const ws=[['v',s.v],['f',s.f],['m',s.m]];return `<div class="q"><div class="sent"><span class="ul">${s.v}</span> <span class="ul">${s.f}</span> <span class="ul">${s.m}</span></div>${ws.map(([r,w])=>`<div style="margin:4px 0" data-d="${i}" data-r="${r}"><b>${w}:</b><textarea placeholder="اكتبي إعراب ${w}"></textarea><button class="go g chk">صحّحي</button><div class="fb"></div></div>`).join('')}</div>`}).join('')}<div style="text-align:center"><button class="go" id="next">التالي ←</button></div></div>`}
+function partE(){return `<div class="card"><h2>٥) هاتي جملة</h2><div class="tip">اكتبي جملة فيها <b>فعل وفاعل ومفعول به</b> (غير جمل الأسئلة).</div><textarea id="mys" placeholder="اكتبي جملتك هنا"></textarea><div class="ask"><label><input type="checkbox" class="cb"> فيها فعل</label><br><label><input type="checkbox" class="cb"> فيها فاعل (مَن؟)</label><br><label><input type="checkbox" class="cb"> فيها مفعول به (ماذا؟)</label><br><label><input type="checkbox" class="cb"> ضبطتُ آخر الفاعل بالضمة وآخر المفعول به بالفتحة</label></div><div class="fb" id="efb"></div><div style="text-align:center"><button class="go" id="next">النتيجة ←</button></div></div>`}
+function result(){const pc=S.max?Math.round(S.score/S.max*100):0;const wk=Object.entries(S.weak).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`• ${k} (${n})`).join('<br>')||'لا شيء 🎉';
+ const lg=L.get();lg.stars=(lg.stars||0)+(pc>=80?3:pc>=60?2:1);lg.best=Math.max(lg.best||0,pc);L.set(lg);stars();
+ return `<div class="card"><h2>النتيجة</h2><div class="big" style="font-size:2rem">${S.score} / ${S.max} (${pc}٪)</div><div class="tip">${pc>=90?'ما شاء الله! ركّزتِ فوصلتِ بتوفيق الله 🌟':pc>=60?'أحسنتِ! تدرّبي على النقاط الضعيفة وارجعي بعد قليل بجمل جديدة.':'لا بأس، المحاولة والإصرار هما الطريق. جرّبي بجمل جديدة، وراجعي أسئلة «اسألي نفسك».'}</div><b>أركّز عليها:</b><div>${wk}</div><div style="text-align:center"><button class="go o2" id="again">🔁 اختبار جديد بجمل جديدة</button></div></div>`}
+function bind(){
+ const A=$('#app');
+ A.querySelectorAll('[data-a] .o').forEach(b=>b.onclick=()=>{const q=b.closest('[data-a]'),it=S.A[+q.dataset.a];if(q.dataset.done)return;const fb=q.querySelector('.fb');
+  if(b.dataset.k===it.t){b.classList.add('ok');q.dataset.done=1;fb.className='fb ok';fb.innerHTML=ok(VHINT[it.t])}else{b.classList.add('no');fb.className='fb no';fb.innerHTML=bad('ليس '+VT[b.dataset.k]+'. '+VHINT[it.t],'تصنيف الفعل (ماضٍ/مضارع/أمر)');q.dataset.done=1;A.querySelectorAll('[data-a="'+q.dataset.a+'"] .o').forEach(x=>{if(x.dataset.k===it.t)x.classList.add('ok')})}});
+ A.querySelectorAll('[data-b]').forEach(d=>d.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(d.dataset.done)return;const r=d.dataset.r,fb=d.querySelector('.fb');d.dataset.done=1;
+  if(b.dataset.k===r){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok()}else{b.classList.add('no');d.querySelectorAll('.o').forEach(x=>{if(x.dataset.k===r)x.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad(RHINT[r],'تصنيف فعل/فاعل/مفعول به')}}));
+ A.querySelectorAll('[data-c]').forEach(q=>q.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(q.dataset.done)return;q.dataset.done=1;const it=S.C[+q.dataset.c],want=it.r==='f'?DD:DM,fb=q.querySelector('.fb');
+  if(b.dataset.h===want){b.classList.add('ok');fb.className='fb ok';fb.innerHTML=ok(it.w)}else{b.classList.add('no');q.querySelectorAll('.o').forEach(x=>{if(x.dataset.h===want)x.classList.add('ok')});fb.className='fb no';fb.innerHTML=bad((it.r==='f'?'الفاعل مرفوع ← الضمة: ':'المفعول به منصوب ← الفتحة: ')+it.w,'ضبط آخر الكلمة')}}));
+ A.querySelectorAll('[data-d]').forEach(d=>{const bt=d.querySelector('.chk');if(!bt)return;bt.onclick=()=>{const s=S.D[+d.dataset.d],r=d.dataset.r,w=r==='v'?s.v:r==='f'?s.f:s.m,model=r==='v'?IR[s.vt](w):IR[r](w),txt=d.querySelector('textarea').value,fb=d.querySelector('.fb');
+  const a=norm(txt).split(' ').filter(Boolean),m=norm(model).split(' ').filter(Boolean);const pool=a.slice();let hit=0;const miss=[];m.forEach(x=>{const i=pool.indexOf(x);if(i>=0){hit++;pool.splice(i,1)}else miss.push(x)});const p=Math.round(hit/m.length*100);
+  if(d.dataset.counted!=='1'&&txt.trim()){d.dataset.counted='1';if(p>=90){S.score++;S.max++}else{S.max++;weak('الإعراب')}}
+  fb.className='fb '+(p>=90?'ok':'no');fb.innerHTML=(p>=90?'✅ ممتاز! ':'❌ ('+p+'٪) ')+'<br>الإعراب الصحيح: <b>'+model+'</b>'+(p<90&&txt.trim()?'<br>ناقص: '+miss.join('، '):'')}});
+ A.querySelectorAll('.cb').forEach(c=>c.onchange=()=>{const n=[...A.querySelectorAll('.cb')].filter(x=>x.checked).length,t=$('#mys').value.trim(),f=$('#efb');if(n===4&&t){f.className='fb ok';f.innerHTML='✅ ما شاء الله! جملتك: <b>'+t+'</b>. اقرئيها لولي أمرك وقولي: مَن الفاعل؟ وما المفعول به؟'}else{f.className='fb'}});
+ const nx=$('#next');if(nx)nx.onclick=()=>{if(S.part===4){const n=[...A.querySelectorAll('.cb')].filter(x=>x.checked).length;if($('#mys').value.trim()){S.max++;if(n===4)S.score++;else weak('هاتي جملة')}}S.part++;render()};
+ const ag=$('#again');if(ag)ag.onclick=()=>{S=newTest();render()}}
+S=newTest();stars();render();
+</script></body></html>
