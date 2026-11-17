@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>رياضيات نادين: المسائل اللفظية وجدول الضرب</title>
+<style>
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;background:#fff8e1;font-family:'B',sans-serif}
+.bar{display:flex;gap:8px;padding:8px 10px;background:#fff;border-bottom:4px solid #7a5af8;position:sticky;top:0;z-index:5}
+.t{flex:1;border:4px solid #ddd;background:#fff;border-radius:16px;padding:6px 4px;font:inherit;font-weight:800;font-size:.95rem;line-height:1.25;cursor:pointer;min-height:56px;color:#444}
+.t small{display:block;font-weight:500;font-size:.72rem;color:#777}
+.t.on{border-color:#7a5af8;background:#f3f0ff;color:#4a2fc0}
+iframe{display:block;border:0;width:100%;height:calc(100% - 76px);background:#fff8e1}
+</style></head><body>
+<div class="bar" id="bar">
+ <button class="t" data-u="masail_ch4.html">🧠 الفصل الرابع<small>الأنماط والجبر · ٥٢ مسألة</small></button>
+ <button class="t" data-u="masail_ch5.html">🧠 الفصل الخامس<small>الضرب في رقم · ٦٧ مسألة</small></button>
+ <button class="t" data-u="mult_game.html">🎲 لعبة جدول الضرب<small>تعلّمي · تدرّبي · اكتبي</small></button>
+</div>
+<iframe id="f" title="رياضيات نادين"></iframe>
+<script>
+const KEY='nyg_nadeen_math_tab';
+const tabs=[...document.querySelectorAll('.t')];
+function open(u){tabs.forEach(b=>b.classList.toggle('on',b.dataset.u===u));document.getElementById('f').src=u;try{localStorage.setItem(KEY,u)}catch(e){}}
+tabs.forEach(b=>b.onclick=()=>open(b.dataset.u));
+let u=tabs[0].dataset.u;try{const s=localStorage.getItem(KEY);if(s&&tabs.some(b=>b.dataset.u===s))u=s}catch(e){}
+const h=location.hash.replace('#','');const m={ch4:'masail_ch4.html',ch5:'masail_ch5.html',mult:'mult_game.html'};if(m[h])u=m[h];
+open(u);
+</script></body></html>
