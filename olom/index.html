@@ -1,0 +1,94 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>حديقة العلوم السحرية</title>
+<style>
+@font-face{font-family:'Baloo';font-weight:400;src:url('fonts/baloo-400.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:500;src:url('fonts/baloo-500.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:600;src:url('fonts/baloo-600.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:700;src:url('fonts/baloo-700.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:800;src:url('fonts/baloo-800.ttf') format('truetype')}
+:root{--p:#2b8a3e;--pk:#f06595;--b:#1c7ed6;--y:#fab005}
+*{box-sizing:border-box}body{margin:0;font-family:"Baloo",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:linear-gradient(#ebfbee,#e7f5ff);color:#243b2f;min-height:100vh;padding:10px}
+.wrap{max-width:720px;margin:auto}h1{text-align:center;color:var(--p);margin:4px 0;font-size:28px}.sub{text-align:center;color:#666;font-size:14px;margin-bottom:6px}
+.card{background:#fff;border:3px solid var(--p);border-radius:20px;padding:14px;margin:10px 0}
+button{font:inherit;font-family:inherit;font-weight:800;border-radius:14px;border:3px solid var(--p);background:#ebfbee;color:#1b5e20;padding:10px 14px;font-size:20px;cursor:pointer}
+button.main{background:var(--pk);border-color:#c2255c;color:#fff;font-size:24px}button.ok{background:#d3f9d8;border-color:#2f9e44}button.no{background:#ffe3e3;border-color:#e03131}
+.chip{display:inline-block;margin:3px;min-width:46px}.chip.on{background:var(--p);color:#fff}
+.opt{display:block;width:100%;text-align:right;margin:7px 0;font-size:20px}
+.badge{display:inline-block;border-radius:10px;padding:2px 8px;font-size:13px;margin:2px;font-weight:700}.b1{background:#fff0f6;border:2px solid #e03131;color:#c92a2a}.b2{background:#e7f5ff;border:2px solid #1c7ed6;color:#0b5394}
+.q{font-size:23px;font-weight:700;margin:8px 0;line-height:1.7}
+.tbl{border:2px solid #adb5bd;border-radius:8px;padding:6px 10px;white-space:pre-wrap;font-size:17px;margin:6px 0;background:#f8f9fa}
+.hint{background:#fff9db;border-right:6px solid var(--y);border-radius:10px;padding:10px;font-size:18px;margin-top:8px;text-align:right;line-height:1.7}
+.ans{background:#2f9e44;color:#fff;border-radius:12px;padding:8px 12px;font-weight:800;margin:8px 0;font-size:20px}
+.quote{background:#fff3bf;border-right:6px solid #f08c00;padding:6px 10px;margin:6px 0;font-size:16px;border-radius:8px}
+.img{max-width:100%;max-height:300px;border:2px solid #adb5bd;border-radius:10px;margin:6px 0}
+.score{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.pl{border:3px solid #ddd;border-radius:14px;padding:6px 12px;background:#fff;font-weight:800}.pl.cur{border-color:var(--pk);background:#fff0f6;transform:scale(1.05)}
+.bar{background:#e9ecef;border-radius:8px;height:16px;overflow:hidden}.bar i{display:block;height:100%;background:#40c057}
+.cup{font-size:110px;text-align:center;animation:b 1s infinite alternate}@keyframes b{to{transform:translateY(-14px) rotate(4deg)}}
+.small{font-size:12px;color:#888;text-align:center;margin:16px 0 4px}.cols{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+@media(min-width:1000px){.wrap{max-width:980px}h1{font-size:44px}.q{font-size:36px}.opt{font-size:30px}button{font-size:28px}.hint{font-size:26px}.ans{font-size:30px}.pl{font-size:26px}.img{max-height:420px}}
+@media print{.noprint{display:none}body{background:#fff}}
+</style></head><body><div class="wrap">
+<h1>🌿 حديقة العلوم السحرية 🌿</h1>
+<div class="sub">أسئلة الاختبارات المركزية · علوم رابع · بإجابات الأستاذة موضي الحربي</div>
+<div id="app"></div>
+<div class="small">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div></div>
+<script src="data.js"></script>
+<script>
+const AR='٠١٢٣٤٥٦٧٨٩',ar=n=>String(n).replace(/\d/g,d=>AR[d]),$=s=>document.querySelector(s);
+const esc=t=>String(t==null?'':t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const lr=s=>String(s).replace(/-/g,'\u200e-\u200e');
+const EMO=['👸','🧚‍♀️','🦄','🧜‍♀️'];
+let G={n:1,names:['نادين','صديقتي ١','صديقتي ٢','صديقتي ٣'],chs:['١','٢','٣','٤','٥','—'],rep:false,rounds:8},P=[],turn=0,cur=null,hinted=false,tries=0,lastId='';
+const KEY=n=>'olom_'+n;
+function load(n){try{return Object.assign({box:{},seen:{},miss:{},sess:0},JSON.parse(localStorage.getItem(KEY(n))||'{}'))}catch(e){return{box:{},seen:{},miss:{},sess:0}}}
+function save(p){try{localStorage.setItem(KEY(p.name),JSON.stringify({box:p.box,seen:p.seen,miss:p.miss,sess:p.sess}))}catch(e){}}
+const CH={'١':'ممالك المخلوقات الحية','٢':'المملكة الحيوانية','٣':'الأنظمة البيئية','٤':'الأمراض والعدوى','٥':'التغذية والصحة','—':'مدخل الطريقة العلمية'};
+function setup(){let h='<div class="card"><b>كم لاعبة؟</b><div class="cols">'+[1,2,3,4].map(n=>'<button class="chip '+(G.n==n?'on':'')+'" onclick="G.n='+n+';setup()">'+ar(n)+'</button>').join('')+'</div><div style="margin-top:8px">'+Array.from({length:G.n},(_,i)=>'<div>'+EMO[i]+' <input value="'+G.names[i]+'" style="font:inherit;font-size:20px;padding:6px;border:2px solid var(--p);border-radius:10px;width:60%" oninput="G.names['+i+']=this.value"></div>').join('')+'</div></div>';
+ h+='<div class="card"><b>أي فصول نلعب؟</b><div>'+Object.keys(CH).map(c=>'<button class="chip '+(G.chs.includes(c)?'on':'')+'" style="font-size:16px" onclick="tg(\''+c+'\')">'+(c=='—'?'مدخل':'ف'+c)+' · '+CH[c]+'</button>').join('')+'</div><div class="cols" style="margin-top:6px"><button onclick="G.chs=[\'١\',\'٢\',\'٣\',\'٤\',\'٥\',\'—\'];setup()">كل الفصول</button><button class="chip '+(G.rep?'on':'')+'" onclick="G.rep=!G.rep;setup()">🌟 المتكرر فقط (أكثر من منطقة)</button></div></div>';
+ h+='<div class="card"><b>كم سؤالاً لكل لاعبة؟</b><div class="cols">'+[5,8,10,15].map(n=>'<button class="chip '+(G.rounds==n?'on':'')+'" onclick="G.rounds='+n+';setup()">'+ar(n)+'</button>').join('')+'</div></div>';
+ h+='<button class="main" style="width:100%" onclick="start()">ابدئي اللعب 🌷</button><div class="card" style="font-size:15px;line-height:1.8"><b>كيف تلعبين؟</b><br>١) اقرئي السؤال: ما المطلوب؟ ٢) أجيبي (اختاري، أو اكتبي في دفترك ثم اكشفي إجابة الأستاذة موضي).<br>٣) «💡 ساعديني» تعطيك سؤالاً تسألينه لنفسك وجملة من كتابك (نجمة بدل نجمتين).<br>٤) عند الخطأ: ترين صفحته في كتابك وصورته وتصحّحين بنفسك، ثم يرجع السؤال قريباً.<br>٥) الأسئلة تتكرر على أيام متباعدة حتى تثبت، وفي النهاية كأس وخريطة الدروس.</div>';
+ $('#app').innerHTML=h}
+function tg(c){const i=G.chs.indexOf(c);if(i>=0){if(G.chs.length>1)G.chs.splice(i,1)}else G.chs.push(c);setup()}
+function start(){P=Array.from({length:G.n},(_,i)=>{const nm=(G.names[i]||'لاعبة'+(i+1)).trim();const s=load(nm);s.sess++;return Object.assign(s,{name:nm,emo:EMO[i],pts:0,first:0,asked:0,streak:0,done:0})});P.forEach(save);turn=0;next()}
+const GAP=[0,1,2,4,7];
+function pool(){let q=SCI.filter(x=>G.chs.includes(x.ch));if(G.rep)q=q.filter(x=>x.count>=2);return q.length?q:SCI}
+function pick(p){const pl=pool();let due=pl.filter(f=>{const b=p.box[f.id]||0;return b===0||b===1||(p.sess-(p.seen[f.id]||0))>=GAP[Math.min(b,4)]});if(!due.length)due=pl;
+ const d2=due.filter(f=>f.id!==lastId);if(d2.length)due=d2;
+ due.sort((a,b)=>((p.box[a.id]||0)-(p.box[b.id]||0))-(a.count-b.count)*0.7+(Math.random()-.5)*3);return due[0]}
+function next(){if(P.every(x=>x.done>=G.rounds))return end();const p=P[turn];if(p.done>=G.rounds){turn=(turn+1)%P.length;return next()}cur=pick(p);lastId=cur.id;hinted=false;tries=0;ask()}
+function bar(){return '<div class="score">'+P.map((p,i)=>'<div class="pl '+(i==turn?'cur':'')+'">'+p.emo+' '+esc(p.name)+' · '+ar(p.pts)+'⭐</div>').join('')+'</div>'}
+function where(q){return '<span class="badge b2">📖 الفصل '+q.ch+': '+esc(q.chT)+' · الدرس '+lr(esc(q.les))+' '+esc(q.lesT)+(q.page?' · '+esc(q.page):'')+'</span>'}
+function head(q){let h=q.count>=2?'<span class="badge b1">🔁 تكرر في '+ar(q.count)+' مناطق</span>':'<span class="badge b2">جاء في '+esc(q.regions[0])+'</span>';return h+(G.showWhere?where(q):'')}
+function qbody(q){let h='<div class="q">'+esc(q.text)+'</div>';if(q.table)h+='<div class="tbl">'+esc(q.table)+'</div>';if(q.fig)h+='<img class="img" src="'+q.fig+'">';return h}
+function ask(){const q=cur,p=P[turn];let h=bar()+'<div class="card"><div class="small">دور '+p.emo+' '+esc(p.name)+' · سؤال '+ar(p.done+1)+' من '+ar(G.rounds)+'</div>'+head(q)+qbody(q);
+ if(q.type=='mcq')h+=q.options.map(o=>'<button class="opt" data-o="'+esc(o)+'" onclick="chooseO(this)">'+esc(o)+'</button>').join('');
+ else if(q.type=='tf')h+='<div class="cols"><button class="opt" style="width:45%" onclick="chooseTF(\'صح\',this)">✔ صح</button><button class="opt" style="width:45%" onclick="chooseTF(\'خطأ\',this)">✘ خطأ</button></div>';
+ else h+='<div class="hint">✍️ اكتبي جوابك في دفترك أو قوليه بصوتك، ثم اكشفي إجابة الأستاذة موضي.</div><button class="main" style="width:100%;margin-top:8px" onclick="reveal()">أظهري الإجابة</button>';
+ h+='<div id="fb"></div><div class="cols" style="margin-top:8px"><button onclick="help()">💡 ساعديني</button></div></div>';$('#app').innerHTML=h}
+function help(){hinted=true;let h='<div class="hint">🤔 اسألي نفسك: <b>'+esc(cur.think||'ما المطلوب منا؟')+'</b>'+(cur.quote?'<div class="quote">📖 من كتابك ('+esc(cur.page)+'): «'+esc(cur.quote)+'»</div>':'')+'<div style="font-size:14px">'+where(cur)+'</div></div>';$('#fb').innerHTML=h}
+function award(correct1){const p=P[turn],q=cur;p.asked++;
+ if(correct1){if(!hinted){p.first++;p.streak++}else p.streak=0;p.pts+=hinted?1:2+(p.streak>=3?1:0);p.box[q.id]=hinted?Math.max(1,p.box[q.id]||1):Math.min(4,(p.box[q.id]||0)+1)}
+ else{p.streak=0;p.box[q.id]=1;p.miss[q.id]=1}
+ if((p.box[q.id]||0)>=3)delete p.miss[q.id];p.seen[q.id]=p.sess;save(p);p.done++}
+function explain(q,chosen){let h='<div class="hint" style="border-color:#e03131">';if(chosen)h+='اخترتِ: <b>'+esc(chosen)+'</b><br>';h+='🤔 اسألي نفسك: <b>'+esc(q.think||'ما المطلوب؟')+'</b><br>';
+ (q.steps||[]).forEach(s=>h+='• '+esc(s)+'<br>');if(q.why)h+='<b>ليش؟</b> '+esc(q.why)+'<br>';if(q.tip)h+='💡 '+esc(q.tip);
+ if(q.quote)h+='<div class="quote">📖 من كتابك ('+esc(q.page)+'): «'+esc(q.quote)+'»</div>';
+ if(q.bfig)h+='<div style="text-align:center"><img class="img" src="'+q.bfig+'"><div class="small" style="margin:0">الصورة في كتابك ('+esc(q.bfigp)+')</div></div>';
+ if(q.conf)h+='<div style="color:#c92a2a;font-size:14px">تنبيه: '+esc(q.conf)+'</div>';return h+'<div style="font-size:14px">'+where(q)+'</div></div>'}
+function done1(ok,fbHtml,delay){$('#fb').innerHTML=fbHtml;setTimeout(()=>{turn=(turn+1)%P.length;next()},delay)}
+function chooseO(b){const q=cur,o=b.dataset.o,ok=o.trim().startsWith(q.letter+')')||o.trim().startsWith(q.letter+' ');tries++;
+ if(ok){b.classList.add('ok');award(tries==1);document.querySelectorAll('.opt').forEach(x=>x.disabled=true);
+  const msg=tries==1?'🌟 أحسنتِ! ركّزتِ فوصلتِ':'👏 جميل أنكِ اخترتِ الصحيح بنفسك';
+  const extra=tries==1&&!hinted?'':explain(q,'');done1(1,'<div class="ans">'+msg+' — إجابة الأستاذة موضي: '+esc(q.ans)+'</div>'+extra,tries==1&&!hinted?1300:4000)}
+ else{b.classList.add('no');b.disabled=true;if(tries==1){const p=P[turn];p.box[q.id]=1;p.miss[q.id]=1;p.seen[q.id]=p.sess;save(p)}
+  $('#fb').innerHTML=explain(q,o)+'<div style="margin-top:6px"><b>اختاري الجواب الصحيح بنفسك الآن ↑</b></div>'}}
+function chooseTF(v,b){const q=cur,ok=v===q.ans.replace('خطا','خطأ');tries++;
+ if(ok){b.classList.add('ok');award(tries==1);document.querySelectorAll('.opt').forEach(x=>x.disabled=true);done1(1,'<div class="ans">'+(tries==1?'🌟 أحسنتِ!':'👏 جميل')+' — إجابة الأستاذة موضي: '+esc(q.ans)+'</div>'+(tries==1&&!hinted?'':explain(q,'')),tries==1&&!hinted?1300:4000)}
+ else{b.classList.add('no');b.disabled=true;if(tries==1){const p=P[turn];p.box[q.id]=1;p.miss[q.id]=1;p.seen[q.id]=p.sess;save(p)}$('#fb').innerHTML=explain(q,v)+'<div style="margin-top:6px"><b>اختاري الصحيح بنفسك الآن ↑</b></div>'}}
+function reveal(){const q=cur;let h='<div class="ans">✔ إجابة الأستاذة موضي الحربي: '+esc(q.ans)+'</div>'+explain(q,'')+'<div class="hint" style="border-color:#2f9e44"><b>كيف كانت إجابتك؟ (كوني صادقة، هذا لك)</b></div><div class="cols"><button class="ok" onclick="selfGrade(true)">عرفتها ✔</button><button class="no" onclick="selfGrade(false)">أحتاج تدريباً 🔁</button></div>';$('#fb').innerHTML=h;document.querySelectorAll('.main').forEach(x=>x.style.display='none')}
+function selfGrade(ok){award(ok);document.querySelectorAll('#fb button').forEach(x=>x.disabled=true);setTimeout(()=>{turn=(turn+1)%P.length;next()},ok?600:900)}
+function end(){const mx=Math.max(...P.map(p=>p.pts));const win=P.filter(p=>p.pts===mx);
+ let h='<div class="card"><div class="cup">🏆</div><h2 style="text-align:center">'+(P.length>1?(win.length>1?'تعادل! الكأس لـ '+win.map(w=>esc(w.name)).join(' و '):'الكأس لـ '+win[0].emo+' '+esc(win[0].name)):'ما شاء الله '+esc(P[0].name)+'!')+'</h2><div style="text-align:center">اللعب الجميل أهم: اجتهدتنّ، والتوفيق من الله 🤍</div></div>';
+ P.forEach(p=>{const pc=Math.round(100*p.first/Math.max(1,p.asked));h+='<div class="card"><b>'+p.emo+' '+esc(p.name)+'</b> — '+ar(p.pts)+' نقطة · صحيحة من أول مرة بلا مساعدة: '+ar(p.first)+' من '+ar(p.asked)+' ('+ar(pc)+'٪)';
+  h+='<div class="small" style="text-align:right">ثبات كل فصل (أسئلة وصلت للصندوق ٢ فما فوق):</div>';
+  Object.keys(CH).forEach(c=>{const all=SCI.filter(x=>x.ch==c);if(!all.length)return;const k=all.filter(x=>(p.box[x.id]||0)>=2).length,pr=Math.round(100*k/all.length);h+='<div style="font-size:14px;margin-top:4px">'+(c=='—'?'مدخل':'ف'+c)+' · '+CH[c]+' — '+ar(k)+' من '+ar(all.length)+'<div class="bar"><i style="width:'+pr+'%"></i></div></div>'});
+  const miss=SCI.filter(x=>p.miss[x.id]);if(miss.length)h+='<div class="hint" style="border-color:#e03131"><b>تحتاج مراجعة (افتحي كتابك):</b><br>'+miss.map(x=>'• '+esc(x.text.slice(0,60))+'… ← الدرس '+lr(esc(x.les))+' '+esc(x.page)).join('<br>')+'</div>';
+  h+='</div>'});
+ h+='<div class="cols noprint"><button class="main" onclick="start()">جولة جديدة</button><button onclick="setup()">تغيير الإعدادات</button><button onclick="window.print()">🖨️ طباعة للمعلمة</button></div>';$('#app').innerHTML=h}
+G.showWhere=false;setup();
+</script></body></html>

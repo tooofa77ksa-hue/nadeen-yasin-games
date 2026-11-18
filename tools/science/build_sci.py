@@ -35,6 +35,8 @@ CSS=B.CSS+K.CSS2+'''
 .ans{background:#2f9e44;color:#fff;border-radius:8px;padding:2px 10px;margin:4px 0;font-weight:800;display:inline-block}
 .region{display:inline-block;background:#fff;border:1.5px solid #e03131;color:#e03131;border-radius:8px;padding:0 6px;margin:0 2px;font-size:11.5px}
 '''
+def LRM(t): return t.replace('-','\u200e-\u200e')
+def CLEANA(a): return re.sub(r'\s*\((محاطة|الكلمة الصحيحة|محاط)[^)]*\)','',a).strip()
 def kis(l):
     o=''
     for k in l['key_ideas'][:4]:
@@ -58,7 +60,7 @@ def qhtml(n,c,solved):
     if c['count']>=2 and c.get('form_note'): h+=f'<div class="src" style="color:#555;font-size:11px">كيف جاء: {H(c["form_note"])}</div>'
     pg=f.get('book_page_exact') or c.get('book_pages')
     L=LES.get(lkey(c))
-    if L: where=f'<b>الفصل {H(L[0]["id"])}: {H(L[0]["title"])}</b> · <b>الدرس {H(L[1]["id"])}: {H(L[1]["title"])}</b> (من ص{a(L[1]["start"])} إلى ص{a(L[1]["end"])}) · <b>مكانه بالضبط: {H(pg)}</b>'
+    if L: where=f'<b>الفصل {H(L[0]["id"])}: {H(L[0]["title"])}</b> · <b>الدرس {LRM(H(L[1]["id"]))}: {H(L[1]["title"])}</b> (من ص{a(L[1]["start"])} إلى ص{a(L[1]["end"])}) · <b>مكانه بالضبط: {H(pg)}</b>'
     else: where=f'<b>مدخل الطريقة العلمية</b> · <b>{H(pg)}</b>'
     h+=f'<div class="src" style="background:#e7f5ff;border-color:#1c7ed6;color:#0b5394;font-size:13px">📖 في كتابك: {where}</div>'
     if solved:
@@ -69,7 +71,7 @@ def qhtml(n,c,solved):
         h+=f'<div class="red">① {H(e.get("task") or "المطلوب: "+x["text"][:60])}</div>'
         if e.get('think'): h+=f'<div><b>② {H(e["think"])}</b></div>'
         for s in e.get('steps') or []: h+=f'<div>• {H(s)}</div>'
-        h+=f'<div class="ans">إجابة الأستاذة موضي الحربي ✔ {H(f.get("model_answer") or x.get("model_answer") or "")}</div>'
+        h+=f'<div class="ans">إجابة الأستاذة موضي الحربي ✔ {H(CLEANA(x.get("model_answer") or f.get("model_answer") or ""))}</div>'
         if e.get('why'): h+=f'<div class="why"><b>ليش؟</b> {H(e["why"])}</div>'
         if e.get('tip'): h+=f'<div class="tip">💡 {H(e["tip"])}</div>'
         if f.get('book_quote'): h+=f'<div class="quote">📖 من كتابك ({H(f.get("book_page_exact",""))}): «{H(f["book_quote"])}»</div>'
@@ -99,7 +101,7 @@ def build(solved):
     for ch,l in order:
         cs=byl.get(l['id'],[])
         cs.sort(key=lambda c:(-c['count'],ORDER.get(c['type'],6),c['id']))
-        secs+=f'<h2 class="pb">الفصل {H(ch["id"])}: {H(ch["title"])} — الدرس {H(l["id"])} {H(l["title"])}</h2>'
+        secs+=f'<h2 class="pb">الفصل {H(ch["id"])}: {H(ch["title"])} — الدرس {LRM(H(l["id"]))} {H(l["title"])}</h2>'
         tn=thumb(l['start']);ki=kis(l)
         secs+=f'<div class="les">{f"<img src=file://{tn}>" if tn else ""}<b>📖 صفحات الدرس في كتابك: ص{a(l["start"])}–{a(l["end"])}</b>{ki}<div style="clear:both"></div></div>'
         nums=[]
@@ -116,7 +118,7 @@ def build(solved):
     # فهرس
     ih='<h2 class="pb">فهرس الأسئلة: أين تجدين كل سؤال في كتابك؟</h2><table class="st"><tr><th>الفصل</th><th>الدرس</th><th>صفحات الكتاب</th><th>عدد الأسئلة</th><th>أرقامها</th></tr>'
     for ch,l,nums in idx:
-        ih+=f'<tr><td>{H(ch["id"]+" "+ch["title"]) if ch else "—"}</td><td style="text-align:right">{H(l["id"])} {H(l["title"])}</td><td>ص{a(l["start"])}–{a(l["end"])}</td><td>{a(len(nums))}</td><td style="font-size:11px">{"، ".join(a(x) for x in nums)}</td></tr>'
+        ih+=f'<tr><td>{H(ch["id"]+" "+ch["title"]) if ch else "—"}</td><td style="text-align:right">{LRM(H(l["id"]))} {H(l["title"])}</td><td>ص{a(l["start"])}–{a(l["end"])}</td><td>{a(len(nums))}</td><td style="font-size:11px">{"، ".join(a(x) for x in nums)}</td></tr>'
     ih+='</table>'
     tot=sum(c['count'] for c in C)
     top=sorted(C,key=lambda c:-c['count'])[:8]
