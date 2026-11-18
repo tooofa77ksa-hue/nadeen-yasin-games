@@ -27,6 +27,7 @@ def place_label(models):
     return ' · '.join(s)
 def sec(x):
     t=x.get('type');return 'word' if t=='word' else 'mcq' if t=='mcq' else 'tf' if t=='tf' else 'other'
+HIDE={'p2-209','p2-324'}  # جواب غير مؤكد أو خطأ في السؤال نفسه: لا تُعرض على نادين حتى تراجعها ولية الأمر
 def entries(ch):
     out=json.load(open(f'/tmp/m4/rep/out_all_{ch}.json'))
     dups=set()
@@ -53,6 +54,7 @@ def entries(ch):
             for u in ms: sim_of[f(u)].update(f(v) for v in ms if v!=u)
     ents=[]
     for root,ms in groups.items():
+        if any(u in HIDE for u in ms): continue
         canon=None
         for k in out.get('clusters',[]):
             if k['canonical_uid'] in ms: canon=k['canonical_uid'];break
