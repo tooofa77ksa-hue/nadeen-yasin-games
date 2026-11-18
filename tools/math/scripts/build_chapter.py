@@ -134,6 +134,7 @@ def q_html_ch(i,e,ch,solved):
         h+='</div>'
     return h+'</div>'
 ORDER=[('tf','أولاً: صح وخطأ'),('mcq','ثانياً: اختيار من متعدد'),('word','ثالثاً: مسائل لفظية'),('other','رابعاً: جداول ورسوم وأسئلة أخرى')]
+SOLVED_CSS='.fig img{filter:none!important;max-height:400px!important;border:1px solid #adb5bd;border-radius:6px}'
 CHN={1:'الفصل الأول: القيمة المنزلية',2:'الفصل الثاني: الجمع والطرح',5:'الفصل الخامس: الضرب في عدد من رقم واحد',6:'الفصل السادس: الضرب في عدد من رقمين',3:'الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها',4:'الفصل الرابع: الأنماط والجبر'}
 def build_ch(ch,solved,src=None,body_only=False):
     es=entries(ch)
@@ -161,7 +162,7 @@ def build_ch(ch,solved,src=None,body_only=False):
             x=ITEMS[e['canon']];b+=f'<tr><td>{H(place_label(e["models"]))}</td><td>{H(x["text"][:90])}</td><td>{H(str(r.get("flaw") or "")+" "+str(r.get("notes") or ""))}</td></tr>'
         b+='</table>'
     if body_only: return b
-    htm=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{CSS}</style></head><body>{b}</body></html>'
+    htm=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{CSS}{SOLVED_CSS if solved else ""}</style></head><body>{b}</body></html>'
     name=f'chapter{ch}{"_"+src if src else ""}_{"solved" if solved else "unsolved"}'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(htm);return name,tot,rep
 if __name__=='__main__':

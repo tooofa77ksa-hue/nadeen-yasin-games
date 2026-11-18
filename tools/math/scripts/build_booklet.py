@@ -57,7 +57,7 @@ def booklet(solved):
     foot='''<div class="dua">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>'''
     h1_3='<h2 class="pb">الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها</h2>'
     h1_4='<h2 class="pb">الفصل الرابع: الأنماط والجبر</h2>'
-    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}</style></head><body>{cover}{idx}{secs}{foot}</body></html>'
+    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}{B.SOLVED_CSS if solved else ""}</style></head><body>{cover}{idx}{secs}{foot}</body></html>'
     name='central_all_solved' if solved else 'central_all_student'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(html);return name
 if __name__=='__main__':

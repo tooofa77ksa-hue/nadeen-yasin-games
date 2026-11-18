@@ -69,8 +69,12 @@ def build():
                 if os.path.exists(rd) and not(nm in B.UNSAFE or (m and int(m.group(1)) in B.ANS_PAGES)):
                     from PIL import Image
                     im=Image.open(f).convert('L');im.thumbnail((300,300));im.save(f'{OUT}/img/{nm}_o.jpg',quality=70);orig=f'img/{nm}_o.jpg'
+            big=None
+            if f and os.path.exists(f):
+                from PIL import Image
+                im=Image.open(f).convert('RGB');im.thumbnail((1000,1000));im.save(f'{OUT}/img/{nm}_big.jpg',quality=82);big=f'img/{nm}_big.jpg'
             sim=B.place_label(e['sim_models']) if e['sim_models'] else ''
-            items.append({'id':e['canon'],'k':B.sec(x),'kind':kind,'ans':ans,'q':x['text'],'o':opts,'img':img,'orig':orig,'src':B.place_label(e['models']),'n':e['n'],'sim':sim,'lesson':r.get('lesson',''),'bk':B.BP.label(r.get('lesson'),ch),'ex':ex,'fa':str(r.get('final_answer','')),'op':(OPSPEC.get(e['canon']) or (None,None))[0],'kw':(OPSPEC.get(e['canon']) or (None,None))[1],'html':figure_html(f)})
+            items.append({'id':e['canon'],'k':B.sec(x),'kind':kind,'ans':ans,'q':x['text'],'o':opts,'img':img,'orig':orig,'big':big,'src':B.place_label(e['models']),'n':e['n'],'sim':sim,'lesson':r.get('lesson',''),'bk':B.BP.label(r.get('lesson'),ch),'ex':ex,'fa':str(r.get('final_answer','')),'op':(OPSPEC.get(e['canon']) or (None,None))[0],'kw':(OPSPEC.get(e['canon']) or (None,None))[1],'html':figure_html(f)})
         data[ch]=items
     return data
 if __name__=='__main__':

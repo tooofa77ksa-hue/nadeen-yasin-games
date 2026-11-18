@@ -32,7 +32,7 @@ def sheet(solved):
         b+=h
     foot='<div class="dua">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>'
     title='ورقة مخلوطة (٢٠ سؤالاً): الفصلان ٣ و٤'+(' — محلولة ومشروحة' if solved else '')
-    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{K.CSS2}</style></head><body><h1>{title}</h1><div class="sub">رياضيات · الصف الرابع الابتدائي · نماذج الفترة الثانية</div>{b}{foot}</body></html>'
+    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{K.CSS2}{B.SOLVED_CSS if solved else ""}</style></head><body><h1>{title}</h1><div class="sub">رياضيات · الصف الرابع الابتدائي · نماذج الفترة الثانية</div>{b}{foot}</body></html>'
     name='mixed20_solved' if solved else 'mixed20_student'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(html);return name
 if __name__=='__main__': print(sheet(True),sheet(False))
