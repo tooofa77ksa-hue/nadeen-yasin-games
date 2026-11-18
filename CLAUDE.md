@@ -138,5 +138,5 @@
 - **صفحة واحدة تجمع الثلاثة (طلب ولية الأمر):** `nadeen/math_masail.html` فيها تبويبات: الفصل ٤ · الفصل ٥ · لعبة جدول الضرب. هذا الرابط الوحيد الذي يُعطى لنادين: https://tooofa77ksa-hue.github.io/nadeen-yasin-games/nadeen/math_masail.html
 
 ## رياضيات نادين (الاختبار: الفصل ٣ و٤، حوالي ١٩/٦/١٤٤٨)
-- صفحة واحدة: nadeen/math_masail.html (تبويبات: مهمة اليوم · الفصل ٣ · ٤ · ٥ · لعبة الضرب). الفصل ٣ = nadeen/masail_ch3.html (مدرّبة قراءة الرسوم + أسئلة الاختبارات)، المهام = nadeen/math_daily.html.
+- صفحة واحدة: nadeen/math_masail.html (تبويبات: الفصل ٣ · ٤ · ٥ · لعبة الضرب). الفصل ٣ = nadeen/masail_ch3.html (مدرّبة قراءة الرسوم + أسئلة الاختبارات).
 - أوراق الفصلين ٣ و٤ (محلول/غير محلول): docs/math/chapters/.

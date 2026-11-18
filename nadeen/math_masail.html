@@ -12,9 +12,9 @@ html,body{height:100%;margin:0;background:#fff8e1;font-family:'B',sans-serif}
 iframe{display:block;border:0;width:100%;height:calc(100% - 76px);background:#fff8e1}
 </style></head><body>
 <div class="bar" id="bar">
- <button class="t" data-u="math_daily.html">📅 مهمة اليوم<small>١٥ دقيقة كل يوم</small></button>
  <button class="t" data-u="masail_ch3.html">📊 الفصل الثالث<small>مدرّبة قراءة الرسوم · ٨٧ سؤالاً من الاختبارات</small></button>
  <button class="t" data-u="masail_ch4.html">🧠 الفصل الرابع<small>٣٦ من كتابها · ١٦ من المركزية</small></button>
+ <button class="t" data-u="masail_ch4_exam.html">📝 الفصل ٤: الاختبارات<small>الفترة الثانية · المركزية</small></button>
  <button class="t" data-u="masail_ch5.html">🧠 الفصل الخامس<small>٣٧ من كتابها · ٣٠ من المركزية</small></button>
  <button class="t" data-u="mult_game.html">🎲 لعبة جدول الضرب<small>تعلّمي · تدرّبي · اكتبي</small></button>
 </div>
@@ -25,6 +25,6 @@ const tabs=[...document.querySelectorAll('.t')];
 function open(u){tabs.forEach(b=>b.classList.toggle('on',b.dataset.u===u));document.getElementById('f').src=u;try{localStorage.setItem(KEY,u)}catch(e){}}
 tabs.forEach(b=>b.onclick=()=>open(b.dataset.u));
 let u=tabs[0].dataset.u;try{const s=localStorage.getItem(KEY);if(s&&tabs.some(b=>b.dataset.u===s))u=s}catch(e){}
-const h=location.hash.replace('#','');const m={daily:'math_daily.html',ch3:'masail_ch3.html',ch4:'masail_ch4.html',ch5:'masail_ch5.html',mult:'mult_game.html'};if(m[h])u=m[h];
+const h=location.hash.replace('#','');const m={ch4x:'masail_ch4_exam.html',ch3:'masail_ch3.html',ch4:'masail_ch4.html',ch5:'masail_ch5.html',mult:'mult_game.html'};if(m[h])u=m[h];
 open(u);
 </script></body></html>
