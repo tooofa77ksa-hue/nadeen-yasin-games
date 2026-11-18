@@ -62,10 +62,13 @@ for x in H:
       'ch':L[0] if L else '—','chT':L[1] if L else '','les':les or '—','lesT':L[2] if L else '','les_pp':(f'ص{L[3]}–{L[4]}' if L else ''),
       'page':best['p'] if quote else '','think':'','task':'','steps':[],'why':'','tip':'','quote':quote,'qs':best['s'] if quote else '','bfig':None,'bfigp':'','conf':''})
     added+=1
-CONF='تنبيه خلاف بين المصادر: المعلم هشام فرغلي جعل الجواب «الغشاء الخلوي»، والأستاذة موضي الحربي «الكروموسوم»، وكتابك ص٣٠ يقول إن النواة تتحكم في أنشطة الخلية. اسألي معلمتك عن المعتمد عندها، ولا نحفظ هذه الإجابة حتى تتأكدي.'
-for q in Q:
-    if q['id']=='hf-3-21': q['skip']=True;q['conf']=CONF
-    if q['id']=='s-035': q['conf']=CONF
+NOTE='للأم (لا تظهر لنادين في اللعبة): قرار ولية الأمر أن إجابة المعلم هشام فرغلي هي المعتمدة عند التعارض. في هذا السؤال إجابة الأستاذة موضي «الكروموسوم»، وفي كتاب نادين ص٣٠ أن النواة تتحكم في أنشطة الخلية.'
+byid={q['id']:q for q in Q}
+s35=byid.get('s-035');h21=byid.get('hf-3-21')
+if s35 and h21:
+    s35.update({'letter':'أ','ans':h21['ans'],'ovr':True,'conf':'','pconf':NOTE,'steps':[],'why':'','tip':'','think':'','quote':'','qs':'','page':''})
+    s35['src2']=[h21['src']]
+    Q=[q for q in Q if q['id']!='hf-3-21']
 json.dump(Q,open('/tmp/sci/gamedata_all.json','w'),ensure_ascii=False)
 open(R+'/data.js','w',encoding='utf-8').write('window.SCI='+json.dumps(Q,ensure_ascii=False)+';')
 print('added',added,'merged',merged,'total',len(Q))

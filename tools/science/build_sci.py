@@ -96,13 +96,14 @@ def qhtml(n,c,solved):
         h+=f'<div class="red">① {H(e.get("task") or "المطلوب: "+x["text"][:60])}</div>'
         if e.get('think'): h+=f'<div><b>② {H(e["think"])}</b></div>'
         for s in e.get('steps') or []: h+=f'<div>• {H(s)}</div>'
-        h+=f'<div class="ans">إجابة الأستاذة موضي الحربي ✔ {H(CLEANA(x.get("model_answer") or f.get("model_answer") or ""))}</div>'
+        ovr=GAI.get(c['id'],{}).get('ovr')
+        h+=(f'<div class="ans">إجابة المعلم هشام فرغلي ✔ {H(GAI[c["id"]]["ans"])}</div>' if ovr else f'<div class="ans">إجابة الأستاذة موضي الحربي ✔ {H(CLEANA(x.get("model_answer") or f.get("model_answer") or ""))}</div>')
         if e.get('why'): h+=f'<div class="why"><b>ليش؟</b> {H(e["why"])}</div>'
         if e.get('tip'): h+=f'<div class="tip">💡 {H(e["tip"])}</div>'
         if f.get('book_quote'): h+=f'<div class="quote">📖 من كتابك ({H(f.get("book_page_exact",""))}): «{H(f["book_quote"])}»</div>'
         bf=f.get('book_fig')
         if bf and os.path.exists(bf): h+=f'<div class="bookfig"><img src="file://{bf}"><div>الصورة في كتابك ({H(f.get("book_fig_page",""))})</div></div>'
-        cf=GAI.get(c['id'],{}).get('conf') or f.get('conflict')
+        cf=GAI.get(c['id'],{}).get('pconf') or GAI.get(c['id'],{}).get('conf') or f.get('conflict')
         if cf: h+=f'<div class="par" style="border-color:#e03131;color:#c92a2a">تنبيه للأم: {H(cf)}</div>'
         h+='</div>'
     return h+'</div>'
