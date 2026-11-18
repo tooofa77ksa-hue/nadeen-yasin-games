@@ -61,6 +61,10 @@ for c in C:
     elif ns: ps=ns
     else: ps=[]
     for p in ps: pageq.setdefault(p,[]).append(c['id'])
+GA=json.load(open('/tmp/sci/gamedata_all.json'))
+HFN={}
+for q in GA:
+    if q['id'].startswith('hf-'): HFN[q['les']]=HFN.get(q['les'],0)+1
 lessons=[]
 for ch in TOC:
     for l in ch['lessons']:
@@ -73,13 +77,14 @@ tn=sum(x['n'] for x in lessons)
 tp=sum(len(range(x['l']['start'],x['l']['end']+1)) for x in lessons);cp=sum(len(x['cov']) for x in lessons)
 body=f'<div class="ban"><h1>📖 أين جاءت أسئلة المركزية في كتاب العلوم؟</h1><div>رابع ابتدائي · الفصل الدراسي الأول · أربع مناطق (الشرقية، حائل، عسير، الحدود الشمالية) · إجابات الأستاذة موضي الحربي</div></div>'
 body+=f'<div class="box g"><b>الخلاصة:</b> {a(len(C))} سؤالاً مختلفاً (منها {a(len(intro))} من مدخل الطريقة العلمية). أسئلة الدروس {a(tn)} سؤالاً على <b>{a(len([x for x in lessons if x["n"]]))} من {a(len(lessons))}</b> درساً، وغطّت الأسئلة <b>{a(cp)} من {a(tp)}</b> صفحة من صفحات الدروس (<b>{a(round(100*cp/tp))}٪</b>). أي أن الأسئلة <b>تغطي معظم الكتاب لكن ليس كله</b>؛ والصفحات التي بلا أسئلة موضحة تحت.</div>'
+body+=f'<div class="box g"><b>أسئلة المعلم هشام فرغلي:</b> {a(sum(HFN.values()))} سؤالاً إضافياً بإجاباته (من «تدريبات الاختبارات المركزية»)، موزّعة على الدروس كما في العمود الأخير. وهي أسئلة تدريب بمستوى المركزية، وبعضها نُقل من نماذج مناطق. لم تُحسب في تغطية الصفحات لأن مكانها في الكتاب تقريبي.</div>'
 body+='<div class="box y"><b>كيف قرأتُها؟</b> كل سؤال له صفحة مكانه في الكتاب (من تحليلي للأجوبة والكتاب)، فالتغطية هنا <b>بالصفحة</b>. إذا كان مكان السؤال «ص٥٩–٦٢» عددتُ كل صفحاته. وبعض الأسئلة المدمجة مكانها تقريبي.</div>'
 for ch in TOC:
     ls=[x for x in lessons if x['ch']['id']==ch['id']]
-    body+=f'<h2>الفصل {ch["id"]}: {ch["title"]} (ص{a(ch["start"])}–{a(ch["end"])})</h2><table><tr><th>الدرس</th><th>صفحاته</th><th>كم سؤالاً</th><th>منها تكرر</th><th>الحالة</th><th>صفحات عليها أسئلة</th><th>صفحات بلا أسئلة</th></tr>'
+    body+=f'<h2>الفصل {ch["id"]}: {ch["title"]} (ص{a(ch["start"])}–{a(ch["end"])})</h2><table><tr><th>الدرس</th><th>صفحاته</th><th>أسئلة موضي</th><th>منها تكرر</th><th>الحالة</th><th>صفحات عليها أسئلة</th><th>صفحات بلا أسئلة</th><th>أسئلة هشام فرغلي</th></tr>'
     for x in ls:
         c,lab=status(x['n']);l=x['l']
-        body+=f'<tr class="{c}"><td>{l["id"].replace("-","&#8206;-&#8206;")} {l["title"]}</td><td>{rng(range(l["start"],l["end"]+1))}</td><td>{a(x["n"])}</td><td>{a(x["rep"])}</td><td>{lab}</td><td>{rng(x["cov"])}</td><td style="color:#c92a2a">{rng(x["unc"])}</td></tr>'
+        body+=f'<tr class="{c}"><td>{l["id"].replace("-","&#8206;-&#8206;")} {l["title"]}</td><td>{rng(range(l["start"],l["end"]+1))}</td><td>{a(x["n"])}</td><td>{a(x["rep"])}</td><td>{lab}</td><td>{rng(x["cov"])}</td><td style="color:#c92a2a">{rng(x["unc"])}</td><td>{a(HFN.get(l["id"],0))}</td></tr>'
     body+='</table>'
     allp=set(range(ch['start'],ch['end']+1));inl=set()
     for x in ls: inl.update(range(x['l']['start'],x['l']['end']+1))

@@ -28,7 +28,7 @@ for c in C:
     Q.append({'id':c['id'],'type':typ,'text':x['text'],'options':x.get('options') or [],'letter':x.get('answer_letter'),
      'table':x.get('table_text'),'fig':img(x.get('figure'),c['id']+'_q'),'ans':ans,
      'count':c['count'],'regions':c['regions'],
-     'ch':L[0] if L else '—','chT':L[1] if L else 'مدخل الطريقة العلمية','les':c.get('lesson') or '—','lesT':L[2] if L else 'الطريقة العلمية',
+     'src':'المركزية: '+'، '.join(c['regions'])+' (تجميع الأستاذة موضي الحربي)','src2':[],'ch':L[0] if L else '—','chT':L[1] if L else 'مدخل الطريقة العلمية','les':c.get('lesson') or '—','lesT':L[2] if L else 'الطريقة العلمية',
      'les_pp':(f'ص{L[3]}–{L[4]}' if L else ''),'page':f.get('book_page_exact') or '',
      'think':re.sub(r'^(اسألي نفسك|نسأل أنفسنا)\s*:?\s*','',str(e.get('think') or '')).strip(),
      'task':e.get('task') or '','steps':e.get('steps') or [],'why':e.get('why') or '','tip':e.get('tip') or '',

@@ -14,6 +14,29 @@ FIN={}
 for f in glob.glob('/tmp/sci/final/final_*.json'):
     for r in json.load(open(f)): FIN[r['id']]=r
 TOC=json.load(open('/tmp/sci/book_toc.json'))['chapters']
+GA=json.load(open('/tmp/sci/gamedata_all.json'))
+GAI={q['id']:q for q in GA}
+HF={}
+for q in GA:
+    if q['id'].startswith('hf-'): HF.setdefault(q['les'],[]).append(q)
+def hq(n,q,solved):
+    h='<div class="q"><span class="n">'+a(n)+'</span><span class="rep" style="background:#845ef7">📘 هشام فرغلي</span><br><span class="t">'+H(q['text'])+'</span>'
+    if q['options']: h+='<div class="opts">'+''.join('<div>'+H(o)+'</div>' for o in q['options'])+'</div>'
+    if q.get('table'): h+='<div style="font-size:13px;margin:3px 0;border:1.5px solid #adb5bd;border-radius:6px;padding:3px 8px">'+H(q['table'])+'</div>'
+    fg=q.get('fig')
+    if fg:
+        fp='/home/user/nadeen-yasin-games/olom/'+fg
+        if os.path.exists(fp): h+='<div class="fig"><img src="file://'+fp+'" style="filter:none"></div>'
+    if not solved:
+        if q['type'] in('self',): h+='<div class="ln"></div><div class="ln"></div>'
+        elif q['type']=='tf': h+='<div style="margin-top:3px">( &nbsp;&nbsp;&nbsp;&nbsp; ) صح &nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp;&nbsp; ) خطأ</div>'
+    h+='<div class="src" style="background:#f3f0ff;border-color:#845ef7;color:#5f3dc4">📚 المصدر: '+H(q['src'])+'</div>'
+    if solved:
+        h+='<div class="sol"><div class="ans">إجابة المعلم هشام فرغلي ✔ '+H(q['ans'])+'</div>'
+        if q.get('quote'): h+='<div class="quote">📖 من '+H(q.get('qs') or 'كتابك')+' ('+H(q.get('page',''))+'): «'+H(q['quote'])+'»</div>'
+        h+='</div>'
+    if q.get('conf'): h+='<div class="par" style="border-color:#e03131;color:#c92a2a">'+H(q['conf'])+'</div>'
+    return h+'</div>'
 LES={}
 for ch in TOC:
     for l in ch['lessons']: LES[l['id']]=(ch,l)
@@ -57,6 +80,8 @@ def qhtml(n,c,solved):
     if not solved:
         if x['type'] in ('fill','word_fill','short','table','diagram','match'): h+='<div class="ln"></div><div class="ln"></div>'
         elif x['type']=='tf': h+='<div style="margin-top:3px">( &nbsp;&nbsp;&nbsp;&nbsp; ) صح &nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp;&nbsp; ) خطأ</div>'
+    g=GAI.get(c['id'],{});srcl='المركزية — '+'، '.join(c['regions'])+' (تجميع الأستاذة موضي الحربي)'+((' + '+' + '.join(g.get('src2',[]))) if g.get('src2') else '')
+    h+='<div class="src" style="background:#f3f0ff;border-color:#845ef7;color:#5f3dc4">📚 المصدر: '+H(srcl)+'</div>'
     if c['count']>=2 and c.get('form_note'): h+=f'<div class="src" style="color:#555;font-size:11px">كيف جاء: {H(c["form_note"])}</div>'
     pg=f.get('book_page_exact') or c.get('book_pages')
     L=LES.get(lkey(c))
@@ -77,7 +102,8 @@ def qhtml(n,c,solved):
         if f.get('book_quote'): h+=f'<div class="quote">📖 من كتابك ({H(f.get("book_page_exact",""))}): «{H(f["book_quote"])}»</div>'
         bf=f.get('book_fig')
         if bf and os.path.exists(bf): h+=f'<div class="bookfig"><img src="file://{bf}"><div>الصورة في كتابك ({H(f.get("book_fig_page",""))})</div></div>'
-        if f.get('conflict'): h+=f'<div class="par" style="border-color:#e03131;color:#c92a2a">تنبيه للأم: {H(f["conflict"])}</div>'
+        cf=GAI.get(c['id'],{}).get('conf') or f.get('conflict')
+        if cf: h+=f'<div class="par" style="border-color:#e03131;color:#c92a2a">تنبيه للأم: {H(cf)}</div>'
         h+='</div>'
     return h+'</div>'
 GUIDE_S='''<div class="pb"></div><h1 style="color:#7048e8">👨‍👩‍👧 كيف تشرحين لبنتك؟</h1><div class="sub">دليل الوالدين في ١٠ دقائق · لا تحتاجين أن تكوني معلمة علوم</div>
@@ -107,6 +133,8 @@ def build(solved):
         nums=[]
         for c in cs:
             n+=1;nums.append(n);secs+=qhtml(n,c,solved)
+        for q in HF.get(l['id'],[]):
+            n+=1;nums.append(n);secs+=hq(n,q,solved)
         idx.append((ch,l,nums))
     rest=byl.get('',[])
     if rest:
@@ -129,7 +157,7 @@ def build(solved):
         st+=f'<tr><td style="text-align:right">{H(ch["id"]+" "+ch["title"])}</td><td>{a(len(cc))}</td><td>{a(sum(1 for c in cc if c["count"]>=2))}</td></tr>'
     st+='</table><b>الأكثر تكراراً (ابدئي بها):</b> '+'، '.join(f'{H(c["lesson_title"])} (جاء في {a(c["count"])} مناطق)' for c in top[:6])+'</div>'
     ver='محلولة ومشروحة (بإجابات الأستاذة موضي الحربي)' if solved else 'للطالبة (تحلّها بالورق)'
-    cover=f'<div class="cover"><div style="font-size:60px">🔬</div><div class="big">ما جاء في الاختبارات المركزية</div><div class="big" style="font-size:26px">العلوم · الصف الرابع الابتدائي · الفصل الدراسي الأول</div><div style="font-size:22px;background:#ffd8a8;border-radius:12px;display:inline-block;padding:4px 18px;margin:8px">{ver}</div><div class="box"><b>كيف أقرأ هذه الملزمة؟</b><br>• الأسئلة مرتبة <b>بالدروس</b> كما في كتابك، والمتكرر أولاً.<br>• كل سؤال: كم مرة تكرر وفي أي منطقة، وكيف جاء، وصورته، وتحته <b>📖 صفحته في كتابك</b>.<br>• {"الحل بالأخضر هو إجابة الأستاذة موضي الحربي النموذجية، ومعه شرح بسيط وجملة من الكتاب وصورة الكتاب." if solved else "قبل كل سؤال: ركّزي، ما المطلوب؟ ثم أجيبي، وقارني بالنسخة المحلولة."}</div>{st}</div>'
+    cover=f'<div class="cover"><div style="font-size:60px">🔬</div><div class="big">ما جاء في الاختبارات المركزية</div><div class="big" style="font-size:26px">العلوم · الصف الرابع الابتدائي · الفصل الدراسي الأول</div><div style="font-size:22px;background:#ffd8a8;border-radius:12px;display:inline-block;padding:4px 18px;margin:8px">{ver}</div><div class="box"><b>كيف أقرأ هذه الملزمة؟</b><br>• الأسئلة مرتبة <b>بالدروس</b> كما في كتابك، والمتكرر أولاً.<br>• كل سؤال: كم مرة تكرر وفي أي منطقة، وكيف جاء، وصورته، وتحته <b>📖 صفحته في كتابك</b>.<br>• {"الحل بالأخضر هو إجابة الأستاذة موضي الحربي النموذجية، ومعه شرح بسيط وجملة من الكتاب وصورة الكتاب." if solved else "قبل كل سؤال: ركّزي، ما المطلوب؟ ثم أجيبي، وقارني بالنسخة المحلولة."}</div>{st}<div class="box" style="background:#f3f0ff;border-color:#845ef7"><b>📚 مصادر الأسئلة في هذه الملزمة:</b> (١) <b>الاختبارات المركزية</b> (الشرقية، حائل، عسير، الحدود الشمالية) بتجميع الأستاذة موضي الحربي وإجاباتها: {a(len(C))} سؤالاً. (٢) <b>تدريبات الاختبارات المركزية للمعلم هشام فرغلي</b> بإجاباته: {a(len([1 for q in GA if q["id"].startswith("hf-")]))} سؤالاً. وتحت كل سؤال سطر «📚 المصدر». ما تكرر بين المصدرين يُذكر مرة ومعه المصدران.</div></div>'
     foot='<div class="dua">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>'
     if not solved: secs=secs.replace('<span class="t">','<span class="cue">🔎 ركّزي: ما المطلوب؟ ثم اسألي نفسك ثم أجيبي</span><br><span class="t">')
     html_=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{CSS}{B.SOLVED_CSS if solved else ""}</style></head><body>{cover}{GUIDE_S if solved else ""}{ih}{secs}{foot}</body></html>'
