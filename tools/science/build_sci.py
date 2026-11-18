@@ -57,7 +57,10 @@ def qhtml(n,c,solved):
         elif x['type']=='tf': h+='<div style="margin-top:3px">( &nbsp;&nbsp;&nbsp;&nbsp; ) صح &nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp;&nbsp; ) خطأ</div>'
     if c['count']>=2 and c.get('form_note'): h+=f'<div class="src" style="color:#555;font-size:11px">كيف جاء: {H(c["form_note"])}</div>'
     pg=f.get('book_page_exact') or c.get('book_pages')
-    h+=f'<div class="src" style="background:#e7f5ff;border-color:#1c7ed6;color:#0b5394">📖 في كتابك: الفصل {H(LES[lkey(c)][0]["id"]) if lkey(c) else H(c.get("chapter",""))} · الدرس {H(c.get("lesson",""))} {H(c.get("lesson_title",""))} · {H(pg)}</div>'
+    L=LES.get(lkey(c))
+    if L: where=f'<b>الفصل {H(L[0]["id"])}: {H(L[0]["title"])}</b> · <b>الدرس {H(L[1]["id"])}: {H(L[1]["title"])}</b> (من ص{a(L[1]["start"])} إلى ص{a(L[1]["end"])}) · <b>مكانه بالضبط: {H(pg)}</b>'
+    else: where=f'<b>مدخل الطريقة العلمية</b> · <b>{H(pg)}</b>'
+    h+=f'<div class="src" style="background:#e7f5ff;border-color:#1c7ed6;color:#0b5394;font-size:13px">📖 في كتابك: {where}</div>'
     if solved:
         e=f.get('explain') or {}
         th=re.sub(r'^(اسألي نفسك|نسأل أنفسنا)\s*:?\s*','',str(e.get('think') or '')).strip() or 'ماذا يريدون منا؟'
