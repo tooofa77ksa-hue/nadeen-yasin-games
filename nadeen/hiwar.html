@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>حواري مع نفسي: القواعد</title>
+<style>
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#fff8e1;font-family:'B',sans-serif;padding:10px 10px 40px;color:#333;line-height:1.6}
+h1{font-size:1.25rem;margin:4px 0;color:#4a2fc0;text-align:center}
+.sub{text-align:center;font-size:.85rem;color:#666;margin-bottom:6px}
+.card{background:#fff;border:4px solid #ddd;border-radius:20px;padding:12px;margin:10px auto;max-width:720px}
+.sent{font-size:1.7rem;text-align:center;line-height:2.2}
+.w{display:inline-block;padding:0 8px;margin:0 2px;border-radius:12px;cursor:pointer;border:3px solid transparent}
+.w.on{border-color:#7a5af8;background:#f3f0ff}
+.w.done{background:#ebfbee;border-color:#2f9e44}
+.bub{border-radius:18px;padding:8px 12px;margin:8px 0;font-size:1.05rem;max-width:92%}
+.me{background:#e7f5ff;border:3px solid #1c7ed6}
+.inner{background:#fff3bf;border:3px solid #f59f00;margin-inline-start:auto}
+.opt{display:block;width:100%;text-align:right;font:inherit;font-size:1.05rem;border:4px solid #ddd;background:#fff;border-radius:16px;padding:10px 14px;margin:6px 0;cursor:pointer;min-height:48px}
+.opt.ok{border-color:#2f9e44;background:#ebfbee}.opt.no{border-color:#e03131;background:#fff5f5}
+button.go{font:inherit;border:4px solid #7a5af8;background:#7a5af8;color:#fff;border-radius:16px;padding:10px 18px;margin:6px;cursor:pointer;min-height:48px}
+button.go.g{background:#2f9e44;border-color:#2f9e44}
+.fin{text-align:center}
+.small{font-size:.8rem;color:#777}
+.red{color:#c92a2a}
+.irab{background:#ebfbee;border:3px solid #2f9e44;border-radius:14px;padding:8px 12px;font-size:1.1rem}
+</style></head><body>
+<h1>💬 حواري مع نفسي: القواعد</h1>
+<div class="sub">لا أحفظ، أسأل نفسي وأجاوب. اضغطي كلمة من الجملة ثم حاوري نفسك.</div>
+<div id="app"></div>
+<script>
+window.IRAB=[
+[['الأَمْطَارُ','مبتدأ','مرفوع','الضمة'],['غَزِيرَةٌ','خبر','مرفوع','الضمة']],
+[['العَامِلُ','مبتدأ','مرفوع','الضمة'],['نَشِيطٌ','خبر','مرفوع','الضمة']],
+[['البِيئَةُ','مبتدأ','مرفوع','الضمة'],['ثَرْوَةٌ','خبر','مرفوع','الضمة']],
+[['اللهُ','مبتدأ','مرفوع','الضمة'],['غَفُورٌ','خبر','مرفوع','الضمة']],
+[['الشَّمْسُ','مبتدأ','مرفوع','الضمة'],['مُشْرِقَةٌ','خبر','مرفوع','الضمة']],
+[['عَلَى','حرف جر',null,null],['ظَهْرِهِ','اسم مجرور','مجرور','الكسرة']],
+[['إِلَى','حرف جر',null,null],['المَدْرَسَةِ','اسم مجرور','مجرور','الكسرة']],
+[['خَرَجَ','فعل ماضٍ','مبني','الفتح'],['التِّلْمِيذُ','فاعل','مرفوع','الضمة'],['إِلَى','حرف جر',null,null],['السَّاحَةِ','اسم مجرور','مجرور','الكسرة']],
+[['عَادَتِ','فعل ماضٍ','مبني','الفتح'],['الأُسْرَةُ','فاعل','مرفوع','الضمة'],['إِلَى','حرف جر',null,null],['المَنْزِلِ','اسم مجرور','مجرور','الكسرة']],
+[['فَرَضَ','فعل ماضٍ','مبني','الفتح'],['اللهُ','فاعل','مرفوع','الضمة'],['الصَّلَاةَ','مفعول به','منصوب','الفتحة']],
+[['ابْتَكَرَ','فعل ماضٍ','مبني','الفتح'],['الشَّابُّ','فاعل','مرفوع','الضمة'],['أُسْلُوبًا','مفعول به','منصوب','الفتحة']],
+[['زَارَ','فعل ماضٍ','مبني','الفتح'],['المُعَلِّمُ','فاعل','مرفوع','الضمة'],['الحَدِيقَةَ','مفعول به','منصوب','الفتحة']],
+[['شَرِبَ','فعل ماضٍ','مبني','الفتح'],['الوَلَدُ','فاعل','مرفوع','الضمة'],['المَاءَ','مفعول به','منصوب','الفتحة']],
+[['الطَّالِبَةُ','مبتدأ','مرفوع','الضمة'],['مُجْتَهِدَةٌ','خبر','مرفوع','الضمة']],
+[['شَكَرَ','فعل ماضٍ','مبني','الفتح'],['المُؤْمِنُ','فاعل','مرفوع','الضمة'],['اللهَ','مفعول به','منصوب','الفتحة']],
+[['أَعَانَ','فعل ماضٍ','مبني','الفتح'],['المُسْلِمُ','فاعل','مرفوع','الضمة'],['الفَقِيرَ','مفعول به','منصوب','الفتحة']],
+[['يَشْرَبُ','فعل مضارع','مرفوع','الضمة'],['العَدَّاءُ','فاعل','مرفوع','الضمة'],['المَاءَ','مفعول به','منصوب','الفتحة']],
+[['بَلَّغَ','فعل ماضٍ','مبني','الفتح'],['الرَّسُولُ','فاعل','مرفوع','الضمة'],['الإِسْلَامَ','مفعول به','منصوب','الفتحة']],
+[['المَدِينَةُ','مبتدأ','مرفوع','الضمة'],['عَامِرَةٌ','خبر','مرفوع','الضمة'],['بِ','حرف جر',null,null],['السُّكَّانِ','اسم مجرور','مجرور','الكسرة']]
+];
+window.irabText=function(w,prev){var n=w[0],r=w[1];
+ if(r==='مبتدأ'||r==='خبر'||r==='فاعل')return n+': '+r+' مرفوع وعلامة رفعه الضمة الظاهرة على آخره.';
+ if(r==='مفعول به')return n+': مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.';
+ if(r==='اسم مجرور')return n+': اسم مجرور'+' وعلامة جره الكسرة الظاهرة تحت آخره.';
+ if(r==='فعل ماضٍ')return n+': فعل ماضٍ مبني على الفتح.';
+ if(r==='فعل مضارع')return n+': فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة على آخره.';
+ if(r==='حرف جر')return n+': حرف جر.';
+ return n+': '+r;};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const AR='٠١٢٣٤٥٦٧٨٩',ar=n=>String(n).replace(/\d/g,d=>AR[d]);
+const strip=s=>s.replace(/[\u064B-\u0652\u0670]/g,'');
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const PRAISE=['أحسنتِ، لأنك سألتِ نفسك ✨','ركّزتِ فوصلتِ 🌟','هكذا يفكّر من يفهم لا من يحفظ 💡','سؤالك لنفسك قادك للجواب 👏','والتوفيق من الله، وأنتِ اجتهدتِ 🤍'];
+const ROLES=['فعل ماضٍ','فعل مضارع','فاعل','مفعول به','مبتدأ','خبر','حرف جر','اسم مجرور'];
+const FAMILY={'فعل ماضٍ':['فعل ماضٍ','فعل مضارع'],'فعل مضارع':['فعل ماضٍ','فعل مضارع'],'فاعل':['فاعل','مفعول به','مبتدأ'],'مفعول به':['فاعل','مفعول به','مبتدأ'],'مبتدأ':['مبتدأ','خبر','فاعل'],'خبر':['مبتدأ','خبر','فاعل'],'حرف جر':['حرف جر','اسم مجرور','فعل ماضٍ'],'اسم مجرور':['حرف جر','اسم مجرور','فاعل']};
+function ctx(sent,i){const w=sent[i];const verb=sent.find(x=>x[1].startsWith('فعل'));const prep=sent.find(x=>x[1]==='حرف جر');const sub=sent.find(x=>x[1]==='مبتدأ');const by={};sent.forEach(x=>{if(!by[x[1]])by[x[1]]=x[0]});return {w:w[0],verb:verb?verb[0]:'',prep:prep?prep[0]:'',sub:sub?sub[0]:'',by}}
+/* سؤال «اسألي نفسك» لكل دور، وجواب لماذا يصلح أو لا */
+function ask(role,c){switch(role){
+ case 'فعل ماضٍ':return `هل أستطيع أن أضع قبل «${c.w}» كلمة «أنا» وفي آخره تاء المتكلم؟ (مثل: شربتُ)`;
+ case 'فعل مضارع':return `هل يبدأ «${c.w}» بحرف من (نأيت)؟ وهل أستطيع أن أضع قبله «سوف»؟`;
+ case 'فاعل':return `مَن الذي قام بالفعل «${c.verb}»؟`;
+ case 'مفعول به':return `ماذا وقع عليه الفعل «${c.verb}»؟`;
+ case 'مبتدأ':return `عن مَن أو عن ماذا نتكلم في أول الجملة؟`;
+ case 'خبر':return `ماذا نقول عن «${c.sub}»؟ ما الذي يتمّم معناها؟`;
+ case 'حرف جر':return `هل «${c.w}» من حروف الجر السبعة (من، إلى، عن، على، في، الباء، اللام)؟`;
+ case 'اسم مجرور':return `هل جاءت «${c.w}» بعد حرف جر («${c.prep}»)؟`}}
+const WHY={
+ 'فعل ماضٍ':c=>`جرّبتُ: أنا + «${c.w}» + تُ، فاستقام المعنى ← إذن هو فعل ماضٍ.`,
+ 'فعل مضارع':c=>`«${c.w}» يبدأ بحرف من (نأيت)، ويقبل «سوف» ← إذن مضارع.`,
+ 'فاعل':c=>`الذي قام بالفعل «${c.verb}» هو «${c.w}» ← إذن فاعل.`,
+ 'مفعول به':c=>`الذي وقع عليه الفعل «${c.verb}» هو «${c.w}» ← إذن مفعول به.`,
+ 'مبتدأ':c=>`نتكلم عن «${c.w}» في أول الجملة ← إذن مبتدأ.`,
+ 'خبر':c=>`«${c.w}» يتمّم المعنى ويخبر عن «${c.sub}» ← إذن خبر.`,
+ 'حرف جر':c=>`«${c.w}» من حروف الجر السبعة ← إذن حرف جر.`,
+ 'اسم مجرور':c=>`«${c.w}» جاءت بعد حرف الجر «${c.prep}» ← إذن اسم مجرور.`};
+function whyNot(pick,real,c){ // لماذا ليس ما اخترتِه: نطبّق سؤاله على الكلمة
+ const q=ask(pick,{...c});const ans=c.by[pick];const tail=ans?`الجواب في هذه الجملة هو «${ans}»، وليس «${c.w}».`:`وفي هذه الجملة لا ينطبق هذا على «${c.w}».`;return `اخترتِ «${pick}». اسألي نفسك: ${q} ← ${tail} الصحيح: «${real}». ${WHY[real](c)}`}
+const MARK={'الضمة':['الضمة','مرفوع'],'الفتحة':['الفتحة','منصوب'],'الكسرة':['الكسرة','مجرور'],'الفتح':['الفتح','مبني']};
+function irabText(w){switch(w[1]){
+ case 'فعل ماضٍ':return 'فعل ماضٍ مبني على الفتح';
+ case 'فعل مضارع':return 'فعل مضارع مرفوع وعلامة رفعه الضمة';
+ case 'فاعل':return 'فاعل مرفوع وعلامة رفعه الضمة';
+ case 'مفعول به':return 'مفعول به منصوب وعلامة نصبه الفتحة';
+ case 'مبتدأ':return 'مبتدأ مرفوع وعلامة رفعه الضمة';
+ case 'خبر':return 'خبر مرفوع وعلامة رفعه الضمة';
+ case 'حرف جر':return 'حرف جر';
+ case 'اسم مجرور':return 'اسم مجرور وعلامة جره الكسرة الظاهرة تحت آخره'}}
+let ST={stars:0};try{ST=Object.assign(ST,JSON.parse(localStorage.getItem('nyg_nadeen_hiwar')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('nyg_nadeen_hiwar',JSON.stringify(ST))}catch(e){}};
+let ROUND=[],RI=0,SENT=null,DONE=new Set(),CUR=-1,LOG=[];
+function startRound(){ROUND=shuffle(window.IRAB).slice(0,5);RI=0;nextSent()}
+function nextSent(){if(RI>=ROUND.length){$('#app').innerHTML=`<div class="card fin"><div style="font-size:3rem">🏆</div><h1>أنهيتِ الجولة!</h1><p>${PRAISE[Math.floor(Math.random()*PRAISE.length)]}</p><p>نجومك: <b>${ar(ST.stars)}</b> ⭐</p><button class="go g" onclick="startRound()">جولة جديدة 🎲</button></div>`;return}
+ SENT=ROUND[RI];DONE=new Set();CUR=-1;LOG=[];render()}
+function render(){let h=`<div class="card"><div class="small">جملة ${ar(RI+1)} من ${ar(ROUND.length)} · ⭐ ${ar(ST.stars)}</div><div class="sent">`+SENT.map((w,i)=>`<span class="w ${DONE.has(i)?'done':CUR===i?'on':''}" data-i="${i}">${esc(w[0])}</span>`).join(' ')+`</div><div class="small" style="text-align:center">اضغطي كلمة وحاوري نفسك عنها</div></div><div class="card" id="dlg"></div>`;
+ $('#app').innerHTML=h;document.querySelectorAll('.w').forEach(b=>b.onclick=()=>{if(!DONE.has(+b.dataset.i)){CUR=+b.dataset.i;LOG=[];render();step1()}});
+ if(CUR<0){$('#dlg').innerHTML='<div class="bub inner">👆 اختاري كلمة من الجملة، وسأسألك: ما هي؟ ولماذا؟</div>'}
+ if(DONE.size===SENT.length){$('#dlg').innerHTML='<div class="fin"><p>أحسنتِ! حللتِ كل كلمات الجملة 🌟</p><button class="go g" id="nxs">الجملة التالية ←</button></div>';$('#nxs').onclick=()=>{RI++;nextSent()}}}
+function bubbles(){return LOG.map(l=>`<div class="bub ${l[0]==='i'?'inner':'me'}">${l[0]==='i'?'🗣️ ':'🙋‍♀️ '} ${l[1]}</div>`).join('')}
+function step1(){const w=SENT[CUR],c=ctx(SENT,CUR);const real=w[1];const opts=shuffle(FAMILY[real]);
+ LOG=[['i',`اسألي نفسك: ما هي «<b>${esc(w[0])}</b>» في الجملة؟`]];draw(opts,real,c,0)}
+function draw(opts,real,c,tries){$('#dlg').innerHTML=bubbles()+opts.map((o,i)=>`<button class="opt" data-i="${i}">${esc(o)}</button>`).join('')+'<div id="fb"></div>';
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const p=opts[+b.dataset.i];if(p===real){b.classList.add('ok');LOG.push(['m',esc(p)]);LOG.push(['i',esc(WHY[real](c))]);ST.stars+=tries?1:2;save();setTimeout(()=>step2(real,c),150)}else{b.classList.add('no');$('#fb').innerHTML=`<div class="bub inner">💡 ${esc(whyNot(p,real,c))}</div>`;tries++}})}
+function step2(real,c){const w=SENT[CUR];
+ if(!w[2]&&!w[3]){return step3()}
+ const right=(real==='فعل ماضٍ')?'الفتح ← مبني':(MARK[w[3]]?MARK[w[3]].join(' ← '):w[3]+' ← '+w[2]);
+ const all=['الضمة ← مرفوع','الفتحة ← منصوب','الكسرة ← مجرور','الفتح ← مبني'];
+ LOG.push(['i',`واسألي نفسك: ماذا تقول لي حركة آخر «${esc(w[0])}»؟`]);
+ const opts=shuffle(all);$('#dlg').innerHTML=bubbles()+opts.map((o,i)=>`<button class="opt" data-i="${i}">${esc(o)}</button>`).join('')+'<div id="fb"></div>';
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const p=opts[+b.dataset.i];if(p===right){b.classList.add('ok');LOG.push(['m',esc(p)]);setTimeout(step3,150)}else{b.classList.add('no');$('#fb').innerHTML=`<div class="bub inner">💡 انظري إلى آخر الكلمة بتأنٍّ: ما الحركة التي عليه؟ ضمة ← مرفوع، فتحة ← منصوب، كسرة ← مجرور، والفعل الماضي مبني على الفتح.</div>`}})}
+function step3(){const w=SENT[CUR];LOG.push(['i','والآن أعربيها بيدك في دفترك، ثم قارني:']);
+ $('#dlg').innerHTML=bubbles()+`<div class="irab"><b>${esc(w[0])}</b>: ${esc(irabText(w))}</div><div class="fin"><button class="go g" id="ok">طابق إعرابي ✓</button> <button class="go" id="re">أحتاج أعيد 🔁</button></div>`;
+ $('#ok').onclick=()=>{DONE.add(CUR);CUR=-1;render()};$('#re').onclick=()=>{CUR=-1;render()}}
+startRound();
+</script></body></html>
