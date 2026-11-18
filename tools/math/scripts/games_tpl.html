@@ -83,16 +83,45 @@ function find(id){for(const c in DATA){const i=DATA[c].find(x=>x.id===id);if(i)r
 let CUR,CC,TRIES,MODE='solo',CONT=null,PEND=null;
 function goldAll(){const g=Object.entries(DATA).flatMap(([c,a])=>a.filter(i=>i.n>=2));
  $('#app').innerHTML=`<div class="top"><button class="btn o" onclick="home()">→ الرئيسية</button></div><div class="card"><h2>🌟 الأسئلة الذهبية</h2>`+g.map((i,k)=>`<button class="lv gold ${ST.done[i.id]?'done':''}" onclick='play(${JSON.stringify(i.id)})'>${ar(k+1)}</button>`).join('')+'</div>'}
-function figHtml(i){if(!i.img)return '';return `<div class="fig">${i.orig?`<div class="fig2"><div class="rd"><img src="${i.img}" alt=""></div><div class="or"><img src="${i.orig}" alt="">الصورة الأصلية في الورقة</div></div>`:`<img src="${i.img}" alt="">`}</div>`}
+function figHtml(i){if(!i.img)return '';
+ const rd=i.html?`<div class="mount" data-fid="${esc(i.id)}"></div><div style="text-align:center"><button class="btn o" style="min-height:40px;padding:2px 14px;font-size:.9rem" onclick="replayFig()">▶ شوفي الرسم يتحرك</button></div>`:`<img src="${i.img}" alt="">`;
+ return `<div class="fig">${i.orig?`<div class="fig2"><div class="rd">${rd}</div><div class="or"><img src="${i.orig}" alt="">الصورة الأصلية في الورقة</div></div>`:rd}</div>`}
+function mountOne(m){const it=find(m.dataset.fid)[0];const sh=m.shadowRoot||m.attachShadow({mode:'open'});sh.innerHTML='<style>:host{display:block;direction:rtl;text-align:center}svg{max-width:100%;height:auto}table{margin:auto}</style>'+it.html;m.dataset.done='1';animateFig(sh)}
+function replayFig(){document.querySelectorAll('.mount').forEach(mountOne)}
+new MutationObserver(()=>document.querySelectorAll('.mount:not([data-done])').forEach(mountOne)).observe(document.body,{childList:true,subtree:true});
+function animateFig(sh){const A=(el,kf,opt)=>{try{return el.animate(kf,Object.assign({fill:'backwards'},opt))}catch(e){}};
+ sh.querySelectorAll('svg').forEach(svg=>{
+  const circles=[...svg.querySelectorAll('circle')];const big=circles.find(c=>+c.getAttribute('r')>=100);
+  const polys=[...svg.querySelectorAll('polygon')];
+  const sw=+(svg.getAttribute('width')||(svg.viewBox&&svg.viewBox.baseVal&&svg.viewBox.baseVal.width)||500);
+  const rects=[...svg.querySelectorAll('rect')].filter(r=>{const w=+r.getAttribute('width'),h=+r.getAttribute('height');return w>0&&h>0&&w<sw*0.9&&!(r.getAttribute('fill')==='none'&&!r.getAttribute('stroke'))});
+  if(rects.length&&!big){const horiz=new Set(rects.map(r=>Math.round(+r.getAttribute('x')))).size===1;
+   rects.forEach((r,k)=>{r.style.transformBox='fill-box';r.style.transformOrigin=horiz?'left':'bottom';A(r,[{transform:horiz?'scaleX(0)':'scaleY(0)'},{transform:'none'}],{duration:700,delay:300+k*250,easing:'ease-out'})})}
+  svg.querySelectorAll('polyline').forEach(p=>{const len=p.getTotalLength?p.getTotalLength():300;p.style.strokeDasharray=len;A(p,[{strokeDashoffset:len},{strokeDashoffset:0}],{duration:1400,delay:300,easing:'ease-in-out'})});
+  const cx=big?+big.getAttribute('cx'):sw/2,cy=big?+big.getAttribute('cy'):sw/2;
+  [...svg.querySelectorAll('path')].filter(p=>p.getAttribute('fill')&&p.getAttribute('fill')!=='none').forEach((p,k)=>{p.style.transformOrigin=cx+'px '+cy+'px';A(p,[{opacity:0,transform:'scale(.3)'},{opacity:1,transform:'none'}],{duration:600,delay:300+k*400,easing:'ease-out'})});
+  if(big&&polys.length){polys.forEach(pg=>{pg.style.transformOrigin=cx+'px '+cy+'px';A(pg,[{transform:'rotate(0deg)'},{transform:'rotate(1080deg)'}],{duration:2600,delay:300,easing:'cubic-bezier(.2,.8,.2,1)'})})}
+  circles.filter(c=>c!==big&&+c.getAttribute('r')<12).forEach((c,k)=>{c.style.transformBox='fill-box';c.style.transformOrigin='center';A(c,[{opacity:0,transform:'scale(0)'},{opacity:1,transform:'none'}],{duration:350,delay:1500+k*150})});
+  svg.querySelectorAll('text').forEach((tx,k)=>A(tx,[{opacity:0},{opacity:1}],{duration:400,delay:k*60}))});
+ sh.querySelectorAll('table tr').forEach((tr,k)=>A(tr,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:400,delay:200+k*250}))}
 function head(i,c){return `<div class="top"><button class="btn o" onclick="${MODE==='cont'?'contestAbort()':`chapter(${c})`}">→ رجوع</button><span class="stars">⭐ ${ar(ST.stars)}</span></div><div class="card">${i.n>=2?`<span class="gold-b">🌟 سؤال ذهبي: <span style="background:none">🔁 تكرر ${ar(i.n)} مرات</span></span><br>`:''}<div class="q">${L(i.q)}</div>${figHtml(i)}<div class="src">جاء في: ${esc(i.src)}</div><div class="src" style="background:#e7f5ff;border-color:#1c7ed6;color:#0b5394">📖 في كتابك: ${esc(i.bk)}</div>${i.sim?`<div class="src" style="background:#f3f0ff;border-color:#b197fc;color:#5f3dc4">ونفس الفكرة بأرقام أخرى جاءت في: ${esc(i.sim)}</div>`:''}</div>`}
 function play(id){const [i,c]=find(id);CUR=i;CC=c;TRIES=0;stageTask(i,c)}
+function swapTask(t){const P=[['أكبر','أصغر'],['الأكبر','الأصغر'],['الأكثر','الأقل'],['أكثر','أقل'],['مجموع','الفرق'],['الجمع','الطرح'],['أطول','أقصر'],['الأطول','الأقصر'],['أعلى','أدنى'],['الأعلى','الأدنى'],['يزيد','ينقص'],['من الأصغر إلى الأكبر','من الأكبر إلى الأصغر'],['مؤكد','مستحيل']];for(const [a,b] of P){if(t.includes(a))return t.replace(a,b);if(t.includes(b))return t.replace(b,a)}return null}
+function distract(i,t){const same=Object.values(DATA).flat().filter(x=>x.id!==i.id&&task(x)&&task(x)!==t);
+ const near=shuffle(same.filter(x=>x.k===i.k&&x.lesson===i.lesson)).concat(shuffle(same.filter(x=>x.k===i.k)),shuffle(same));
+ const out=[];const sw=swapTask(t);if(sw&&sw!==t)out.push(sw);for(const x of near){const y=task(x);if(!out.includes(y))out.push(y);if(out.length>=2)break}return out.slice(0,2)}
+function afterTask(){const i=CUR;if(i.op&&MODE!=='cont')stageOp(0);else stageAnswer()}
+const OPN={'+':'➕ جمع','−':'➖ طرح','×':'✖ ضرب','÷':'➗ قسمة'};
+const OPW={'+':'جمع: نضمّ الأشياء معاً، أو نسأل عن «الكل» أو «المجموع».','−':'طرح: شيء نقص أو بقي أو أُعطي، أو نسأل «كم يزيد» أو «الفرق».','×':'ضرب: نفس العدد يتكرر مرات (مثل «كل يوم»، «في كل صف»).','÷':'قسمة: نوزّع بالتساوي، أو نسأل «كم مرة يتسع» عدد في عدد.'};
+function stageOp(k){const i=CUR,c=CC,want=i.op[k];let tr=0;
+ $('#app').innerHTML=head(i,c)+`<div class="card"><div class="stage">⚙️ المرحلة ٢: أي عملية نستعمل ${i.op.length>1?(k?'ثانياً':'أولاً'):''}؟ دوّري على الكلمة المفتاحية في السؤال${i.kw?': «'+esc(i.kw)+'»':''}</div><div class="grid">`+['+','−','×','÷'].map(o=>`<button class="opt" data-o="${o}" style="text-align:center">${OPN[o]}</button>`).join('')+'</div><div id="fb"></div></div>';
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(o===want){b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#fb').innerHTML=`<div class="good">أحسنتِ! ✅ ${esc(OPW[want])} <button class="btn g" id="go2">${k+1<i.op.length?'العملية الثانية ←':'المرحلة ٣ ←'}</button></div>`;$('#go2').onclick=()=>k+1<i.op.length?stageOp(k+1):stageAnswer()}else{tr++;b.classList.add('no');$('#fb').innerHTML=tr<2?`<div class="coach">💡 اسألي نفسك: ماذا تقول الكلمة المفتاحية${i.kw?' «'+esc(i.kw)+'»':''}؟ هل نضمّ؟ أم ينقص؟ أم يتكرر؟ أم نوزّع؟</div>`:`<div class="coach">💡 تلميح قوي: ${esc(OPW[want])}</div>`}})}
 function stageTask(i,c){
- const t=task(i);if(!t||MODE==='cont'){return stageAnswer()}
- const others=shuffle(Object.values(DATA).flat().filter(x=>x.id!==i.id&&task(x)&&task(x)!==t)).slice(0,2).map(task);
- const opts=shuffle([t,...others]);
+ const t=task(i);if(!t||MODE==='cont'){return afterTask()}
+ const opts=shuffle([t,...distract(i,t)]);
  $('#app').innerHTML=head(i,c)+`<div class="card"><div class="stage">🔎 المرحلة ١: ركّزي. اقرئي السؤال مرتين، ثم اسألي نفسك: ماذا يُطلب مني؟</div>`+opts.map((o,k)=>`<button class="opt" data-k="${k}">${L(o)}</button>`).join('')+'<div id="fb"></div></div>';
- document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const p=opts[+b.dataset.k];if(p===t){b.classList.add('ok');$('#fb').innerHTML=`<div class="good">أحسنتِ! عرفتِ المطلوب أولاً، وهذه أهم خطوة ✅ <button class="btn g" id="go">المرحلة ٢ ←</button></div>`;document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#go').onclick=()=>stageAnswer()}else{b.classList.add('no');$('#fb').innerHTML=`<div class="coach">💡 اقرئي السؤال مرة ثانية ببطء. اسألي نفسك: ما الذي يسأل عنه في آخر السؤال؟ ثم اختاري.</div>`}})}
-function stageAnswer(){const i=CUR,c=CC;let h=head(i,c)+'<div class="card"><div class="stage">🧠 المرحلة ٢: فكّري وحلّلي، ثم أجيبي.</div>';
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const p=opts[+b.dataset.k];if(p===t){b.classList.add('ok');$('#fb').innerHTML=`<div class="good">أحسنتِ! عرفتِ المطلوب أولاً، وهذه أهم خطوة ✅ <button class="btn g" id="go">المرحلة ٢ ←</button></div>`;document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#go').onclick=()=>afterTask()}else{b.classList.add('no');$('#fb').innerHTML=`<div class="coach">💡 اقرئي السؤال مرة ثانية ببطء. اسألي نفسك: ما الذي يسأل عنه في آخر السؤال؟ ثم اختاري.</div>`}})}
+function stageAnswer(){const i=CUR,c=CC;let h=head(i,c)+'<div class="card"><div class="stage">🧠 المرحلة '+((i.op&&MODE!=='cont')?'٣':'٢')+': فكّري وحلّلي، ثم أجيبي.</div>';
  if(i.kind==='mcq'){h+=i.o.map((o,k)=>`<button class="opt" data-k="${k}">${L(o)}</button>`).join('')}
  else if(i.kind==='tf'){h+=`<button class="opt" data-k="1">✔ صح</button><button class="opt" data-k="0">✘ خطأ</button>`}
  else if(i.kind==='num'){h+=`<input class="in" id="in" inputmode="decimal" placeholder="اكتبي الجواب" autocomplete="off"><div style="text-align:center"><button class="btn" id="ck">تأكدي ✓</button></div>`}

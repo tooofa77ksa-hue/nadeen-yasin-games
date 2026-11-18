@@ -12,6 +12,7 @@ for(const id of ids){await p.evaluate(i=>play(i),id);n++;
    // wrong first
    const w=opts.findIndex((o,j)=>j!==k);await p.click(`.opt[data-k="${w}"]`);
    await p.click(`.opt[data-k="${k}"]`);await p.click('#go');}}
+ if(await p.evaluate(()=>!!(CUR.op&&document.body.innerText.includes('المرحلة ٢: أي عملية')))){const ops=await p.evaluate(()=>CUR.op);for(const o of ops){const bad=['+','−','×','÷'].find(x=>x!==o);await p.click(`.opt[data-o="${bad}"]`);await p.click(`.opt[data-o="${o}"]`);await p.click('#go2');}}
  const it=await p.evaluate(()=>({k:CUR.kind,a:CUR.ans}));
  if(it.k==='mcq'){await p.click(`.opt[data-k="${it.a}"]`)}
  else if(it.k==='tf'){await p.click(`.opt[data-k="${it.a?1:0}"]`)}

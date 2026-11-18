@@ -28,7 +28,21 @@ def guess_op(ex):
     t=' '.join([ex.get('think') or '',' '.join(ex.get('steps') or []),ex.get('answer') or ''])
     hit=[o for o,ws in OPS.items() if any(w in t for w in ws)]
     return hit[0] if len(hit)==1 else None
-def tohtml(s): return s
+def figure_html(f):
+    if not f: return None
+    nm=os.path.basename(f)[:-4];p=f'/tmp/m4/redraw/{nm}.html'
+    if os.path.exists(p):
+        h=open(p,encoding='utf-8').read()
+        return h if len(h)<20000 else None
+    return None
+OPSPEC={
+'sharqia-123':(['−'],'تبقى معه'),'hail-005':(['+'],'فكم دفع ثمناً لذلك (الكل)'),'jazan-078':(['+'],'فكم عدد اللعب التي لديها'),'qassim-177':(['+'],'في النشاطين'),
+'qassim-178':(['−'],'غادر منهم'),'tabuk-053':(['−'],'بقي معه'),'jazan-091':(['−'],'فكم مللتراً من الزيت يتبقى'),'jazan-092':(['+','−'],'أعطى أصدقاءه … كم ستبقى'),
+'sharqia-116':(['+'],'في الشهرين'),'tabuk-074':(['+'],'فكم دفع ثمناً لذلك'),'jazan-080':(['÷'],'كم كتاباً يمكن شحنه'),'jazan-086':(['÷'],'كم ساعة … ليتقاضى'),
+'qassim-188':(['÷','×'],'٦ دببة … فما عدد النمل الذي تأكله ٣ دببة'),'tabuk-043':(['×'],'لتغليف ١٠ هدايا (كل هدية نفس الوقت)'),'qassim-174':(['×'],'لتغليف ١٠ هدايا (كل هدية نفس الوقت)'),
+'hail-013':(['×'],'كل يوم'),'hail-015':(['×'],'في كل منها'),'qassim-186':(['×'],'كل يوم'),'qassim-187':(['×'],'للفرد'),'qassim-189':(['×'],'كل يوم'),'qassim-191':(['×'],'ملاعق لكل كوب'),
+'sharqia-132':(['×'],'معدل … في ١٢ مباراة'),'qassim-190':(['×'],'في كل أسبوع'),'sharqia-137':(['×'],'في كل صف'),'jazan-094':(['+','−'],'أعطاها والدها … وأعطت أخاها'),'sharqia-140':(['+','−'],'أعطاها والدها … وأعطت أخاها'),
+}
 def build():
     data={}
     for ch in (1,2,3,4,5,6):
@@ -56,7 +70,7 @@ def build():
                     from PIL import Image
                     im=Image.open(f).convert('L');im.thumbnail((300,300));im.save(f'{OUT}/img/{nm}_o.jpg',quality=70);orig=f'img/{nm}_o.jpg'
             sim=B.place_label(e['sim_models']) if e['sim_models'] else ''
-            items.append({'id':e['canon'],'k':B.sec(x),'kind':kind,'ans':ans,'q':x['text'],'o':opts,'img':img,'orig':orig,'src':B.place_label(e['models']),'n':e['n'],'sim':sim,'lesson':r.get('lesson',''),'bk':B.BP.label(r.get('lesson'),ch),'ex':ex,'fa':str(r.get('final_answer','')),'op':guess_op(ex) if B.sec(x)=='word' else None})
+            items.append({'id':e['canon'],'k':B.sec(x),'kind':kind,'ans':ans,'q':x['text'],'o':opts,'img':img,'orig':orig,'src':B.place_label(e['models']),'n':e['n'],'sim':sim,'lesson':r.get('lesson',''),'bk':B.BP.label(r.get('lesson'),ch),'ex':ex,'fa':str(r.get('final_answer','')),'op':(OPSPEC.get(e['canon']) or (None,None))[0],'kw':(OPSPEC.get(e['canon']) or (None,None))[1],'html':figure_html(f)})
         data[ch]=items
     return data
 if __name__=='__main__':
