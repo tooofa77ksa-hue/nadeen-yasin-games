@@ -1,0 +1,723 @@
+[
+ {
+  "uid": "north-1a-1",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (1)",
+  "type": "tf",
+  "text": "انتقال الصفات الوراثية من الآباء إلى الأبناء يسمى الوراثة.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-2",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (2)",
+  "type": "tf",
+  "text": "توجد البلاستيدات الخضراء في جميع المخلوقات الحية.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "خطأ",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-3",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (3)",
+  "type": "tf",
+  "text": "تصنف اللافقاريات في ثماني مجموعات.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-4",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (4)",
+  "type": "tf",
+  "text": "الزواحف حيوانات متغيرة درجة الحرارة تعيش على اليابسة.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-5",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (5)",
+  "type": "tf",
+  "text": "يتم التحكم في جميع أجهزة الجسم بواسطة الجهاز الهيكلي.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "خطأ",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-6",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (6)",
+  "type": "tf",
+  "text": "العوامل الحيوية هي جميع المخلوقات الحية في البيئة.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-7",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (7)",
+  "type": "tf",
+  "text": "المنتجات هي المخلوقات الحية التي تصنع غذائها بنفسها بواسطة طاقة الشمس.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-8",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (8)",
+  "type": "tf",
+  "text": "إضافة الأشياء الضارة إلى التربة أو الماء أو الهواء يسمى التلوث.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-9",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (9)",
+  "type": "tf",
+  "text": "تعتبر السمنة من الأمراض المعدية.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "خطأ",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1a-10",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (أ) (10)",
+  "type": "tf",
+  "text": "المصدر الرئيس للطاقة في الجسم هو الكربوهيدرات.",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "صح",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ١١-٢٠"
+ },
+ {
+  "uid": "north-1b-1",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الأول (ب)",
+  "type": "short",
+  "text": "لماذا سميت اللاسعات بهذا الاسم؟",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "لأن لها أجزاء تسمى لوامس تشبه الأذرع، ينتهي كل منها بخلايا لاسعة تشل بها حركة فريستها",
+  "answer_letter": null,
+  "pages": {
+   "exam": 36,
+   "answer": 40
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-1",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (1)",
+  "type": "mcq",
+  "text": "وحدة بناء المخلوقات الحية هي:",
+  "options": [
+   "أ) الجين",
+   "ب) الخلية",
+   "ج) الميتوكندريا",
+   "د) النواة"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ب) الخلية",
+  "answer_letter": "ب",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-2",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (2)",
+  "type": "mcq",
+  "text": "تركيب الخلية الذي يخزن الماء والغذاء والفضلات هو:",
+  "options": [
+   "أ) البلاستيدات",
+   "ب) السيتوبلازم",
+   "ج) الفجوات",
+   "د) النواة"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ج) الفجوات",
+  "answer_letter": "ج",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-3",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (3)",
+  "type": "mcq",
+  "text": "أي الحيوانات التالية من الفقاريات:",
+  "options": [
+   "أ) النسر",
+   "ب) الروبيان",
+   "ج) الإسفنج",
+   "د) المرجان"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "أ) النسر",
+  "answer_letter": "أ",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-4",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (4)",
+  "type": "mcq",
+  "text": "الجهاز الذي ينقل الدم والغذاء والأكسجين إلى خلايا الجسم ويخلصها من الفضلات هو:",
+  "options": [
+   "أ) الجهاز التنفسي",
+   "ب) الجهاز الإخراجي",
+   "ج) الجهاز الهضمي",
+   "د) الجهاز الدوراني"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "د) الجهاز الدوراني",
+  "answer_letter": "د",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-5",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (5)",
+  "type": "mcq",
+  "text": "النظام البيئي الكبير الذي يمتاز بنباتاته وحيواناته وتربته الخاصة يسمى:",
+  "options": [
+   "أ) الجماعة الحيوية",
+   "ب) المجتمع الحيوي",
+   "ج) المنطقة الحيوية",
+   "د) الموطن"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ج) المنطقة الحيوية",
+  "answer_letter": "ج",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-6",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (6)",
+  "type": "mcq",
+  "text": "الصراع بين المخلوقات الحية على الطعام والماء وجميع الاحتياجات يسمى:",
+  "options": [
+   "أ) التنافس",
+   "ب) الشبكة الغذائية",
+   "ج) التكيف",
+   "د) المواءمة"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "أ) التنافس",
+  "answer_letter": "أ",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-7",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (7)",
+  "type": "mcq",
+  "text": "تستطيع أن تسلك سلوك المخلوقات الحية والأشياء الغير حية هي:",
+  "options": [
+   "أ) البكتيريا",
+   "ب) الفيروسات",
+   "ج) الفطريات",
+   "د) الطحالب"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ب) الفيروسات",
+  "answer_letter": "ب",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-8",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (8)",
+  "type": "mcq",
+  "text": "الخلايا المسؤولة عن حماية الجسم ومحاربة الأمراض والجراثيم هي:",
+  "options": [
+   "أ) الصفائح الدموية",
+   "ب) البلازما",
+   "ج) خلايا الدم الحمراء",
+   "د) خلايا الدم البيضاء"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "د) خلايا الدم البيضاء",
+  "answer_letter": "د",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-9",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (9)",
+  "type": "mcq",
+  "text": "نقص الكالسيوم في الجسم يسبب الإصابة بـ:",
+  "options": [
+   "أ) هشاشة العظام",
+   "ب) السكري",
+   "ج) الإنفلونزا",
+   "د) الحصبة"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "أ) هشاشة العظام",
+  "answer_letter": "أ",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-10",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (10)",
+  "type": "mcq",
+  "text": "الأمراض التي تنتقل من مخلوق إلى آخر هي الأمراض:",
+  "options": [
+   "أ) النفسية",
+   "ب) العقلية",
+   "ج) المعدية",
+   "د) غير المعدية"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ج) المعدية",
+  "answer_letter": "ج",
+  "pages": {
+   "exam": 37,
+   "answer": 41
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-11",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (11)",
+  "type": "mcq",
+  "text": "الكائنات الحية التي تعتني بصغارها هي:",
+  "options": [
+   "أ) الحشرات",
+   "ب) الطيور",
+   "ج) الضفادع",
+   "د) الثعابين"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ب) الطيور",
+  "answer_letter": "ب",
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-12",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (12)",
+  "type": "mcq",
+  "text": "مجموعة من الخلايا تقوم بالوظيفة نفسها هي:",
+  "options": [
+   "أ) النسيج",
+   "ب) العضو",
+   "ج) الجهاز",
+   "د) الخلية"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "أ) النسيج",
+  "answer_letter": "أ",
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-13",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (13)",
+  "type": "mcq",
+  "text": "تميز جميع الخلايا النباتية عن الخلايا الحيوانية بأن لها:",
+  "options": [
+   "أ) سيتوبلازم",
+   "ب) نواة",
+   "ج) جدار خلوي",
+   "د) ميتوكندريا"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "ج) جدار خلوي",
+  "answer_letter": "ج",
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-14",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (14)",
+  "type": "mcq",
+  "text": "عند اتحاد أو تداخل سلسلتي غذاء أو أكثر ينشأ:",
+  "options": [
+   "أ) مجتمع حيوي",
+   "ب) نظام بيئي",
+   "ج) هرم غذائي",
+   "د) شبكة غذائية"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "د) شبكة غذائية",
+  "answer_letter": "د",
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2a-15",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (أ) (15)",
+  "type": "mcq",
+  "text": "درجة حرارة جسم الإنسان الطبيعي هي:",
+  "options": [
+   "أ) 37 س",
+   "ب) 27 س",
+   "ج) 29 س",
+   "د) 39 س"
+  ],
+  "table_text": null,
+  "figure": null,
+  "model_answer": "أ) 37 س",
+  "answer_letter": "أ",
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2b-1",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (ب) (1)",
+  "type": "short",
+  "text": "اذكر اثنين من العادات الصحية التي تجنبنا الأمراض؟ (1)",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "الاهتمام بالنظافة (غسل اليدين باستمرار / تقليم الأظافر / غسل الشعر .....)",
+  "answer_letter": null,
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-2b-2",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثاني (ب) (2)",
+  "type": "short",
+  "text": "اذكر اثنين من العادات الصحية التي تجنبنا الأمراض؟ (2)",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "model_answer": "تناول الغذاء الصحي المتوازن",
+  "answer_letter": null,
+  "pages": {
+   "exam": 38,
+   "answer": 42
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-3-1",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الثالث",
+  "type": "match",
+  "text": "اختر الرقم المناسب من العمود الأول، وضعه في الفراغ المقابل لكل عبارة في العمود الثاني:",
+  "options": null,
+  "table_text": "العمود الأول: 1) خاصية من خصائص المخلوقات الحية | 2) تفاعل جهاز المناعة بشدة ضد المواد الغريبة | 3) مرض بكتيري يسبب الإسهال والجفاف الشديد | 4) فناء أو اختفاء جميع أفراد النوع | 5) يقوم بتفكيك وتحليل الطعام | 6) تتحكم في جميع أنشطة الخلية\nالعمود الثاني: الجهاز الهضمي | الانقراض | الحساسية | الكوليرا | الصفة | النواة",
+  "figure": null,
+  "model_answer": "الجهاز الهضمي = 5؛ الانقراض = 4؛ الحساسية = 2؛ الكوليرا = 3؛ الصفة = 1؛ النواة = 6",
+  "answer_letter": null,
+  "pages": {
+   "exam": "38-39",
+   "answer": 43
+  },
+  "legibility": "",
+  "note": ""
+ },
+ {
+  "uid": "north-4-1",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الرابع (1)",
+  "type": "word_fill",
+  "text": "----------- هو عملية إنتاج أفراد جديدة.",
+  "options": null,
+  "table_text": "الكلمات: التكيف ـ المرض ـ التكاثر ـ الماء ـ المملكة",
+  "figure": null,
+  "model_answer": "التكاثر",
+  "answer_letter": null,
+  "pages": {
+   "exam": 39,
+   "answer": 43
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ٦-١٠"
+ },
+ {
+  "uid": "north-4-2",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الرابع (2)",
+  "type": "word_fill",
+  "text": "----------- هو صفة تميز الكائنات الحية تساعدها على البقاء والتغلب على جميع الظروف.",
+  "options": null,
+  "table_text": "الكلمات: التكيف ـ المرض ـ التكاثر ـ الماء ـ المملكة",
+  "figure": null,
+  "model_answer": "التكيف",
+  "answer_letter": null,
+  "pages": {
+   "exam": 39,
+   "answer": 43
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ٦-١٠"
+ },
+ {
+  "uid": "north-4-3",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الرابع (3)",
+  "type": "word_fill",
+  "text": "----------- حالة غير طبيعية تؤثر على جسم المخلوق الحي.",
+  "options": null,
+  "table_text": "الكلمات: التكيف ـ المرض ـ التكاثر ـ الماء ـ المملكة",
+  "figure": null,
+  "model_answer": "المرض",
+  "answer_letter": null,
+  "pages": {
+   "exam": 39,
+   "answer": 43
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ٦-١٠"
+ },
+ {
+  "uid": "north-4-4",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الرابع (4)",
+  "type": "word_fill",
+  "text": "----------- يشكل ثلثي جسم الإنسان.",
+  "options": null,
+  "table_text": "الكلمات: التكيف ـ المرض ـ التكاثر ـ الماء ـ المملكة",
+  "figure": null,
+  "model_answer": "الماء",
+  "answer_letter": null,
+  "pages": {
+   "exam": 39,
+   "answer": 43
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ٦-١٠"
+ },
+ {
+  "uid": "north-4-5",
+  "region": "الحدود الشمالية",
+  "source": "موضي (اختبار + نموذج إجابة)",
+  "q_label": "السؤال الرابع (5)",
+  "type": "word_fill",
+  "text": "----------- هي المجموعة الكبرى التي تصنف فيها المخلوقات الحية.",
+  "options": null,
+  "table_text": "الكلمات: التكيف ـ المرض ـ التكاثر ـ الماء ـ المملكة",
+  "figure": null,
+  "model_answer": "المملكة",
+  "answer_letter": null,
+  "pages": {
+   "exam": 39,
+   "answer": 43
+  },
+  "legibility": "",
+  "note": "في صفحة الإجابة مرقّمة ٦-١٠"
+ }
+]

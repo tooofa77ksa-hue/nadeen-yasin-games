@@ -1,0 +1,2416 @@
+{
+ "summary": "مسودة مراجعة (review.pdf، ١٠ صفحات) لمادة العلوم الصف الرابع الفصل الأول ١٤٤٧هـ: «مسودة مراجعة مادة العلوم للصف الرابع الابتدائي»، من ٥ فصول (الخلايا وتصنيف المخلوقات الحية؛ الحيوانات الفقارية واللافقارية وأجهزة الجسم؛ الأنظمة البيئية؛ الأمراض والعدوى؛ التغذية والصحة). هي ورقة أسئلة مراجعة فقط (أكمل بالعبارة المناسبة، أكمل الفراغات، اختيار من متعدد، صح وخطأ، تعرف على الصور) وفراغاتها فارغة: لا توجد فيها أي إجابات ولا نموذج إجابة، فكل model_answer = null. الإجابات النموذجية يجب أخذها من موضي/الكتاب.",
+ "items": [
+  {
+   "uid": "review-1-1-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (١)",
+   "type": "word_fill",
+   "text": "أصغر تركيب في المخلوق الحي هو: ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-1-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (٢)",
+   "type": "word_fill",
+   "text": "جميع المخلوقات الحية تنتج أفرادا جددا بـ ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-1-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (٣)",
+   "type": "word_fill",
+   "text": "أكبر مجموعة تصنف إليها المخلوقات الحية هي ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-1-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (٤)",
+   "type": "word_fill",
+   "text": "مجموعة الأعضاء التي تعمل معا لأداء وظيفة معينة في الجسم تسمى ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-1-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (٥)",
+   "type": "word_fill",
+   "text": "تنتظم الخلايا المتشابهة لتكون ...... يؤدي وظيفة معينة.",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-1-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (٦)",
+   "type": "word_fill",
+   "text": "القدرة على صنع الغذاء ...... تشترك فيها جميع النباتات.",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-1-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الأول (٧)",
+   "type": "word_fill",
+   "text": "...... هي الصفات التي تنتقل من الآباء إلى الأبناء.",
+   "options": null,
+   "table_text": "بنك الكلمات: المملكة - الخلية - الصفات الوراثية - نسيجا - صفة - التكاثر - الجهاز الحيوي",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-2-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الثاني (١)",
+   "type": "fill",
+   "text": "أصغر تركيب في المخلوق الحي يسمى ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-2-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الثاني (٢)",
+   "type": "fill",
+   "text": "تضم الشعبة مجموعات أصغر منها تسمى ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-3-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الثالث (١)",
+   "type": "mcq",
+   "text": "أي الأجزاء التالية يوجد في الخلية النباتية فقط؟",
+   "options": [
+    "أ) الميتوكندريا",
+    "ب) البلاستيدات",
+    "ج) الغشاء الخلوي",
+    "د) الكروموسوم"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-3-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الثالث (٢)",
+   "type": "mcq",
+   "text": "جميع الخلايا النباتية:",
+   "options": [
+    "أ) لها جدار خلوي",
+    "ب) تؤدي الوظيفة نفسها",
+    "ج) بيضية الشكل",
+    "د) لا تحتوي على كلورفيل"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-3-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الثالث (٣)",
+   "type": "mcq",
+   "text": "أي مما يلي يشمل أكثر عدد من الأنواع؟",
+   "options": [
+    "أ) المملكة",
+    "ب) الشعبة",
+    "ج) الطائفة",
+    "د) الرتبة"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-3-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الثالث (٤)",
+   "type": "mcq",
+   "text": "أي الممالك التالية يصنع جميع أفرادها غذاءه بنفسه؟",
+   "options": [
+    "أ) الفطريات",
+    "ب) الطلائعيات",
+    "ج) البكتيريا",
+    "د) النباتات"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-4-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الرابع (١)",
+   "type": "tf",
+   "text": "توجد البلاستيدات في جميع خلايا المخلوقات الحية.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-4-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الرابع (٢)",
+   "type": "tf",
+   "text": "الطائفة أكبر من الشعبة.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-4-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الرابع (٣)",
+   "type": "tf",
+   "text": "يتكون النسيج من مجموعة من الخلايا المتشابهة.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-4-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الرابع (٤)",
+   "type": "tf",
+   "text": "جميع المخلوقات التي تتكون من خلية واحدة تنتمي إلى مملكة البكتيريا.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 1,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-5-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الخامس (١)",
+   "type": "diagram",
+   "text": "أ/ تعرف على الأشكال التالية: (الشكل على اليمين: خلية نباتية - تحته مربع إجابة)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-1-5-1.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 2,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-5-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الخامس (٢)",
+   "type": "diagram",
+   "text": "أ/ تعرف على الأشكال التالية: (الشكل على اليسار: خلية حيوانية - مربع إجابة)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-1-5-2.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 2,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-5-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الخامس (٣)",
+   "type": "diagram",
+   "text": "ب/ ما الظاهرة التي تمثلها الصورة؟ (نباتات عباد الشمس والشمس)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-1-5-3.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 2,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-1-5-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الأول - السؤال الخامس (٤)",
+   "type": "diagram",
+   "text": "ج/ أكمل مستويات التنظيم التالية: الخلية ← [مربع] ← العضو ← [مربع] (صور: خلية نباتية، نسيج عضلي، قلب، جسم إنسان)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-1-5-4.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 2,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ فيه مربعان فارغان (النسيج، الجهاز)"
+  },
+  {
+   "uid": "review-2-1-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الأول (١)",
+   "type": "word_fill",
+   "text": "معظم الحيوانات تنتمي إلى مجموعة ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الجهاز الهضمي - هيكل خارجي - الجهاز العصبي - الزواحف - الفقاريات - اللافقاريات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-1-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الأول (٢)",
+   "type": "word_fill",
+   "text": "يحلل الجسم الطعام في ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الجهاز الهضمي - هيكل خارجي - الجهاز العصبي - الزواحف - الفقاريات - اللافقاريات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-1-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الأول (٣)",
+   "type": "word_fill",
+   "text": "...... حيوانات لها عمود فقري.",
+   "options": null,
+   "table_text": "بنك الكلمات: الجهاز الهضمي - هيكل خارجي - الجهاز العصبي - الزواحف - الفقاريات - اللافقاريات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-1-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الأول (٤)",
+   "type": "word_fill",
+   "text": "الحشرات لها ...... صلب يحمي أجسامها.",
+   "options": null,
+   "table_text": "بنك الكلمات: الجهاز الهضمي - هيكل خارجي - الجهاز العصبي - الزواحف - الفقاريات - اللافقاريات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-1-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الأول (٥)",
+   "type": "word_fill",
+   "text": "الدماغ وأعضاء الحس تكون ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الجهاز الهضمي - هيكل خارجي - الجهاز العصبي - الزواحف - الفقاريات - اللافقاريات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-1-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الأول (٦)",
+   "type": "word_fill",
+   "text": "السحلية حيوان فقاري متغير درجة الحرارة وينتمي إلى ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الجهاز الهضمي - هيكل خارجي - الجهاز العصبي - الزواحف - الفقاريات - اللافقاريات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-2-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثاني (١)",
+   "type": "fill",
+   "text": "لشوكيات الجلد دعامة داخلية تسمى ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-2-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثاني (٢)",
+   "type": "fill",
+   "text": "الحيوانات التي تستمد الحرارة من البيئة الخارجية لتبقى دافئة تسمى ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-2-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثاني (٣)",
+   "type": "fill",
+   "text": "الجهاز الذي يأخذ الأكسجين من الهواء أو من الماء للجسم يسمى ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (١)",
+   "type": "mcq",
+   "text": "أي الحيوانات التالية من اللافقاريات؟",
+   "options": [
+    "أ) النسر",
+    "ب) السمكة",
+    "ج) الروبيان",
+    "د) الثعبان"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (٢)",
+   "type": "mcq",
+   "text": "ما الخاصية التي تشترك فيها الرخويات والمفصليات؟",
+   "options": [
+    "أ) لها عمود فقري",
+    "ب) ليس لها عمود فقري",
+    "ج) لها هياكل خارجية",
+    "د) غير قادرة على الحركة"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (٣)",
+   "type": "mcq",
+   "text": "جميع الطيور والثدييات:",
+   "options": [
+    "أ) لها عمود فقري وتنتج الحليب",
+    "ب) تبيض ولها عمود فقري",
+    "ج) لها عمود فقري وترعى صغارها",
+    "د) تبيض ودرجة حرارة أجسامها ثابتة."
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (٤)",
+   "type": "mcq",
+   "text": "المعدة من أعضاء الجهاز:",
+   "options": [
+    "أ) العصبي",
+    "ب) الهضمي",
+    "ج) الهيكلي",
+    "د) الدوراني"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (٥)",
+   "type": "mcq",
+   "text": "وظيفة الجهاز الإخراجي هي:",
+   "options": [
+    "أ) أخذ الأكسجين من الماء والهواء.",
+    "ب) دعم العضلات",
+    "ج) تحليل الطعام",
+    "د) تخليص الجسم من الفضلات"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (٦)",
+   "type": "mcq",
+   "text": "الجهاز الذي ينقل الرسائل / الإشارات إلى أجهزة الجسم الأخرى هو الجهاز:",
+   "options": [
+    "أ) العضلي",
+    "ب) الإخراجي",
+    "ج) الدوراني",
+    "د) العصبي"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-3-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الثالث (٧)",
+   "type": "mcq",
+   "text": "أي الحيوانات التالية تعتني بصغارها؟",
+   "options": [
+    "أ) الطيور",
+    "ب) الحشرات",
+    "ج) الضفادع",
+    "د) الثعابيين"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 3,
+    "answer": null
+   },
+   "legibility": "⚠ الخيار د مكتوب «الثعابيين» في الأصل (الأرجح الثعابين)",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-4-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الرابع (١)",
+   "type": "tf",
+   "text": "جميع أنواع الأسماك لها عظام.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-5-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الخامس (١)",
+   "type": "diagram",
+   "text": "أ/ صنف الحيوانات التالية إلى فقاريات أو لا فقاريات: الصورة د (نسر)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-2-5-1.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-5-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الخامس (٢)",
+   "type": "diagram",
+   "text": "أ/ صنف الحيوانات التالية إلى فقاريات أو لا فقاريات: الصورة ج (غزال)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-2-5-2.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-5-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الخامس (٣)",
+   "type": "diagram",
+   "text": "أ/ صنف الحيوانات التالية إلى فقاريات أو لا فقاريات: الصورة ب (دجاجة)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-2-5-3.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-5-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الخامس (٤)",
+   "type": "diagram",
+   "text": "أ/ صنف الحيوانات التالية إلى فقاريات أو لا فقاريات: الصورة أ (أخطبوط)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-2-5-4.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-5-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الخامس (٥)",
+   "type": "diagram",
+   "text": "ب/ ما المسار الذي يسلكه الطعام في الجهاز الهضمي للسلحفاة؟ (١ ٢ ٣ ٤ فراغات؛ أسماء الأجزاء على الرسم: الفم، المريء، المعدة، الأمعاء الدقيقة)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-2-5-5.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-2-5-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثاني - السؤال الخامس (٦)",
+   "type": "diagram",
+   "text": "ج/ صنف الحيوانات التالية حسب الطوائف التالية: الأسماك - الطيور - الزواحف - الثدييات (صور: أرنب، سحلية، نسر، سمكة)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-2-5-6.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 4,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (١)",
+   "type": "word_fill",
+   "text": "تتشارك سلسلتان غذائيتان أو أكثر لتكوين ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٢)",
+   "type": "word_fill",
+   "text": "المخلوق الذي لا يستطيع صنع غذائه بنفسه هو من ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٣)",
+   "type": "word_fill",
+   "text": "النظام البيئي الكبير الذي له نباتاته وحيواناته الخاصة يسمى ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٤)",
+   "type": "word_fill",
+   "text": "النظام البيئي الذي يعيش فيه المخلوق الحي ويجد فيه جميع احتياجاته يسمى ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٥)",
+   "type": "word_fill",
+   "text": "المخلوق الحي الذي يستعمل طاقة الشمس لصنع الغذاء هو من ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٦)",
+   "type": "word_fill",
+   "text": "العوامل الحيوية وغير الحيوية في بيئة معينة تكون ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٧)",
+   "type": "word_fill",
+   "text": "استجابة المخلوق الحي للتغيرات في نظامه البيئي تسمى ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-1-8",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الأول (٨)",
+   "type": "word_fill",
+   "text": "عند اختفاء أو عدم وجود أفراد النوع كلها فإن الأنواع ......",
+   "options": null,
+   "table_text": "بنك الكلمات: المنطقة الحيوية - شبكة غذائية - تنقرض - المستهلكات - الموطن - النظام البيئي - المواءمة - المنتجات",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-2-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثاني (١)",
+   "type": "fill",
+   "text": "ما الجماعة الحيوية؟ ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-2-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثاني (٢)",
+   "type": "fill",
+   "text": "ما المحللات؟ ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-2-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثاني (٣)",
+   "type": "fill",
+   "text": "استجابة المخلوق الحي للتغير الحادث في بيئته تسمى ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-3-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثالث (١)",
+   "type": "mcq",
+   "text": "أي المناطق الحيوية فيها أشجار أكثر؟",
+   "options": [
+    "أ) الصحراء",
+    "ب) الغابة",
+    "ج) المنطقة العشبية",
+    "د) المنطقة القطبية"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-3-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثالث (٢)",
+   "type": "mcq",
+   "text": "كل الجماعات التي تعيش في النظام البيئي تكون:",
+   "options": [
+    "أ) الموطن",
+    "ب) العوامل اللاحيوية",
+    "ج) المجتمع الحيوي",
+    "د) العلاقات"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-3-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثالث (٣)",
+   "type": "mcq",
+   "text": "ينشأ عن اتحاد سلسلتي غذاء أو أكثر:",
+   "options": [
+    "أ) نظام بيئي",
+    "ب) شبكة غذائية",
+    "ج) مجتمع حيوي",
+    "د) هرم غذاء"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-3-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثالث (٤)",
+   "type": "mcq",
+   "text": "أي الظواهر الطبيعية جميعها تؤثر في النظام البيئي؟",
+   "options": [
+    "أ) الفيضان، التلوث، إزالة الغابات",
+    "ب) الهزات الأرضية، الحرائق، الاكتظاظ السكاني.",
+    "ج) الإعصار، الفيضان، الانزلاقات الأرضية",
+    "د) الزراعة، إعادة التدوير، الاكتظاظ السكاني."
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-3-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الثالث (٥)",
+   "type": "mcq",
+   "text": "ما المصطلح المناسب لوصف الصحراء بالنسبة للجمل؟",
+   "options": [
+    "أ) موطن",
+    "ب) منطقة حيوية",
+    "ج) إطار بيئي",
+    "د) نظام بيئي"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 5,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-4-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الرابع (١)",
+   "type": "tf",
+   "text": "هرم الطاقة يبين جميع سلاسل الغذاء في النظام البيئي.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-4-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الرابع (٢)",
+   "type": "tf",
+   "text": "بعض الظواهر الطبيعية قد تسبب تغيرات مفاجئة في النظام البيئي.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (١)",
+   "type": "diagram",
+   "text": "أ/ يعد الحيوان الموضح في الصورة: (أسد/نمر يزمجر) [مربع إجابة]",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-1.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ السؤال على الأرجح: مستهلك/مفترس"
+  },
+  {
+   "uid": "review-3-5-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٢)",
+   "type": "diagram",
+   "text": "ب/ من الصورة موطن البركة أي مما يأتي يعد من العوامل اللاحيوية؟",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-2.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٣)",
+   "type": "diagram",
+   "text": "ج/ اكتب أسماء المناطق الحيوية المبينة: الأولى من اليمين: غابة خريفية",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-3.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٤)",
+   "type": "diagram",
+   "text": "ج/ اكتب أسماء المناطق الحيوية المبينة: الثانية: جبال",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-4.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٥)",
+   "type": "diagram",
+   "text": "ج/ اكتب أسماء المناطق الحيوية المبينة: الثالثة: صحراء",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-5.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٦)",
+   "type": "diagram",
+   "text": "ج/ اكتب أسماء المناطق الحيوية المبينة: الرابعة: منطقة عشبية (حيوان وحشي)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-6.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٧)",
+   "type": "diagram",
+   "text": "د/ تعرف على الأشكال المبينة: (هرم، شبكة غذائية، سلسلة غذائية - ٣ مربعات)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-7.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "⚠ الصور صغيرة؛ التحديد تقريبي",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-3-5-8",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الثالث - السؤال الخامس (٨)",
+   "type": "diagram",
+   "text": "هـ/ من الصورة اكتب الأدوار في النظام البيئي: ١ ٢ ٣ ٤ (بطة، ضفدع، ديدان، عشب)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-3-5-8.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 6,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-1-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الأول (١)",
+   "type": "word_fill",
+   "text": "حالة غير طبيعية تؤثر على جسم المخلوق الحي، ترتبط غالبا بأعراض وعلامات. ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الفيروسات - الأنف والفم - التطعيم - المياه الملوثة - المرض - المناعة",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-1-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الأول (٢)",
+   "type": "word_fill",
+   "text": "...... تهاجم جسم المخلوق الحي وتسبب له المرض.",
+   "options": null,
+   "table_text": "بنك الكلمات: الفيروسات - الأنف والفم - التطعيم - المياه الملوثة - المرض - المناعة",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-1-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الأول (٣)",
+   "type": "word_fill",
+   "text": "تجنب السباحة في ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الفيروسات - الأنف والفم - التطعيم - المياه الملوثة - المرض - المناعة",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-1-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الأول (٤)",
+   "type": "word_fill",
+   "text": "ينبغي تغطية ...... بمناديل ورقية عند العطس.",
+   "options": null,
+   "table_text": "بنك الكلمات: الفيروسات - الأنف والفم - التطعيم - المياه الملوثة - المرض - المناعة",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-1-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الأول (٥)",
+   "type": "word_fill",
+   "text": "...... جرعات يوصى بها للتقليل من فرصة الإصابة بالمرض.",
+   "options": null,
+   "table_text": "بنك الكلمات: الفيروسات - الأنف والفم - التطعيم - المياه الملوثة - المرض - المناعة",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-1-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الأول (٦)",
+   "type": "word_fill",
+   "text": "قدرة الجسم على التصدي لمسببات الأمراض تسمى ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الفيروسات - الأنف والفم - التطعيم - المياه الملوثة - المرض - المناعة",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-2-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثاني (١)",
+   "type": "fill",
+   "text": "ما المقصود بالمرض؟ ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-2-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثاني (٢)",
+   "type": "fill",
+   "text": "ما المقصود بنو اقل المرض؟ ......",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "⚠ نص الأصل «بنو اقل المرض» (الأرجح: ناقلات المرض)",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (١)",
+   "type": "mcq",
+   "text": "درجة حرارة جسم الإنسان الطبيعية هي:",
+   "options": [
+    "أ) ٣٩ س",
+    "ب) ٢٧ س",
+    "ج) ٣٧ س",
+    "د) ٢٩ س"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (٢)",
+   "type": "mcq",
+   "text": "ما الخلايا التي تهاجم مسببات المرض؟",
+   "options": [
+    "أ) خلايا الدم الحمراء",
+    "ب) خلايا الدم البيضاء",
+    "ج) الصفائح الدموية",
+    "د) الخلايا العصبية"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (٣)",
+   "type": "mcq",
+   "text": "الرشح - الحصبة - الزكام - كورونا المستجد أمراض تسببها:",
+   "options": [
+    "أ) الفيروسات",
+    "ب) البكتيريا",
+    "ج) الفطريات",
+    "د) الأجسام المضادة"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (٤)",
+   "type": "mcq",
+   "text": "حالة غير طبيعية تؤثر على جسم المخلوق الحي، وترتبط غالبا بأعراض وعلامات مختلفة، قد تسببها الفيروسات والبكتيريا.",
+   "options": [
+    "أ) المعدية",
+    "ب) العقلية",
+    "ج) غير المعدية",
+    "د) النفسية"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (٥)",
+   "type": "mcq",
+   "text": "من طرق انتقال العدوى:",
+   "options": [
+    "أ) غسل اليدين",
+    "ب) ارتداء الكمامة",
+    "ج) ارتداء القفازات",
+    "د) الأطعمة المكشوفة"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (٦)",
+   "type": "mcq",
+   "text": "تعد الكلاب والفئران والطيور والبعوض نواقل:",
+   "options": [
+    "أ) حيوية",
+    "ب) صناعية",
+    "ج) لاحيوية",
+    "د) طبيعية"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "⚠ الأصل «نو اقل» (ناقلات)؛ الخيارات كما في الصورة",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-3-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الثالث (٧)",
+   "type": "mcq",
+   "text": "أي مما يلي يعد من الأمراض غير المعدية:",
+   "options": [
+    "أ) مرض القلب",
+    "ب) الزكام",
+    "ج) جدري الماء",
+    "د) الانفلونزا"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 7,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-4-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الرابع (١)",
+   "type": "tf",
+   "text": "يفضل تجنب مصافحة الأشخاص المصابين بداء السكري.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 8,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-4-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الرابع (٢)",
+   "type": "tf",
+   "text": "الفيروسات مخلوقات حية.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 8,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-4-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الرابع (٣)",
+   "type": "tf",
+   "text": "جميع أنواع البكتيريا ضارة.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 8,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-4-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الرابع (٤)",
+   "type": "tf",
+   "text": "الفطريات مخلوقات لا ترى بالعين المجردة.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 8,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-4-4-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الرابع - السؤال الرابع (٥)",
+   "type": "tf",
+   "text": "يعد الجمل أحد النواقل اللاحيوية.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 8,
+    "answer": null
+   },
+   "legibility": "⚠ الأصل «أحد النو اقل الحيوية»؛ الأرجح: نواقل المرض الحيوية",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-1-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الأول (١)",
+   "type": "word_fill",
+   "text": "...... هو دليل يحدد حاجات الفرد الغذائية التي يجب تناولها.",
+   "options": null,
+   "table_text": "بنك الكلمات: الرياضة - الأملاح المعدنية - الكربوهيدرات - الهرم الغذائي - البروتينات - الماء",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-1-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الأول (٢)",
+   "type": "word_fill",
+   "text": "...... هي مصدر الطاقة الرئيس في الجسم.",
+   "options": null,
+   "table_text": "بنك الكلمات: الرياضة - الأملاح المعدنية - الكربوهيدرات - الهرم الغذائي - البروتينات - الماء",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-1-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الأول (٣)",
+   "type": "word_fill",
+   "text": "ينبغي ممارسة ...... بشكل يومي.",
+   "options": null,
+   "table_text": "بنك الكلمات: الرياضة - الأملاح المعدنية - الكربوهيدرات - الهرم الغذائي - البروتينات - الماء",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-1-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الأول (٤)",
+   "type": "word_fill",
+   "text": "المواد التي تدخل في تكوين العظام والأسنان هي ......",
+   "options": null,
+   "table_text": "بنك الكلمات: الرياضة - الأملاح المعدنية - الكربوهيدرات - الهرم الغذائي - البروتينات - الماء",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-1-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الأول (٥)",
+   "type": "word_fill",
+   "text": "...... تساعد الجسم على النمو وتعويض الخلايا التالفة.",
+   "options": null,
+   "table_text": "بنك الكلمات: الرياضة - الأملاح المعدنية - الكربوهيدرات - الهرم الغذائي - البروتينات - الماء",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-1-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الأول (٦)",
+   "type": "word_fill",
+   "text": "يشكل ...... ثلثي جسم الإنسان.",
+   "options": null,
+   "table_text": "بنك الكلمات: الرياضة - الأملاح المعدنية - الكربوهيدرات - الهرم الغذائي - البروتينات - الماء",
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-2-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثاني (١)",
+   "type": "fill",
+   "text": "...... حالة اكتمال السلامة الجسدية والعقلية والنفسية وليست مجرد انعدام المرض أو العجز.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-2-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثاني (٢)",
+   "type": "fill",
+   "text": "...... يشكل ثلثي جسم الإنسان تقريبا ويساعد على التخلص من الفضلات ويحافظ على درجة حرارة الجسم.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (١)",
+   "type": "mcq",
+   "text": "من العادات غير الصحية:",
+   "options": [
+    "أ) ممارسة الرياضة",
+    "ب) شرب الماء بكميات كافية",
+    "ج) النوم مبكرا",
+    "د) الإكثار من تناول السكريات"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (٢)",
+   "type": "mcq",
+   "text": "تساعد الجسم على النمو وتعويض الخلايا التالفة فيه:",
+   "options": [
+    "أ) الدهون",
+    "ب) الأملاح المعدنية",
+    "ج) البروتينات",
+    "د) الألياف"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (٣)",
+   "type": "mcq",
+   "text": "مواد غذائية يؤدي الإكثار من تناولها إلى الإصابة بالسمنة:",
+   "options": [
+    "أ) الفيتامينات والبروتينات",
+    "ب) الدهون والكربوهيدرات",
+    "ج) الأملاح المعدنية والفيتامينات",
+    "د) البروتينات والأملاح المعدنية"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (٤)",
+   "type": "mcq",
+   "text": "المصدر الرئيس للطاقة في أجسامنا:",
+   "options": [
+    "أ) الأملاح المعدنية",
+    "ب) الفيتامينات",
+    "ج) البروتينات",
+    "د) الكربوهيدرات"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (٥)",
+   "type": "mcq",
+   "text": "يعد الحديد من المعادن الهامة التي تدخل في تركيب الدم، وهو ينتمي إلى مجموعة:",
+   "options": [
+    "أ) الفيتامينات",
+    "ب) الأملاح المعدنية",
+    "ج) الألياف",
+    "د) الدهون"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (٦)",
+   "type": "mcq",
+   "text": "أي مما يلي من فوائد شرب الماء:",
+   "options": [
+    "أ) المحافظة على ثبات درجة حرارة الجسم",
+    "ب) مصدر هام للطاقة",
+    "ج) إمداد الجسم بالدهون",
+    "د) تخزين البروتينات"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-3-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الثالث (٧)",
+   "type": "mcq",
+   "text": "عند تناول كمية متنوعة ومناسبة من الأطعمة يوميا، فإن الغذاء يصبح:",
+   "options": [
+    "أ) محددا",
+    "ب) متوازنا",
+    "ج) ناقصا",
+    "د) ملوثا"
+   ],
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 9,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-4-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الرابع (١)",
+   "type": "tf",
+   "text": "المصدر الغذائي الوحيد المناسب للإنسان هو النبات.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-4-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الرابع (٢)",
+   "type": "tf",
+   "text": "يمكن تناول الأطعمة الغنية بالدهون بكميات كبيرة.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-4-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الرابع (٣)",
+   "type": "tf",
+   "text": "المشروبات الغازية مشروبات صحية يمكن شربها يوميا.",
+   "options": null,
+   "table_text": null,
+   "figure": null,
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-5-1",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (١)",
+   "type": "diagram",
+   "text": "أ/ اوصف الشكل الذي امامك: (الهرم الغذائي)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-1.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف (مسودة مراجعة فارغة)"
+  },
+  {
+   "uid": "review-5-5-2",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٢)",
+   "type": "diagram",
+   "text": "ب/ تعرف على العادات الصحية التي تجنبنا الأمراض من خلال الصور: غسل اليدين",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-2.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ ترتيب الصور من اليسار لليمين في الصفحة: الفواكه، النوم، الركض، غسل اليدين"
+  },
+  {
+   "uid": "review-5-5-3",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٣)",
+   "type": "diagram",
+   "text": "ب/ تعرف على العادات الصحية التي تجنبنا الأمراض من خلال الصور: الرياضة (ركض)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-3.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ ترتيب الصور من اليسار لليمين في الصفحة: الفواكه، النوم، الركض، غسل اليدين"
+  },
+  {
+   "uid": "review-5-5-4",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٤)",
+   "type": "diagram",
+   "text": "ب/ تعرف على العادات الصحية التي تجنبنا الأمراض من خلال الصور: النوم",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-4.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ ترتيب الصور من اليسار لليمين في الصفحة: الفواكه، النوم، الركض، غسل اليدين"
+  },
+  {
+   "uid": "review-5-5-5",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٥)",
+   "type": "diagram",
+   "text": "ب/ تعرف على العادات الصحية التي تجنبنا الأمراض من خلال الصور: الفواكه والعصير",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-5.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ ترتيب الصور من اليسار لليمين في الصفحة: الفواكه، النوم، الركض، غسل اليدين"
+  },
+  {
+   "uid": "review-5-5-6",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٦)",
+   "type": "diagram",
+   "text": "ج/ من خلال الصور التالية اكتب مجموعات المواد الغذائية: (صورة: خضراوات ورقية)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-6.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ وصف الصورة تقريبي"
+  },
+  {
+   "uid": "review-5-5-7",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٧)",
+   "type": "diagram",
+   "text": "ج/ من خلال الصور التالية اكتب مجموعات المواد الغذائية: (صورة: لحوم وأسماك وبيض)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-7.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ وصف الصورة تقريبي"
+  },
+  {
+   "uid": "review-5-5-8",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٨)",
+   "type": "diagram",
+   "text": "ج/ من خلال الصور التالية اكتب مجموعات المواد الغذائية: (صورة: دهون وزيوت)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-8.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ وصف الصورة تقريبي"
+  },
+  {
+   "uid": "review-5-5-9",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (٩)",
+   "type": "diagram",
+   "text": "ج/ من خلال الصور التالية اكتب مجموعات المواد الغذائية: (صورة: ماء)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-9.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ وصف الصورة تقريبي"
+  },
+  {
+   "uid": "review-5-5-10",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (١٠)",
+   "type": "diagram",
+   "text": "ج/ من خلال الصور التالية اكتب مجموعات المواد الغذائية: (صورة: نشويات وحبوب)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-10.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ وصف الصورة تقريبي"
+  },
+  {
+   "uid": "review-5-5-11",
+   "region": "مراجعة مركزية (مسودة مراجعة ١٤٤٧)",
+   "source": "review.pdf (مراجعة بلا إجابات)",
+   "q_label": "الفصل الخامس - السؤال الخامس (١١)",
+   "type": "diagram",
+   "text": "ج/ من خلال الصور التالية اكتب مجموعات المواد الغذائية: (صورة: فواكه وخضراوات)",
+   "options": null,
+   "table_text": null,
+   "figure": "/tmp/sci/figs/review-5-5-11.png",
+   "model_answer": null,
+   "answer_letter": null,
+   "pages": {
+    "exam": 10,
+    "answer": null
+   },
+   "legibility": "",
+   "note": "لا توجد إجابة في الملف؛ وصف الصورة تقريبي"
+  }
+ ]
+}

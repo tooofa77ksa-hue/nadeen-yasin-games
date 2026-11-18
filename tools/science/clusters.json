@@ -1,0 +1,1570 @@
+[
+ {
+  "id": "s-001",
+  "canonical_uid": "sharqia-1-1",
+  "members": [
+   "sharqia-1-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-٢",
+  "lesson_title": "العدوى وانتقالها",
+  "book_pages": "١٥٠–١٥٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-002",
+  "canonical_uid": "sharqia-1-2",
+  "members": [
+   "sharqia-1-2"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-003",
+  "canonical_uid": "sharqia-1-3",
+  "members": [
+   "sharqia-1-3",
+   "asir-3b",
+   "north-2b-1",
+   "north-2b-2"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الأول (٣)): اختيار من متعدد؛ عسير (السؤال الثالث (ب)): سؤال قصير؛ الشمالية (السؤال الثاني (ب) (1)): سؤال قصير؛ الشمالية (السؤال الثاني (ب) (2)): سؤال قصير",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-١",
+  "lesson_title": "المحافظة على الصحة",
+  "book_pages": "١٦٤–١٧١",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-004",
+  "canonical_uid": "sharqia-1-4",
+  "members": [
+   "sharqia-1-4",
+   "hail-2a-2",
+   "north-1a-1"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الأول (٤)): اختيار من متعدد؛ حائل (السؤال الثاني (أ) (2)): إكمال/تصويب؛ الشمالية (السؤال الأول (أ) (1)): صح وخطأ",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-005",
+  "canonical_uid": "sharqia-1-5",
+  "members": [
+   "sharqia-1-5"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-١",
+  "lesson_title": "المحافظة على الصحة",
+  "book_pages": "١٦٤–١٧١",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-006",
+  "canonical_uid": "sharqia-1-6",
+  "members": [
+   "sharqia-1-6"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-007",
+  "canonical_uid": "sharqia-1-7",
+  "members": [
+   "sharqia-1-7",
+   "sharqia-3b-2",
+   "hail-1-9",
+   "asir-3c",
+   "north-2a-3"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 4,
+  "form_note": "الشرقية (السؤال الأول (٧)): اختيار من متعدد؛ الشرقية (السؤال الثالث (ب) (٢)): سؤال قصير؛ حائل (السؤال الأول (9)): اختيار من متعدد؛ عسير (السؤال الثالث (ج)): سؤال قصير؛ الشمالية (السؤال الثاني (أ) (3)): اختيار من متعدد",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٢",
+  "lesson_title": "الحيوانات الفقارية",
+  "book_pages": "٦٦–٧٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-008",
+  "canonical_uid": "sharqia-1-8",
+  "members": [
+   "sharqia-1-8",
+   "asir-1-5"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "عسير"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الأول (٨)): اختيار من متعدد؛ عسير (السؤال الأول (5)): اختيار من متعدد",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-009",
+  "canonical_uid": "sharqia-1-9",
+  "members": [
+   "sharqia-1-9",
+   "hail-1-3"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الأول (٩)): اختيار من متعدد؛ حائل (السؤال الأول (3)): اختيار من متعدد",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-010",
+  "canonical_uid": "sharqia-1-10",
+  "members": [
+   "sharqia-1-10"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-١",
+  "lesson_title": "مقدمة في الأنظمة البيئية",
+  "book_pages": "٩٨–١٠٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-011",
+  "canonical_uid": "sharqia-2a-1",
+  "members": [
+   "sharqia-2a-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٣",
+  "lesson_title": "التغيرات في الأنظمة البيئية",
+  "book_pages": "١٢٠–١٢٩",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-012",
+  "canonical_uid": "sharqia-2a-2",
+  "members": [
+   "sharqia-2a-2",
+   "asir-2a-4",
+   "north-2a-8"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الثاني (أ) (٢)): إكمال/تصويب؛ عسير (السؤال الثاني (أ) (4)): إكمال/تصويب؛ الشمالية (السؤال الثاني (أ) (8)): اختيار من متعدد",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-٢",
+  "lesson_title": "العدوى وانتقالها",
+  "book_pages": "١٥٠–١٥٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-013",
+  "canonical_uid": "sharqia-2a-3",
+  "members": [
+   "sharqia-2a-3",
+   "north-1a-5"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الثاني (أ) (٣)): إكمال/تصويب؛ الشمالية (السؤال الأول (أ) (5)): صح وخطأ",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-014",
+  "canonical_uid": "sharqia-2a-4",
+  "members": [
+   "sharqia-2a-4",
+   "north-4-5"
+  ],
+  "kind": "identical",
+  "regions": [
+   "الشرقية",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الثاني (أ) (٤)): إكمال/تصويب؛ الشمالية (السؤال الرابع (5)): إكمال/تصويب",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-015",
+  "canonical_uid": "sharqia-2a-5",
+  "members": [
+   "sharqia-2a-5",
+   "north-4-3"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الثاني (أ) (٥)): إكمال/تصويب؛ الشمالية (السؤال الرابع (3)): إكمال/تصويب",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-016",
+  "canonical_uid": "sharqia-2a-6",
+  "members": [
+   "sharqia-2a-6"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٣",
+  "lesson_title": "التغيرات في الأنظمة البيئية",
+  "book_pages": "١٢٠–١٢٩",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-017",
+  "canonical_uid": "sharqia-2b-1",
+  "members": [
+   "sharqia-2b-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٣",
+  "lesson_title": "التغيرات في الأنظمة البيئية",
+  "book_pages": "١٢٠–١٢٩",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-018",
+  "canonical_uid": "sharqia-2b-2",
+  "members": [
+   "sharqia-2b-2",
+   "hail-1-13",
+   "asir-3a-3",
+   "asir-4c-2",
+   "north-2a-5"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 4,
+  "form_note": "الشرقية (السؤال الثاني (ب) (٢)): رسم/شكل؛ حائل (السؤال الأول (13)): اختيار من متعدد؛ عسير (السؤال الثالث (أ) (3)): إكمال/تصويب؛ عسير (السؤال الرابع (ج) (2)): سؤال قصير؛ الشمالية (السؤال الثاني (أ) (5)): اختيار من متعدد",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-١",
+  "lesson_title": "مقدمة في الأنظمة البيئية",
+  "book_pages": "٩٨–١٠٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-019",
+  "canonical_uid": "sharqia-2c",
+  "members": [
+   "sharqia-2c"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-٢",
+  "lesson_title": "العدوى وانتقالها",
+  "book_pages": "١٥٠–١٥٧",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-020",
+  "canonical_uid": "sharqia-3a",
+  "members": [
+   "sharqia-3a"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "match",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-021",
+  "canonical_uid": "sharqia-3b-1",
+  "members": [
+   "sharqia-3b-1",
+   "asir-4b",
+   "north-2a-2",
+   "north-2a-13"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الثالث (ب) (١)): رسم/شكل؛ عسير (السؤال الرابع (ب)): سؤال قصير؛ الشمالية (السؤال الثاني (أ) (2)): اختيار من متعدد؛ الشمالية (السؤال الثاني (أ) (13)): اختيار من متعدد",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-022",
+  "canonical_uid": "sharqia-3b-3",
+  "members": [
+   "sharqia-3b-3",
+   "hail-4c",
+   "asir-2b",
+   "north-2a-14"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 4,
+  "form_note": "الشرقية (السؤال الثالث (ب) (٣)): رسم/شكل؛ حائل (السؤال الرابع (ج)): سؤال قصير؛ عسير (السؤال الثاني (ب)): سؤال قصير؛ الشمالية (السؤال الثاني (أ) (14)): اختيار من متعدد",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٢",
+  "lesson_title": "العلاقات في الأنظمة البيئية",
+  "book_pages": "١٠٨–١١٧",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-023",
+  "canonical_uid": "sharqia-3c-1",
+  "members": [
+   "sharqia-3c-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-024",
+  "canonical_uid": "sharqia-3c-2",
+  "members": [
+   "sharqia-3c-2",
+   "hail-1-8",
+   "asir-2a-1"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "عسير"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الثالث، أجب عن الأسئلة التالية (٢)): اختيار من متعدد؛ حائل (السؤال الأول (8)): اختيار من متعدد؛ عسير (السؤال الثاني (أ) (1)): إكمال/تصويب",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-025",
+  "canonical_uid": "sharqia-3c-3",
+  "members": [
+   "sharqia-3c-3",
+   "hail-1-11",
+   "asir-1-4",
+   "asir-3a-5",
+   "north-1a-4"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 4,
+  "form_note": "الشرقية (السؤال الثالث، أجب عن الأسئلة التالية (٣)): جدول؛ حائل (السؤال الأول (11)): اختيار من متعدد؛ عسير (السؤال الأول (4)): اختيار من متعدد؛ عسير (السؤال الثالث (أ) (5)): إكمال/تصويب؛ الشمالية (السؤال الأول (أ) (4)): صح وخطأ",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٢",
+  "lesson_title": "الحيوانات الفقارية",
+  "book_pages": "٦٦–٧٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-026",
+  "canonical_uid": "sharqia-4-1",
+  "members": [
+   "sharqia-4-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-٢",
+  "lesson_title": "الغذاء والتغذية",
+  "book_pages": "١٧٢–١٧٩",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-027",
+  "canonical_uid": "sharqia-4-2",
+  "members": [
+   "sharqia-4-2",
+   "north-1a-9"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الرابع (٢)): اختيار من متعدد؛ الشمالية (السؤال الأول (أ) (9)): صح وخطأ",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-028",
+  "canonical_uid": "sharqia-4-3a",
+  "members": [
+   "sharqia-4-3a",
+   "sharqia-4-3b",
+   "hail-2a-6",
+   "hail-4a",
+   "north-1a-7"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الرابع (٣) أ): إكمال/تصويب؛ الشرقية (السؤال الرابع (٣) ب): إكمال/تصويب؛ حائل (السؤال الثاني (أ) (6)): إكمال/تصويب؛ حائل (السؤال الرابع (أ)): سؤال قصير؛ الشمالية (السؤال الأول (أ) (7)): صح وخطأ",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٢",
+  "lesson_title": "العلاقات في الأنظمة البيئية",
+  "book_pages": "١٠٨–١١٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-029",
+  "canonical_uid": "sharqia-4-4a",
+  "members": [
+   "sharqia-4-4a",
+   "hail-2a-4"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الرابع (٤) أ): جدول؛ حائل (السؤال الثاني (أ) (4)): إكمال/تصويب",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٢",
+  "lesson_title": "الحيوانات الفقارية",
+  "book_pages": "٦٦–٧٥",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-030",
+  "canonical_uid": "sharqia-4-4b",
+  "members": [
+   "sharqia-4-4b"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشرقية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-٢",
+  "lesson_title": "الغذاء والتغذية",
+  "book_pages": "١٧٢–١٧٩",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-031",
+  "canonical_uid": "sharqia-4-5",
+  "members": [
+   "sharqia-4-5",
+   "asir-1-3",
+   "north-1a-10"
+  ],
+  "kind": "identical",
+  "regions": [
+   "الشرقية",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الرابع (٥)): إكمال/تصويب؛ عسير (السؤال الأول (3)): اختيار من متعدد؛ الشمالية (السؤال الأول (أ) (10)): صح وخطأ",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-٢",
+  "lesson_title": "الغذاء والتغذية",
+  "book_pages": "١٧٢–١٧٩",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-032",
+  "canonical_uid": "sharqia-5-1",
+  "members": [
+   "sharqia-5-1",
+   "hail-2a-1",
+   "asir-2a-6"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "حائل",
+   "عسير"
+  ],
+  "count": 3,
+  "form_note": "الشرقية (السؤال الخامس (١)): اختيار من متعدد؛ حائل (السؤال الثاني (أ) (1)): إكمال/تصويب؛ عسير (السؤال الثاني (أ) (6)): إكمال/تصويب",
+  "chapter": "مدخل",
+  "lesson": "",
+  "lesson_title": "الطريقة العلمية (مدخل الكتاب)",
+  "book_pages": "١٠",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-033",
+  "canonical_uid": "sharqia-5-2",
+  "members": [
+   "sharqia-5-2",
+   "asir-2c"
+  ],
+  "kind": "similar",
+  "regions": [
+   "الشرقية",
+   "عسير"
+  ],
+  "count": 2,
+  "form_note": "الشرقية (السؤال الخامس (٢)): اختيار من متعدد؛ عسير (السؤال الثاني (ج)): سؤال قصير",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-١",
+  "lesson_title": "المحافظة على الصحة",
+  "book_pages": "١٦٤–١٧١",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-034",
+  "canonical_uid": "hail-1-1",
+  "members": [
+   "hail-1-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-035",
+  "canonical_uid": "hail-1-2",
+  "members": [
+   "hail-1-2"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-036",
+  "canonical_uid": "hail-1-4",
+  "members": [
+   "hail-1-4"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-٢",
+  "lesson_title": "الغذاء والتغذية",
+  "book_pages": "١٧٢–١٧٩",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-037",
+  "canonical_uid": "hail-1-5",
+  "members": [
+   "hail-1-5"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-038",
+  "canonical_uid": "hail-1-6",
+  "members": [
+   "hail-1-6"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-039",
+  "canonical_uid": "hail-1-7",
+  "members": [
+   "hail-1-7"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-040",
+  "canonical_uid": "hail-1-10",
+  "members": [
+   "hail-1-10"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-041",
+  "canonical_uid": "hail-1-12",
+  "members": [
+   "hail-1-12"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-042",
+  "canonical_uid": "hail-1-14",
+  "members": [
+   "hail-1-14"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٢",
+  "lesson_title": "العلاقات في الأنظمة البيئية",
+  "book_pages": "١٠٨–١١٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-043",
+  "canonical_uid": "hail-1-15",
+  "members": [
+   "hail-1-15"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-044",
+  "canonical_uid": "hail-2a-3",
+  "members": [
+   "hail-2a-3"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-045",
+  "canonical_uid": "hail-2a-5",
+  "members": [
+   "hail-2a-5",
+   "asir-2a-2",
+   "north-2a-4"
+  ],
+  "kind": "similar",
+  "regions": [
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "حائل (السؤال الثاني (أ) (5)): إكمال/تصويب؛ عسير (السؤال الثاني (أ) (2)): إكمال/تصويب؛ الشمالية (السؤال الثاني (أ) (4)): اختيار من متعدد",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-046",
+  "canonical_uid": "hail-2a-7",
+  "members": [
+   "hail-2a-7"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-047",
+  "canonical_uid": "hail-2a-8",
+  "members": [
+   "hail-2a-8",
+   "asir-2a-5",
+   "north-2a-7"
+  ],
+  "kind": "identical",
+  "regions": [
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "حائل (السؤال الثاني (أ) (8)): إكمال/تصويب؛ عسير (السؤال الثاني (أ) (5)): إكمال/تصويب؛ الشمالية (السؤال الثاني (أ) (7)): اختيار من متعدد",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-048",
+  "canonical_uid": "hail-2a-9",
+  "members": [
+   "hail-2a-9",
+   "asir-1-7",
+   "north-2a-9"
+  ],
+  "kind": "similar",
+  "regions": [
+   "حائل",
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 3,
+  "form_note": "حائل (السؤال الثاني (أ) (9)): إكمال/تصويب؛ عسير (السؤال الأول (7)): اختيار من متعدد؛ الشمالية (السؤال الثاني (أ) (9)): اختيار من متعدد",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-٢",
+  "lesson_title": "الغذاء والتغذية",
+  "book_pages": "١٧٢–١٧٩",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-049",
+  "canonical_uid": "hail-2a-10",
+  "members": [
+   "hail-2a-10"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-١",
+  "lesson_title": "مقدمة في الأنظمة البيئية",
+  "book_pages": "٩٨–١٠٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-050",
+  "canonical_uid": "hail-3a",
+  "members": [
+   "hail-3a"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٢",
+  "lesson_title": "الحيوانات الفقارية",
+  "book_pages": "٦٦–٧٥",
+  "type": "match",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-051",
+  "canonical_uid": "hail-3ب",
+  "members": [
+   "hail-3ب"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-052",
+  "canonical_uid": "hail-3ج",
+  "members": [
+   "hail-3ج"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-053",
+  "canonical_uid": "hail-3د",
+  "members": [
+   "hail-3د"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-054",
+  "canonical_uid": "hail-4b-1",
+  "members": [
+   "hail-4b-1",
+   "north-1a-2"
+  ],
+  "kind": "similar",
+  "regions": [
+   "حائل",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "حائل (السؤال الرابع (ب) (1)): إكمال/تصويب؛ الشمالية (السؤال الأول (أ) (2)): صح وخطأ",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-055",
+  "canonical_uid": "hail-4b-2",
+  "members": [
+   "hail-4b-2"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-056",
+  "canonical_uid": "hail-4b-3",
+  "members": [
+   "hail-4b-3"
+  ],
+  "kind": "single",
+  "regions": [
+   "حائل"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-057",
+  "canonical_uid": "asir-1-1",
+  "members": [
+   "asir-1-1",
+   "north-1a-6"
+  ],
+  "kind": "similar",
+  "regions": [
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "عسير (السؤال الأول (1)): اختيار من متعدد؛ الشمالية (السؤال الأول (أ) (6)): صح وخطأ",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-١",
+  "lesson_title": "مقدمة في الأنظمة البيئية",
+  "book_pages": "٩٨–١٠٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-058",
+  "canonical_uid": "asir-1-2",
+  "members": [
+   "asir-1-2",
+   "north-2a-6"
+  ],
+  "kind": "identical",
+  "regions": [
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "عسير (السؤال الأول (2)): اختيار من متعدد؛ الشمالية (السؤال الثاني (أ) (6)): اختيار من متعدد",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٢",
+  "lesson_title": "العلاقات في الأنظمة البيئية",
+  "book_pages": "١٠٨–١١٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-059",
+  "canonical_uid": "asir-1-6",
+  "members": [
+   "asir-1-6"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٣",
+  "lesson_title": "أجهزة أجسام الحيوانات",
+  "book_pages": "٧٦–٨٣",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-060",
+  "canonical_uid": "asir-1-8",
+  "members": [
+   "asir-1-8"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-٢",
+  "lesson_title": "العدوى وانتقالها",
+  "book_pages": "١٥٠–١٥٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-061",
+  "canonical_uid": "asir-1-9",
+  "members": [
+   "asir-1-9",
+   "north-2a-10"
+  ],
+  "kind": "similar",
+  "regions": [
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "عسير (السؤال الأول (9)): اختيار من متعدد؛ الشمالية (السؤال الثاني (أ) (10)): اختيار من متعدد",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-062",
+  "canonical_uid": "asir-1-10",
+  "members": [
+   "asir-1-10",
+   "north-2a-1"
+  ],
+  "kind": "identical",
+  "regions": [
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "عسير (السؤال الأول (10)): اختيار من متعدد؛ الشمالية (السؤال الثاني (أ) (1)): اختيار من متعدد",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-063",
+  "canonical_uid": "asir-2a-3",
+  "members": [
+   "asir-2a-3",
+   "north-2a-11"
+  ],
+  "kind": "similar",
+  "regions": [
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "عسير (السؤال الثاني (أ) (3)): إكمال/تصويب؛ الشمالية (السؤال الثاني (أ) (11)): اختيار من متعدد",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٢",
+  "lesson_title": "الحيوانات الفقارية",
+  "book_pages": "٦٦–٧٥",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-064",
+  "canonical_uid": "asir-3a-1",
+  "members": [
+   "asir-3a-1",
+   "north-1a-8"
+  ],
+  "kind": "similar",
+  "regions": [
+   "عسير",
+   "الشمالية"
+  ],
+  "count": 2,
+  "form_note": "عسير (السؤال الثالث (أ) (1)): إكمال/تصويب؛ الشمالية (السؤال الأول (أ) (8)): صح وخطأ",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٣",
+  "lesson_title": "التغيرات في الأنظمة البيئية",
+  "book_pages": "١٢٠–١٢٩",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-065",
+  "canonical_uid": "asir-3a-2",
+  "members": [
+   "asir-3a-2"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-٢",
+  "lesson_title": "الحيوانات الفقارية",
+  "book_pages": "٦٦–٧٥",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-066",
+  "canonical_uid": "asir-3a-4",
+  "members": [
+   "asir-3a-4"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٣",
+  "lesson_title": "التغيرات في الأنظمة البيئية",
+  "book_pages": "١٢٠–١٢٩",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-067",
+  "canonical_uid": "asir-3a-6",
+  "members": [
+   "asir-3a-6"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-٢",
+  "lesson_title": "تصنيف المخلوقات الحية",
+  "book_pages": "٣٨–٤٧",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-068",
+  "canonical_uid": "asir-4a",
+  "members": [
+   "asir-4a"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "match",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-069",
+  "canonical_uid": "asir-4c-1",
+  "members": [
+   "asir-4c-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "عسير"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-070",
+  "canonical_uid": "north-1a-3",
+  "members": [
+   "north-1a-3"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "tf",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-071",
+  "canonical_uid": "north-1b-1",
+  "members": [
+   "north-1b-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "المملكة الحيوانية",
+  "lesson": "٢-١",
+  "lesson_title": "الحيوانات اللافقارية",
+  "book_pages": "٥٦–٦٣",
+  "type": "short",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-072",
+  "canonical_uid": "north-2a-12",
+  "members": [
+   "north-2a-12"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-073",
+  "canonical_uid": "north-2a-15",
+  "members": [
+   "north-2a-15"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-١",
+  "lesson_title": "المحافظة على الصحة",
+  "book_pages": "١٦٤–١٧١",
+  "type": "mcq",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-074",
+  "canonical_uid": "north-3-1",
+  "members": [
+   "north-3-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "الأمراض والعدوى",
+  "lesson": "٤-١",
+  "lesson_title": "الأمراض",
+  "book_pages": "١٤٠–١٤٧",
+  "type": "match",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-075",
+  "canonical_uid": "north-4-1",
+  "members": [
+   "north-4-1"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "ممالك المخلوقات الحية",
+  "lesson": "١-١",
+  "lesson_title": "الخلايا",
+  "book_pages": "٢٦–٣٥",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-076",
+  "canonical_uid": "north-4-2",
+  "members": [
+   "north-4-2"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "استكشاف الأنظمة البيئية",
+  "lesson": "٣-٣",
+  "lesson_title": "التغيرات في الأنظمة البيئية",
+  "book_pages": "١٢٠–١٢٩",
+  "type": "fill",
+  "answer_conflict": ""
+ },
+ {
+  "id": "s-077",
+  "canonical_uid": "north-4-4",
+  "members": [
+   "north-4-4"
+  ],
+  "kind": "single",
+  "regions": [
+   "الشمالية"
+  ],
+  "count": 1,
+  "form_note": "",
+  "chapter": "التغذية والصحة",
+  "lesson": "٥-٢",
+  "lesson_title": "الغذاء والتغذية",
+  "book_pages": "١٧٢–١٧٩",
+  "type": "fill",
+  "answer_conflict": ""
+ }
+]
