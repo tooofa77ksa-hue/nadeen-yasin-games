@@ -27,6 +27,6 @@ function open(u){tabs.forEach(b=>b.classList.toggle('on',b.dataset.u===u));docum
 tabs.forEach(b=>b.onclick=()=>open(b.dataset.u));
 let u=tabs[0].dataset.u;
 const h=location.hash.replace('#','');const m={keys:'math_keys.html',ch4x:'masail_ch4_exam.html',ch3:'masail_ch3.html',ch4:'masail_ch4.html',ch5:'masail_ch5.html',mult:'mult_game.html'};if(m[h])u=m[h];
-window.addEventListener('message',e=>{const t=e.data&&e.data.tab;const mm={ch3:'masail_ch3.html',ch4x:'masail_ch4_exam.html',mult:'mult_game.html'};if(mm[t])open(mm[t])});
+window.addEventListener('message',e=>{const t=e.data&&e.data.tab;const mm={ch4:'masail_ch4.html',ch3:'masail_ch3.html',ch4x:'masail_ch4_exam.html',mult:'mult_game.html'};if(mm[t])open(mm[t])});
 open(u);
 </script></body></html>
