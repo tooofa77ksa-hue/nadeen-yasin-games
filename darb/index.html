@@ -18,13 +18,24 @@ button.main{background:var(--pk);border-color:#c2255c;color:#fff;font-size:24px}
 .cup{font-size:110px;animation:b 1s infinite alternate}@keyframes b{to{transform:translateY(-14px) rotate(4deg)}}
 .small{font-size:12px;color:#888;text-align:center;margin:16px 0 4px}.cols{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
 @media(min-width:1000px){.wrap{max-width:980px}h1{font-size:44px}.q{font-size:96px}.disp{font-size:72px;max-width:380px}.pad{max-width:480px}.pad button{font-size:44px;padding:18px}.arr i{width:32px;height:32px}button{font-size:28px}.hint{font-size:28px}.pl{font-size:26px}}
+.hero{background:linear-gradient(135deg,#f06595,#7048e8);color:#fff;border-radius:22px;padding:10px 12px 8px;text-align:center;position:relative;box-shadow:0 6px 0 #5f3dc4}
+.hero h1{color:#fff;margin:0;text-shadow:0 2px 0 rgba(0,0,0,.2)}.who{font-size:17px;margin-top:2px}.stu{font-size:15px;opacity:.95}.en{font-size:11px;opacity:.85}
+#snd{position:absolute;left:8px;top:8px;padding:2px 8px;font-size:20px;border-radius:12px;border:2px solid #fff;background:rgba(255,255,255,.25);color:#fff}
+.q,.disp,.pad button,.pl,.score,.heat div{font-variant-numeric:tabular-nums}
+.pad button{box-shadow:0 4px 0 #b197fc;transition:transform .08s}.pad button:active{transform:translateY(3px);box-shadow:0 1px 0 #b197fc}
+.shake{animation:sh .35s}@keyframes sh{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.pop{animation:pp .5s}@keyframes pp{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@media(min-width:1000px){.who{font-size:30px}.stu{font-size:26px}.en{font-size:18px}.hero h1{font-size:52px}#snd{font-size:34px}}
 @media print{.noprint{display:none}body{background:#fff}}
 </style></head><body><div class="wrap">
-<h1>🌸 حديقة الضرب السحرية 🌸</h1>
-<div class="sub">مهمة أدائية · المعلمة سميرة الشريف · باسم نادين</div>
+<div class="hero"><button id="snd" class="noprint" onclick="tgSound()" title="الصوت">🔊</button><h1>🌸 حديقة الضرب السحرية 🌸</h1>
+<div class="who">مهمة أدائية للمعلمة <b>سميرة الشريف</b></div>
+<div class="stu">الطالبة <b>نادين الشمراني</b> · الصف الرابع / ٢</div><div class="en" dir="ltr">Student: Nadeen Al-Shamrani · Grade 4 / 2</div></div>
 <div id="app"></div>
 <div class="small">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div></div>
+<script src="fx.js"></script>
 <script>
+function tgSound(){var m=FX.toggle();document.getElementById("snd").textContent=m?"🔇":"🔊"}
 const AR='٠١٢٣٤٥٦٧٨٩',ar=n=>String(n).replace(/\d/g,d=>AR[d]),$=s=>document.querySelector(s),LR='‎';
 const eq=(a,b,c)=>LR+ar(a)+LR+' × '+LR+ar(b)+LR+(c!==undefined?' = '+LR+ar(c)+LR:'');
 const EMO=['👸','🧚‍♀️','🦄','🧜‍♀️'];
@@ -73,15 +84,15 @@ function submit(){if(!entry)return;const p=P[turn],k=cur[0]+'x'+cur[1],ans=cur[0
    const gain=hinted?1:2+(p.streak>=3?1:0);p.pts+=gain;p.box[k]=hinted?Math.max(1,p.box[k]||1):Math.min(4,(p.box[k]||0)+1)}
   else{p.asked++;p.streak=0;p.box[k]=1}
   if((p.box[k]||0)>=3)delete p.miss[k];
-  p.seen[k]=p.sess;save(p);p.done++;
+  p.seen[k]=p.sess;save(p);p.done++;if(tries===1&&!hinted)FX.correct(p.streak);else FX.pop();
   const msg=(tries===1&&!hinted)?'🌟 أحسنتِ! ركّزتِ فوصلتِ'+(p.streak>=3?' (سلسلة '+ar(p.streak)+' 🔥)':''):'👏 جميل أنك كتبتِ الجواب الصحيح بنفسك';
   $('#app').innerHTML=bar()+'<div class="card"><div class="q">'+eq(cur[0],cur[1],ans)+'</div><div class="hint" style="border-color:var(--g)">'+msg+'</div></div>';
   turn=(turn+1)%P.length;setTimeout(next,tries===1&&!hinted?900:1500)}
- else{if(tries===1){p.box[k]=1;p.miss[k]=1;p.seen[k]=p.sess;p.streak=0;save(p)}entry='';
+ else{FX.oops();var dd=document.getElementById('disp');if(dd){dd.classList.remove('shake');void dd.offsetWidth;dd.classList.add('shake')}if(tries===1){p.box[k]=1;p.miss[k]=1;p.seen[k]=p.sess;p.streak=0;save(p)}entry='';
   $('#vis').innerHTML=arr(cur[0],cur[1]);
   $('#fb').innerHTML='<div class="hint" style="border-color:#e03131">اقتربتِ! الحيلة:<br><b>'+hint(cur[0],cur[1])+'</b><br>الآن اكتبي الجواب الصحيح بنفسك: <b>'+ar(ans)+'</b></div>';
   $('#disp').innerHTML='&nbsp;'}}
-function end(){const mx=Math.max(...P.map(p=>p.pts));const win=P.filter(p=>p.pts===mx);
+function end(){FX.win();const mx=Math.max(...P.map(p=>p.pts));const win=P.filter(p=>p.pts===mx);
  let h='<div class="card"><div class="cup">🏆</div><h2>'+(P.length>1?(win.length>1?'تعادل! الكأس لـ '+win.map(w=>w.name).join(' و '):'الكأس لـ '+win[0].emo+' '+win[0].name):'ما شاء الله '+P[0].name+'!')+'</h2>'
  +(P.length>1?'<div>اللعب الجميل أهم: كلكنّ اجتهدتنّ، والتوفيق من الله 🤍</div>':'')+'</div>';
  P.forEach(p=>{const pc=Math.round(100*p.first/Math.max(1,p.asked));
