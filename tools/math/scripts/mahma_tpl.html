@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>المهمة الأدائية: رحلة المسائل اللفظية</title>
+<style>
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+@font-face{font-family:'B';font-weight:500;src:url('../shared/fonts/Baloo-Medium.ttf')}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--p:#6741d9;--g:#2f9e44;--r:#e03131;--y:#f59f00;--b:#1c7ed6}
+body{margin:0;min-height:100vh;background:linear-gradient(#e7f5ff,#fff0f6);font-family:'B',sans-serif;font-weight:500;color:#222;padding:10px 10px 24px;line-height:1.6}
+.wrap{max-width:900px;margin:auto}
+h1{font-weight:800;font-size:1.45rem;margin:4px 0 0;text-align:center;color:var(--p)}
+.sub{text-align:center;font-size:.88rem;color:#666;margin-bottom:8px}
+.card{background:#fff;border:4px solid #d0bfff;border-radius:22px;padding:12px 16px;margin:10px 0;box-shadow:0 3px 0 #d0bfff}
+.btn{font:inherit;font-weight:800;font-size:1.05rem;border:4px solid var(--p);background:var(--p);color:#fff;border-radius:18px;padding:10px 20px;margin:4px;cursor:pointer;min-height:50px}
+.btn.o{background:#fff;color:var(--p)}.btn.g{background:var(--g);border-color:var(--g)}
+.stage{background:#e7f5ff;border:3px solid var(--b);border-radius:16px;padding:8px 12px;margin:8px 0;font-weight:800;color:#0b5394}
+.q{font-size:1.25rem;font-weight:800;margin:8px 0;line-height:2.2}
+.opt{display:block;width:100%;text-align:right;font:inherit;font-size:1.05rem;border:4px solid #dee2e6;background:#fff;border-radius:16px;padding:10px 14px;margin:6px 0;cursor:pointer;min-height:50px}
+.opt.ok{border-color:var(--g);background:#ebfbee}.opt.no{border-color:var(--r);background:#fff5f5}
+.ops{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}.ops .opt{text-align:center;font-size:1.4rem}
+.coach{background:#fff3bf;border:3px solid var(--y);border-radius:16px;padding:8px 12px;margin:8px 0}
+.good{background:#ebfbee;border:3px solid var(--g);border-radius:16px;padding:8px 12px;margin:8px 0}
+.tk{display:inline-block;margin:3px 2px;padding:2px 10px;border-radius:12px;border:3px solid transparent;cursor:pointer;font-weight:800}.tk.on{background:#a5d8ff;border-color:var(--b)}.tk.ok{background:#b2f2bb;border-color:var(--g)}.tk.bad{background:#ffc9c9;border-color:var(--r)}
+input.in{font:inherit;font-size:1.4rem;width:100%;border:4px solid var(--p);border-radius:14px;padding:8px 12px;text-align:center}
+.pl{display:flex;gap:8px;margin:6px 0;align-items:center}.pl input{flex:1;font:inherit;border:3px solid #d0bfff;border-radius:12px;padding:8px}
+.track{display:flex;flex-direction:column;gap:6px;margin:8px 0}.lane{display:flex;align-items:center;gap:6px}.lane .nm{width:110px;font-weight:800;font-size:.95rem}
+.bar{flex:1;height:30px;background:#e9ecef;border-radius:15px;position:relative;overflow:hidden}.bar i{position:absolute;inset:0 auto 0 0;right:auto;background:linear-gradient(90deg,#74c0fc,#b197fc);border-radius:15px;transition:width .6s}
+.lane .sc{width:60px;font-weight:800}
+.cur{border:4px solid var(--g);border-radius:16px;padding:2px 10px;background:#ebfbee;font-weight:800;display:inline-block}
+.cup{font-size:5rem;text-align:center;animation:bounce 1s infinite alternate}@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-14px)}}
+.foot{margin-top:16px;text-align:center;color:#8a8a8a;font-size:.72rem;line-height:1.7}.foot span{font-size:.65rem}
+.badge{display:inline-block;background:#fff3bf;border:2px solid var(--y);border-radius:10px;padding:0 10px;font-size:.8rem;color:#7a4b00}
+@media(min-width:1000px){body{font-size:22px}.wrap{max-width:1300px}h1{font-size:2.3rem}.q{font-size:2rem}.opt{font-size:1.5rem;min-height:72px;padding:14px 22px}.btn{font-size:1.4rem;min-height:66px;padding:12px 30px}.stage{font-size:1.45rem}.card{padding:20px 28px}.coach,.good{font-size:1.35rem}input.in{font-size:2rem}.lane .nm{width:170px;font-size:1.3rem}.bar{height:44px}.ops .opt{font-size:2rem}}
+@media(min-width:1600px){body{font-size:26px}.wrap{max-width:1600px}}
+</style></head><body><div class="wrap">
+<h1>🚀 رحلة المسائل اللفظية</h1>
+<div class="sub">المهمة الأدائية · المعلمة سميرة الشريف · الفصل الرابع (الأنماط والجبر) · لعبة لبنتين أو ثلاث</div>
+<div id="app"></div>
+<div class="foot">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم<br><span>جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</span></div>
+</div>
+<script>
+const POOL=__DATA__;
+const $=s=>document.querySelector(s);
+const AR='٠١٢٣٤٥٦٧٨٩',ar=n=>String(n).replace(/\d/g,d=>AR[d]);
+const toEn=s=>String(s).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/٫/g,'.').replace(/[^\d.]/g,'');
+const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const L=s=>esc(s).replace(/([+−×÷=<>△□○])/g,'‎$1‎').replace(/(\d)-(?=\d)/g,'$1‎-‎');
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const AV=['🦊','🐼','🐸'],COL=['#ff922b','#339af0','#51cf66'];
+const OPN={'+':'➕','−':'➖','×':'✖','÷':'➗'};
+const PR=['أحسنتم! حلّلتم المسألة صح 🌟','ممتاز، سألتم أنفسكم فوصلتم 💡','هكذا يفكّر الأبطال 👏','اجتهدتم والتوفيق من الله 🤍'];
+let G=null;
+function setup(){$('#app').innerHTML=`<div class="card"><h2 style="margin:0 0 6px">من يلعب؟ (٢ أو ٣ بنات)</h2><div class="small">كل بنت تأخذ دوراً: تحلّل المسألة مع الجميع، والبنات الأخريات يساعدنها بالهمس 😉</div><div id="pls"></div><div style="text-align:center"><button class="btn g" id="go">ابدأن الرحلة 🚀</button></div></div><div class="card"><b>كيف نحلّ المسألة؟</b><div class="good">① <b>المطلوب</b>: ماذا يسأل السؤال؟ ② <b>المعطيات</b>: ما الأعداد التي أعطونا؟ ③ <b>العملية</b>: + أو − أو × أو ÷ (من الكلمة المفتاحية) ④ <b>الحساب</b> ثم التحقق.</div></div>`;
+ const box=$('#pls');box.innerHTML=[0,1,2].map(k=>`<div class="pl"><span style="font-size:2rem">${AV[k]}</span><input id="p${k}" placeholder="${k<2?'اسم اللاعبة '+ar(k+1):'اسم اللاعبة ٣ (اختياري)'}"></div>`).join('');
+ $('#go').onclick=()=>{const names=[0,1,2].map(k=>($('#p'+k).value||'').trim()).map((n,k)=>n||(k<2?'اللاعبة '+ar(k+1):'')).filter(Boolean);start(names)}}
+function start(names){const n=names.length;const per=n===3?3:4;const qs=shuffle(POOL).slice(0,n*per);G={names,sc:names.map(()=>0),q:qs,k:0,total:qs.length};turn()}
+function board(){return '<div class="track">'+G.names.map((n,i)=>`<div class="lane"><span class="nm" style="color:${COL[i]}">${AV[i]} ${esc(n)}</span><div class="bar"><i style="width:${Math.min(100,G.sc[i]/(G.total/G.names.length*5)*100)}%;background:${COL[i]}"></i></div><span class="sc">${ar(G.sc[i])} ⭐</span></div>`).join('')+'</div>'}
+function turn(){if(G.k>=G.q.length)return end();const p=G.k%G.names.length;G.cp=p;G.P=G.q[G.k];G.pts=0;stage1()}
+function head(){const P=G.P;return board()+`<div class="card"><div><span class="cur">🎯 دور: ${AV[G.cp]} ${esc(G.names[G.cp])}</span> <span class="badge">سؤال ${ar(G.k+1)} من ${ar(G.total)} · ${esc(P.src||'')}</span></div><div class="q">${L(P.text)}</div></div>`}
+function stage1(){const P=G.P;const others=shuffle(POOL.filter(x=>x.id!==P.id&&x.ask&&x.ask!==P.ask)).slice(0,2).map(x=>x.ask);const opts=shuffle([P.ask,...others]);let tr=0;
+ $('#app').innerHTML=head()+`<div class="card"><div class="stage">🔎 ① المطلوب: اقرأن السؤال مرتين، ثم: ماذا يُطلب؟</div>`+opts.map((o,k)=>`<button class="opt" data-k="${k}">${L(o)}</button>`).join('')+'<div id="fb"></div></div>';
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const v=opts[+b.dataset.k];if(v===P.ask){b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(!tr)G.pts+=1;$('#fb').innerHTML='<div class="good">أحسنتم! عرفتم المطلوب ✅ <button class="btn g" id="nx">② المعطيات ←</button></div>';$('#nx').onclick=stage2}else{tr++;b.classList.add('no');$('#fb').innerHTML='<div class="coach">💡 اسألن أنفسكن: ما الذي يسأل عنه في آخر السؤال؟ اقرأن مرة ثانية ببطء.</div>'}})}
+function spans(P){const res=[];for(const g of P.given){const n=P.text.indexOf(g);if(n>=0)res.push([n,n+g.length])}return res}
+function stage2(){const P=G.P;const toks=[];let pos=0;P.text.split(/(\s+)/).forEach(s=>{if(s.trim())toks.push({t:s,s:pos,e:pos+s.length});pos+=s.length});
+ const sp=spans(P);const need=new Set(toks.map((k,i)=>sp.some(([a,b])=>k.s<b&&k.e>a)?i:-1).filter(i=>i>=0));const sel=new Set();let tr=0;let done=false;
+ const draw=()=>{$('#app').innerHTML=board()+`<div class="card"><span class="cur">🎯 دور: ${AV[G.cp]} ${esc(G.names[G.cp])}</span><div class="stage">🔵 ② المعطيات: اضغطن على <b>الأعداد وما تدل عليه</b> (مثل «٢٥ ريالاً») فتتلوّن بالأزرق.</div><div class="q">`+toks.map((k,i)=>`<span class="tk ${done&&need.has(i)?'ok':sel.has(i)?'on':''}" data-i="${i}">${L(k.t)}</span>`).join(' ')+`</div><div style="text-align:center"><button class="btn" id="ck">تأكدن ✓</button></div><div id="fb"></div></div>`;
+  document.querySelectorAll('.tk').forEach(s=>s.onclick=()=>{if(done)return;const i=+s.dataset.i;if(sel.has(i))sel.delete(i);else sel.add(i);draw()});
+  $('#ck').onclick=()=>{const miss=[...need].filter(i=>!sel.has(i)),extra=[...sel].filter(i=>!need.has(i));
+   if(!miss.length&&!extra.length){done=true;if(!tr)G.pts+=1;draw();$('#fb').innerHTML='<div class="good">أحسنتم! ✅ هذه هي المعطيات. <button class="btn g" id="nx">③ العملية ←</button></div>';$('#ck').style.display='none';$('#nx').onclick=()=>stage3(0)}
+   else{tr++;draw();document.querySelectorAll('.tk').forEach(s=>{if(extra.includes(+s.dataset.i))s.classList.add('bad')});$('#fb').innerHTML=`<div class="coach">💡 ${miss.length?'اسألن: هل بقي عدد في السؤال لم نلوّنه؟':'لوّنتنّ كلمة ليست من المعطيات. المعطيات هي الأعداد وما تدل عليه.'}</div>`}}};draw()}
+function stage3(k){const P=G.P,s=P.steps[k];let tr=0;
+ $('#app').innerHTML=head()+`<div class="card"><div class="stage">⚙️ ③ العملية${P.steps.length>1?(k?' الثانية':' الأولى'):''}: أي عملية نستعمل؟ فكّرن في الكلمة المفتاحية.</div><div class="ops">`+['+','−','×','÷'].map(o=>`<button class="opt" data-o="${o}">${OPN[o]}</button>`).join('')+`</div><div id="fb"></div></div>`;
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(o===s.op){b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(!tr&&k===0)G.pts+=1;$('#fb').innerHTML=`<div class="good">أحسنتم! ✅ ${L(s.clue||'')} <button class="btn g" id="nx">④ الحساب ←</button></div>`;$('#nx').onclick=()=>stage4(k)}else{tr++;b.classList.add('no');$('#fb').innerHTML=`<div class="coach">💡 ${L((s.wrong_hints&&s.wrong_hints[o])||'اسألن أنفسكن: ما الكلمة المفتاحية؟ هل نضمّ أم ينقص أم يتكرر أم نوزّع؟')}</div>`}})}
+function stage4(k){const P=G.P,s=P.steps[k];let tr=0;
+ $('#app').innerHTML=head()+`<div class="card"><div class="stage">🧮 ④ الحساب: احسبن <b>${L(s.write)}</b></div><input class="in" id="in" inputmode="decimal" placeholder="الناتج" autocomplete="off"><div style="text-align:center"><button class="btn" id="ck">تأكدن ✓</button></div><div id="fb"></div></div>`;
+ const f=()=>{const v=parseFloat(toEn($('#in').value));if(isNaN(v))return;if(v===s.result){$('#ck').disabled=true;$('#in').disabled=true;if(!tr)G.pts+=(k===P.steps.length-1?2:0);const more=k+1<P.steps.length;$('#fb').innerHTML=`<div class="good">أحسنتم! ${L(s.write)} = ${ar(s.result)} ✅ ${more?'':'<br><b>الجواب: '+ar(P.answer_num)+' '+esc(P.answer_unit||'')+'</b><br>'+L(P.final_note||'')+'<br>ولا ننسى التحقق: هل الجواب معقول؟'} <button class="btn g" id="nx">${more?'③ العملية الثانية ←':'إنهاء الدور ✓'}</button></div>`;$('#nx').onclick=()=>more?stage3(k+1):finishTurn()}else{tr++;$('#fb').innerHTML=`<div class="coach">💡 ${tr<2?'احسبن ببطء، وتأكدن من الخانات.':'تلميح: '+L(s.write)+' = '+ar(s.result)}</div>`;if(tr>=2){$('#in').value=ar(s.result)}}};
+ $('#ck').onclick=f;$('#in').onkeydown=e=>{if(e.key==='Enter')f()}}
+function finishTurn(){G.sc[G.cp]+=G.pts;$('#app').innerHTML=board()+`<div class="card" style="text-align:center"><div class="good">${PR[Math.floor(Math.random()*PR.length)]}<br>${AV[G.cp]} ${esc(G.names[G.cp])} أخذت ${ar(G.pts)} ⭐ من ٥</div><button class="btn g" id="nx">الدور التالي ←</button></div>`;$('#nx').onclick=()=>{G.k++;turn()}}
+function end(){const m=Math.max(...G.sc);const win=G.names.filter((n,i)=>G.sc[i]===m);
+ $('#app').innerHTML=board()+`<div class="card" style="text-align:center"><div class="cup">🏆</div><h2>${win.length>1?'تعادل! الكأس للجميع 🤝':'الكأس لـ '+esc(win[0])+' 🎉'}</h2><p>أحسنتم جميعاً! الأهم أنكن حلّلتن كل مسألة: مطلوب ← معطيات ← عملية ← حساب 💡</p><button class="btn g" onclick="setup()">رحلة جديدة 🚀</button></div>`}
+setup();
+</script></body></html>

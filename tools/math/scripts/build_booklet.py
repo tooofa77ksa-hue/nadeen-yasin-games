@@ -19,7 +19,7 @@ h2{color:#fff;background:#4a2fc0;border:none;border-radius:10px;padding:5px 12px
 .box{border:3px solid #4a2fc0;border-radius:14px;padding:8px 14px;margin:10px 0;text-align:right}
 .box b{color:#e03131}
 table.st{width:100%;border-collapse:collapse;margin:6px 0}table.st td,table.st th{border:2px solid #4a2fc0;padding:4px 8px;text-align:center}table.st th{background:#e5dbff}
-.dua{border:3px double #1b7f4b;border-radius:14px;padding:10px 14px;margin-top:16px;text-align:center;color:#1b7f4b;font-size:16px;line-height:1.9;break-inside:avoid}
+.dua{border:none;padding:0;margin-top:12px;text-align:center;color:#8a8a8a;font-size:10.5px;line-height:1.6;break-inside:avoid}
 .cue{background:#e7f5ff;border:2px dashed #1c7ed6;border-radius:8px;padding:1px 8px;margin-bottom:4px;font-size:12.5px;color:#1c7ed6}
 .pb{break-before:page}
 '''
@@ -54,7 +54,7 @@ def booklet(solved):
 <table class="st"><tr><th>الفصل</th><th>عدد الأسئلة في الاختبارات المركزية (تقريباً)</th></tr><tr><td>١ القيمة المنزلية</td><td>٣٨</td></tr><tr><td>٢ الجمع والطرح</td><td><b style="color:#e03131">٤٤ (الأكثر)</b></td></tr><tr><td>٣ تنظيم البيانات</td><td>٣٨ (منها ٣٥ سؤالاً مختلفاً، تكرر ٢ منها)</td></tr><tr><td>٤ الأنماط والجبر</td><td>٣٧ (منها ٣٠ سؤالاً مختلفاً، تكرر ٦ منها)</td></tr><tr><td>٥ الضرب في رقم</td><td>٣٩</td></tr><tr><td>٦ الضرب في رقمين</td><td>١١ (الأقل)</td></tr></table>
 <div class="small">الفصل الثاني ثم الخامس هما الأكثر أسئلة، والفصلان ٣ و٤ لهما نصيب كبير أيضاً. أعداد الفصول من تصنيف أولي لأسئلة المركزيات.</div></div></div>'''
     idx=index_html()
-    foot='''<div class="dua">إعداد: عواطف الجهني<br><span style="font-size:13px;color:#555">هذا جهد شخصي لوجه الله، ولا يُعتمد عليه وحده؛ ارجعي دائماً إلى كتابك ومعلمتك.</span><br>اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وانفع به كل من يقرؤه.<br>اللهم بارك لي في أولادي، واحفظ أمي وأبي وإخواني، وارزقنا جميعاً العلم النافع والعمل الصالح والتوفيق في الدنيا والآخرة. آمين.</div>'''
+    foot='''<div class="dua">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>'''
     h1_3='<h2 class="pb">الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها</h2>'
     h1_4='<h2 class="pb">الفصل الرابع: الأنماط والجبر</h2>'
     html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}</style></head><body>{cover}{idx}{secs}{foot}</body></html>'

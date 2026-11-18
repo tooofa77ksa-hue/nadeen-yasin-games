@@ -6,7 +6,7 @@
 @font-face{font-family:'B';font-weight:500;src:url('../shared/fonts/Baloo-Medium.ttf')}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--p:#6741d9;--g:#2f9e44;--r:#e03131;--y:#f59f00;--b:#1c7ed6}
-body{margin:0;background:linear-gradient(#fff8e1,#fff0f6);font-family:'B',sans-serif;font-weight:500;color:#222;padding:10px 10px 30px;line-height:1.6}
+body{margin:0;min-height:100vh;background:linear-gradient(#fff8e1,#fff0f6);font-family:'B',sans-serif;font-weight:500;color:#222;padding:10px 10px 30px;line-height:1.6}
 .wrap{max-width:760px;margin:auto}
 h1{font-weight:800;font-size:1.5rem;margin:6px 0 0;text-align:center;color:var(--p)}
 .sub{text-align:center;font-size:.9rem;color:#666;margin-bottom:8px}
@@ -40,15 +40,18 @@ input.in{font:inherit;font-size:1.3rem;width:100%;border:4px solid var(--p);bord
 .stars{font-weight:800;color:#e67700}
 .cup{font-size:5rem;text-align:center;animation:bounce 1s infinite alternate}
 @keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-14px)}}
-.foot{margin-top:20px;border:3px double #1b7f4b;border-radius:16px;padding:10px 14px;text-align:center;color:#1b7f4b;line-height:1.9;background:#f4fff7}
+.foot{margin-top:18px;text-align:center;color:#8a8a8a;font-size:.72rem;line-height:1.7}.foot span{font-size:.65rem}
 .small{font-size:.8rem;color:#777}
 .pl{display:flex;gap:8px}.pl input{flex:1;font:inherit;border:3px solid #d0bfff;border-radius:12px;padding:8px}
 .sc{display:flex;gap:8px;margin:6px 0}.sc div{flex:1;border:4px solid #d0bfff;border-radius:16px;padding:6px;text-align:center;font-weight:800}.sc .on{border-color:var(--g);background:#ebfbee}
+@media(min-width:1000px){body{font-size:22px}.wrap{max-width:1300px}h1{font-size:2.3rem}.q{font-size:1.9rem}.opt{font-size:1.5rem;min-height:72px;padding:14px 22px}.btn{font-size:1.4rem;min-height:66px;padding:12px 28px}.stage{font-size:1.45rem}.card{padding:18px 24px}.lv{width:72px;height:72px;font-size:1.5rem}.fig img{max-height:420px}.fig2 .rd img{max-height:420px}.src{font-size:1.1rem}.coach,.good{font-size:1.35rem}.tk{font-size:1.7rem!important}input.in{font-size:2rem}}
+@media(min-width:1600px){body{font-size:26px}.wrap{max-width:1600px}}
+.tk{display:inline-block;margin:3px 2px;padding:2px 10px;border-radius:12px;border:3px solid transparent;cursor:pointer;font-size:1.25rem;font-weight:800}.tk.on{background:#a5d8ff;border-color:#1c7ed6}.tk.ok{background:#b2f2bb;border-color:#2f9e44}.tk.bad{background:#ffc9c9;border-color:#e03131}
 </style></head><body><div class="wrap">
 <h1>🎮 ألعاب الاختبارات المركزية</h1>
 <div class="sub">رياضيات · الصف الرابع الابتدائي · كل سؤال مرحلة: تفكّرين وتحلّلين وتجاوبين</div>
 <div id="app"></div>
-<div class="foot">إعداد: عواطف الجهني<br><span style="font-size:.85rem;color:#555">هذا جهد شخصي لوجه الله، ولا يُعتمد عليه وحده؛ ارجعي دائماً إلى كتابك ومعلمتك.</span><br>اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وانفع به كل من يلعب فيه.<br>اللهم بارك لي في أولادي ووفّقهم، واحفظ أمي وأبي وإخواني، وارزقنا جميعاً العلم النافع والعمل الصالح. آمين.</div>
+<div class="foot">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم<br><span>جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</span></div>
 </div>
 <script>
 const DATA=__DATA__;
@@ -110,18 +113,24 @@ function swapTask(t){const P=[['أكبر','أصغر'],['الأكبر','الأص�
 function distract(i,t){const same=Object.values(DATA).flat().filter(x=>x.id!==i.id&&task(x)&&task(x)!==t);
  const near=shuffle(same.filter(x=>x.k===i.k&&x.lesson===i.lesson)).concat(shuffle(same.filter(x=>x.k===i.k)),shuffle(same));
  const out=[];const sw=swapTask(t);if(sw&&sw!==t)out.push(sw);for(const x of near){const y=task(x);if(!out.includes(y))out.push(y);if(out.length>=2)break}return out.slice(0,2)}
-function afterTask(){const i=CUR;if(i.op&&MODE!=='cont')stageOp(0);else stageAnswer()}
+function afterTask(){const i=CUR;if(i.op&&MODE!=='cont')stageGiven();else stageAnswer()}
+function stageGiven(){const i=CUR,c=CC;const words=i.q.split(/\s+/).filter(Boolean);const isNum=w=>/[0-9٠-٩]/.test(w);const sel=new Set();let tr=0;
+ const draw=()=>{$('#app').innerHTML=head(i,c)+`<div class="card"><div class="stage">🔵 المرحلة ٢: المعطيات. اضغطي على <b>الأعداد</b> التي أعطاك إياها السؤال (وسيظهر لونها أزرق).</div><div class="q" style="line-height:2.4">`+words.map((w,k)=>`<span class="tk ${sel.has(k)?'on':''}" data-k="${k}">${L(w)}</span>`).join(' ')+`</div><div style="text-align:center"><button class="btn" id="ck">تأكدي ✓</button></div><div id="fb"></div></div>`;
+  document.querySelectorAll('.tk').forEach(s=>s.onclick=()=>{const k=+s.dataset.k;if(sel.has(k))sel.delete(k);else sel.add(k);draw()});
+  $('#ck').onclick=()=>{const need=words.map((w,k)=>isNum(w)?k:-1).filter(k=>k>=0);const miss=need.filter(k=>!sel.has(k));const extra=[...sel].filter(k=>!isNum(words[k]));
+   if(!miss.length&&!extra.length){document.querySelectorAll('.tk').forEach(s=>{if(sel.has(+s.dataset.k))s.classList.add('ok')});$('#fb').innerHTML=`<div class="good">أحسنتِ! ✅ المعطيات: ${need.map(k=>L(words[k])).join('، ')}<br>المطلوب أولاً ثم المعطيات، هكذا نحلّل المسألة. <button class="btn g" id="g3">المرحلة ٣ ←</button></div>`;$('#g3').onclick=()=>stageOp(0)}
+   else{tr++;draw();const tx=miss.length?`💡 اسألي نفسك: هل بقي عدد في السؤال لم ألوّنه؟ (ناقص ${miss.length})`:`💡 لوّنتِ كلمة ليست عدداً. المعطيات هي الأعداد وما تدل عليه.`;$('#fb').innerHTML=`<div class="coach">${tx}${tr>=3?'<br>تلميح: عدد الأعداد في السؤال = '+need.length:''}</div>`;if(extra.length)document.querySelectorAll('.tk').forEach(s=>{if(extra.includes(+s.dataset.k))s.classList.add('bad')})}}};draw()}
 const OPN={'+':'➕ جمع','−':'➖ طرح','×':'✖ ضرب','÷':'➗ قسمة'};
 const OPW={'+':'جمع: نضمّ الأشياء معاً، أو نسأل عن «الكل» أو «المجموع».','−':'طرح: شيء نقص أو بقي أو أُعطي، أو نسأل «كم يزيد» أو «الفرق».','×':'ضرب: نفس العدد يتكرر مرات (مثل «كل يوم»، «في كل صف»).','÷':'قسمة: نوزّع بالتساوي، أو نسأل «كم مرة يتسع» عدد في عدد.'};
 function stageOp(k){const i=CUR,c=CC,want=i.op[k];let tr=0;
- $('#app').innerHTML=head(i,c)+`<div class="card"><div class="stage">⚙️ المرحلة ٢: أي عملية نستعمل ${i.op.length>1?(k?'ثانياً':'أولاً'):''}؟ دوّري على الكلمة المفتاحية في السؤال${i.kw?': «'+esc(i.kw)+'»':''}</div><div class="grid">`+['+','−','×','÷'].map(o=>`<button class="opt" data-o="${o}" style="text-align:center">${OPN[o]}</button>`).join('')+'</div><div id="fb"></div></div>';
- document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(o===want){b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#fb').innerHTML=`<div class="good">أحسنتِ! ✅ ${esc(OPW[want])} <button class="btn g" id="go2">${k+1<i.op.length?'العملية الثانية ←':'المرحلة ٣ ←'}</button></div>`;$('#go2').onclick=()=>k+1<i.op.length?stageOp(k+1):stageAnswer()}else{tr++;b.classList.add('no');$('#fb').innerHTML=tr<2?`<div class="coach">💡 اسألي نفسك: ماذا تقول الكلمة المفتاحية${i.kw?' «'+esc(i.kw)+'»':''}؟ هل نضمّ؟ أم ينقص؟ أم يتكرر؟ أم نوزّع؟</div>`:`<div class="coach">💡 تلميح قوي: ${esc(OPW[want])}</div>`}})}
+ $('#app').innerHTML=head(i,c)+`<div class="card"><div class="stage">⚙️ المرحلة ٣: أي عملية نستعمل ${i.op.length>1?(k?'ثانياً':'أولاً'):''}؟ دوّري على الكلمة المفتاحية في السؤال${i.kw?': «'+esc(i.kw)+'»':''}</div><div class="grid">`+['+','−','×','÷'].map(o=>`<button class="opt" data-o="${o}" style="text-align:center">${OPN[o]}</button>`).join('')+'</div><div id="fb"></div></div>';
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(o===want){b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#fb').innerHTML=`<div class="good">أحسنتِ! ✅ ${esc(OPW[want])} <button class="btn g" id="go2">${k+1<i.op.length?'العملية الثانية ←':'المرحلة ٤ ←'}</button></div>`;$('#go2').onclick=()=>k+1<i.op.length?stageOp(k+1):stageAnswer()}else{tr++;b.classList.add('no');$('#fb').innerHTML=tr<2?`<div class="coach">💡 اسألي نفسك: ماذا تقول الكلمة المفتاحية${i.kw?' «'+esc(i.kw)+'»':''}؟ هل نضمّ؟ أم ينقص؟ أم يتكرر؟ أم نوزّع؟</div>`:`<div class="coach">💡 تلميح قوي: ${esc(OPW[want])}</div>`}})}
 function stageTask(i,c){
  const t=task(i);if(!t||MODE==='cont'){return afterTask()}
  const opts=shuffle([t,...distract(i,t)]);
  $('#app').innerHTML=head(i,c)+`<div class="card"><div class="stage">🔎 المرحلة ١: ركّزي. اقرئي السؤال مرتين، ثم اسألي نفسك: ماذا يُطلب مني؟</div>`+opts.map((o,k)=>`<button class="opt" data-k="${k}">${L(o)}</button>`).join('')+'<div id="fb"></div></div>';
  document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const p=opts[+b.dataset.k];if(p===t){b.classList.add('ok');$('#fb').innerHTML=`<div class="good">أحسنتِ! عرفتِ المطلوب أولاً، وهذه أهم خطوة ✅ <button class="btn g" id="go">المرحلة ٢ ←</button></div>`;document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#go').onclick=()=>afterTask()}else{b.classList.add('no');$('#fb').innerHTML=`<div class="coach">💡 اقرئي السؤال مرة ثانية ببطء. اسألي نفسك: ما الذي يسأل عنه في آخر السؤال؟ ثم اختاري.</div>`}})}
-function stageAnswer(){const i=CUR,c=CC;let h=head(i,c)+'<div class="card"><div class="stage">🧠 المرحلة '+((i.op&&MODE!=='cont')?'٣':'٢')+': فكّري وحلّلي، ثم أجيبي.</div>';
+function stageAnswer(){const i=CUR,c=CC;let h=head(i,c)+'<div class="card"><div class="stage">🧠 المرحلة '+((i.op&&MODE!=='cont')?'٤':'٢')+': فكّري وحلّلي، ثم أجيبي.</div>';
  if(i.kind==='mcq'){h+=i.o.map((o,k)=>`<button class="opt" data-k="${k}">${L(o)}</button>`).join('')}
  else if(i.kind==='tf'){h+=`<button class="opt" data-k="1">✔ صح</button><button class="opt" data-k="0">✘ خطأ</button>`}
  else if(i.kind==='num'){h+=`<input class="in" id="in" inputmode="decimal" placeholder="اكتبي الجواب" autocomplete="off"><div style="text-align:center"><button class="btn" id="ck">تأكدي ✓</button></div>`}
