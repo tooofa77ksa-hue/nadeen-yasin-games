@@ -53,6 +53,7 @@ input.in{font:inherit;font-size:1.3rem;width:100%;border:4px solid var(--p);bord
 <div id="app"></div>
 <div class="foot">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم<br><span>جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</span></div>
 </div>
+<script src="fx.js"></script>
 <script>
 const DATA=__DATA__;
 const CH={1:'القيمة المنزلية',2:'الجمع والطرح',3:'تنظيم البيانات وعرضها',4:'الأنماط والجبر',5:'الضرب في عدد من رقم واحد',6:'الضرب في عدد من رقمين'};
@@ -65,15 +66,20 @@ const L=s=>esc(s).replace(/([+−×÷=<>△□○])/g,'‎$1‎').replace(/(\d)-
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 const PRAISE=['أحسنتِ! لأنك فكّرتِ قبل أن تجيبي ✨','ركّزتِ فوصلتِ 🌟','اجتهدتِ والتوفيق من الله 🤍','هكذا يحلّ من يفهم لا من يحفظ 💡','ممتاز! سألتِ نفسك فوصلتِ للجواب 👏'];
 const pr=()=>PRAISE[Math.floor(Math.random()*PRAISE.length)];
-let ST={stars:0,done:{}};try{ST=Object.assign(ST,JSON.parse(localStorage.getItem('markaz_math_v1')||'{}'))}catch(e){}
+let ST={stars:0,done:{},rv:{}};let RQ=null;try{ST=Object.assign(ST,JSON.parse(localStorage.getItem('markaz_math_v1')||'{}'))}catch(e){}
 const save=()=>{try{localStorage.setItem('markaz_math_v1',JSON.stringify(ST))}catch(e){}};
 const task=it=>String((it.ex&&it.ex.task)||'').replace(/^المطلوب\s*:?\s*/,'').trim();
 let NAV=[];
+const RGAP=[0,20,44,92,164];
+function rvUp(id,first){const r=ST.rv[id];if(!r)return;if(first){r.b++;r.t=Date.now();if(r.b>=5)delete ST.rv[id]}else{r.b=1;r.t=Date.now()}save()}
+function rvDown(id){ST.rv[id]={b:1,t:Date.now()};save()}
+function rvDue(){const n=Date.now();return Object.keys(ST.rv).filter(id=>(n-ST.rv[id].t)/36e5>=RGAP[Math.min(ST.rv[id].b,4)]-0.01)}
+function reviewToday(){const d=rvDue();if(!d.length){$('#app').innerHTML='<div class="top"><button class="btn o" onclick="home()">→ الرئيسية</button></div><div class="card" style="text-align:center"><h2>🎉 ما عندك مراجعة الآن</h2><p>ما أخطأتِ فيه سيعود لكِ في وقته. ارجعي غداً بإذن الله.</p></div>';return}RQ=d.slice(0,10);play(RQ.shift())}
 function home(){NAV=[];
  const gold=Object.values(DATA).flat().filter(i=>i.n>=2);
  let h=`<div class="card"><div class="top"><b>اختاري اللعب</b><span class="stars">⭐ ${ar(ST.stars)}</span></div><div class="small">كل فصل فيه مراحل. السؤال الذهبي 🔁 جاء أكثر من مرة في الاختبارات، فاهتمي به.</div></div>`;
  h+='<div class="grid">'+Object.keys(DATA).map(c=>{const it=DATA[c];const d=it.filter(i=>ST.done[i.id]).length;return `<button class="chap" onclick="chapter(${c})">📘 الفصل ${ar(c)}: ${CH[c]}<small>${ar(it.length)} مرحلة · أنجزتِ ${ar(d)} · ${ar(it.filter(i=>i.n>=2).length)} ذهبية</small></button>`}).join('')+'</div>';
- h+=`<div class="card"><button class="btn y" onclick="goldAll()">🌟 كل الأسئلة الذهبية (${ar(gold.length)})</button><button class="btn g" onclick="contestSetup()">👭 مسابقة لطالبتين</button></div>`;
+ h+=`<div class="card"><button class="btn g" onclick="reviewToday()">🔁 مراجعة اليوم (${ar(rvDue().length)})</button><div class="small">الأسئلة التي أخطأتِ فيها تعود لكِ بعد يوم، ثم يومين، ثم ٤، ثم ٧، حتى تثبت. هذا أقوى من إعادة القراءة.</div></div><div class="card"><button class="btn y" onclick="goldAll()">🌟 كل الأسئلة الذهبية (${ar(gold.length)})</button><button class="btn g" onclick="contestSetup()">👭 مسابقة لطالبتين</button></div>`;
  $('#app').innerHTML=h}
 function chapter(c){const it=DATA[c];
  let h=`<div class="top"><button class="btn o" onclick="home()">→ الرئيسية</button><span class="stars">⭐ ${ar(ST.stars)}</span></div><div class="card"><h2 style="margin:0">الفصل ${ar(c)}: ${CH[c]}</h2><div class="small">اضغطي أي مرحلة. 🌟 الذهبية = تكررت في الاختبارات.</div></div>`;
@@ -140,10 +146,10 @@ function stageAnswer(){const i=CUR,c=CC;let h=head(i,c)+'<div class="card"><div 
  else if(i.kind==='num'){const f=()=>{const v=parseFloat(toEn($('#in').value));if(isNaN(v))return;check(Math.abs(v-i.ans)<1e-9,null)};$('#ck').onclick=f;$('#in').onkeydown=e=>{if(e.key==='Enter')f()}}
  else{$('#sh').onclick=()=>reveal(0)}}
 function check(ok,b){const i=CUR;if(ok){if(b)b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);if($('#ck')){$('#ck').disabled=true;$('#in').disabled=true}
-  const st=TRIES===0?2:1;if(MODE==='cont')return contestRight(st);
+  const st=TRIES===0?2:1;if(MODE==='cont')return contestRight(st);FX.correct(TRIES===0?3:0);rvUp(i.id,TRIES===0);
   if(!ST.done[i.id]){ST.stars+=st;ST.done[i.id]=st;save()}
   explain(true)}
- else{TRIES++;if(b)b.classList.add('no');if(MODE==='cont')return contestWrong();
+ else{TRIES++;if(b)b.classList.add('no');FX.oops();if(MODE!=='cont')rvDown(i.id);if(MODE==='cont')return contestWrong();
   const ex=i.ex||{};
   if(TRIES===1)$('#fb').innerHTML=`<div class="coach">💡 <b>اسألي نفسك:</b> ${L(ex.think||'ما المطلوب؟ وماذا عندي؟ ثم أي خطوة؟')}<br>جرّبي مرة ثانية.</div>`;
   else if(TRIES===2)$('#fb').innerHTML=`<div class="coach">💡 <b>خطوات تساعدك:</b><br>${(ex.steps||[]).slice(0,2).map(s=>'• '+L(s)).join('<br>')}<br>جرّبي مرة ثالثة.</div>`;
@@ -152,11 +158,11 @@ function bigFig(i){return i.big?`<div class="fig"><img src="${i.big}" alt=""><di
 function explain(win){const i=CUR,ex=i.ex||{};
  $('#fb').innerHTML=`<div class="${win?'good':'coach'}">${win?'🎉 '+pr():'لا بأس! سنفهمها معاً، وبعدها تعيدينها وحدك 💪'}</div>${bigFig(i)}<div class="good"><div class="red">① المطلوب: ${L(task(i))}</div>${ex.think?`<div><b>② ${L(ex.think)}</b></div>`:''}${(ex.steps||[]).map(s=>`<div>• ${L(s)}</div>`).join('')}<div style="background:var(--g);color:#fff;border-radius:10px;padding:2px 10px;display:inline-block;margin:4px 0;font-weight:800">${L(ex.answer||i.fa)}</div>${ex.why?`<div style="color:#1c7ed6"><b>ليش؟</b> ${L(ex.why)}</div>`:''}${ex.tip?`<div style="color:#c2410c">💡 ${L(ex.tip)}</div>`:''}</div><div style="text-align:center"><button class="btn g" id="nx">المرحلة التالية ←</button></div>`;
  $('#nx').onclick=()=>nextLevel()}
-function nextLevel(){const it=DATA[CC];const k=it.findIndex(x=>x.id===CUR.id);const nx=it[k+1];if(nx)play(nx.id);else chapter(CC)}
+function nextLevel(){if(RQ){if(RQ.length)return play(RQ.shift());RQ=null;FX.bravo();return home()}const it=DATA[CC];const k=it.findIndex(x=>x.id===CUR.id);const nx=it[k+1];if(nx)play(nx.id);else chapter(CC)}
 function reveal(k){const i=CUR,ex=i.ex||{};const st=[ex.task?'① المطلوب: '+task(i):'',ex.think?'② '+ex.think:'',...(ex.steps||[]).map(s=>'• '+s)].filter(Boolean);
  const shown=st.slice(0,k+1);
  $('#fb').innerHTML=`${k===0?bigFig(i):''}<div class="good">${shown.map(s=>`<div>${L(s)}</div>`).join('')}</div>`+(k+1<st.length?`<div style="text-align:center"><button class="btn" id="mr">الخطوة التالية ←</button></div>`:`<div class="good"><div style="background:var(--g);color:#fff;border-radius:10px;padding:2px 10px;display:inline-block;font-weight:800">${L(ex.answer||i.fa)}</div>${ex.why?`<div style="color:#1c7ed6"><b>ليش؟</b> ${L(ex.why)}</div>`:''}${ex.tip?`<div style="color:#c2410c">💡 ${L(ex.tip)}</div>`:''}</div><div class="stage">هل طابق حلك؟</div><div style="text-align:center"><button class="btn g" id="y">نعم ✅</button><button class="btn o" id="n">أحتاج أعيدها 🔁</button></div>`);
- if(k+1<st.length)$('#mr').onclick=()=>reveal(k+1);else{$('#y').onclick=()=>{if(!ST.done[i.id]){ST.stars+=2;ST.done[i.id]=2;save()}nextLevel()};$('#n').onclick=()=>{nextLevel()}}}
+ if(k+1<st.length)$('#mr').onclick=()=>reveal(k+1);else{$('#y').onclick=()=>{if(!ST.done[i.id]){ST.stars+=2;ST.done[i.id]=2;save()}FX.correct(0);rvUp(i.id,true);nextLevel()};$('#n').onclick=()=>{FX.oops();rvDown(i.id);nextLevel()}}}
 /* مسابقة طالبتين */
 function contestSetup(){$('#app').innerHTML=`<div class="top"><button class="btn o" onclick="home()">→ الرئيسية</button></div><div class="card"><h2>👭 مسابقة لطالبتين (جهاز واحد)</h2><div class="small">تتناوبان: كل واحدة تجيب سؤالاً. الإجابة من أول مرة نقطتان، ومن الثانية نقطة. والفائزة تأخذ الكأس 🏆</div><div class="pl"><input id="p1" placeholder="اسم الأولى"><input id="p2" placeholder="اسم الثانية"></div><div class="small" style="margin-top:6px">اختاري الفصل:</div><div class="grid">`+Object.keys(DATA).map(c=>`<button class="chap" onclick="contestStart(${c})">الفصل ${ar(c)}: ${CH[c]}</button>`).join('')+`<button class="chap" onclick="contestStart(0)">كل الفصول</button></div></div>`}
 function contestStart(c){const n1=($('#p1').value||'الأولى').trim(),n2=($('#p2').value||'الثانية').trim();
