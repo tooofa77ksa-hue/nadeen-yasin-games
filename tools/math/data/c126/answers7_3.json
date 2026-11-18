@@ -1,0 +1,154 @@
+[
+ {
+  "uid": "hafr-144",
+  "own_answer": "٩",
+  "own_steps": "الطرف الأيمن = ٩+١٥ = ٢٤. (٨+□)+٧ = ٢٤ ⇒ ٨+□ = ١٧ ⇒ □ = ٩",
+  "site_answer": "٩",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hafr-148",
+  "own_answer": "١٤٧٠",
+  "own_steps": "٢٠٠٦ − ٥٣٦: ٢٠٠٦ − ٥٠٠ = ١٥٠٦، ١٥٠٦ − ٣٦ = ١٤٧٠",
+  "site_answer": "١٤٧٠",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hafr-151",
+  "own_answer": "٤٠٨ زجاجات",
+  "own_steps": "١٧٢ + ٢٣٦: آحاد ٢+٦=٨، عشرات ٧+٣=١٠ نكتب ٠ ونحمل ١، مئات ١+٢+١=٤ → ٤٠٨",
+  "site_answer": "١٧٢ + ٢٣٦ = ٤٠٨ (حل عمودي)",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hafr-156",
+  "own_answer": "١٠",
+  "own_steps": "٥٠ − ٣٨ = ١٢، نقرّب ١٢ إلى ١٠",
+  "site_answer": "ج) ١٠",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hafr-158",
+  "own_answer": "ب) ٧٠",
+  "own_steps": "٩٥ − ٢٥ = ٧٠ (٩٥−٢٠=٧٥ ثم −٥ = ٧٠)",
+  "site_answer": "أ) ٥٠ (الخلية المظللة أ)",
+  "agree": false,
+  "doubts": "اختلاف: المظلل في الورقة «أ ٥٠» والصحيح ٩٥−٢٥=٧٠ وهو الخيار ب. غالباً خطأ في الحل المظلل (أو أن أحد الرقمين قُرئ خطأ: تحققتُ من ٩٥ و٢٥ بالتكبير)."
+ },
+ {
+  "uid": "hafr-162",
+  "own_answer": "+",
+  "own_steps": "٧٩ + ٢٦ = ١٠٥",
+  "site_answer": "ج) +",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-003",
+  "own_answer": "أ) ٠",
+  "own_steps": "أي عدد + صفر = العدد نفسه (خاصية العنصر المحايد).",
+  "site_answer": "دائرة بخط اليد حول الخيار على الصورة (ليست نموذج إجابة رسمياً، غالباً علامة طالب/معلم): أ) ٠",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-004",
+  "own_answer": "د) ٧٠",
+  "own_steps": "٤١ تقرّب إلى ٤٠ و٣٣ إلى ٣٠، ثم ٤٠ + ٣٠ = ٧٠.",
+  "site_answer": "دائرة بخط اليد حول الخيار على الصورة (ليست نموذج إجابة رسمياً، غالباً علامة طالب/معلم): د) ٧٠",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-005",
+  "own_answer": "د) ٣٢ ريالاً",
+  "own_steps": "نجمع الثمنين: ٢٨ + ٤ = ٣٢.",
+  "site_answer": "دائرة بخط اليد حول الخيار على الصورة (ليست نموذج إجابة رسمياً، غالباً علامة طالب/معلم): د) ٣٢ ريالاً",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-018",
+  "own_answer": "أ) خاصية الإبدال",
+  "own_steps": "تغيّر ترتيب العددين والناتج لم يتغير: هذه خاصية الإبدال.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-025",
+  "own_answer": "خطأ",
+  "own_steps": "خاصية الإبدال: المجموع لا يتغير بتبديل الترتيب.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-027",
+  "own_answer": "أ",
+  "own_steps": "إجابة قريبة من الدقيقة = تقدير.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-028",
+  "own_answer": "د",
+  "own_steps": "عدد + ٠ = العدد نفسه: خاصية العنصر المحايد الجمعي.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "hail-033",
+  "own_answer": "٥٧٩",
+  "own_steps": "٦٠٤ − ٢٥: نستلف من الخانات: ٦٠٤ = ٥٩٤ + ١٠ ... ٦٠٤ − ٢٠ = ٥٨٤ ثم ٥٨٤ − ٥ = ٥٧٩.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "jazan-078",
+  "own_answer": "ب) ٥+٣=٨",
+  "own_steps": "الإعطاء إضافة فنجمع ٥+٣=٨. (الخيار أ جمعه خطأ).",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "jazan-079",
+  "own_answer": "ج) العنصر المحايد",
+  "own_steps": "إضافة صفر لا تغيّر العدد: خاصية العنصر المحايد.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "jazan-089",
+  "own_answer": "د) ٢٣",
+  "own_steps": "نبدّل ترتيب الأعداد: ٢٣+(٧+٤) = (٢٣+٧)+٤ فالمفقود ٢٣.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "jazan-091",
+  "own_answer": "د) ١٨٩",
+  "own_steps": "٢٠٠٤ − ١٨١٥ = ١٨٩.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "jazan-092",
+  "own_answer": "أ) ١١",
+  "own_steps": "٣+٦+١+٤=١٤ ثم ٢٥−١٤=١١.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ }
+]

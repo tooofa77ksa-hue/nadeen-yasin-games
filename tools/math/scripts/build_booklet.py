@@ -31,18 +31,18 @@ def body(ch,solved):
         b=b.replace('<span class="t">','<span class="cue">🔎 ركّزي: ما المطلوب؟ ما المعطيات؟ ثم حلّلي</span><br><span class="t">')
     return b
 def booklet(solved):
-    t3=body(3,solved);t4=body(4,solved)
-    ver='نموذج الإجابة (مع شرح المعلّم)' if solved else 'نموذج تحلّيه نادين'
-    cover=f'''<div class="cover"><div style="font-size:60px">📘</div><div class="big">ما جاء في الاختبارات المركزية</div><div class="big" style="font-size:26px">الرياضيات · الصف الرابع الابتدائي</div><div style="font-size:21px;margin:8px 0">الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها · الفصل الرابع: الأنماط والجبر</div><div style="font-size:22px;background:#ffd8a8;border-radius:12px;display:inline-block;padding:4px 18px;margin:8px">{ver}</div>
+    secs=''.join(f'<h2 class="pb">{B.CHN[c]}</h2>'+body(c,solved) for c in (1,2,3,4,5,6))
+    ver='نموذج الإجابة (مع شرح المعلّم)' if solved else 'نموذج تحلّه الطالبة'
+    cover=f'''<div class="cover"><div style="font-size:60px">📘</div><div class="big">ما جاء في الاختبارات المركزية</div><div class="big" style="font-size:26px">الرياضيات · الصف الرابع الابتدائي</div><div style="font-size:21px;margin:8px 0">الفصول من الأول إلى السادس</div><div style="font-size:22px;background:#ffd8a8;border-radius:12px;display:inline-block;padding:4px 18px;margin:8px">{ver}</div>
 <div class="box"><b>كيف أقرأ هذه الملزمة؟</b><br>• كل سؤال جاء في الاختبارات المركزية (حائل، تبوك، جازان، الشرقية، حفر الباطن، القصيم) مكتوب <b>مرة واحدة</b>.<br>• تحته «جاء في» (أي منطقة)، وإذا تكرر تجدين <span class="rep">🔁 تكرر في كذا</span>.<br>• إذا جاءت الفكرة نفسها بأرقام أخرى أو بصيغة ثانية، نكتب: «ونفس الفكرة بأرقام أخرى جاءت في …».<br>• الأسئلة مرتبة: صح وخطأ، ثم اختيار من متعدد، ثم مسائل لفظية، ثم جداول ورسوم.<br>• {"🟢 الأخضر هو الحل، 🔴 الأحمر أول خطوة: ماذا يُطلب؟، 🔵 الأزرق لماذا، 🟠 البرتقالي نصيحة." if solved else "🔎 قبل كل سؤال: ركّزي، اقرئي مرتين، ما المطلوب؟ ما المعطيات؟ ثم حلّلي."}</div>
 <div class="box"><b>ماذا ركّزت عليه الاختبارات المركزية؟</b>
 <table class="st"><tr><th>الفصل</th><th>عدد الأسئلة في الاختبارات المركزية (تقريباً)</th></tr><tr><td>١ القيمة المنزلية</td><td>٣٨</td></tr><tr><td>٢ الجمع والطرح</td><td><b style="color:#e03131">٤٤ (الأكثر)</b></td></tr><tr><td>٣ تنظيم البيانات</td><td>٣٨ (منها ٣٥ سؤالاً مختلفاً، تكرر ٢ منها)</td></tr><tr><td>٤ الأنماط والجبر</td><td>٣٧ (منها ٣٠ سؤالاً مختلفاً، تكرر ٦ منها)</td></tr><tr><td>٥ الضرب في رقم</td><td>٣٩</td></tr><tr><td>٦ الضرب في رقمين</td><td>١١ (الأقل)</td></tr></table>
-<div class="small">الفصل الثاني ثم الخامس هما الأكثر أسئلة، والفصلان ٣ و٤ لهما نصيب كبير أيضاً. هذه الملزمة تشرح الفصلين ٣ و٤ فقط، لأنهما اختبار نادين. وأعداد الفصول من تصنيف أولي لأسئلة المركزيات.</div></div></div>'''
-    foot='''<div class="dua">إعداد: عواطف الجهني<br>اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وانفع به كل من يقرؤه.<br>اللهم بارك لي في أولادي، واحفظ أمي وأبي وإخواني، وارزقنا جميعاً العلم النافع والعمل الصالح والتوفيق في الدنيا والآخرة. آمين.</div>'''
+<div class="small">الفصل الثاني ثم الخامس هما الأكثر أسئلة، والفصلان ٣ و٤ لهما نصيب كبير أيضاً. أعداد الفصول من تصنيف أولي لأسئلة المركزيات.</div></div></div>'''
+    foot='''<div class="dua">إعداد: عواطف الجهني<br><span style="font-size:13px;color:#555">هذا جهد شخصي لوجه الله، ولا يُعتمد عليه وحده؛ ارجعي دائماً إلى كتابك ومعلمتك.</span><br>اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وانفع به كل من يقرؤه.<br>اللهم بارك لي في أولادي، واحفظ أمي وأبي وإخواني، وارزقنا جميعاً العلم النافع والعمل الصالح والتوفيق في الدنيا والآخرة. آمين.</div>'''
     h1_3='<h2 class="pb">الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها</h2>'
     h1_4='<h2 class="pb">الفصل الرابع: الأنماط والجبر</h2>'
-    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}</style></head><body>{cover}{h1_3}{t3}{h1_4}{t4}{foot}</body></html>'
-    name='booklet_solved' if solved else 'booklet_nadeen'
+    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}</style></head><body>{cover}{secs}{foot}</body></html>'
+    name='central_all_solved' if solved else 'central_all_student'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(html);return name
 if __name__=='__main__':
     print(booklet(True),booklet(False))

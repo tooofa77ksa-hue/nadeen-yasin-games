@@ -1,0 +1,138 @@
+[
+ {
+  "uid": "tabuk-053",
+  "own_answer": "ج) ٣٠ ريالاً",
+  "own_steps": "٧٩ ← ٨٠ و٤٨ ← ٥٠ ثم ٨٠ − ٥٠ = ٣٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-056",
+  "own_answer": "٤٥٢",
+  "own_steps": "عدد ناقص نفسه = صفر.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-057",
+  "own_answer": "١٣٦",
+  "own_steps": "أي عدد + ٠ = العدد نفسه.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-068",
+  "own_answer": "صح",
+  "own_steps": "١٢٤ − ٤ = ١٢٠ و١٠٤ + ١٦ = ١٢٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-074",
+  "own_answer": "١٦٦ ريالاً",
+  "own_steps": "١٣٨ + ٢٨ = ١٦٦.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-075",
+  "own_answer": "٣٧٣٢",
+  "own_steps": "٤٠٠٥ − ٢٧٣: ٤٠٠٥ − ٢٠٠ = ٣٨٠٥ ثم − ٧٠ = ٣٧٣٥ ثم − ٣ = ٣٧٣٢.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "hafr-167",
+  "own_answer": "٢٠٠",
+  "own_steps": "نقرّب ١٨ إلى ٢٠ و١٢ إلى ١٠ ⇒ ٢٠×١٠ = ٢٠٠",
+  "site_answer": "د) ٢٠٠",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-190",
+  "own_answer": "١٥٠٠ مكالمة",
+  "own_steps": "نقرّب ٢٩ إلى ٣٠ و٥٢ إلى ٥٠ ⇒ ٣٠ × ٥٠ = ١٥٠٠",
+  "site_answer": "دائرة بقلم أزرق على: أ) ١٥٠٠ مكالمة",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-192",
+  "own_answer": "١٤٥٦ ريالاً",
+  "own_steps": "١١٢ × ١٣ = ١١٢×١٠ + ١١٢×٣ = ١١٢٠ + ٣٣٦ = ١٤٥٦",
+  "site_answer": "دائرة بقلم أزرق على: ج) ١٤٥٦ وجبة",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-204",
+  "own_answer": "٦٨٢",
+  "own_steps": "٢٢ × ١ = ٢٢، ٢٢ × ٣٠ = ٦٦٠، ٢٢ + ٦٦٠ = ٦٨٢",
+  "site_answer": "٦٨٢ (الناتج الجزئي ٢٢ ثم ٦٦٠)",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-132",
+  "own_answer": "د) ٢٠٠",
+  "own_steps": "١٨≈٢٠ و١٢≈١٠ ⇒ ٢٠×١٠=٢٠٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-137",
+  "own_answer": "٣٠٠",
+  "own_steps": "٢٥×١٢ = ٢٥×١٠ + ٢٥×٢ = ٢٥٠+٥٠ = ٣٠٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-141",
+  "own_answer": "١٦٠٨",
+  "own_steps": "١٣٤×٢=٢٦٨ ثم ١٣٤×١٠=١٣٤٠ والمجموع ٢٦٨+١٣٤٠=١٦٠٨.",
+  "site_answer": "مكتوب بخط اليد على الورقة: ٢٦٨ + ١٣٤٠ = ١٦٠٨",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-050",
+  "own_answer": "ج) ٢٠٠",
+  "own_steps": "نقرّب ١٢ إلى ١٠ و١٩ إلى ٢٠ ثم ١٠ × ٢٠ = ٢٠٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-059",
+  "own_answer": "٦٤٠٠",
+  "own_steps": "٨×٨=٦٤ ثم نضيف صفرين: ٦٤٠٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-072",
+  "own_answer": "صح",
+  "own_steps": "٥٣×٣=١٥٩ ثم نضيف صفراً: ١٥٩٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-076",
+  "own_answer": "١٢٧٢",
+  "own_steps": "١٠٦×٢=٢١٢ ثم ١٠٦×١٠=١٠٦٠ ثم ٢١٢+١٠٦٠=١٢٧٢.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ }
+]

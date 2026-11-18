@@ -1,0 +1,154 @@
+[
+ {
+  "uid": "jazan-096",
+  "own_answer": "×",
+  "own_steps": "نقرّب كل عدد لأقرب مئة: ٢٣٠٠+٦٠٠=٢٩٠٠ لا ٣٠٠٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": "⚠ إن تم تقريب الناتج الحقيقي ٢٩٧٩ لأقرب مئة لصار ٣٠٠٠ فتكون ✓؛ لكن «تقدير الناتج» في الكتاب يعني تقريب كل عدد أولاً فالجواب ×. يحتاج مراجعة المعلمة."
+ },
+ {
+  "uid": "jazan-097",
+  "own_answer": "×",
+  "own_steps": "التقريب للأدنى يصغّر العددين فيصغر المجموع.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "jazan-104",
+  "own_answer": "٧١٧٣",
+  "own_steps": "٤+٩=١٣ اكتب ٣ واحمل ١؛ ٢+٤+١=٧؛ ٨+٣=١١ اكتب ١ واحمل ١؛ ٦+١=٧ ← ٧١٧٣.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-176",
+  "own_answer": "٠",
+  "own_steps": "١٨ − ٠ = ١٨ (طرح الصفر لا يغيّر العدد)",
+  "site_answer": "دائرة بقلم أزرق على: أ) ٠",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-177",
+  "own_answer": "٧٠ طالباً",
+  "own_steps": "نقرّب ٣٧ إلى ٤٠ و٢٨ إلى ٣٠ ⇒ ٤٠ + ٣٠ = ٧٠",
+  "site_answer": "دائرة بقلم أزرق على: ج) ٧٠ طالب",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-178",
+  "own_answer": "٤٢٢ مشجعاً",
+  "own_steps": "٦٣٥ − ٢١٣: آحاد ٥−٣=٢، عشرات ٣−١=٢، مئات ٦−٢=٤ → ٤٢٢",
+  "site_answer": "دائرة بقلم أزرق على: ب) ٤٢٢ مشجعاً",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-196",
+  "own_answer": "٢٥٨٢",
+  "own_steps": "٧٠٠٥ − ٤٤٢٣ = ٢٥٨٢ (بالاستلاف من الآلاف: ٦٩٩ثم١٥)",
+  "site_answer": "٢٥٨٢",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-199",
+  "own_answer": "+",
+  "own_steps": "٤ + ٢ = ٦ بينما ٤ − ٢ = ٢",
+  "site_answer": "محاطة بدائرة (العملية)",
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-200",
+  "own_answer": "رسم ٦ مربعات وشطب ٥ فيبقى مربع واحد",
+  "own_steps": "نرسم ٦ مربعات، نشطب ٥ منها، يبقى ١",
+  "site_answer": "رسم ٦ مربعات مع شطب ٥ منها (بقي واحد)",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "qassim-202",
+  "own_answer": "٨٥٩٦",
+  "own_steps": "آحاد ١+٥=٦، عشرات ٨+١=٩، مئات ٤+١=٥، آلاف ٦+٢=٨ → ٨٥٩٦",
+  "site_answer": "٨٥٩٦",
+  "agree": true,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-109",
+  "own_answer": "٩",
+  "own_steps": "التجميع: ( ٨ + ٩ ) + ٧ = ٩ + ( ٨ + ٧ ).",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-113",
+  "own_answer": "١٤٧٠",
+  "own_steps": "٢٠٠٦−٥٣٦: ٢٠٠٦−٥٠٠=١٥٠٦، ١٥٠٦−٣٦=١٤٧٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-116",
+  "own_answer": "٤٠٨",
+  "own_steps": "١٧٢+٢٣٦: ٢+٦=٨، ٧+٣=١٠ اكتب ٠ واحمل ١، ١+٢+١=٤ ← ٤٠٨.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-121",
+  "own_answer": "ج) ١٠",
+  "own_steps": "٣٨≈٤٠ و٥٠−٤٠=١٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": "السؤال يطلب «تقريباً»؛ الجواب الحقيقي ١٢ ويُقدَّر ١٠."
+ },
+ {
+  "uid": "sharqia-123",
+  "own_answer": "ج) ٧٠",
+  "own_steps": "٩٥−٢٥=٧٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-127",
+  "own_answer": "ج) +",
+  "own_steps": "٧٩+٢٦=١٠٥.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "sharqia-138",
+  "own_answer": "٦٠٠",
+  "own_steps": "٣٨٣≈٤٠٠ و٢١٢≈٢٠٠ ⇒ ٦٠٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-042",
+  "own_answer": "ب) ٣",
+  "own_steps": "الطرف الأيمن فيه ٩ و٣ و٢؛ فيبقى ▭ = ٣ (خاصية التجميع).",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ },
+ {
+  "uid": "tabuk-052",
+  "own_answer": "ب) ١٨٠",
+  "own_steps": "١٥٤ ← ١٥٠ و٢٨ ← ٣٠ ثم ١٥٠ + ٣٠ = ١٨٠.",
+  "site_answer": null,
+  "agree": null,
+  "doubts": ""
+ }
+]

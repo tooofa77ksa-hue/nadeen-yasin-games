@@ -10,7 +10,18 @@ for f in sorted(glob.glob('/tmp/m4/ch3/final3_*.json')):
 REG={'hail':'حائل','tabuk':'تبوك','jazan':'جازان','sharqia':'الشرقية','hafr':'حفر الباطن','qassim':'القصيم'}
 ANS_PAGES={3,6,9,10,13,14,17,18,21,22,25,26,33,35,36,41,46,48,51,53,54,55,60,61,62,63}
 UNSAFE={'p2_p35_2','p2_p35_4','p2_p35_5','qassim_p2_12','qassim_p2_13','qassim_p4_2t','sharqia_p4_4b','qassim_p4_2z_draw','qassim_p4_3hh','qassim_p3_2c'}
+F7={}
+for f in sorted(glob.glob('/tmp/m4/c126/final7_*.json')):
+    for r in json.load(open(f)): F7[r['uid'].translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))]=r
 def rec(u,ch):
+    if ch in (1,2,6):
+        r=F7.get(u)
+        if not r or str(r.get('final_chapter'))!=str(ch) or r.get('unsafe'): return None
+        return r
+    if ch==5:
+        r=FIN.get(u)
+        if not r or str(r.get('final_chapter'))!='5': return None
+        return r
     if ch==4:
         r=FIN.get(u); 
         if not r or str(r.get('final_chapter'))!='4': return None
@@ -29,7 +40,8 @@ def sec(x):
     t=x.get('type');return 'word' if t=='word' else 'mcq' if t=='mcq' else 'tf' if t=='tf' else 'other'
 HIDE={'p2-209','p2-324'}  # جواب غير مؤكد أو خطأ في السؤال نفسه: لا تُعرض على نادين حتى تراجعها ولية الأمر
 def entries(ch):
-    out=json.load(open(f'/tmp/m4/rep/out_all_{ch}.json'))
+    import os as _os
+    out=json.load(open(f'/tmp/m4/rep/out_all_{ch}.json' if _os.path.exists(f'/tmp/m4/rep/out_all_{ch}.json') else f'/tmp/m4/rep/out_{ch}.json'))
     dups=set()
     for pair in out.get('dups_within_model',[]):
         pair=[u for u in pair if u in ITEMS]
@@ -98,8 +110,8 @@ def q_html_ch(i,e,ch,solved):
         h+='</div>'
     return h+'</div>'
 ORDER=[('tf','أولاً: صح وخطأ'),('mcq','ثانياً: اختيار من متعدد'),('word','ثالثاً: مسائل لفظية'),('other','رابعاً: جداول ورسوم وأسئلة أخرى')]
-CHN={3:'الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها',4:'الفصل الرابع: الأنماط والجبر'}
-def build_ch(ch,solved,src=None):
+CHN={1:'الفصل الأول: القيمة المنزلية',2:'الفصل الثاني: الجمع والطرح',5:'الفصل الخامس: الضرب في عدد من رقم واحد',6:'الفصل السادس: الضرب في عدد من رقمين',3:'الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها',4:'الفصل الرابع: الأنماط والجبر'}
+def build_ch(ch,solved,src=None,body_only=False):
     es=entries(ch)
     if src:
         keep=[]
@@ -124,6 +136,7 @@ def build_ch(ch,solved,src=None):
         for e,r in flaws:
             x=ITEMS[e['canon']];b+=f'<tr><td>{H(place_label(e["models"]))}</td><td>{H(x["text"][:90])}</td><td>{H(str(r.get("flaw") or "")+" "+str(r.get("notes") or ""))}</td></tr>'
         b+='</table>'
+    if body_only: return b
     htm=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{CSS}</style></head><body>{b}</body></html>'
     name=f'chapter{ch}{"_"+src if src else ""}_{"solved" if solved else "unsolved"}'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(htm);return name,tot,rep
