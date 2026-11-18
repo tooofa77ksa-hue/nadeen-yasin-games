@@ -1,0 +1,424 @@
+[
+ {
+  "uid": "tabuk-065",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "table",
+  "text": "القاعدة: △ − ٤ . المدخلة △: ١٥ ، ١٢ ، ٩ ، ٦ ؛ المخرجة ▭: ١١ ، ٨ ، ........ ، ........",
+  "options": [],
+  "table_text": "المدخلة: ١٥ | ١٢ | ٩ | ٦ ؛ المخرجة: ١١ | ٨ | ... | ...",
+  "figure": "/tmp/m4/figs/tabuk_p3_q2d.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p3_q2d.png"
+ },
+ {
+  "uid": "tabuk-066",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "table",
+  "text": "القاعدة: ........ △ (اكتبها). المدخلة △: ١٠ ، ١٢ ، ١٤ ، ١٦ ؛ المخرجة ▭: ٥ ، ٦ ، ٧ ، ........",
+  "options": [],
+  "table_text": "المدخلة: ١٠ | ١٢ | ١٤ | ١٦ ؛ المخرجة: ٥ | ٦ | ٧ | ...",
+  "figure": "/tmp/m4/figs/tabuk_p3_q2d.png",
+  "legibility_notes": "القاعدة الناقصة تُكتب بخط منقط، رمز العملية غير ظاهر.",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p3_q2d.png"
+ },
+ {
+  "uid": "jazan-086",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "إذا كان عامل يتقاضى ٢٠ ريالاً في الساعة ، فكم ساعة عليه إن يعمل ليتقاضى ١٢٠ ريالاً ؟",
+  "options": [
+   "أ) ٤",
+   "ب) ٥",
+   "ج) ٦",
+   "د) ٧"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-080",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "اذا كانت تكلفة شحن الكتاب الواحد ٤ ريالات ، فكم كتاباً يمكن شحنه ب٣٢ ريالاً؟",
+  "options": [
+   "أ) ٥ كتب",
+   "ب) ٦ كتب",
+   "ج) ٧ كتب",
+   "د) ٨ كتب"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-084",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "اي مما يأتي يمثل جملة عددية للرسم المجاور؟",
+  "options": [
+   "أ) ٦+٣=٩",
+   "ب) ١٠−٧=٣",
+   "ج) ٩−٣=٦",
+   "د) ٧+٣=١٠"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/jazan_p2_8.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/jazan_p2_8.png"
+ },
+ {
+  "uid": "jazan-087",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "زوج الاعداد الذي لا يمكن ان يوجد في جدول قاعدته ( اضرب في ٦ )",
+  "options": [
+   "أ) ٥ و ٣٠",
+   "ب) ٨ و٢٤",
+   "ج) ١٠ و٦٠",
+   "د) ٧ و ٤٢"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-090",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "كتبت عبير خمسة أعداد ( ١٥ , ١٢ ، ٩ ، ٦ , ٣ ) النمط الذي كتبت به الأعداد هو .",
+  "options": [
+   "أ) طرح ٣",
+   "ب) إضافة ٣",
+   "ج) طرح ١",
+   "د) إضافة ١"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-093",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "ما العدد الذي اذا طرحت منه ٢، ثم ضربت الناتج في ٢، ثم اضفت الى ذلك ٧، يكون الناتج ٥٧ ؟",
+  "options": [
+   "أ) ٣٠",
+   "ب) ٢٧",
+   "ج) ٢٤",
+   "د) ٢١"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-094",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "مع سعاد الان ٨ ريالات. أعطاها والدها امس ٤ ريالات ،واعطت اخاها ريالين. فكم ريالاً كان معها في البداية ؟",
+  "options": [
+   "أ) ١٢",
+   "ب) ١٠",
+   "ج) ٨",
+   "د) ٦"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-095",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "tf",
+  "text": "العدد المفقود في الجملة التالية ٩ − □ = ٠ هو ٩",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-101",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "tf",
+  "text": "تتضمن العبارة العددية اعدادا وعمليات وتمثل كمية رياضية",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-102",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "tf",
+  "text": "نجد قيمة المخرجة ، باستعمال عكس قاعدة الدالة .",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "jazan-106",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "table",
+  "text": "اكملي جدول الدالة التالي: القاعدة: △ + ٣ ، المدخلة △ ، المخرجة □ ، المدخلة: ١ ، ٢ ، ٣ ، ٤",
+  "options": null,
+  "table_text": "المدخلة △ | المخرجة □\n١ | \n٢ | \n٣ | \n٤ | ",
+  "figure": "/tmp/m4/figs/jazan_p4_3c.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/jazan_p4_3c.png"
+ },
+ {
+  "uid": "hafr-147",
+  "src": "حفر الباطن ١٤٤٧ ف١",
+  "model": "hafr",
+  "type": "fill",
+  "text": "زرعت فاطمة ٥ زهرات في الصف الأمامي من حديقتها، وزرعت ١٠ زهرات في الصف الثاني، و١٥ زهرة في الصف الثالث وهكذا. فإن عدد الأزهار في الصف الخامس هي ....",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الورقة صورة جوال مائلة؛ الأصفار تظهر نقاطاً (٠).",
+  "chapter": 4
+ },
+ {
+  "uid": "hafr-164",
+  "src": "حفر الباطن ١٤٤٧ ف١",
+  "model": "hafr",
+  "type": "table",
+  "text": "يشتري عبد الله الماء في قوارير صغيرة، باستعمال الجدول المجاور: أوجد عدد القوارير في الصندوق الواحد.",
+  "options": [
+   "أ) ٢٥",
+   "ب) ٢٠",
+   "ج) ١٥",
+   "د) ١٠"
+  ],
+  "table_text": "عدد الصناديق ٢،٤،٦،٨ ← عدد القوارير ٢٠،٤٠،٦٠،٨٠",
+  "figure": "/tmp/m4/figs/hafr_p2_13.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/hafr_p2_13.png"
+ },
+ {
+  "uid": "hafr-170",
+  "src": "حفر الباطن ١٤٤٧ ف١",
+  "model": "hafr",
+  "type": "mcq",
+  "text": "يوجد ٣ أشخاص في احتفال، كل واحد منهم يريد أن يصافح الشخصين الآخرين، ما عدد المصافحات التي ستتم في هذا الاحتفال؟",
+  "options": [
+   "أ) ٣",
+   "ب) ٥",
+   "ج) ٧",
+   "د) ٩"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "hafr-171",
+  "src": "حفر الباطن ١٤٤٧ ف١",
+  "model": "hafr",
+  "type": "mcq",
+  "text": "يسكن عبد العزيز على مسافة كيلومترين شرق مدرسته، وعمر يسكن على مسافة كيلومترين غرب المدرسة. المسافة بين مسكن عمر ومسكن عبد العزيز بالكيلومتر هي:",
+  "options": [
+   "أ) ٢",
+   "ب) ٣",
+   "ج) ٤",
+   "د) ٥"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "sharqia-140",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "word",
+  "text": "مع سعاد الآن ٨ ريالات، أعطاها والدها أمس ٤ ريالات، وأعطت أخاها ريالين. فكم ريالًا كان معها في البداية؟ (باستخدام استراتيجية خطة حل المسألة) ⚠",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "⚠ الجزء الأيمن من السطر الأول مغطى بورقة لاصقة وجزء من النص مقطوع.",
+  "chapter": 4
+ },
+ {
+  "uid": "qassim-179",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "mcq",
+  "text": "أكلت كل من مها وسعاد والجوهرة نوعاً واحد من التفاح والمانجو والموز. إذا أكلت مها المانجو، ولم تأكل الجوهرة الموز. فما نوع الفاكهة التي أكلتها سعاد؟",
+  "options": [
+   "أ) موز",
+   "ب) مانجو",
+   "ج) تفاح",
+   "د) برتقال"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "qassim-183",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "table",
+  "text": "أكمل جدول دالة الجمع (القاعدة: △ + ٣). المدخلة ٢،٣،٤،٥ والمخرجة ٥،٦،□،٨",
+  "options": [
+   "أ) ٧",
+   "ب) ٨",
+   "ج) ٩",
+   "د) ١٠"
+  ],
+  "table_text": "القاعدة △+٣ | المدخلة ٢،٣،٤،٥ | المخرجة ٥،٦،(فراغ)،٨ — الفراغ عند المدخلة ٤",
+  "figure": "/tmp/m4/figs/qassim_p2_12.png",
+  "legibility_notes": "في الأصل خانة المخرجة للمدخلة ٤ فارغة (كُتب فيها ٧ بقلم أزرق)؛ الخانة ٨ مطبوعة.",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/qassim_p2_12.png"
+ },
+ {
+  "uid": "qassim-184",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "table",
+  "text": "أكمل جدول دالة الضرب (القاعدة: △ × ٢). المدخلة ٣،٤،٥،٦ والمخرجة ٦،□،١٠،١٢",
+  "options": [
+   "أ) ١٢",
+   "ب) ١٠",
+   "ج) ٩",
+   "د) ٨"
+  ],
+  "table_text": "القاعدة △×٢ | المدخلة ٣،٤،٥،٦ | المخرجة ٦،(فراغ)،١٠،١٢",
+  "figure": "/tmp/m4/figs/qassim_p2_13.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/qassim_p2_13.png"
+ },
+ {
+  "uid": "qassim-188",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "mcq",
+  "text": "إذا علمت أن ٦ دببة تأكل ٦٠٠٠ نملة في اليوم، فما عدد النمل الذي تأكله ٣ دببة في اليوم؟",
+  "options": [
+   "أ) ٤٠٠٠ نملة",
+   "ب) ٣٠٠٠ نملة",
+   "ج) ٢٠٠٠ نملة",
+   "د) ١٠٠٠ نملة"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الصفحة ٣ ضبابية؛ قرأتُ «٦ دببة» و«٦٠٠٠ نملة» و«٣ دببة» بمعاينة صعبة، والجواب المدوّر ب متسق مع هذه القراءة.",
+  "chapter": 4
+ },
+ {
+  "uid": "qassim-201",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "table",
+  "text": "أكمل الجدول التالي (القاعدة: △ − ٥): المدخلة ١٠ ← المخرجة ٥؛ المدخلة ١٢ ← المخرجة □",
+  "options": null,
+  "table_text": "القاعدة △−٥ | المدخلة ١٠ ← ٥ ؛ ١٢ ← (فراغ)",
+  "figure": "/tmp/m4/figs/qassim_p4_2t.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/qassim_p4_2t.png"
+ },
+ {
+  "uid": "hail-011",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "قدّر ناتج ضرب: ٣ × ٤٧",
+  "options": [
+   "أ) ٤٠",
+   "ب) ٨٠",
+   "ج) ١٥٠",
+   "د) ٣٢٠"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الخياران أ (٤٠) ود (٣٢٠) مقروءان بصعوبة.",
+  "chapter": 5
+ },
+ {
+  "uid": "hail-012",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "جميع قواسم العدد ١٢:",
+  "options": [
+   "أ) ٢، ٦",
+   "ب) ١، ١٢",
+   "ج) ١، ٢، ٦",
+   "د) ١، ٢، ٣، ٤، ٦، ١٢"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 5
+ },
+ {
+  "uid": "hail-013",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "يقرأ خالد كل يوم ٢٠ صفحة، فكم صفحة يقرأ في ٤ أيام؟",
+  "options": [
+   "أ) ٤٠ صفحة",
+   "ب) ٦٠ صفحة",
+   "ج) ٨٠ صفحة",
+   "د) ١٢٠ صفحة"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "رقم السؤال مقصوص (١٤).",
+  "chapter": 5
+ },
+ {
+  "uid": "hail-014",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "ما العدد المناسب في ▭ لتصبح الجملة العددية التالية صحيحة؟ ١٠ × ▭ = ٤٥٠",
+  "options": [
+   "أ) ١٥",
+   "ب) ٢٠",
+   "ج) ٣٥",
+   "د) ٤٥"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الجملة تظهر بصرياً ٤٥٠ = ▭ × ١٠. لا دائرة حول أي خيار. رقم السؤال مقصوص.",
+  "chapter": 5
+ }
+]

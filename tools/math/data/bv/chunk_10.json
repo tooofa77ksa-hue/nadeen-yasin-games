@@ -1,0 +1,387 @@
+[
+ {
+  "uid": "p2-432",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M17",
+  "type": "mcq",
+  "text": "اكمل النمط ٣٠ ، ٦٠ ، ١٢٠ ، .......... ، ٤٨٠",
+  "options": [
+   "أ) ٢٤٠",
+   "ب) ٣٠٠",
+   "ج) ١٨٠"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-443",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "أي العمليات تجعل الجملة العددية ٧٩ □ ٢٦ = ١٠٥",
+  "options": [
+   "أ) +",
+   "ب) −",
+   "ج) ×",
+   "د) ÷"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-444",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "إذا كان ثمن قلم الحبر ٤ ريال وثمن القلمين ٨ ريال وثمن ثلاثة أقلام ١٢ ريال فما ثمن أربعة أقلام؟",
+  "options": [
+   "أ) ١٢",
+   "ب) ١٤",
+   "ج) ١٦",
+   "د) ٢٠"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-445",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "طول سرحان العام الماضي ١٢٨ سم وطوله هذا العام ١٣٥ سم. نعبر عن الزيادة في الطول بـ:..........",
+  "options": [
+   "أ) ٢٦٣ = ١٣٥ + ١٢٨",
+   "ب) ٧ = ١٢٨ − ١٣٥",
+   "ج) ١٧ = ١٢٨ − ١٣٥",
+   "د) ٧ = ١٢٨ + ١٣٥"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "ترتيب الأرقام داخل جمل ب وج في الصورة RTL.",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-447",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "قاعدة الدالة في الجدول التالي هي:",
+  "options": [
+   "أ) ٦ + Δ",
+   "ب) ٦ − Δ",
+   "ج) Δ ÷ ٣",
+   "د) Δ × ٣"
+  ],
+  "table_text": "المدخلات Δ: ٩، ١٥، ١٨ — المخرجات □: ٣، ٥، ٦",
+  "figure": "/tmp/m4/figs/p2_p42_5.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p42_5.png"
+ },
+ {
+  "uid": "p2-462",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "tf",
+  "text": "العبارة العددية مثل: ٥ × ٧ =٣٥ والجملة العددية مثل ٥ × ٧",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-463",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "tf",
+  "text": "إذا كانت قيمة المخرجة في الجدول الذي قاعدته Δ × ٤ هي ٣٢ فإن قيمة Δ = ٧",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-464",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "tf",
+  "text": "العدد الذي اذا أضفت إليه ٨ وطرحت ١٠ من المجموع وضاعفت الفرق ينتج ٤٤ هو ٢٤",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-468",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M20",
+  "type": "mcq",
+  "text": "أي مما يلي يمثل الجملة العددية بالرسم المجاور ؟ (٧ دوائر، الأولى مشطوبة)",
+  "options": [
+   "أ) ٦ + ١ = ٧",
+   "ب) ٧ − ١ = ٦",
+   "ج) ٥ + ١ = ٦",
+   "د) ٧ − ٢ = ٥"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/p2_p44_2.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p44_2.png"
+ },
+ {
+  "uid": "p2-473",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M20",
+  "type": "mcq",
+  "text": "مع سعاد ٨ ريالات ، أعطاها والدها أمس ٤ ريالات ، وأعطت أخاها ريالين ، كم كان معها بالبداية ؟",
+  "options": [
+   "أ) ٦",
+   "ب) ٧",
+   "ج) ٨",
+   "د) ٩"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-483",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "mcq",
+  "text": "أي من التالي عبارة عددية :",
+  "options": [
+   "أ) ٣ + ٦ = ٩",
+   "ب) ٣ + ٦",
+   "ج) ٣ > ٦"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-484",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "mcq",
+  "text": "تمثيل للجملة العددية : (٤ نقاط ممتلئة و٢ مشطوبة)",
+  "options": [
+   "أ) ٤ + ٢ = ٦",
+   "ب) ٦ − ٢ = ٤",
+   "ج) ٤ − ٢ = ٢"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/p2_p47_2.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p47_2.png"
+ },
+ {
+  "uid": "p2-485",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "mcq",
+  "text": "٢ × Δ = ١٤ ؛ Δ =",
+  "options": [
+   "أ) ٧",
+   "ب) ٨",
+   "ج) ٩"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-486",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "mcq",
+  "text": "نضع في الفراغ لتكون الجملة العددية صحيحة : ٢٢ − ٦ > ١٣ ○ ٣",
+  "options": [
+   "أ) +",
+   "ب) -",
+   "ج) ×"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "اتجاه علامة < في الصورة RTL؛ اتفق مع تعليق الإجابة ١٠ < ١٦.",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-487",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "word",
+  "text": "كان النبي ﷺ ٣ أبناء من الذكور و ٤ من الإناث ، فكم يكون مجموع أولاد النبي ﷺ ؟ (العبارة العددية، الجملة العددية، الرسم)",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-488",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "word",
+  "text": "عدد آيات سورة الشمس ١٥ آية ،اذا حفظ عمر في الظهر ٥ آيات وفي العصر ٧ آيات ، فكم آية بقيت عليه لحفظ السورة كاملة ؟",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-489",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "table",
+  "text": "اكتشف القاعدة ثم اكمل الجدول (+) | أكمل الجدول (×٤) | أكمل الجدول (÷٢) مع وصف النمط",
+  "options": [],
+  "table_text": "أزرق: ١٢→١٥، ١٦→١٩، ١٨→؟ ، ؟→١٧ | برتقالي ×٤: ٤،٥،٦،٧ | أصفر ÷٢: ٨،١٢،١٦،٢٠",
+  "figure": "/tmp/m4/figs/p2_p47_6.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p47_6.png"
+ },
+ {
+  "uid": "p2-490",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "table",
+  "text": "يقوم سامي بالتبرع من كل مال يحصل عليه بمبلغ ٣ ريالات ، فكم يبقى معه بعد التبرع اذا كان معه ١٠ ، ١٢ ، ١٤ ريال ؟",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "في الإجابة كتب ٤ بدل ١٤ في الجدول (خطأ تصوير)؛ الصحيح ١٤→١١.",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-491",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "fill",
+  "text": "اكتب زوج من المدخلات والمخرجات للقاعدة Δ × ٥ = □ ؛ ضع ( + أو - ) لتكون الجملة العددية صحيحة : ٣٣٣ + ١٧ = ٣٥٥ ○ ٥",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الجملة مقروءة RTL.",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-492",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "other",
+  "text": "في الميزان المجاور كم يجب ان يكون وزن المربع الواحد :",
+  "options": [],
+  "table_text": "كفة: ٥ مربعات + ٥ ؛ الأخرى ٤ مربعات + ١١",
+  "figure": "/tmp/m4/figs/p2_p47_9.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p47_9.png"
+ },
+ {
+  "uid": "p2-493",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M21",
+  "type": "table",
+  "text": "في الاختبار قام سامي بالحل كما التالي ولكن لم يحصل على الدرجة الكاملة مالسبب ؟ القاعدة Δ − ٥ : ١٩→١٤، ٢٤→١٩، ٢٩→٢٥",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/p2_p47_9b.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p47_9b.png"
+ },
+ {
+  "uid": "p2-535",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "أي مما يأتي يمثل جملة رياضية؟",
+  "options": [
+   "أ) ٩ + ٧",
+   "ب) ١٥ − ٨",
+   "ج) ٩ + ٧ = ١٦",
+   "د) ٤ + س"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-536",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "كم قلماً يتم توزيعها على ٨ طلاب؟ (جدول: عدد الطلاب ٣←١٥ قلم ، ٤←٢٠ ، ٨← ......)",
+  "options": [
+   "أ) ٢٠",
+   "ب) ٣٠",
+   "ج) ٣٥",
+   "د) ٤٠"
+  ],
+  "table_text": "عدد الطلاب | عدد الأقلام: ٣|١٥ ؛ ٤|٢٠ ؛ ٨|......",
+  "figure": "/tmp/m4/figs/p2_p56_13.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p56_13.png"
+ },
+ {
+  "uid": "p2-546",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "mcq",
+  "text": "إذا استمر النمط التالي: ٧ ، ١٢ ، ١٧ ، ٢٢ ، ٢٧ ، ..... حتى ١٢ عدد. أوجد مجموع آخر عددين؟",
+  "options": [
+   "أ) ٦٢",
+   "ب) ٦٩",
+   "ج) ٤٩",
+   "د) ١١٩"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الحد الحادي عشر ٥٧ والثاني عشر ٦٢",
+  "chapter": 4
+ },
+ {
+  "uid": "p2-553",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "table",
+  "text": "أكمل الجدول: القاعدة: Δ ÷ ٢ = □ ؛ (Δ=٨ ← ......) ، (Δ=١٠ ← ......) ، (Δ=...... ← □=٦)",
+  "options": null,
+  "table_text": "Δ | □ : ٨|... ؛ ١٠|... ؛ ...|٦",
+  "figure": "/tmp/m4/figs/p2_p58_5.png",
+  "legibility_notes": "",
+  "chapter": 4,
+  "figure_redrawn": "/tmp/m4/redraw/p2_p58_5.png"
+ },
+ {
+  "uid": "p2-560",
+  "src": "الفترة الثانية ١٤٤٨ ف١ (رابع)",
+  "model": "M19",
+  "type": "word",
+  "text": "مع خالد الآن ٨ ريال. أعطاه والده ٤ ريال. وأعطى خالد أخاه فهد ريالين. كم كان مع خالد في البداية ؟",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 4
+ }
+]

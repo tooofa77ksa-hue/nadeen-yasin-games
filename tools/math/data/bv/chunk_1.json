@@ -1,0 +1,403 @@
+[
+ {
+  "uid": "hail-003",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "العدد الذي يجعل الجملة صحيحة: ١٥ + ▭ = ١٥",
+  "options": [
+   "أ) ٠",
+   "ب) ١",
+   "ج) ٢",
+   "د) ٣"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-004",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "قدّر ناتج ٤١ + ٣٣ مقرّباً إلى أقرب عشرة:",
+  "options": [
+   "أ) ٤٠",
+   "ب) ٥٠",
+   "ج) ٦٠",
+   "د) ٧٠"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-005",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "اشترى ماجد علبة ألوان بمبلغ ٢٨ ريالاً، وقلم حبر بمبلغ ٤ ريالات، فكم دفع ثمناً لذلك؟",
+  "options": [
+   "أ) ٢٤ ريالاً",
+   "ب) ٢٨ ريالاً",
+   "ج) ٣٠ ريالاً",
+   "د) ٣٢ ريالاً"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-018",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "ما خاصية الجمع المستعملة: ٢ + ٥ = ٥ + ٢",
+  "options": [
+   "أ) خاصية الإبدال",
+   "ب) خاصية التجميع",
+   "ج) خاصية العنصر المحايد",
+   "د) خاصية الفرق"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "رقم السؤال مقصوص. لا دائرة حول أي خيار.",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-025",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "tf",
+  "text": "يتغيّر مجموع عددين بتبديل ترتيبهما.",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-027",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "match",
+  "text": "العمود الثاني: «التقدير» ........ (اكتب الحرف المناسب من العمود الأول)",
+  "options": [
+   "أ) إعطاء إجابة قريبة من الإجابة الدقيقة.",
+   "ب) تسمى فرصة الحصول على نتائج ويوصف بالكلمات: مؤكد، أكثر احتمالاً، متساوي الإمكانية، أقل احتمالاً، مستحيل.",
+   "ج) يسمى حاصل ضرب عدد في عدد آخر.",
+   "د) يسمى مجموع أي عدد والعدد (٠) يساوي العدد نفسه بخاصية.",
+   "هـ) تستخدم لتنظيم البيانات.",
+   "و) يسمى الطريقة التي يكتب بها العدد بالكلمات الصيغة."
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "نص العمود الأول مقروء بصعوبة؛ نسخت المعنى كما ظهر.",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-028",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "match",
+  "text": "العمود الثاني: «العنصر المحايد الجمعي» ........ (اكتب الحرف المناسب من العمود الأول)",
+  "options": [
+   "أ) إعطاء إجابة قريبة من الإجابة الدقيقة.",
+   "ب) تسمى فرصة الحصول على نتائج ويوصف بالكلمات: مؤكد، أكثر احتمالاً، متساوي الإمكانية، أقل احتمالاً، مستحيل.",
+   "ج) يسمى حاصل ضرب عدد في عدد آخر.",
+   "د) يسمى مجموع أي عدد والعدد (٠) يساوي العدد نفسه بخاصية.",
+   "هـ) تستخدم لتنظيم البيانات.",
+   "و) يسمى الطريقة التي يكتب بها العدد بالكلمات الصيغة."
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "نص العمود الأول مقروء بصعوبة؛ نسخت المعنى كما ظهر.",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-033",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "calc",
+  "text": "أوجد ناتج الطرح: ٦٠٤ − ٢٥ (مرتبة عمودياً: ٦٠٤ فوق ٢٥)",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p4_q4ab.png",
+  "legibility_notes": "⚠ الرقم الأول يظهر ٦٠٤ (٦ . ٤ بنقطة بدل الصفر) والثاني ٢٥ (٥ ٢)؛ قراءة محتملة ٦٠٤ − ٢٥.",
+  "chapter": 2,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p4_q4ab.png"
+ },
+ {
+  "uid": "tabuk-042",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "mcq",
+  "text": "ما العدد الذي يجعل الجملة التالية صحيحة؟ ٩ + (▭ + ٢) = (٩ + ٣) + ٢",
+  "options": [
+   "أ) ٢",
+   "ب) ٣",
+   "ج) ٩",
+   "د) ١٢"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الجملة تظهر بصرياً: ٢ + (٣ + ٩) = ٢ + (▭ + ٩)... كتبتها بترتيب القراءة العربي؛ الطرفان فيهما ٢ و٩ و٣.",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-052",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "mcq",
+  "text": "التقديرُ الأنسبُ لنتيجة جمع العددين ١٥٤ + ٢٨ مقرَّباً إلى أقرب عشرة يساوي",
+  "options": [
+   "أ) ١٧٠",
+   "ب) ١٨٠",
+   "ج) ١٩٠",
+   "د) ٢٣٠"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "العدد ١٥٤ + ٢٨ يظهر بصرياً ٢٨+١٥٤.",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-053",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "mcq",
+  "text": "مع محمدٍ ٧٩ ريالاً فإذا اشترى آلةً حاسبة بمبلغ ٤٨ ريالاً، فكم ريالاً تقريباً بقي معه؟",
+  "options": [
+   "أ) ١٠ ريالات",
+   "ب) ٢٠ ريالاً",
+   "ج) ٣٠ ريالاً",
+   "د) ٥٠ ريالاً"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-056",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "fill",
+  "text": "٤٥٢ − ▭ = ٠",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الصفر يظهر نقطة.",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-057",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "fill",
+  "text": "١٣٦ + ٠ = ▭",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-068",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "tf",
+  "text": "الإشارة ( − ) تجعل الجملة العددية ١٠٤ + ١٦ = ١٢٤ ⬭ ٤ صحيحة.",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الجملة تظهر بصرياً: ٤ ⬭ ١٢٤ = ١٦ + ١٠٤؛ المعنى ١٠٤ + ١٦ = ١٢٤ − ٤.",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-074",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "word",
+  "text": "اشترى فيصل حقيبةً بمبلغ ١٣٨ ريالاً، ودفاتر بمبلغ ٢٨ ريالاً، فكم دفع ثمناً لذلك؟",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "tabuk-075",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "calc",
+  "text": "٤٠٠٥ − ٢٧٣ (عمودياً)",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/tabuk_p4_q3d.png",
+  "legibility_notes": "⚠ العدد الأول يظهر ٤.٠٥ (٤ . . ٥) أي ٤٠٠٥ (٤ أرقام) — الصفران نقطتان.",
+  "chapter": 2,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p4_q3d.png"
+ },
+ {
+  "uid": "jazan-078",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "اشترت هند ( ٥ ) لعب واعطتها صديقتها ( ٣ ) لعب فكم عدد اللعب التي لديها ؟",
+  "options": [
+   "أ) ٥+٣=٦",
+   "ب) ٥+٣=٨",
+   "ج) ٥×٣=١٥",
+   "د) ٥-٣=٢"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-079",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "خاصية الجمع المستعملة في ٤٧ + ٠ = ٤٧ هي ...",
+  "options": [
+   "أ) الابدال",
+   "ب) التجميع",
+   "ج) العنصر المحايد",
+   "د) التوزيع"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-089",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "الرقم الذي يجعل الجملة العددية صحيحة ٢٣+( ٤ + ٧ ) = ( ......... + ٧) + ٤",
+  "options": [
+   "أ) ٦",
+   "ب) ٨",
+   "ج) ١١",
+   "د) ٢٣"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "في النص ظهر القوس «٢٣+(٤+٧)» والطرف الثاني «(......+٧)+٤» والإشارة بعد ٢٣ قد تكون + أو =؛ الأقرب + (٢٣+(٤+٧)).",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-091",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "لدى سلوى ٢٠٠٤ مللترات من زيت الزيتون . إذا ملأت علبة سعتها ١٨١٥ مللترًا . فكم مللترًا من الزيت يتبقى لديها ؟",
+  "options": [
+   "أ) ١٧٠",
+   "ب) ١٧٩",
+   "ج) ١٨٠",
+   "د) ١٨٩"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-092",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "mcq",
+  "text": "لدى بلال ٢٥ كرة . اذا اعطى اصدقاءه راشداً واحمد وفارساً وسعداً : ٣ ، ٦ ، ١ ، ٤ كرات . فكم كرة ستبقى معه ؟",
+  "options": [
+   "أ) ١١",
+   "ب) ١٠",
+   "ج) ٩",
+   "د) ٧"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-096",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "tf",
+  "text": "تقدير ناتج العملية ٢٣٤٢ + ٦٣٧ لأقرب مئة هو ٣٠٠٠",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-097",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "tf",
+  "text": "اذا قرب عددان الى العدد الادنى ، فان مجموعهما بعد التقريب اكبر من مجموعهما قبل التقريب",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "jazan-104",
+  "src": "جازان ١٤٤٧ ف١",
+  "model": "jazan",
+  "type": "calc",
+  "text": "أوجدي ناتج الجمع الآتي: ٦٨٢٤ + ٣٤٩",
+  "options": null,
+  "table_text": null,
+  "figure": "/tmp/m4/figs/jazan_p4_3a.png",
+  "legibility_notes": "",
+  "chapter": 2,
+  "figure_redrawn": "/tmp/m4/redraw/jazan_p4_3a.png"
+ },
+ {
+  "uid": "sharqia-109",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "fill",
+  "text": "( ٨ + □ ) + ٧ = ٩ + ( ٨ + ٧ ) العدد المفقود هو ..............",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "ترتيب الحدود في المسح معكوس (RTL) والمفقود ٩ في كل قراءة.",
+  "chapter": 2
+ },
+ {
+  "uid": "sharqia-113",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "fill",
+  "text": "ناتج طرح العددين ٢٠٠٦ - ٥٣٦ = ..............",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "sharqia-116",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "word",
+  "text": "يجمع فريق في المدرسة الزجاجات الفارغة لإعادة التدوير، فإذا جمع الفريق ١٧٢ زجاجة في الشهر الأول و٢٣٦ زجاجة في الشهر الثاني فكم زجاجة جمع الفريق في الشهرين معًا؟",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ }
+]

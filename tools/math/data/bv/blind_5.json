@@ -1,0 +1,164 @@
+[
+ {
+  "uid": "hail-015",
+  "answer": "د) ٢٠٠٠ (١٠×٢٠٠)",
+  "confidence": "medium",
+  "note": "الأصفار في الخيارات تقديرية؛ إن كان المقعد ٢٠٠ فالجواب ٢٠٠٠ وهو الوحيد المناسب"
+ },
+ {
+  "uid": "hail-023",
+  "answer": "خطأ",
+  "confidence": "medium",
+  "note": "الأعداد التي تُضرب تسمى عوامل وليست قواسم"
+ },
+ {
+  "uid": "hail-026",
+  "answer": "ج) يسمى حاصل ضرب عدد في عدد آخر",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-034",
+  "answer": "٢ ، ٢٠ ، ٢٠٠ ، ٢٠٠٠",
+  "confidence": "high",
+  "note": "الصورة الأصلية والمعاد رسمها متطابقتان"
+ },
+ {
+  "uid": "tabuk-043",
+  "answer": "أ) ٤٠ دقيقة",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-054",
+  "answer": "أ) ٦ ، ١٢ ، ١٨",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-055",
+  "answer": "٤٠",
+  "confidence": "high",
+  "note": "السؤال يظهر ٥٦٠ كما في النص"
+ },
+ {
+  "uid": "tabuk-058",
+  "answer": "٣٠٦ (إن كان العدد ١٠٢)؛ واحتمال آخر ٣٦٠ إن كان العدد ١٢٠",
+  "confidence": "low",
+  "note": "قراءة العدد غير مؤكدة"
+ },
+ {
+  "uid": "tabuk-060",
+  "answer": "٢٨٠٠ (بتقريب ٦٥٧ إلى ٧٠٠)؛ احتمال آخر ٢٦٠٠ أو ٢٦٤٠ حسب التقريب",
+  "confidence": "medium",
+  "note": "الناتج الدقيق ٢٦٢٨؛ الصيغة تعتمد على المنزلة المطلوبة"
+ },
+ {
+  "uid": "tabuk-067",
+  "answer": "خطأ",
+  "confidence": "high",
+  "note": "٤×١٢=٤٨"
+ },
+ {
+  "uid": "tabuk-071",
+  "answer": "خطأ",
+  "confidence": "high",
+  "note": "٢ لا يقسم ١٩"
+ },
+ {
+  "uid": "sharqia-110",
+  "answer": "١٨٠٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-149",
+  "answer": "٩٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-154",
+  "answer": "د) ٩.٦.٣",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-157",
+  "answer": "د) ٦٠٦",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-124",
+  "answer": "أ) ٤٢٠٠ (٦٠٠×٧)",
+  "confidence": "medium",
+  "note": "الدقيق ٤٤٢٤ أقرب لـ ٤٤٨٠؛ لكن التقدير بالتقريب إلى المئات يعطي ٤٢٠٠؛ احتمال ب"
+ },
+ {
+  "uid": "hafr-163",
+  "answer": "ب) ٤٨",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-130",
+  "answer": "ب) ٢١،١٤،٧",
+  "confidence": "high",
+  "note": "ترتيب الخيار مقلوب لكن المضاعفات الأولى ٧ ١٤ ٢١"
+ },
+ {
+  "uid": "hafr-168",
+  "answer": "ج) ٣٦٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-145",
+  "answer": "١٨٠٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-159",
+  "answer": "أ) ٤٢٠٠ (٦٠٠×٧)",
+  "confidence": "medium",
+  "note": "نفس sharqia-124؛ احتمال ب"
+ },
+ {
+  "uid": "hafr-165",
+  "answer": "ب) ٢١.١٤.٧",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "qassim-174",
+  "answer": "د) ٥٠ دقيقة",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "qassim-185",
+  "answer": "ب) ٣.٢.٦.١",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "qassim-186",
+  "answer": "ج) ١٥٠٠ فطيرة",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "qassim-187",
+  "answer": "أ) ١٢٠ ريال (٤×٣٠)",
+  "confidence": "high",
+  "note": "الدقيق ١٢٨"
+ },
+ {
+  "uid": "qassim-189",
+  "answer": "د) ١٤٠ دودة",
+  "confidence": "medium",
+  "note": "ضبابية الخيارات؛ ١٤×١٠=١٤٠"
+ }
+]

@@ -13,11 +13,29 @@ UNSAFE={'p2_p35_2','p2_p35_4','p2_p35_5','qassim_p2_12','qassim_p2_13','qassim_p
 F7={}
 for f in sorted(glob.glob('/tmp/m4/c126/final7_*.json')):
     for r in json.load(open(f)): F7[r['uid'].translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))]=r
-from dual import DUAL
+from dual import DUAL,TEXTFIX,FIXREC
+for _u,_t in TEXTFIX.items(): ITEMS[_u].update(_t)
 import book_pages as BP
 IDX={}
+KID={}
+import glob as _g,json as _j,re as _re
+for _f in sorted(_g.glob('/tmp/m4/kid/out_*.json')):
+    try:
+        for _r in _j.load(open(_f)):
+            if (_r.get('check')=='ok' or _r['uid'] in ('sharqia-117','p2-404')) and _r.get('explain'): KID[_r['uid'].translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))]=_r['explain']
+    except Exception as _e: pass
+def _digs(t): return sorted(_re.findall(r'\d+',str(t).translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))))
 def rec(u,ch):
+    r=_rec0(u,ch)
+    if r is not None and u in KID and u not in DUAL and u not in FIXREC:
+        old=r.get('explain') or {}
+        new=KID[u]
+        if _digs(new.get('answer'))==_digs(old.get('answer')) and new.get('steps'):
+            r=dict(r);r['explain']=new
+    return r
+def _rec0(u,ch):
     if u in DUAL and DUAL[u]['final_chapter']==ch: return DUAL[u]
+    if u in FIXREC and FIXREC[u]['final_chapter']==ch: return FIXREC[u]
     if ch in (1,2,6):
         r=F7.get(u)
         if not r or str(r.get('final_chapter'))!=str(ch) or (r.get('unsafe') and u not in ('sharqia-115','sharqia-108')): return None

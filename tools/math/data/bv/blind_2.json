@@ -1,0 +1,164 @@
+[
+ {
+  "uid": "sharqia-121",
+  "answer": "ج) ١٠ (٥٠−٣٨=١٢ ≈ ١٠)",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-123",
+  "answer": "ج) ٧٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-127",
+  "answer": "ج) +",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-138",
+  "answer": "٦٠٠ (٣٨٣≈٤٠٠، ٢١٢≈٢٠٠)",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-144",
+  "answer": "٩",
+  "confidence": "high",
+  "note": "الناتج ٢٤ على الطرف الأيمن؛ ٨+٩+٧=٢٤"
+ },
+ {
+  "uid": "qassim-176",
+  "answer": "أ) ٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "qassim-177",
+  "answer": "ج) ٧٠ طالب (٤٠+٣٠)",
+  "confidence": "high",
+  "note": "كتابة الطالب ٤٠ و٣٠ تتفق مع التقريب لأقرب عشرة"
+ },
+ {
+  "uid": "qassim-178",
+  "answer": "ب) ٤٢٢ مشجعاً",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "qassim-196",
+  "answer": "٢٥٨٢",
+  "confidence": "medium",
+  "note": "العدد الأعلى مغطى؛ القراءة ٧٠٠٥ استنتاجاً من الناتج المكتوب"
+ },
+ {
+  "uid": "qassim-199",
+  "answer": "+",
+  "confidence": "medium",
+  "note": "الجملة ٤ □ ٢ = ٦ في الصورة المعاد رسمها؛ الأصل ضبابي جداً. إن كان المقروء غير ذلك قد يختلف"
+ },
+ {
+  "uid": "qassim-200",
+  "answer": "رسم ٦ أشياء ثم شطب ٥ منها فيبقى ١",
+  "confidence": "medium",
+  "note": "سؤال رسم مفتوح؛ الأرقام ٦ و٥ من الصورة المعاد رسمها والأصل ضبابي"
+ },
+ {
+  "uid": "qassim-202",
+  "answer": "٨٥٩٦",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-006",
+  "answer": "د) مستحيل",
+  "confidence": "high",
+  "note": "القرص: ١١،٩،٣،١٣،٥،٧ ولا يوجد ١٦"
+ },
+ {
+  "uid": "hail-007",
+  "answer": "أ) ١ من ٥",
+  "confidence": "medium",
+  "note": "٥ أقسام (أسود، س، ع، و، د)؛ الأقسام تبدو متساوية؛ الأسود غير مقروء"
+ },
+ {
+  "uid": "hail-019",
+  "answer": "أ) النيتروجين",
+  "confidence": "medium",
+  "note": "أكبر قطاع نتروجين؛ الخيار ج (نيتروجين وأكسجين) غير صحيح؛ لا دائرة على أي خيار"
+ },
+ {
+  "uid": "hail-021",
+  "answer": "صح",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-029",
+  "answer": "ب",
+  "confidence": "medium",
+  "note": "مطابقة المعنى: وصف الاحتمال"
+ },
+ {
+  "uid": "hail-031",
+  "answer": "هـ",
+  "confidence": "medium",
+  "note": "لوحة الإشارات تنظم البيانات؛ الصياغة مقروءة بصعوبة"
+ },
+ {
+  "uid": "hail-036",
+  "answer": "المباراة ٤ (٥ أهداف)",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-037",
+  "answer": "٣ أهداف",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-038",
+  "answer": "المباراة ٢",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-039",
+  "answer": "٣ (٥−٢)",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-048",
+  "answer": "ب) ١٥٠",
+  "confidence": "high",
+  "note": "نقطة ١٤٣٨ على خط ١٥٠؛ الرسم المعاد يطابق الأصل"
+ },
+ {
+  "uid": "sharqia-131",
+  "answer": "ب) السبت",
+  "confidence": "high",
+  "note": "السبت ٤٠ دقيقة"
+ },
+ {
+  "uid": "tabuk-062",
+  "answer": "١٥ دقيقة",
+  "confidence": "medium",
+  "note": "العمود بين ١٠ و٢٠ في منتصفها تقريباً"
+ },
+ {
+  "uid": "tabuk-063",
+  "answer": "مستحيل (٤ غير موجود على القرص)",
+  "confidence": "high",
+  "note": "الأعداد ١١،٩،٦،١٣،٥،٧"
+ },
+ {
+  "uid": "tabuk-064",
+  "answer": "أكثر احتمالاً (٥ من ٦ أعداد فردية: ١١،٩،١٣،٥،٧)",
+  "confidence": "high",
+  "note": "القرص يحوي ٦ زوجي وحيد"
+ }
+]

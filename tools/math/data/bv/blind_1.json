@@ -1,0 +1,164 @@
+[
+ {
+  "uid": "hail-003",
+  "answer": "أ) ٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-004",
+  "answer": "د) ٧٠",
+  "confidence": "high",
+  "note": "40+30"
+ },
+ {
+  "uid": "hail-005",
+  "answer": "د) ٣٢ ريالاً",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-018",
+  "answer": "أ) خاصية الإبدال",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-025",
+  "answer": "خطأ",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-027",
+  "answer": "أ",
+  "confidence": "high",
+  "note": "التقدير = إعطاء إجابة قريبة من الدقيقة"
+ },
+ {
+  "uid": "hail-028",
+  "answer": "د",
+  "confidence": "high",
+  "note": "العنصر المحايد الجمعي = مجموع أي عدد والصفر يساوي العدد نفسه"
+ },
+ {
+  "uid": "hail-033",
+  "answer": "٥٥٢ (٦٠٤ − ٥٢)",
+  "confidence": "medium",
+  "note": "الصورة: الرقمان يظهران ٦٠٤ و٥٢ (٥ على اليسار والـ٢ في خانة الآحاد تحت ٤)، فالقراءة الأرجح ٦٠٤−٥٢=٥٥٢؛ الاحتمال الآخر لو كان العدد ٢٥ فالجواب ٥٧٩. المعاد رسمه يطابق الأصل"
+ },
+ {
+  "uid": "tabuk-042",
+  "answer": "ب) ٣",
+  "confidence": "high",
+  "note": "٩+(٣+٢)=(٩+٣)+٢؛ نفس الجواب في القراءة البصرية البديلة"
+ },
+ {
+  "uid": "tabuk-052",
+  "answer": "ب) ١٨٠",
+  "confidence": "high",
+  "note": "١٥٤→١٥٠ و٢٨→٣٠ فالمجموع ١٨٠؛ الدقيق ١٨٢ يقرّب إلى ١٨٠ أيضاً"
+ },
+ {
+  "uid": "tabuk-053",
+  "answer": "ج) ٣٠ ريالات",
+  "confidence": "high",
+  "note": "٧٩→٨٠ و٤٨→٥٠"
+ },
+ {
+  "uid": "tabuk-056",
+  "answer": "٤٥٢",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-057",
+  "answer": "١٣٦",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-068",
+  "answer": "صح",
+  "confidence": "high",
+  "note": "١٠٤+١٦=١٢٠ و١٢٤−٤=١٢٠"
+ },
+ {
+  "uid": "tabuk-074",
+  "answer": "١٦٦ ريالاً",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-075",
+  "answer": "٣٧٣٢",
+  "confidence": "high",
+  "note": "الصورة والمعاد رسمها متطابقتان: ٤٠٠٥−٢٧٣"
+ },
+ {
+  "uid": "jazan-078",
+  "answer": "ب) ٥+٣=٨",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-079",
+  "answer": "ج) العنصر المحايد",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-089",
+  "answer": "د) ٢٣",
+  "confidence": "high",
+  "note": "٢٣+(٤+٧)=(٢٣+٧)+٤"
+ },
+ {
+  "uid": "jazan-091",
+  "answer": "د) ١٨٩",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-092",
+  "answer": "أ) ١١",
+  "confidence": "high",
+  "note": "٣+٦+١+٤=١٤"
+ },
+ {
+  "uid": "jazan-096",
+  "answer": "خطأ",
+  "confidence": "high",
+  "note": "التقدير لأقرب مئة ٢٣٠٠+٦٠٠=٢٩٠٠ وليس ٣٠٠٠ (٣٠٠٠ تقدير لأقرب ألف)"
+ },
+ {
+  "uid": "jazan-097",
+  "answer": "خطأ",
+  "confidence": "high",
+  "note": "التقريب للأدنى يجعل المجموع أصغر أو مساوياً، لا أكبر"
+ },
+ {
+  "uid": "jazan-104",
+  "answer": "٧١٧٣",
+  "confidence": "high",
+  "note": "الصورة والمعاد رسمها متطابقتان"
+ },
+ {
+  "uid": "sharqia-109",
+  "answer": "٩",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-113",
+  "answer": "١٤٧٠",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-116",
+  "answer": "٤٠٨ زجاجات",
+  "confidence": "high",
+  "note": ""
+ }
+]

@@ -1,0 +1,164 @@
+[
+ {
+  "uid": "tabuk-065",
+  "answer": "المخرجة: ٥ ، ٢ (٩−٤=٥، ٦−٤=٢)",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "tabuk-066",
+  "answer": "القاعدة: △ ÷ ٢ ؛ المخرجة الأخيرة ٨",
+  "confidence": "high",
+  "note": "القاعدة تُقرأ قسمة على ٢ من النمط ١٠→٥، ١٢→٦، ١٤→٧"
+ },
+ {
+  "uid": "jazan-086",
+  "answer": "ج) ٦",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-080",
+  "answer": "د) ٨ كتب",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-084",
+  "answer": "ج) ٩−٣=٦",
+  "confidence": "medium",
+  "note": "الرسم ٩ مكعبات ٣ منها مشطوبة؛ الطرح هو المعتاد، ويحتمل أيضاً أ) ٦+٣=٩ (ما لم يُشطب + المشطوب) لكنه أقل احتمالاً"
+ },
+ {
+  "uid": "jazan-087",
+  "answer": "ب) ٨ و ٢٤",
+  "confidence": "high",
+  "note": "٨×٦=٤٨ لا ٢٤"
+ },
+ {
+  "uid": "jazan-090",
+  "answer": "أ) طرح ٣",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-093",
+  "answer": "ب) ٢٧",
+  "confidence": "high",
+  "note": "(٢٧−٢)×٢+٧=٥٧"
+ },
+ {
+  "uid": "jazan-094",
+  "answer": "د) ٦",
+  "confidence": "high",
+  "note": "٨−٤+٢=٦"
+ },
+ {
+  "uid": "jazan-095",
+  "answer": "صح",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-101",
+  "answer": "صح",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "jazan-102",
+  "answer": "خطأ",
+  "confidence": "medium",
+  "note": "المخرجة تُوجد بتطبيق القاعدة نفسها؛ عكس القاعدة يُستعمل لإيجاد المدخلة. صياغة السؤال ملتبسة"
+ },
+ {
+  "uid": "jazan-106",
+  "answer": "٤ ، ٥ ، ٦ ، ٧",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hafr-147",
+  "answer": "٢٥ زهرة",
+  "confidence": "high",
+  "note": "النمط +٥: ٥،١٠،١٥،٢٠،٢٥"
+ },
+ {
+  "uid": "hafr-164",
+  "answer": "د) ١٠",
+  "confidence": "high",
+  "note": "٢٠÷٢=١٠ في الصندوق"
+ },
+ {
+  "uid": "hafr-170",
+  "answer": "أ) ٣",
+  "confidence": "high",
+  "note": "أ-ب، أ-ج، ب-ج"
+ },
+ {
+  "uid": "hafr-171",
+  "answer": "ج) ٤",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "sharqia-140",
+  "answer": "٦ ريالات",
+  "confidence": "medium",
+  "note": "النص جزء منه مقطوع بورقة لاصقة، لكنه مطابق لـ jazan-094 وجوابه ٦"
+ },
+ {
+  "uid": "qassim-179",
+  "answer": "أ) موز",
+  "confidence": "high",
+  "note": "مها مانجو، الجوهرة ليست موز ولا مانجو فهي تفاح، إذن سعاد موز"
+ },
+ {
+  "uid": "qassim-183",
+  "answer": "أ) ٧",
+  "confidence": "high",
+  "note": "٤+٣=٧"
+ },
+ {
+  "uid": "qassim-184",
+  "answer": "د) ٨",
+  "confidence": "high",
+  "note": "٤×٢=٨"
+ },
+ {
+  "uid": "qassim-188",
+  "answer": "ب) ٣٠٠٠ نملة",
+  "confidence": "medium",
+  "note": "٦٠٠٠÷٦=١٠٠٠ لكل دب ×٣=٣٠٠٠؛ الملاحظة أن الأرقام مقروءة بصعوبة"
+ },
+ {
+  "uid": "qassim-201",
+  "answer": "٧",
+  "confidence": "high",
+  "note": "١٢−٥=٧"
+ },
+ {
+  "uid": "hail-011",
+  "answer": "ج) ١٥٠",
+  "confidence": "medium",
+  "note": "٣×٤٧≈٣×٥٠=١٥٠ (الناتج الدقيق ١٤١)؛ الخيارات أ ود مقروءة بصعوبة"
+ },
+ {
+  "uid": "hail-012",
+  "answer": "د) ١، ٢، ٣، ٤، ٦، ١٢",
+  "confidence": "high",
+  "note": ""
+ },
+ {
+  "uid": "hail-013",
+  "answer": "ج) ٨٠ صفحة",
+  "confidence": "high",
+  "note": "٢٠×٤=٨٠"
+ },
+ {
+  "uid": "hail-014",
+  "answer": "د) ٤٥",
+  "confidence": "high",
+  "note": "٤٥٠÷١٠=٤٥"
+ }
+]

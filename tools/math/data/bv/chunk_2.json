@@ -1,0 +1,409 @@
+[
+ {
+  "uid": "sharqia-121",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "mcq",
+  "text": "شاركت ٥٠ طالبة من الصفين الرابع والخامس في رحلة، إذا كان عدد طالبات الصف الرابع ٣٨ طالبة، فإن عدد طالبات الصف الخامس تقريبًا هو:",
+  "options": [
+   "أ) ٥٠",
+   "ب) ٣٠",
+   "ج) ١٠",
+   "د) ٥"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "sharqia-123",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "mcq",
+  "text": "مع خالد ٩٥ ريالاً. إذا اشترى هدية لأمه بـ ٢٥ ريالاً، فكم ريالاً تبقى معه؟",
+  "options": [
+   "أ) ١٢٠",
+   "ب) ١٠٠",
+   "ج) ٧٠",
+   "د) ٥٠"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "sharqia-127",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "mcq",
+  "text": "أي العمليات التالية تجعل الجملة العددية ٧٩ □ ٢٦ = ١٠٥ صحيحة؟",
+  "options": [
+   "أ) ×",
+   "ب) ÷",
+   "ج) +",
+   "د) −"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "sharqia-138",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "calc",
+  "text": "قدر الناتج بتقريب العدد إلى أقرب مئة. ٣٨٣ + ٢١٢",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "hafr-144",
+  "src": "حفر الباطن ١٤٤٧ ف١",
+  "model": "hafr",
+  "type": "fill",
+  "text": "(٨+□)+٧ = ٩+(٧+٨) العدد المفقود هو ....",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "الورقة صورة جوال مائلة؛ الأصفار تظهر نقاطاً (٠). ترتيب الحدود في الجملة مقلوب بصرياً (اتجاه عربي)؛ الناتج واحد.",
+  "chapter": 2
+ },
+ {
+  "uid": "qassim-176",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "mcq",
+  "text": "اكتب العدد المفقود ١٨ - □ = ١٨",
+  "options": [
+   "أ) ٠",
+   "ب) ١",
+   "ج) ٢",
+   "د) ١٨"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "ترتيب الجملة مقلوب بصرياً؛ قرأتها ١٨ − □ = ١٨.",
+  "chapter": 2
+ },
+ {
+  "uid": "qassim-177",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "mcq",
+  "text": "شارك ٣٧ طالب في النشاط الرياضي، وشارك ٢٨ طالباً آخر في النشاط الفني. فكم طالباً شارك في النشاطين تقريباً؟",
+  "options": [
+   "أ) ٥٠ طالب",
+   "ب) ٦٠ طالب",
+   "ج) ٧٠ طالب",
+   "د) ٨٠ طالب"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "كُتب بخط اليد فوق الرقمين ٤٠ و٣٠ (حل الطالب).",
+  "chapter": 2
+ },
+ {
+  "uid": "qassim-178",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "mcq",
+  "text": "كان عدد الذين شاهدوا المباراة عند بدايتها ٦٣٥ مشجعاً، وبعد نهاية الشوط الأول غادر منهم ٢١٣ مشجعاً. فكم مشجعاً بقي لمشاهدة المباراة حتى نهايتها؟",
+  "options": [
+   "أ) ٤٢٠ مشجعاً",
+   "ب) ٤٢٢ مشجعاً",
+   "ج) ٣١٨ مشجعاً",
+   "د) ٣٠٠ مشجعاً"
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "qassim-196",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "calc",
+  "text": "أوجد ناتج الطرح: ٧٠٠٥ − ٤٤٢٣",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "⚠ العدد الأعلى مغطّى بخط اليد (علامات استلاف) وبقي ظاهراً ٥ في الآحاد؛ قرأته ٧٠٠٥ لأن الناتج ٢٥٨٢ يتفق معه.",
+  "chapter": 2
+ },
+ {
+  "uid": "qassim-199",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "other",
+  "text": "أي من العمليتين (+ أم −) تجعل الجملة العددية ٤ □ ٢ = ٦ صحيحة؟",
+  "options": null,
+  "table_text": null,
+  "figure": "/tmp/m4/figs/qassim_p4_2z_draw.png",
+  "legibility_notes": "⚠ الجملة العددية ضبابية جداً (قرأتُها ٤ ○ ٢ = ٦ بتخمين)؛ الدائرة حول رمز لا أستطيع تأكيده. لم أستطع التحقق.",
+  "chapter": 2,
+  "figure_redrawn": "/tmp/m4/redraw/qassim_p4_2z_draw.png"
+ },
+ {
+  "uid": "qassim-200",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "other",
+  "text": "مثل الجملة العددية التالية بالرسم: ٦ − ٥ = ١",
+  "options": null,
+  "table_text": null,
+  "figure": "/tmp/m4/figs/qassim_p4_2z_draw.png",
+  "legibility_notes": "⚠ ضبابية؛ الجملة قُرئت ٦ − ٥ = ١ (رقماً ٦ و٥ غير مؤكدين).",
+  "chapter": 2,
+  "figure_redrawn": "/tmp/m4/redraw/qassim_p4_2z_draw.png"
+ },
+ {
+  "uid": "qassim-202",
+  "src": "القصيم ١٤٤٧ ف١",
+  "model": "qassim",
+  "type": "calc",
+  "text": "أوجد ناتج الجمع: ٦٤٨١ + ٢١١٥",
+  "options": null,
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 2
+ },
+ {
+  "uid": "hail-006",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "استعمل مؤشر القرص الدوّار المجاور في وصف احتمال توقف المؤشر عند العدد ١٦:",
+  "options": [
+   "أ) مؤكد",
+   "ب) متساوي الإمكانية",
+   "ج) أقل احتمالاً",
+   "د) مستحيل"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p1_q7.png",
+  "legibility_notes": "أرقام القرص (١١، ٩، ٣، ١٣، ٥، ٧) مقروءة بصعوبة بسبب الشعار المائي؛ ٦ أقسام.",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p1_q7.png"
+ },
+ {
+  "uid": "hail-007",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "إذا تم تدوير المؤشر، استعمل الأعداد لوصف احتمال توقف المؤشر عند الحرف (و):",
+  "options": [
+   "أ) ١ من ٥",
+   "ب) ٢ من ٥",
+   "ج) ٣ من ٥",
+   "د) ٤ من ٥"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p2_q8.png",
+  "legibility_notes": "رقم السؤال مقصوص عند حافة الصورة (يبدو ٨). الحرف في القسم الأسود غير واضح.",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p2_q8.png"
+ },
+ {
+  "uid": "hail-019",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "mcq",
+  "text": "بيّن التمثيل بالقطاعات الدائرية في الشكل المجاور الغازات المكونة للغلاف الجوي. ما الغاز الأكثر انتشاراً في الغلاف الجوي؟",
+  "options": [
+   "أ) النيتروجين",
+   "ب) الأكسجين",
+   "ج) النتروجين والأكسجين",
+   "د) غازات أخرى"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p3_q20.png",
+  "legibility_notes": "القطاعات: نيتروجين (الأكبر، رمادي) وقطاع أسود أصغر (غالباً أكسجين) وغازات أخرى شريحة رفيعة؛ العنوان غير مقروء كاملاً. لا دائرة حول أي خيار.",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p3_q20.png"
+ },
+ {
+  "uid": "hail-021",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "tf",
+  "text": "المسح هو إحدى طرق جمع البيانات.",
+  "options": [],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "",
+  "chapter": 3
+ },
+ {
+  "uid": "hail-029",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "match",
+  "text": "العمود الثاني: «الاحتمال» ........ (اكتب الحرف المناسب من العمود الأول)",
+  "options": [
+   "أ) إعطاء إجابة قريبة من الإجابة الدقيقة.",
+   "ب) تسمى فرصة الحصول على نتائج ويوصف بالكلمات: مؤكد، أكثر احتمالاً، متساوي الإمكانية، أقل احتمالاً، مستحيل.",
+   "ج) يسمى حاصل ضرب عدد في عدد آخر.",
+   "د) يسمى مجموع أي عدد والعدد (٠) يساوي العدد نفسه بخاصية.",
+   "هـ) تستخدم لتنظيم البيانات.",
+   "و) يسمى الطريقة التي يكتب بها العدد بالكلمات الصيغة."
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "نص العمود الأول مقروء بصعوبة؛ نسخت المعنى كما ظهر.",
+  "chapter": 3
+ },
+ {
+  "uid": "hail-031",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "match",
+  "text": "العمود الثاني: «لوحة الإشارات» ........ (اكتب الحرف المناسب من العمود الأول)",
+  "options": [
+   "أ) إعطاء إجابة قريبة من الإجابة الدقيقة.",
+   "ب) تسمى فرصة الحصول على نتائج ويوصف بالكلمات: مؤكد، أكثر احتمالاً، متساوي الإمكانية، أقل احتمالاً، مستحيل.",
+   "ج) يسمى حاصل ضرب عدد في عدد آخر.",
+   "د) يسمى مجموع أي عدد والعدد (٠) يساوي العدد نفسه بخاصية.",
+   "هـ) تستخدم لتنظيم البيانات.",
+   "و) يسمى الطريقة التي يكتب بها العدد بالكلمات الصيغة."
+  ],
+  "table_text": null,
+  "figure": null,
+  "legibility_notes": "نص العمود الأول مقروء بصعوبة؛ نسخت المعنى كما ظهر.",
+  "chapter": 3
+ },
+ {
+  "uid": "hail-036",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "chart",
+  "text": "ما المباراة التي حصلت على أكبر عدد من الأهداف؟",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p4_q5.png",
+  "legibility_notes": "تمثيل بالأعمدة الأفقية: المباراة ١=٣ ، ٢=٤ ، ٣=٢ ، ٤=٥ (المحور من ٠ إلى ٦). أرقام المحور مقروءة بصعوبة.",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p4_q5.png"
+ },
+ {
+  "uid": "hail-037",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "chart",
+  "text": "كم عدد أهداف في المباراة الأولى؟",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p4_q5.png",
+  "legibility_notes": "",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p4_q5.png"
+ },
+ {
+  "uid": "hail-038",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "chart",
+  "text": "أي المباراة التي حصلت على أربعة أهداف؟",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p4_q5.png",
+  "legibility_notes": "",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p4_q5.png"
+ },
+ {
+  "uid": "hail-039",
+  "src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+  "model": "hail",
+  "type": "chart",
+  "text": "كم يزيد عدد الأهداف في المباراة الرابعة عن عددها في المباراة الثالثة؟",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/hail_p4_q5.png",
+  "legibility_notes": "",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/hail_p4_q5.png"
+ },
+ {
+  "uid": "tabuk-048",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "mcq",
+  "text": "من خلال التمثيل بالخطوط في الشكل المجاور، كم عدد الطلاب الذين استقلّوا الحافلة المدرسية عام ١٤٣٨ هـ؟",
+  "options": [
+   "أ) ١٢٥",
+   "ب) ١٥٠",
+   "ج) ٢٢٥",
+   "د) ٢٥٠"
+  ],
+  "table_text": "عدد الطلاب الذين استقلوا الحافلة: ١٤٣٧ ≈ ٢٥٠ ، ١٤٣٨ ≈ ١٥٠ ، ١٤٣٩ ≈ ١٢٥ ، ١٤٤٠ ≈ ٢٢٥",
+  "figure": "/tmp/m4/figs/tabuk_p2_q9.png",
+  "legibility_notes": "النقطة عند ١٤٣٨ تقع على خط ١٥٠ تقريباً.",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p2_q9.png"
+ },
+ {
+  "uid": "sharqia-131",
+  "src": "الشرقية ١٤٤٧ ف١",
+  "model": "sharqia",
+  "type": "mcq",
+  "text": "مستعملاً التمثيل بالأعمدة المجاور، في أي يوم قضى خالد أطول وقت في حل واجب الرياضيات؟",
+  "options": [
+   "أ) الأربعاء",
+   "ب) السبت",
+   "ج) الأحد",
+   "د) الإثنين"
+  ],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/sharqia_p2_15.png",
+  "legibility_notes": "",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/sharqia_p2_15.png"
+ },
+ {
+  "uid": "tabuk-062",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "chart",
+  "text": "كم دقيقة قضى خالد في حل واجب الرياضيات يوم الثلاثاء؟",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/tabuk_p3_q2b.png",
+  "legibility_notes": "⚠ ارتفاع عمود الثلاثاء نصف الفاصل بين ١٠ و٢٠ (١٥)، لا قيمة مكتوبة عليه.",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p3_q2b.png"
+ },
+ {
+  "uid": "tabuk-063",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "word",
+  "text": "توقف المؤشر عند العدد ٤",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/tabuk_p3_q2c.png",
+  "legibility_notes": "أعداد القرص: ١١ ، ٩ ، ٦ ، ١٣ ، ٥ ، ٧ (٦ أجزاء متساوية).",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p3_q2c.png"
+ },
+ {
+  "uid": "tabuk-064",
+  "src": "تبوك ١٤٤٧ ف١",
+  "model": "tabuk",
+  "type": "word",
+  "text": "توقف المؤشر عند عدد فردي",
+  "options": [],
+  "table_text": null,
+  "figure": "/tmp/m4/figs/tabuk_p3_q2c.png",
+  "legibility_notes": "",
+  "chapter": 3,
+  "figure_redrawn": "/tmp/m4/redraw/tabuk_p3_q2c.png"
+ }
+]
