@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>مفاتيح رياضيات نادين</title>
+<style>
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#fff8e1;font-family:'B',sans-serif;padding:12px 12px 40px;color:#333;line-height:1.55}
+.card{background:#fff;border:4px solid #ddd;border-radius:20px;padding:14px;margin:12px auto;max-width:720px}
+.bis{text-align:center;font-size:1.7rem;color:#1b7f4b;margin:4px 0}
+.imag{background:#f3f0ff;border-color:#7a5af8;text-align:center;font-size:1.05rem}
+.praise{text-align:center;color:#c2410c;font-size:1.05rem}
+h2{margin:0 0 6px;font-size:1.15rem;color:#4a2fc0}
+h3{margin:14px 0 4px;font-size:1.05rem}
+.key{background:#fff3bf;border:3px solid #f59f00;border-radius:14px;padding:8px 12px;margin:8px 0;font-size:1.1rem}
+.mem{background:#e7f5ff;border:3px solid #1c7ed6;border-radius:14px;padding:8px 12px;margin:8px 0}
+.see{background:#ebfbee;border:3px solid #2f9e44;border-radius:14px;padding:8px 12px;margin:8px 0}
+.see b{color:#2b8a3e}
+button{font:inherit;font-size:1rem;border:4px solid #7a5af8;background:#fff;color:#4a2fc0;border-radius:16px;padding:10px 16px;margin:4px;cursor:pointer;min-height:48px}
+button.g{background:#7a5af8;color:#fff}
+button.o{background:#2f9e44;border-color:#2f9e44;color:#fff}
+.fc{min-height:130px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.2rem;background:#fffbe6;border:4px dashed #f59f00;border-radius:18px;padding:12px;cursor:pointer}
+.fc.back{background:#ebfbee;border-color:#2f9e44}
+.row{text-align:center}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.tabs button.on{background:#7a5af8;color:#fff}
+.small{font-size:.8rem;color:#777}
+</style></head><body>
+<div class="bis">بسم الله الرحمن الرحيم</div>
+<div class="card imag">🌟 <b>تخيّلي نفسك في الاختبار:</b> جالسة هادئة، تأخذين نفساً عميقاً، تقولين «بسم الله»، وتفتحين الورقة وأنتِ مبتسمة. تقرئين السؤال <b>مرتين</b>، وتسألين نفسك: ماذا يريدون مني؟ ثم تحلّين خطوة خطوة. أنتِ تعرفين هذا، ركّزي وستصلين بإذن الله.</div>
+<div class="card praise" id="pr"></div>
+
+<div class="card">
+ <h2>🔁 مراجعة اليوم (٤ بطاقات)</h2>
+ <div class="small" style="text-align:center">اقرئي السؤال، جاوبي في بالك، ثم اضغطي البطاقة لترين الجواب.</div>
+ <div id="fc" class="fc"></div>
+ <div class="row" id="fcb"></div>
+</div>
+
+<div class="card">
+ <h2>🎲 لعبة جدول الضرب</h2>
+ <div class="row"><button class="o" onclick="go('mult')">العبي الآن</button></div>
+</div>
+
+<div class="card">
+ <h2>🔑 مفاتيح الدروس</h2>
+ <div class="tabs" id="tabs"></div>
+ <div id="les"></div>
+</div>
+<div class="row"><button class="g" onclick="go('ch3')">📊 مدرّبة الفصل الثالث</button><button class="g" onclick="go('ch4x')">📝 أسئلة الفصل الرابع</button></div>
+<script>
+const KEYS=[{"id": "٣-١", "title": "جمع البيانات وتنظيمها", "keys": ["المسح: طريقة نجمع بها البيانات (نسأل ونسجّل).", "نُنظّم البيانات في لوحة إشارات أو في جدول تكراري.", "الخمسة تُكتب أربعة أعواد وخطاً مائلاً يقطعها: ||||/ وليس |||||"], "mem": "«أربعة أعواد وخط مائل، بوابة الخمسة مقفولة». ونعدّ الحزم بالخمسات ثم نضيف الباقي.", "see": ["إذا شفتي لوحة إشارات ← عدّي كل حزمة خمسة، ثم ما بقي ← واكتبي العدد في الجدول التكراري.", "التكرار = كم مرة تكرر الشيء."], "cards": [["كيف نكتب العدد ٥ بالإشارات؟", "أربعة أعواد وخط مائل يقطعها ||||/"], ["ماذا نسمي جدول الأعداد الذي نسجّل فيه عدد المرات؟", "الجدول التكراري"], ["ما المسح؟", "طريقة لجمع البيانات"]]}, {"id": "٣-٢", "title": "خطة حل المسألة: إنشاء جدول", "keys": ["افهم: ما المعطيات؟ وما المطلوب؟", "خطّط: أنشئ جدولاً.", "حلّ: أكمل الجدول بنمط الزيادة.", "تحقق: استعمل الضرب والقسمة للتأكد."], "mem": "«أفهم، أخطّط، أحلّ، أتحقّق». أربع خطوات، وأنا أقولها بصوت هادئ في بالي.", "see": ["إذا كانت المسألة فيها شيء يزيد بنفس المقدار كل مرة ← ارسمي جدولاً ← واكتبي الزيادة صفاً بعد صف."], "cards": [["ما خطوات حل المسألة؟", "افهم ← خطط ← حل ← تحقق"], ["متى ننشئ جدولاً؟", "عندما يزيد الشيء بنفس المقدار كل مرة"]]}, {"id": "٣-٣", "title": "التمثيل بالأعمدة", "keys": ["نقارن بين البيانات بأعمدة مختلفة الطول.", "العمود الأطول يمثل القيمة الأكثر.", "المحور الأفقي (تحت) فيه الأسماء، والمحور الرأسي فيه الأرقام (المقياس)."], "mem": "«طويل = كثير، قصير = قليل». وأقرأ العنوان أولاً، ثم أنظر كم تساوي كل خانة.", "see": ["إذا شفتي «الأكثر» ← أطول عمود.", "إذا شفتي «الأقل» ← أقصر عمود.", "إذا شفتي «كم يزيد» ← قيمة الأطول ناقص قيمة الثاني.", "قبل أي رقم: انظري كم تساوي كل خانة (٢ أو ٥ أو ١٠)."], "cards": [["ماذا يمثل العمود الأطول؟", "القيمة الأكثر"], ["أين نجد الأرقام في التمثيل بالأعمدة؟", "على المحور الرأسي (المقياس)"], ["كيف نعرف كم تساوي كل خانة؟", "نطرح رقمين متتاليين على المحور"]]}, {"id": "٣-٤", "title": "التمثيل بالخطوط", "keys": ["يوضح كيف تتغير البيانات مع مرور الزمن.", "الخط الصاعد يعني زيادة، والنازل يعني نقصاناً.", "لأقل قيمة: أدنى نقطة، ثم أنزل منها وأقرأ اليوم أو السنة."], "mem": "«صاعد يزيد، نازل ينقص». والنقطة العالية = قيمة كبيرة.", "see": ["إذا شفتي «الأكثر» ← أعلى نقطة، ثم انظري اسمها تحتها.", "إذا شفتي «الأقل» ← أدنى نقطة.", "النقطة بين خطين ← قيمتها تقريبية، اقرئيها بين الرقمين."], "cards": [["ما معنى الخط الصاعد؟", "البيانات تزيد"], ["كيف نجد اليوم الأقل؟", "نجد أدنى نقطة ثم ننزل ونقرأ اليوم"], ["متى نستعمل التمثيل بالخطوط؟", "لنرى كيف تتغير البيانات مع الزمن"]]}, {"id": "٣-٥", "title": "التمثيل بالقطاعات الدائرية", "keys": ["نقارن الأجزاء من الكل بأجزاء من الدائرة.", "القطاع الأكبر يمثل الجزء الأكبر.", "نصف الدائرة ½، ربعها ¼، ثلاثة أرباعها ¾."], "mem": "«الدائرة كاملة مثل كعكة: كبير يعني كثير». نقسمها نصفين، ثم أرباعاً.", "see": ["إذا شفتي «الأكثر» ← أكبر قطاع، واقرئي لونه في المفتاح.", "إذا شفتي قطاعين متساويين ← قيمتاهما متساويتان."], "cards": [["ماذا يمثل القطاع الأكبر؟", "الجزء الأكبر"], ["كم يساوي نصف الدائرة؟", "½"], ["إذا كان القطاع يغطي نصف النصف فهو…", "ربع الدائرة ¼"]]}, {"id": "٣-٦", "title": "الاحتمال", "keys": ["الاحتمال: فرصة حدوث الناتج.", "نصفه بالكلمات: مؤكد، أكثر احتمالاً، متساوي الإمكانية، أقل احتمالاً، مستحيل.", "ونصفه بالأعداد: مثلاً ٢ من ٩."], "mem": "«مؤكد = الكل، مستحيل = ولا واحد». وإذا العدد ما هو موجود على المؤشر فهو مستحيل.", "see": ["عدّي كل الحالات الممكنة (المقام)، ثم عدّي ما يطابق المطلوب (البسط)، واكتبي: (ما يطابق) من (الكل).", "إذا كل الحالات تناسب ← مؤكد. إذا ولا حالة ← مستحيل. إذا الحالات متساوية ← متساوي الإمكانية."], "cards": [["القرص ليس عليه الرقم ٧، ما احتمال أن يقف المؤشر عليه؟", "مستحيل"], ["كيف نكتب الاحتمال بالأعداد؟", "(ما يطابق) من (كل الحالات)، مثل ٢ من ٩"], ["إذا كانت كل نواتج القرص تناسب المطلوب فالاحتمال…", "مؤكد"]]}];
+const PRAISE=['ركّزتِ فوصلتِ 🌟','كل يوم خطوة صغيرة، ومع الوقت تصير كبيرة 💪','اجتهادك اليوم يفرّحك بإذن الله','التوفيق من الله، وعلينا أن نجتهد ونتوكّل','حين تساعدين صديقتك في الفهم، يثبت الفهم عندك أكثر 🤍','لو أخطأتِ فليس هذا مشكلة، الخطأ يعلّمنا ولا يحرجنا','اقرئي السؤال مرتين، فهذا يريحك ويوصلك للجواب'];
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function go(t){try{parent.postMessage({tab:t},'*')}catch(e){}}
+document.getElementById('pr').textContent=PRAISE[Math.floor(Math.random()*PRAISE.length)];
+/* بطاقات المراجعة */
+const CARDS=KEYS.flatMap(l=>l.cards.map(c=>({q:c[0],a:c[1],id:l.id+c[0]})));
+let BOX={};try{BOX=JSON.parse(localStorage.getItem('nyg_nadeen_keys_box')||'{}')}catch(e){}
+let deck=[],di=0,flipped=false;
+function pickDeck(){const w=CARDS.map(c=>[c,(BOX[c.id]||0)+Math.random()*1.5]).sort((a,b)=>a[1]-b[1]).slice(0,4).map(x=>x[0]);deck=w;di=0;show()}
+function show(){const f=document.getElementById('fc'),b=document.getElementById('fcb');flipped=false;
+ if(di>=deck.length){f.className='fc back';f.innerHTML='أحسنتِ! أنهيتِ مراجعة اليوم 🌟<br><span class="small">اجتهدتِ، والتوفيق من الله</span>';b.innerHTML='<button class="g" onclick="pickDeck()">٤ بطاقات أخرى</button>';return}
+ const c=deck[di];f.className='fc';f.innerHTML=esc(c.q);f.onclick=()=>{if(flipped)return;flipped=true;f.className='fc back';f.innerHTML=esc(c.a);b.innerHTML='<button class="o" id="k1">عرفتها ✅</button><button id="k0">أحتاج أعيدها 🔁</button>';
+  document.getElementById('k1').onclick=()=>{BOX[c.id]=(BOX[c.id]||0)+1;sv();di++;show()};document.getElementById('k0').onclick=()=>{BOX[c.id]=0;sv();di++;show()}};
+ b.innerHTML='<span class="small">اضغطي البطاقة لترين الجواب</span> <span class="small">('+(di+1)+' من '+deck.length+')</span>'}
+function sv(){try{localStorage.setItem('nyg_nadeen_keys_box',JSON.stringify(BOX))}catch(e){}}
+pickDeck();
+/* الدروس */
+const tabs=document.getElementById('tabs'),les=document.getElementById('les');
+function showLesson(i){[...tabs.children].forEach((b,j)=>b.classList.toggle('on',i===j));const l=KEYS[i];
+ les.innerHTML=`<h3>${esc(l.id)} ${esc(l.title)}</h3>`+l.keys.map(k=>`<div class="key">🔑 ${esc(k)}</div>`).join('')+`<div class="mem">🧠 <b>عبارة تثبّت في الذاكرة:</b> ${esc(l.mem)}</div>`+`<div class="see"><b>في الاختبار:</b><br>${l.see.map(s=>'• '+esc(s)).join('<br>')}</div>`}
+KEYS.forEach((l,i)=>{const b=document.createElement('button');b.textContent=l.id;b.onclick=()=>showLesson(i);tabs.appendChild(b)});
+showLesson(0);
+</script></body></html>
