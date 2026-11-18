@@ -1,0 +1,48 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>قلعة الإعراب</title>
+<style>
+@font-face{font-family:'Baloo';font-weight:400;src:url('../darb/fonts/baloo-400.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:700;src:url('../darb/fonts/baloo-700.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:800;src:url('../darb/fonts/baloo-800.ttf') format('truetype')}
+*{box-sizing:border-box}body{margin:0;font-family:"Baloo",system-ui,Tahoma,sans-serif;background:linear-gradient(#fff4e6,#f3f0ff);color:#33243a;padding:10px;min-height:100vh}
+.wrap{max-width:720px;margin:auto}.hero{background:linear-gradient(135deg,#f08c00,#e64980);color:#fff;border-radius:22px;padding:10px;text-align:center;box-shadow:0 6px 0 #c92a2a;position:relative}.hero h1{margin:0;font-size:28px}.hero div{font-size:14px}
+#snd{position:absolute;left:8px;top:8px;font-size:20px;border-radius:12px;border:2px solid #fff;background:rgba(255,255,255,.25);color:#fff;padding:2px 8px;cursor:pointer}
+.card{background:#fff;border:3px solid #e64980;border-radius:20px;padding:14px;margin:10px 0}
+button{font:inherit;font-family:inherit;font-weight:800;border-radius:14px;border:3px solid #e64980;background:#fff0f6;color:#a61e4d;padding:10px 14px;font-size:20px;cursor:pointer}
+button.main{background:#e64980;color:#fff;font-size:24px;width:100%}button.ok{background:#d3f9d8;border-color:#2f9e44;color:#1b5e20}button.no{background:#ffe3e3;border-color:#e03131;color:#c92a2a}
+.room{background:linear-gradient(135deg,#fff3bf,#ffe8cc);border:3px solid #f08c00;border-radius:16px;padding:8px;text-align:center;font-size:24px;font-weight:800}
+.sent{font-size:34px;font-weight:800;text-align:center;margin:10px 0;line-height:1.8}.sent mark{background:#ffe066;border-radius:8px;padding:0 6px}
+.hint{background:#fff9db;border-right:6px solid #fab005;border-radius:10px;padding:10px;font-size:18px;margin-top:8px;line-height:1.8}
+.ans{background:#2f9e44;color:#fff;border-radius:12px;padding:8px 12px;font-weight:800;margin:8px 0;font-size:20px}
+.small{font-size:12px;color:#777;text-align:center;margin:12px 0 2px}.cols{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}.cup{font-size:100px;text-align:center}
+.hook{font-size:48px;text-align:center}
+@media(min-width:1000px){.wrap{max-width:980px}.hero h1{font-size:46px}.sent{font-size:56px}.hint{font-size:28px}.ans{font-size:30px}button{font-size:28px}.room{font-size:36px}#snd{font-size:34px}}
+</style></head><body><div class="wrap">
+<div class="hero"><button id="snd" onclick="tg()">🔊</button><h1>🏰 قلعة الإعراب</h1><div>لغتي · الصف الرابع · الجمل والإعراب كما في كتابك (مع الصفحة)</div></div>
+<div id="app"></div>
+<div class="small">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div></div>
+<script src="fx.js"></script>
+<script>
+function tg(){var m=FX.toggle();document.getElementById('snd').textContent=m?'🔇':'🔊'}
+const $=s=>document.querySelector(s);
+const ROOMS=[
+{r:'البوابة',w:'زارَ',s:['زارَ','فوازٌ','الضواحيَ'],i:0,p:'ص١٠٠',q:'هل أقدر أقول «أنا زرتُ»؟ (تاء المتكلم)',a:'فعل ماضٍ مبني على الفتح.',h:'⛺',hn:'الفتحة خيمة'},
+{r:'الساحة',w:'ترفعُ',s:['ترفعُ','الحكومةُ','جهدَها'],i:0,p:'ص١٠٠',q:'هل يبدأ بحرف من «نأيت»؟ هل أقدر أقول «سـ» قبله؟',a:'فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',h:'🤗',hn:'الضمة حضن'},
+{r:'البرج',w:'اشكرْ',s:['اشكرْ','ربَّك','على','نعمةِ','الأمنِ'],i:0,p:'ص١٠٠',q:'هل أطلب من أحد أن يفعل؟ هل يقبل ياء المخاطبة (اشكري)؟',a:'فعل أمر مبني على السكون.',h:'🗼',hn:'السكون ساكن في البرج'},
+{r:'المكتبة',w:'الأمطارُ',s:['الأمطارُ','غزيرةٌ'],i:0,p:'ص٨٢',q:'بأي اسم بدأت الجملة؟ ثم أي كلمة تتمّ معناه (غزيرةٌ)؟',a:'مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة على آخره. · غزيرةٌ: خبر مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',h:'🤗',hn:'الضمة حضن'},
+{r:'الحديقة',w:'اللهُ',s:['فرضَ','اللهُ','الصلاةَ'],i:1,p:'ص١١٠',q:'مَن فرض الصلاة؟',a:'اسم الجلالة، فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره.',h:'🤗',hn:'الضمة حضن'},
+{r:'الإسطبل',w:'أسلوباً',s:['ابتكرَ','الشابُّ','أسلوباً'],i:2,p:'ص١١٨',q:'ماذا ابتكر الشاب؟',a:'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.',h:'⛺',hn:'الفتحة خيمة'},
+{r:'غرفة الكنز',w:'على',s:['على','ظهرِه'],i:0,p:'ص٨٩',q:'هل هي من السبعة (من، إلى، عن، على، في، الباء، اللام)؟ هل بعدها اسم؟',a:'على: حرف جر. · ظهرِه: اسم مجرور وعلامة جره الكسرة الظاهرة تحت آخره.',h:'🏺',hn:'الكسرة جرّة'}];
+let S=0,ord=[],mode='';
+function sent(R){return R.s.map((w,k)=>k===R.i?'<mark>'+w+'</mark>':w).join(' ')}
+function home(){let last='';try{last=localStorage.getItem('irab_castle')||''}catch(e){}
+ $('#app').innerHTML='<div class="card"><h2 style="margin:0">كيف نحفظ الإعراب ولا ننساه؟</h2><div class="hint">نمشي في قلعة فيها <b>٧ غرف</b>، وكل غرفة فيها <b>جملة من كتابك</b> وإعراب كلمة منها. نتخيّل <b>فارساً صغيراً</b> في الغرفة يحمل الصورة (⛺ خيمة للفتحة · 🤗 حضن للضمة · 🏺 جرّة للكسرة)، ونقول الإعراب <b>٣ مرات</b>. ثم نمشي في القلعة ونتذكّر من الغرف فقط.<br>الغرف في خيالك، وهي داخل هذه الصفحة.</div>'+(last?'<div class="small">آخر مرة مشيتِ في القلعة: '+last+'</div>':'')+'<button class="main" style="margin-top:10px" onclick="learn(0)">ادخلي القلعة 🏰</button></div>'}
+function learn(k){S=k;const R=ROOMS[k];
+ $('#app').innerHTML='<div class="card"><div class="small">الغرفة '+n(k+1)+' من ٧</div><div class="room">🏰 '+R.r+'</div><div class="sent">'+sent(R)+'</div><div class="small">📖 '+R.p+'</div><div class="hint">🤔 اسألي نفسك: <b>'+R.q+'</b></div><div class="ans">'+R.a+'</div><div class="hook">'+R.h+'</div><div class="hint">🎬 تخيّلي <b>فارساً صغيراً</b> يقف في <b>'+R.r+'</b> ويحمل '+R.h+' ('+R.hn+') ويقول الإعراب. قوليه بصوتك <b>٣ مرات</b>.</div><button class="main" style="margin-top:8px" onclick="learnNext()">تخيّلتُها وقلتُها ✔</button></div>'}
+function n(x){return String(x).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d])}
+function learnNext(){FX.pop();if(S<6)return learn(S+1);ord=ROOMS.map((_,k)=>k).sort(()=>Math.random()-.5);S=0;recall()}
+function recall(){const R=ROOMS[ord[S]];
+ $('#app').innerHTML='<div class="card"><div class="small">تذكّر '+n(S+1)+' من '+n(ord.length)+' · غطّي الورقة واكتبي بيدك أو قوليه</div><div class="room">🏰 '+R.r+'</div><div class="hint">ماذا كانت الجملة في <b>'+R.r+'</b>؟ وما إعراب الكلمة التي تحتها خط؟</div><button class="main" onclick="show()">أظهري</button><div id="fb"></div></div>'}
+function show(){const R=ROOMS[ord[S]];$('#fb').innerHTML='<div class="sent">'+sent(R)+'</div><div class="small">📖 '+R.p+'</div><div class="ans">'+R.w+' ← '+R.a+'</div><div class="cols"><button class="ok" onclick="grade(true)">أعربتها صح ✔</button><button class="no" onclick="grade(false)">أعيدها 🔁</button></div>'}
+function grade(ok){if(ok)FX.correct(0);else{FX.oops();ord.push(ord[S])}S++;if(S<ord.length)return recall();
+ try{localStorage.setItem('irab_castle',new Date().toLocaleDateString('ar-SA'))}catch(e){}
+ FX.bravo();$('#app').innerHTML='<div class="card"><div class="cup">💖</div><h2 style="text-align:center">برافو عليكِ يا نادين! 🎉</h2><div class="hint">أكملتِ قلعة الإعراب. <b>غداً</b> امشي فيها من الذاكرة مرة ثانية، ثم بعد ٣ أيام، ثم بعد أسبوع. ما نسيتِه تكتبينه على الورقة «أسأل نفسي ثم أُعرب».</div><div class="cols"><button class="main" onclick="learn(0)">مشي جديد في القلعة</button><button onclick="home()">رجوع</button></div></div>'}
+home();
+</script></body></html>

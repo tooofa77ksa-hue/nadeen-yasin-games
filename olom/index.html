@@ -34,6 +34,7 @@ button.main{background:var(--pk);border-color:#c2255c;color:#fff;font-size:24px}
 <div id="app"></div>
 <div class="small">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div></div>
 <script src="data.js"></script>
+<script src="cas.js"></script>
 <script src="fx.js"></script>
 <script>
 function tgSound(){var m=FX.toggle();document.getElementById("snd").textContent=m?"🔇":"🔊"}
@@ -99,14 +100,15 @@ function end(){FX.bravo();const p0=P[0];
   h+='</div>'});
  h+='<div class="cols noprint"><button class="main" onclick="start()">جولة جديدة</button><button onclick="setup()">تغيير الفصول</button><button onclick="window.print()">🖨️ طباعة</button></div>';$('#app').innerHTML=h}
 const ROOMS=['البوابة','الساحة','البرج','المكتبة','الحديقة','الإسطبل','غرفة الكنز'];
-function ideas(les){const seen={},o=[];SCI.filter(x=>x.les==les&&x.quote&&x.quote.length>15&&!/^لم أجد/.test(x.quote)).forEach(x=>{const k=x.quote.slice(0,40);if(!seen[k]){seen[k]=1;o.push({t:x.quote,p:x.page})}});return o.slice(0,7)}
+const PART=6;
+function parts(les){const L=(window.CAS&&CAS[les])||[];const o=[];for(let i=0;i<L.length;i+=PART)o.push(L.slice(i,i+PART));if(o.length>1&&o[o.length-1].length<3){const t=o.pop();o[o.length-1]=o[o.length-1].concat(t)}return o}
 function castleMenu(){const ls={};SCI.forEach(x=>{if(!ls[x.les])ls[x.les]={les:x.les,t:x.lesT,ch:x.ch}});
  let last={};try{last=JSON.parse(localStorage.getItem('olom_castle')||'{}')}catch(e){}
- let h='<div class="card"><h2 style="margin:0">🏰 قلعة الذاكرة (فرسان الذاكرة)</h2><div style="line-height:1.9;font-size:17px">الفكرة: نضع كل معلومة <b>في غرفة من قلعة</b> مع <b>صورة مضحكة في خيالك</b>، ثم نمشي في القلعة ونتذكّر. جلسة قصيرة: ٥–٧ معلومات فقط (٥–٧ دقائق)، ثم نراجعها بعد يوم وبعد ٣ أيام في حديقة العلوم.</div></div><div class="card"><b>اختاري الدرس:</b>';
- Object.values(ls).filter(l=>ideas(l.les).length>=3).sort((a,b)=>a.les.localeCompare(b.les)).forEach(l=>{h+='<button class="opt" onclick="castle(\''+l.les+'\')">الدرس '+lr(l.les)+' · '+esc(l.t)+' <span style="font-size:13px;color:#888">'+(last[l.les]?'(آخر مرة: '+esc(last[l.les])+')':'')+'</span></button>'});
- h+='</div><button onclick="setup()">رجوع</button>';$('#app').innerHTML=h}
+ let h='<div class="card"><h2 style="margin:0">🏰 قلعة الذاكرة</h2><div style="line-height:1.9;font-size:17px">الفكرة: نضع كل معلومة <b>في غرفة من قلعة</b> (في خيالك، وليست في الموقع) مع <b>صورة مضحكة</b>، ثم نمشي في القلعة ونتذكّر. كل قلعة <b>٦ معلومات تقريباً (٥–٧ دقائق)</b> من كتابك بصفحاتها، ثم تراجعينها غداً وبعد ٣ أيام.</div></div>';
+ Object.values(ls).filter(l=>parts(l.les).length).sort((a,b)=>a.les.localeCompare(b.les)).forEach(l=>{h+='<div class="card"><b>الدرس '+lr(l.les)+' · '+esc(l.t)+'</b><div class="cols">'+parts(l.les).map((p,k)=>{const key=l.les+'#'+k;return '<button class="opt" style="width:auto" onclick="castle(\''+l.les+'\','+k+')">قلعة '+ar(k+1)+(last[key]?' ✔':'')+'</button>'}).join('')+'</div></div>'});
+ h+='<button onclick="setup()">رجوع</button>';$('#app').innerHTML=h}
 let CS=null;
-function castle(les){const id=ideas(les);CS={les,id,i:0,phase:'learn',order:[],ok:0};castleLearn()}
+function castle(les,k){const id=parts(les)[k];CS={les,k,id,i:0,phase:'learn',order:[],ok:0};castleLearn()}
 function castleLearn(){const c=CS,it=c.id[c.i];
  $('#app').innerHTML='<div class="card"><div class="small">الدرس '+lr(c.les)+' · المعلومة '+ar(c.i+1)+' من '+ar(c.id.length)+'</div><div class="room">🏰 '+ROOMS[c.i]+'</div><div class="q">'+esc(it.t)+'</div><div class="small" style="text-align:center">📖 '+esc(it.p)+'</div><div class="hint">🎬 تخيّلي <b>فارساً صغيراً</b> يقف في <b>'+ROOMS[c.i]+'</b> ويحمل <b>صورة كبيرة</b> لهذه المعلومة (مضحكة ومبالغاً فيها). قوليها بصوتك <b>٣ مرات</b> وأنتِ تنظرين إليه.</div><button class="main" style="width:100%;margin-top:8px" onclick="castleNext()">تخيّلتُها ✔</button></div>'}
 function castleNext(){FX.pop();CS.i++;if(CS.i<CS.id.length)return castleLearn();CS.phase='recall';CS.order=CS.id.map((_,k)=>k).sort(()=>Math.random()-.5);CS.i=0;castleRecall()}
@@ -114,7 +116,7 @@ function castleRecall(){const c=CS,k=c.order[c.i];
  $('#app').innerHTML='<div class="card"><div class="small">تذكّر '+ar(c.i+1)+' من '+ar(c.order.length)+' · غطّي الكتاب والورقة</div><div class="room">🏰 '+ROOMS[k]+'</div><div class="hint">ماذا كان الفارس يحمل في <b>'+ROOMS[k]+'</b>؟ قوليها بصوتك أو اكتبيها، ثم اكشفي.</div><button class="main" style="width:100%" onclick="castleShow('+k+')">أظهري</button><div id="fb"></div></div>'}
 function castleShow(k){const it=CS.id[k];$('#fb').innerHTML='<div class="ans">'+esc(it.t)+'</div><div class="small" style="text-align:center">📖 '+esc(it.p)+'</div><div class="cols"><button class="ok" onclick="castleGrade(true)">تذكّرتها ✔</button><button class="no" onclick="castleGrade(false)">أعيدها 🔁</button></div>'}
 function castleGrade(ok){if(ok){CS.ok++;FX.correct(0)}else{FX.oops();CS.order.push(CS.order[CS.i])}CS.i++;if(CS.i<CS.order.length)return castleRecall();
- try{const l=JSON.parse(localStorage.getItem('olom_castle')||'{}');l[CS.les]=new Date().toLocaleDateString('ar-SA');localStorage.setItem('olom_castle',JSON.stringify(l))}catch(e){}
+ try{const l=JSON.parse(localStorage.getItem('olom_castle')||'{}');l[CS.les+'#'+CS.k]=new Date().toLocaleDateString('ar-SA');localStorage.setItem('olom_castle',JSON.stringify(l))}catch(e){}
  FX.bravo();$('#app').innerHTML='<div class="card"><div class="cup">🏰</div><h2 style="text-align:center">أكملتِ قلعة الدرس '+lr(CS.les)+'! 🎉</h2><div class="hint">الآن: <b>غداً</b> امشي في القلعة مرة ثانية من الذاكرة، ثم بعد ٣ أيام. وجرّبي الأسئلة في «حديقة العلوم» لتثبت.</div><div class="cols"><button class="main" onclick="start()">إلى حديقة العلوم</button><button onclick="castleMenu()">قلعة أخرى</button></div></div>'}
 
 G.showWhere=false;setup();
