@@ -1,0 +1,37 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>خزانة جدول الضرب</title>
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:#fff7e6;color:#33243a;padding:12px;max-width:680px;margin:auto}
+h1{text-align:center;color:#7048e8;margin:6px 0}.card{background:#fff;border:3px solid #7048e8;border-radius:18px;padding:16px;margin:10px 0;text-align:center}
+.q{font-size:54px;font-weight:800;direction:ltr;unicode-bidi:isolate}.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+button{font:inherit;font-size:30px;font-weight:800;padding:14px;border-radius:14px;border:3px solid #7048e8;background:#f3f0ff;color:#4c2bb8;cursor:pointer}
+button.ok{background:#d3f9d8;border-color:#2f9e44}button.no{background:#ffe3e3;border-color:#e03131}
+.hint{background:#fff9db;border-right:6px solid #f59f00;border-radius:10px;padding:10px;font-size:20px;margin-top:10px;text-align:right}
+.bx{display:flex;gap:6px;justify-content:center;margin:8px 0}.bx div{flex:1;border-radius:12px;padding:6px;font-weight:800;color:#fff;text-align:center;font-size:13px}
+.small{font-size:13px;color:#666}.big{font-size:20px}
+</style></head><body><h1>🗄️ خزانة جدول الضرب</h1>
+<div class="card big">كل عملية ضرب تعيش في <b>صندوق</b>.<br>أجبتِ صح: تطلع للصندوق الأعلى 🌟 · أخطأتِ: ترجع للأول، <b>وتتعلمين حيلتها</b> ثم تنجحين بها.<br>لا مؤقت ولا ضغط. بسم الله.</div>
+<div class="bx" id="bx"></div><div id="main"></div><div class="small" style="text-align:center;margin:10px">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>
+<script>
+const F=[{"a": 2, "b": 2, "ans": 4, "hint": "٢ × ٢ = ٢ + ٢ = ٤", "hook": ""}, {"a": 2, "b": 3, "ans": 6, "hint": "٢ × ٣ = ٣ + ٣ = ٦", "hook": ""}, {"a": 2, "b": 4, "ans": 8, "hint": "٢ × ٤ = ٤ + ٤ = ٨", "hook": ""}, {"a": 2, "b": 5, "ans": 10, "hint": "٥ × ٢ = نصف ١٠ × ٢ = نصف ٢٠ = ١٠", "hook": ""}, {"a": 2, "b": 6, "ans": 12, "hint": "٢ × ٦ = ٦ + ٦ = ١٢", "hook": ""}, {"a": 2, "b": 7, "ans": 14, "hint": "٢ × ٧ = ٧ + ٧ = ١٤", "hook": ""}, {"a": 2, "b": 8, "ans": 16, "hint": "٢ × ٨ = ٨ + ٨ = ١٦", "hook": ""}, {"a": 2, "b": 9, "ans": 18, "hint": "٩ × ٢ = ١٠ × ٢ − ٢ = ٢٠ − ٢ = ١٨", "hook": ""}, {"a": 5, "b": 5, "ans": 25, "hint": "٥ × ٥ = نصف ١٠ × ٥ = نصف ٥٠ = ٢٥", "hook": ""}, {"a": 5, "b": 6, "ans": 30, "hint": "٥ × ٦ = نصف ١٠ × ٦ = نصف ٦٠ = ٣٠", "hook": ""}, {"a": 5, "b": 7, "ans": 35, "hint": "٥ × ٧ = نصف ١٠ × ٧ = نصف ٧٠ = ٣٥", "hook": ""}, {"a": 5, "b": 8, "ans": 40, "hint": "٥ × ٨ = نصف ١٠ × ٨ = نصف ٨٠ = ٤٠", "hook": ""}, {"a": 5, "b": 9, "ans": 45, "hint": "٩ × ٥ = ١٠ × ٥ − ٥ = ٥٠ − ٥ = ٤٥", "hook": ""}, {"a": 3, "b": 3, "ans": 9, "hint": "٣ × ٣ = ٣ + ٣ + ٣ = ٩", "hook": ""}, {"a": 3, "b": 4, "ans": 12, "hint": "٣ × ٤ = ٤ + ٤ + ٤ = ١٢", "hook": ""}, {"a": 3, "b": 5, "ans": 15, "hint": "٥ × ٣ = نصف ١٠ × ٣ = نصف ٣٠ = ١٥", "hook": ""}, {"a": 3, "b": 6, "ans": 18, "hint": "٣ × ٦ = ٦ + ٦ + ٦ = ١٨", "hook": ""}, {"a": 3, "b": 7, "ans": 21, "hint": "٣ × ٧ = ٧ + ٧ + ٧ = ٢١", "hook": ""}, {"a": 3, "b": 8, "ans": 24, "hint": "٣ × ٨ = ٨ + ٨ + ٨ = ٢٤", "hook": ""}, {"a": 3, "b": 9, "ans": 27, "hint": "٩ × ٣ = ١٠ × ٣ − ٣ = ٣٠ − ٣ = ٢٧", "hook": ""}, {"a": 4, "b": 4, "ans": 16, "hint": "٤ × ٤ = ضعف ضعف ٤ = ٨ ثم ١٦", "hook": ""}, {"a": 4, "b": 5, "ans": 20, "hint": "٥ × ٤ = نصف ١٠ × ٤ = نصف ٤٠ = ٢٠", "hook": ""}, {"a": 4, "b": 6, "ans": 24, "hint": "٤ × ٦ = ضعف ضعف ٦ = ١٢ ثم ٢٤", "hook": ""}, {"a": 4, "b": 7, "ans": 28, "hint": "٤ × ٧ = ضعف ضعف ٧ = ١٤ ثم ٢٨", "hook": ""}, {"a": 4, "b": 8, "ans": 32, "hint": "٤ × ٨ = ضعف ضعف ٨ = ١٦ ثم ٣٢", "hook": ""}, {"a": 4, "b": 9, "ans": 36, "hint": "٩ × ٤ = ١٠ × ٤ − ٤ = ٤٠ − ٤ = ٣٦", "hook": ""}, {"a": 6, "b": 9, "ans": 54, "hint": "٩ × ٦ = ١٠ × ٦ − ٦ = ٦٠ − ٦ = ٥٤", "hook": "٩ × ٦ = ٦٠ − ٦ = ٥٤"}, {"a": 7, "b": 9, "ans": 63, "hint": "٩ × ٧ = ١٠ × ٧ − ٧ = ٧٠ − ٧ = ٦٣", "hook": "٩ × ٧ = ٧٠ − ٧ = ٦٣"}, {"a": 8, "b": 9, "ans": 72, "hint": "٩ × ٨ = ١٠ × ٨ − ٨ = ٨٠ − ٨ = ٧٢", "hook": "٩ × ٨ = ٨٠ − ٨ = ٧٢"}, {"a": 9, "b": 9, "ans": 81, "hint": "٩ × ٩ = ١٠ × ٩ − ٩ = ٩٠ − ٩ = ٨١", "hook": ""}, {"a": 6, "b": 6, "ans": 36, "hint": "٦ × ٦ = ٥ × ٦ + ١ × ٦ = ٣٠ + ٦ = ٣٦", "hook": "ستة في ستة: ستة وثلاثون ٣٦"}, {"a": 6, "b": 7, "ans": 42, "hint": "٦ × ٧ = ٥ × ٧ + ١ × ٧ = ٣٥ + ٧ = ٤٢", "hook": "٦ و٧: «٤٢» اثنان وأربعون"}, {"a": 6, "b": 8, "ans": 48, "hint": "٦ × ٨ = ٥ × ٨ + ١ × ٨ = ٤٠ + ٨ = ٤٨", "hook": "٦ × ٨ = ٤٨ (٥ × ٨ = ٤٠ ثم ٨)"}, {"a": 7, "b": 7, "ans": 49, "hint": "٧ × ٧ = ٥ × ٧ + ٢ × ٧ = ٣٥ + ١٤ = ٤٩", "hook": "سبعة في سبعة: ٤٩"}, {"a": 7, "b": 8, "ans": 56, "hint": "٧ × ٨ = ٥ × ٨ + ٢ × ٨ = ٤٠ + ١٦ = ٥٦", "hook": "٥٦ = ٧ × ٨ ← الأرقام ٥ ٦ ٧ ٨ بالترتيب!"}, {"a": 8, "b": 8, "ans": 64, "hint": "٨ × ٨ = ٥ × ٨ + ٣ × ٨ = ٤٠ + ٢٤ = ٦٤", "hook": "ثمانية في ثمانية: ٦٤"}];const AR='٠١٢٣٤٥٦٧٨٩';const ar=n=>String(n).replace(/\d/g,d=>AR[d]);const $=s=>document.querySelector(s);
+const KEY='nadeen_mult_box_v1';let S={box:{},seen:{},sess:0};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const id=f=>f.a+'x'+f.b;const bx=f=>S.box[id(f)]||0;
+const GAP=[0,1,2,4,7];
+function unlocked(){let n=12;const done=()=>F.slice(0,n).filter(f=>bx(f)>=2).length;while(n<F.length&&done()>=n-1)n+=6;return F.slice(0,Math.min(n,F.length))}
+function due(){return unlocked().filter(f=>bx(f)===0||(S.sess-(S.seen[id(f)]||0))>=GAP[Math.min(bx(f),4)])}
+function stats(){const c=[0,0,0,0,0];F.forEach(f=>c[Math.min(bx(f),4)]++);const col=['#adb5bd','#fa5252','#fd7e14','#40c057','#228be6'],nm=['جديدة','صندوق ١','صندوق ٢','صندوق ٣','متقنة 🏅'];$('#bx').innerHTML=c.map((n,i)=>'<div style="background:'+col[i]+'">'+nm[i]+'<br>'+ar(n)+'</div>').join('')}
+let Q=[],qi=0;
+function start(){S.sess++;save();Q=due().sort(()=>Math.random()-.5).slice(0,10);qi=0;stats();if(!Q.length){$('#main').innerHTML='<div class="card big">🎉 ما عندك عمليات اليوم، ما شاء الله! ارجعي بكرة.</div>';return}ask()}
+function opts(f){const p=f.a*f.b,s=new Set([p]);[f.a*(f.b+1),f.a*(f.b-1),(f.a+1)*f.b,(f.a-1)*f.b,p+10,p-10].forEach(v=>{if(v>0&&s.size<4)s.add(v)});return [...s].sort(()=>Math.random()-.5)}
+function ask(){const f=Q[qi];const o=opts(f);
+$('#main').innerHTML='<div class="card"><div class="small">السؤال '+ar(qi+1)+' من '+ar(Q.length)+'</div><div class="q">'+ar(f.a)+' × '+ar(f.b)+' = ؟</div><div class="btns">'+o.map(v=>'<button data-v="'+v+'">'+ar(v)+'</button>').join('')+'</div><div id="fb"></div></div>';
+document.querySelectorAll('.btns button').forEach(b=>b.onclick=()=>pick(b,f))}
+function pick(b,f){const ok=+b.dataset.v===f.a*f.b;const k=id(f);S.seen[k]=S.sess;
+if(ok){b.classList.add('ok');S.box[k]=Math.min(4,bx(f)+1);save();$('#fb').innerHTML='<div class="hint" style="border-color:#2f9e44">✔ أحسنتِ، ركّزتِ فوصلتِ!</div>';setTimeout(next,700)}
+else{b.classList.add('no');S.box[k]=1;save();
+$('#fb').innerHTML='<div class="hint">اقتربتِ! خذي الحيلة:<br><b>'+f.hint+'</b>'+(f.hook?'<br>💡 '+f.hook:'')+'<br><button id="again" style="font-size:22px;margin-top:8px">جرّبي مرة ثانية</button></div>';
+document.querySelectorAll('.btns button').forEach(x=>x.disabled=true);$('#again').onclick=ask}}
+function next(){qi++;stats();if(qi<Q.length)ask();else{$('#main').innerHTML='<div class="card big">🌟 خلصتِ جلسة اليوم، بارك الله فيك على جهدك!<br><br><button onclick="start()">جلسة جديدة</button></div>'}}
+start();
+</script></body></html>
