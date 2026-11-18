@@ -73,7 +73,7 @@ function spans(p,list){const res=[];for(const g of list){const n=p.text.indexOf(
 function inSpans(tk,sp){return sp.some(([a,b])=>tk.s<b&&tk.e>a)}
 let P,TK,GS,AS,sel,tryN,phase,stepIdx,prev;
 function cur(){return DECK[ST.i]}
-function head(p){return `<div class="card"><div class="small" style="margin-bottom:2px;color:#4a2fc0;font-weight:800">${p.origin==='central'?'📝 من الاختبارات المركزية':'📖 '+L(p.group||'من كتابها')}</div><div class="prob" id="prob"></div>${p.origin==='central'&&p.src?`<div class="src">جاء في: ${p.src}</div>`:''}<div style="text-align:left;margin-top:4px"><button class="sp" onclick="speak(P.text)">🔊 اسمعي المسألة</button></div></div>`}
+function head(p){return `<div class="card"><div class="small" style="margin-bottom:2px;color:#4a2fc0;font-weight:800">${p.origin==='central'?((p.src||'').startsWith('الفترة')?'📝 من اختبارات الفترة الثانية':'📝 من الاختبارات المركزية'):'📖 '+L(p.group||'من كتابها')}</div><div class="prob" id="prob"></div>${p.origin==='central'&&p.src?`<div class="src">جاء في: ${p.src}</div>`:''}<div style="text-align:left;margin-top:4px"><button class="sp" onclick="speak(P.text)">🔊 اسمعي المسألة</button></div></div>`}
 function renderProb(mode){ // mode: 'g' color givens / 'q' ask / none
   const el=$('#prob');let h='';let last=0;
   TK.forEach((k,i)=>{h+=p_esc(P.text.slice(last,k.s));last=k.e;
@@ -87,19 +87,19 @@ function renderProb(mode){ // mode: 'g' color givens / 'q' ask / none
 const p_esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 function setKey(id){return 'nyg_nadeen_masail_5_'+id}
 function setProg(id){try{const s=JSON.parse(localStorage.getItem(setKey(id))||'null');return s&&typeof s.i==='number'?s.i:0}catch(e){return 0}}
-function setItems(id){if(id==='allbook')return ALLP.filter(p=>p.origin==='book');if(id==='central')return ALLP.filter(p=>p.origin==='central');const g=GROUPS.find(x=>x.id===id);return g?ALLP.filter(p=>g.ids.includes(p.id)):[]}
+function setItems(id){if(id==='allbook')return ALLP.filter(p=>p.origin==='book');if(id==='period')return ALLP.filter(p=>p.origin==='central'&&(p.src||'').startsWith('الفترة'));if(id==='central')return ALLP.filter(p=>p.origin==='central'&&!(p.src||'').startsWith('الفترة'));const g=GROUPS.find(x=>x.id===id);return g?ALLP.filter(p=>g.ids.includes(p.id)):[]}
 function menu(){try{speechSynthesis.cancel()}catch(e){}
   $('#bar').innerHTML='';$('#pr').textContent='';$('#mn').style.display='none';$('#stars').textContent='';
   const btn=(id,title,extra)=>{const n=setItems(id).length;const d=Math.min(setProg(id),n);return `<button class="opt" data-s="${id}"><b>${L(title)}</b> <span class="small">(${ar(n)} ${n===1?'مسألة':'مسائل'}${d?'، أنجزتِ '+ar(d):''})</span></button>`};
-  $('#app').innerHTML=`<div class="card"><div class="big">📖 من كتابها</div><div class="small" style="text-align:center;margin-bottom:4px">اختاري الدرس اللي أخذتِه في المدرسة</div>`+GROUPS.map(g=>btn(g.id,g.title)).join('')+btn('allbook','كل مسائل الكتاب')+`</div><div class="card" style="border-color:#e03131"><div class="big">📝 من الاختبارات المركزية</div><div class="small" style="text-align:center;margin-bottom:4px">مسائل جاءت في الاختبارات المركزية، بنصها كما هي</div>`+btn('central','مسائل الاختبارات المركزية')+`</div>`;
+  $('#app').innerHTML=`${GROUPS.length?'<div class="card"><div class="big">📖 من كتابها</div>':'<div class="card" style="display:none">'}<div class="small" style="text-align:center;margin-bottom:4px">اختاري الدرس اللي أخذتِه في المدرسة</div>`+GROUPS.map(g=>btn(g.id,g.title)).join('')+btn('allbook','كل مسائل الكتاب')+`</div>`+(setItems('period').length?`<div class="card" style="border-color:#e03131"><div class="big">📝 من اختبارات الفترة الثانية</div><div class="small" style="text-align:center;margin-bottom:4px">مسائل جاءت في نماذج الفترة الثانية، بنصها كما هي</div>`+btn('period','مسائل الفترة الثانية')+`</div>`:'')+`<div class="card" style="border-color:#e03131"><div class="big">📝 من الاختبارات المركزية</div><div class="small" style="text-align:center;margin-bottom:4px">مسائل جاءت في الاختبارات المركزية، بنصها كما هي</div>`+btn('central','مسائل الاختبارات المركزية')+`</div>`;
   document.querySelectorAll('.opt[data-s]').forEach(b=>b.onclick=()=>openSet(b.dataset.s))}
 let SETID='';function openSet(id){SETID=id;KEY=setKey(id);DECK=setItems(id).slice();loadST();if(ST.i>=DECK.length){ST={i:0,stars:ST.stars,redo:[],tries:{}}}$('#mn').style.display='';start()}
 function start(){ if(ST.i>=DECK.length){return finish()} P=cur();TK=tokens(P);GS=new Set();AS=new Set();
   const gs=spans(P,P.given),as=spans(P,[P.ask]);TK.forEach((k,i)=>{if(inSpans(k,gs))GS.add(i);if(inSpans(k,as))AS.add(i)});
   sel=new Set();phase={name:'r',keep:{g:new Set(),q:new Set()}};tryN=0;stepIdx=0;prev=null;
   $('#pr').textContent=`مسألة ${ar(ST.i+1)} من ${ar(DECK.length)}`;$('#stars').textContent='⭐ '+ar(ST.stars);
-  bar(0);$('#app').innerHTML=head(P)+`<div class="coach">📖 <b>أول شيء:</b> اقرئي المسألة ببطء مرتين: مرة بعينك ومرة بصوتك، وبعدها اضغطي «قرأتها».</div><div style="text-align:center"><button class="go" id="nx">قرأتها ✓</button></div>`;
-  renderProb();$('#nx').onclick=()=>stageG()}
+  bar(0);$('#app').innerHTML=head(P)+`<div class="coach">📖 <b>أول شيء:</b> اقرئي المسألة ببطء مرتين: مرة بعينك ومرة بصوتك. لا نستعجل، والتأنّي يوصلنا للجواب الصحيح.</div><div style="text-align:center"><button class="go" id="nx">قرأتها المرة الأولى ✓</button></div>`;
+  renderProb();let rd=0;$('#nx').onclick=()=>{rd++;if(rd===1){$('#nx').textContent='قرأتها المرة الثانية ✓'}else stageG()}}
 function stageG(){phase={name:'g',keep:{g:new Set(),q:new Set()}};sel=new Set();tryN=0;bar(1);
   $('#app').innerHTML=head(P)+`<div class="coach" id="cm">🔵 <b>لوّني المعطيات:</b> المعطيات هي <b>الأرقام</b> و<b>الكلمة اللي تدل عليها</b> (مثل «٢٠ صفحة»). اضغطي عليها فتتلوّن بالأزرق.</div><div style="text-align:center"><button class="go" id="ck">تحققي ✓</button></div>`;renderProb('g');$('#ck').onclick=checkG}
 function setComp(a,b){return [...a].filter(x=>!b.has(x))}
