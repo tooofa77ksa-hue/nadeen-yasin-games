@@ -1,0 +1,602 @@
+[
+{
+"uid": "hail-011",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "mcq",
+"text": "قدّر ناتج ضرب: ٣ × ٤٧",
+"options": [
+"أ) ٤٠",
+"ب) ٨٠",
+"ج) ١٥٠",
+"د) ٣٢٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "تقدير ناتج الضرب"
+},
+{
+"uid": "hail-012",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "mcq",
+"text": "جميع قواسم العدد ١٢:",
+"options": [
+"أ) ٢، ٦",
+"ب) ١، ١٢",
+"ج) ١، ٢، ٦",
+"د) ١، ٢، ٣، ٤، ٦، ١٢"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "قواسم ومضاعفات"
+},
+{
+"uid": "hail-013",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "mcq",
+"text": "يقرأ خالد كل يوم ٢٠ صفحة، فكم صفحة يقرأ في ٤ أيام؟",
+"options": [
+"أ) ٤٠ صفحة",
+"ب) ٦٠ صفحة",
+"ج) ٨٠ صفحة",
+"د) ١٢٠ صفحة"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "مسألة لفظية بالضرب (مضاعفات ١٠)"
+},
+{
+"uid": "hail-014",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "mcq",
+"text": "ما العدد المناسب في ▭ لتصبح الجملة العددية التالية صحيحة؟ ١٠ × ▭ = ٤٥٠",
+"options": [
+"أ) ١٥",
+"ب) ٢٠",
+"ج) ٣٥",
+"د) ٤٥"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب مضاعفات ١٠ / جمل عددية"
+},
+{
+"uid": "hail-015",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "mcq",
+"text": "نظمت مقاعد قاعة احتفالات في ١٠ صفوف في كل منها ٢٠٠ مقعداً. ما عدد المقاعد في القاعة؟",
+"options": [
+"أ) ١٠",
+"ب) ٢٠٠",
+"ج) ٣٠٠",
+"د) ٢٠٠٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "مسألة لفظية بالضرب (ضرب مضاعفات ١٠٠)"
+},
+{
+"uid": "hail-023",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "tf",
+"text": "الأعداد التي نضربها في بعضها لنجد ناتج الضرب تسمى قواسم.",
+"options": [],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "قواسم وعوامل"
+},
+{
+"uid": "hail-026",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "match",
+"text": "العمود الثاني: «مضاعف العدد» ........ (اكتب الحرف المناسب من العمود الأول)",
+"options": [
+"أ) إعطاء إجابة قريبة من الإجابة الدقيقة.",
+"ب) تسمى فرصة الحصول على نتائج ويوصف بالكلمات: مؤكد، أكثر احتمالاً، متساوي الإمكانية، أقل احتمالاً، مستحيل.",
+"ج) يسمى حاصل ضرب عدد في عدد آخر.",
+"د) يسمى مجموع أي عدد والعدد (٠) يساوي العدد نفسه بخاصية.",
+"هـ) تستخدم لتنظيم البيانات.",
+"و) يسمى الطريقة التي يكتب بها العدد بالكلمات الصيغة."
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "مضاعف العدد"
+},
+{
+"uid": "hail-034",
+"src": "حائل ١٤٤٧ ف١ (الدور الأول)",
+"model": "hail",
+"type": "calc",
+"text": "أوجد ناتج الضرب: ٢ × ١ = ، ٢ × ١٠ = ، ٢ × ١٠٠ = ، ٢ × ١٠٠٠ =",
+"options": [],
+"table_text": null,
+"figure": "/tmp/m4/figs/hail_p4_q4ab.png",
+"chapter_how": "final",
+"topic": "ضرب مضاعفات ١٠ و١٠٠ و١٠٠٠"
+},
+{
+"uid": "tabuk-043",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "mcq",
+"text": "تستغرق مريم ٤ دقائق لتغليف هدية. كم دقيقة تستغرقها لتغليف ١٠ هدايا؟",
+"options": [
+"أ) ٤٠ دقيقة",
+"ب) ٦٠ دقيقة",
+"ج) ٨٠ دقيقة",
+"د) ١٠٠ دقيقة"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "مسألة لفظية بالضرب (مضاعفات ١٠)"
+},
+{
+"uid": "tabuk-054",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "mcq",
+"text": "أيٌّ مما يلي يمثل المضاعفاتِ الأولى للعدد ٦ ؟",
+"options": [
+"أ) ٦ ، ١٢ ، ١٨",
+"ب) ١ ، ٦ ، ١٢",
+"ج) ١٢ ، ١٨ ، ٢٦",
+"د) ٣ ، ١٨ ، ٣٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "قواسم ومضاعفات"
+},
+{
+"uid": "tabuk-055",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "fill",
+"text": "إذا كان ١٤ × ٤ = ٥٦ فإن ١٤ × ▭ = ٥٦٠",
+"options": [],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب مضاعفات ١٠"
+},
+{
+"uid": "tabuk-058",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "fill",
+"text": "٣ × ١٠٢ = ▭",
+"options": [],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في رقم"
+},
+{
+"uid": "tabuk-060",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "fill",
+"text": "تقدير ناتج ضرب ٤ × ٦٥٧ = ▭",
+"options": [],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "تقدير ناتج الضرب"
+},
+{
+"uid": "tabuk-067",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "tf",
+"text": "حاصل ضرب ٤ × ١٢ = ٥٦",
+"options": [],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في عدد من رقمين"
+},
+{
+"uid": "tabuk-071",
+"src": "تبوك ١٤٤٧ ف١",
+"model": "tabuk",
+"type": "tf",
+"text": "العدد ٢ يمثّل قاسماً مشتركاً للعددين ١٩ و ٢٤",
+"options": [],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "قواسم مشتركة"
+},
+{
+"uid": "sharqia-110",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "fill",
+"text": "يبيع مطعم ٣٠٠ فطيرة كل يوم، فإن عدد ما يبيعه في ٦ أيام هو ..............",
+"options": null,
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب مضاعفات ١٠٠"
+},
+{
+"uid": "sharqia-114",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "fill",
+"text": "يتكون دفتر ملصقات من ٥ أوراق، في كل ورقة ١٨ ملصقًا. فإن عدد الملصقات في الدفتر هو ..............",
+"options": null,
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب في رقم واحد"
+},
+{
+"uid": "sharqia-119",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "mcq",
+"text": "من قواسم العدد 18:",
+"options": [
+"أ) 4 ,3 ,2",
+"ب) 6 ,4 ,3",
+"ج) 9 ,5 ,3",
+"د) 9 ,6 ,3"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "القواسم"
+},
+{
+"uid": "sharqia-122",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "mcq",
+"text": "ناتج ضرب الأعداد ٣٠٣ × ٢ =",
+"options": [
+"أ) ٣٠٠",
+"ب) ٣٠٣",
+"ج) ٦٠٠",
+"د) ٦٠٦"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب عدد من رقم واحد"
+},
+{
+"uid": "sharqia-124",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "mcq",
+"text": "تقدير ناتج ضرب ٦٣٢ × ٧ =",
+"options": [
+"أ) ٤٢٠٠",
+"ب) ٤٤٨٠",
+"ج) ٤٥٥٠",
+"د) ٤٩٠٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "تقدير ناتج الضرب"
+},
+{
+"uid": "sharqia-128",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "mcq",
+"text": "في غرفة الصف ٢٤ طاولة؛ إذا كان على كل طاولة كتابان، فإن عدد الكتب على الطاولات جميعها هو:",
+"options": [
+"أ) ٩٦",
+"ب) ٧٢",
+"ج) ٤٨",
+"د) ٢٦"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "مسألة لفظية ضرب"
+},
+{
+"uid": "sharqia-130",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "mcq",
+"text": "أي مما يلي يمثل المضاعفات الأولى للعدد ٧؟",
+"options": [
+"أ) ١٤،٧،١",
+"ب) ٢١،١٤،٧",
+"ج) ٢٨،٢١،١٤",
+"د) ٣٥،٢١،٧"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "المضاعفات"
+},
+{
+"uid": "sharqia-133",
+"src": "الشرقية ١٤٤٧ ف١",
+"model": "sharqia",
+"type": "mcq",
+"text": "ناتج ضرب ٣٦ × ١٠ =",
+"options": [
+"أ) ٣٠٠",
+"ب) ٣٤٠",
+"ج) ٣٦٠",
+"د) ٤٠٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب في ١٠"
+},
+{
+"uid": "hafr-145",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "fill",
+"text": "يبيع مطعم ٣٠٠ فطيرة كل يوم. فإن عدد ما يبيعه في ٦ أيام هو ....",
+"options": null,
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب مضاعفات ١٠٠"
+},
+{
+"uid": "hafr-149",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "fill",
+"text": "يتكون دفتر ملصقات من ٥ أوراق، في كل ورقة ١٨ ملصقًا. فإن عدد الملصقات في الدفتر هو ....",
+"options": null,
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في رقم واحد"
+},
+{
+"uid": "hafr-154",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "mcq",
+"text": "من قواسم العدد ١٨:",
+"options": [
+"أ) ٤.٣.٢",
+"ب) ٦.٤.٣",
+"ج) ٩.٥.٣",
+"د) ٩.٦.٣"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "القواسم"
+},
+{
+"uid": "hafr-157",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "mcq",
+"text": "ناتج ضرب الأعداد ٣٠٣ × ٢ =",
+"options": [
+"أ) ٣٠٠",
+"ب) ٣٠٣",
+"ج) ٦٠٠",
+"د) ٦٠٦"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في رقم واحد"
+},
+{
+"uid": "hafr-159",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "mcq",
+"text": "تقدير ناتج ضرب ٦٣٢ × ٧ =",
+"options": [
+"أ) ٤٢٠٠",
+"ب) ٤٤٨٠",
+"ج) ٤٥٥٠",
+"د) ٤٩٠٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "تقدير ناتج الضرب"
+},
+{
+"uid": "hafr-163",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "mcq",
+"text": "في غرفة الصف ٢٤ طاولة: إذا كان على كل طاولة كتابان، فإن عدد الكتب على الطاولات جميعها هو:",
+"options": [
+"أ) ٢٦",
+"ب) ٤٨",
+"ج) ٧٢",
+"د) ٩٦"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب عدد من رقمين في رقم"
+},
+{
+"uid": "hafr-165",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "mcq",
+"text": "أي مما يلي يمثل المضاعفات الأولى للعدد ٧؟",
+"options": [
+"أ) ١٤.٧.١",
+"ب) ٢١.١٤.٧",
+"ج) ٢٨.٢١.١٤",
+"د) ٣٥.٢١.٧"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "المضاعفات"
+},
+{
+"uid": "hafr-168",
+"src": "حفر الباطن ١٤٤٧ ف١",
+"model": "hafr",
+"type": "mcq",
+"text": "ناتج ضرب ٣٦ × ١٠ =",
+"options": [
+"أ) ٣٠٠",
+"ب) ٣٤٠",
+"ج) ٣٦٠",
+"د) ٤٠٠"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في ١٠"
+},
+{
+"uid": "qassim-174",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "mcq",
+"text": "تستغرق مريم ٥ دقائق لتغليف هدية. كم دقيقة تستغرقها لتغليف ١٠ هدايا؟",
+"options": [
+"أ) ٢٠ دقيقة",
+"ب) ٣٠ دقيقة",
+"ج) ٤٠ دقيقة",
+"د) ٥٠ دقيقة"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في ١٠"
+},
+{
+"uid": "qassim-185",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "mcq",
+"text": "جميع قواسم العدد ٦ هي:",
+"options": [
+"أ) ٥.٤.٦.١",
+"ب) ٣.٢.٦.١",
+"ج) ٣.٢",
+"د) ٦.١"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "القواسم"
+},
+{
+"uid": "qassim-186",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "mcq",
+"text": "يبيع مطعم ٣٠٠ فطيرة كل يوم، فكم يبيع في ٥ أيام؟",
+"options": [
+"أ) ٥٠٠ فطيرة",
+"ب) ١٠٠٠ فطيرة",
+"ج) ١٥٠٠ فطيرة",
+"د) ٢٠٠٠ فطيرة"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "ضرب مضاعفات ١٠٠"
+},
+{
+"uid": "qassim-187",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "mcq",
+"text": "أراد ٤ أصدقاء الذهاب في رحلة. فإذا كانت تكلفة الرحلة ٣٢ ريالاً للفرد، فكم تقريباً سيدفعون؟",
+"options": [
+"أ) ١٢٠ ريال",
+"ب) ١١٠ ريالات",
+"ج) ١٠٠ ريال",
+"د) ١٤٠ ريال"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "تقدير ناتج الضرب"
+},
+{
+"uid": "qassim-189",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "mcq",
+"text": "يأكل طائر صغير ١٤ دودة كل يوم، فكم دودة يأكل في ١٠ أيام؟",
+"options": [
+"أ) ١١٠ دودة",
+"ب) ١٢٠ دودة",
+"ج) ١٣٠ دودة",
+"د) ١٤٠ دودة"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في ١٠"
+},
+{
+"uid": "qassim-191",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "mcq",
+"text": "إذا كان إعداد كوب من الحليب الساخن يحتاج إلى ٣ ملاعق من مسحوق الحليب، فكم ملعقة نحتاج لإعداد ١٢ كوباً من الحليب؟",
+"options": [
+"أ) ١٥ كوب",
+"ب) ٢٠ كوب",
+"ج) ٣٦ كوب",
+"د) ٣٠ كوب"
+],
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في رقم واحد"
+},
+{
+"uid": "qassim-203",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "calc",
+"text": "أوجد ناتج الضرب: ١٢ × ٤",
+"options": null,
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في رقم واحد"
+},
+{
+"uid": "qassim-205",
+"src": "القصيم ١٤٤٧ ف١",
+"model": "qassim",
+"type": "calc",
+"text": "أوجد ناتج الضرب: ١٣ × ٥",
+"options": null,
+"table_text": null,
+"figure": null,
+"chapter_how": "final",
+"topic": "الضرب في رقم واحد"
+}
+]

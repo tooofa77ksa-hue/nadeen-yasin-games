@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لعبة جدول الضرب</title>
+<style>
+@font-face{font-family:'B';font-weight:500;src:url('../shared/fonts/Baloo-Medium.ttf')}
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+:root{--p:#7a5af8;--g:#2fb457;--r:#e03131;--o:#ff8a3d;--b:#2f7bd8}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'B',sans-serif;font-weight:500;margin:0;background:#fff8e1;color:#222;font-size:19px;line-height:1.7;-webkit-text-size-adjust:100%}
+.w{max-width:780px;margin:0 auto;padding:12px 14px 80px}
+h1{font-weight:800;text-align:center;color:var(--p);margin:4px 0;font-size:1.65rem}
+.sub{text-align:center;color:#555;margin-bottom:8px;font-size:.95rem}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:#555}
+.card{background:#fff;border:4px solid var(--p);border-radius:20px;padding:12px 16px;margin:10px 0}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.m{border:4px solid;border-radius:20px;padding:12px 8px;text-align:center;cursor:pointer;font:inherit;background:#fff;min-height:104px;font-weight:800;font-size:1.05rem}
+.m small{display:block;font-weight:500;color:#555;font-size:.82rem;margin-top:2px}
+.m span{font-size:2rem;display:block}
+.c1{border-color:#2f7bd8;background:#eef5ff}.c2{border-color:#2fb457;background:#e9f9ee}.c3{border-color:#e8590c;background:#fff2e9}.c4{border-color:#7a5af8;background:#f3f0ff}.c5{border-color:#d6336c;background:#fff0f5}.c6{border-color:#e0a800;background:#fff8d6}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0}
+.tb{border:4px solid #ddd;background:#fff;border-radius:18px;font:inherit;font-weight:800;font-size:1.5rem;min-height:72px;cursor:pointer;position:relative}
+.tb.on{border-color:var(--p);background:#f3f0ff}.tb i{position:absolute;top:2px;left:6px;font-style:normal;font-size:.9rem}
+.go{background:var(--p);color:#fff;border:0;border-radius:16px;padding:10px 22px;font-weight:800;cursor:pointer;margin:6px 4px;min-height:50px;font:inherit;font-size:1.05rem;font-weight:800}
+.go.g{background:var(--g)}.go.gray{background:#999}
+.q{font-size:2.4rem;font-weight:800;text-align:center;direction:ltr;margin:8px 0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.opt{border:4px solid #ddd;background:#fff;border-radius:18px;font:inherit;font-weight:800;font-size:1.9rem;min-height:84px;cursor:pointer}
+.opt.ok{border-color:var(--g);background:#e3f8ea}.opt.no{border-color:var(--r);background:#ffecec}
+input.ans{font:inherit;font-size:2rem;font-weight:800;width:100%;text-align:center;border:4px solid var(--p);border-radius:16px;padding:8px;direction:ltr}
+.coach{background:#eefaf0;border:3px solid var(--g);border-radius:14px;padding:8px 12px;margin:8px 0;font-size:1rem}
+.coach.warn{background:#fff3e0;border-color:var(--o)}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;direction:ltr;font-size:1.35rem;font-weight:800;margin:8px 0}
+.rows div{background:#f3f0ff;border-radius:12px;padding:2px 10px;text-align:center}
+.skip{display:flex;direction:ltr;justify-content:center;flex-wrap:wrap;gap:8px;font-size:1.3rem;font-weight:800;color:var(--b);margin:6px 0}
+.pg{height:14px;border-radius:8px;background:#eee;overflow:hidden;margin:6px 0}.pg>i{display:block;height:100%;background:var(--g);transition:width .3s}
+.big{font-size:1.25rem;font-weight:800;text-align:center}.small{font-size:.85rem;color:#666}
+.fam{direction:ltr;text-align:center;font-weight:800;font-size:1.25rem;line-height:1.9;color:#14407a}
+</style></head><body><div class="w">
+<div class="top"><span id="pr"></span><span id="stars">⭐ 0</span></div>
+<h1>🎲 لعبة جدول الضرب</h1>
+<div class="sub">بدون وقت وبدون ضغط: تعلّمي · تدرّبي · اكتبي · وركّزتِ فوصلتِ</div>
+<div id="app"></div>
+</div>
+<script>
+const KEY='nyg_nadeen_mult';
+let S={stars:0,ok:{},bad:{},wrong:[]};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.ok)S=Object.assign(S,s)}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=(s,r=document)=>r.querySelector(s);
+const AR='٠١٢٣٤٥٦٧٨٩';const ar=n=>String(n).replace(/\d/g,d=>AR[d]);
+const toEn=s=>String(s).replace(/[٠-٩]/g,d=>AR.indexOf(d)).replace(/[٫,،\s]/g,'');
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const PRAISE=['ركّزتِ فوصلتِ ✨','أحسنتِ 🌟','جهدك واضح يا نادين 💪','بتوفيق الله، كمّلي 🌷','صح! لأنك تذكّرتِ الجدول 👏'];
+const L=s=>String(s).replace(/([+\-−×÷=<>])/g,'\u200E$1\u200E');
+const praise=()=>PRAISE[rnd(0,PRAISE.length-1)];
+const stars=()=>$('#stars').textContent='⭐ '+ar(S.stars);
+function menu(){stars();$('#pr').textContent='';
+  $('#app').innerHTML=`<div class="menu">
+  <button class="m c1" data-m="learn"><span>📚</span>أتعلّم جدول<small>أشوف الجدول وأعدّ بالقفز</small></button>
+  <button class="m c2" data-m="mc"><span>🎯</span>أتدرّب<small>اختاري الجواب الصحيح</small></button>
+  <button class="m c3" data-m="type"><span>✍️</span>أكتب الجواب<small>أكتب الناتج بنفسي</small></button>
+  <button class="m c4" data-m="div"><span>🔁</span>الضرب والقسمة<small>٦ × ٧ = ٤٢ ← ٤٢ ÷ ٧ = ٦</small></button>
+  <button class="m c5" data-m="tens"><span>🔟</span>الضرب في ١٠ و١٠٠ و١٠٠٠<small>نضرب ثم نضيف الأصفار</small></button>
+  <button class="m c6" data-m="today"><span>⭐</span>جدول اليوم<small>أسئلة من اللي أخطأتِ فيها قبل</small></button></div>
+  <div class="coach">🌟 <b>فكرة:</b> الجدول يتثبّت بالتكرار الهادئ: خمس دقائق كل يوم أحسن من ساعة مرة وحدة.</div>`;
+  document.querySelectorAll('.m').forEach(b=>b.onclick=()=>go(b.dataset.m))}
+function go(m){ if(m==='learn')return pick('learn'); if(m==='today')return round('today',todayQs());
+  if(m==='tens')return round('tens',tensQs()); pick(m)}
+function tableBadge(t){const o=S.ok['t'+t]||0,b=S.bad['t'+t]||0;return o>=8&&o>=2*b?'🏅':''}
+function pick(mode){const isDiv=mode==='div';
+  $('#app').innerHTML=`<div class="card"><div class="big">اختاري الجدول</div><div class="tabs">`+[2,3,4,5,6,7,8,9,10].map(t=>`<button class="tb" data-t="${t}"><i>${tableBadge(t)}</i>${ar(t)}</button>`).join('')+`<button class="tb" data-t="0" style="grid-column:1/-1;font-size:1.2rem">كل الجداول 🎲</button></div><button class="go gray" id="bk">← رجوع</button></div>`;
+  $('#bk').onclick=menu;document.querySelectorAll('.tb').forEach(b=>b.onclick=()=>{const t=+b.dataset.t;
+    if(mode==='learn'){if(!t)return;learn(t)}else round(mode,genQs(mode,t))})}
+function learn(t){const rows=[];for(let i=1;i<=10;i++)rows.push(`<div>${L(ar(t)+' × '+ar(i)+' = '+ar(t*i))}</div>`);
+  const sk=[];for(let i=1;i<=10;i++)sk.push(ar(t*i));
+  const tips={2:'نضاعف العدد: ٢ × ٧ = ٧ + ٧',5:'كل ناتج ينتهي بـ ٥ أو ٠',9:'مجموع رقمَي الناتج يساوي ٩ (٩ × ٤ = ٣٦، ثم ٣ + ٦ = ٩)',10:'نضيف صفراً على اليمين',4:'نضاعف مرتين: ٤ × ٧ = ضعف ضعف ٧',3:'ثلاثة = ضعف العدد + العدد نفسه',6:'٦ × ٧ = ٥ × ٧ + ٧',8:'ضعف ٤ × العدد',7:'٧ × ٦ = ٦ × ٧ (نبدّل الترتيب والناتج نفسه)'};
+  $('#app').innerHTML=`<div class="card"><div class="big">جدول ${ar(t)}</div><div class="skip">${sk.map(x=>`<span>${x}</span>`).join('<span>·</span>')}</div><div class="small" style="text-align:center">عدّي بالقفز: كل مرة نزيد ${ar(t)}</div><div class="rows">${rows.join('')}</div>${tips[t]?`<div class="coach">💡 <b>فكرة:</b> ${L(tips[t])}</div>`:''}<div style="text-align:center"><button class="go g" id="tr">أتدرّب عليه 🎯</button><button class="go gray" id="bk">← رجوع</button></div></div>`;
+  $('#bk').onclick=()=>pick('learn');$('#tr').onclick=()=>round('mc',genQs('mc',t))}
+function genQs(mode,t){const qs=[];const used=new Set();
+  while(qs.length<10&&used.size<80){const a=t||rnd(2,10),b=rnd(1,10);const k=a+'x'+b;if(used.has(k))continue;used.add(k);
+    if(mode==='div'){const p=a*b;qs.push({kind:'div',a,b,ans:b,p,table:a,text:`${ar(p)} ÷ ${ar(a)} = ؟`})}
+    else qs.push({kind:'mul',a,b,ans:a*b,table:a,text:`${ar(a)} × ${ar(b)} = ؟`})}
+  return qs}
+function todayQs(){const qs=[];const w=shuffle(S.wrong).slice(0,8);w.forEach(k=>{const [a,b]=k.split('x').map(Number);qs.push({kind:'mul',a,b,ans:a*b,table:a,text:`${ar(a)} × ${ar(b)} = ؟`})});
+  while(qs.length<8){const a=rnd(2,10),b=rnd(2,10);qs.push({kind:'mul',a,b,ans:a*b,table:a,text:`${ar(a)} × ${ar(b)} = ؟`})}return qs}
+function tensQs(){const qs=[];const T=[10,100,1000];
+  for(let i=0;i<10;i++){const a=rnd(2,9);const f=T[rnd(0,2)];const big=rnd(0,2)===0;let b=f,txt;
+    if(big&&f>=100){b=rnd(2,9)*f;txt=`${ar(a)} × ${ar(b)} = ؟`;qs.push({kind:'tens',a,b,ans:a*b,table:0,hint:`${L(ar(a)+' × '+ar(b/f)+' = '+ar(a*b/f))} ثم نضيف ${f===100?'صفرين':'ثلاثة أصفار'}`,text:txt})}
+    else{b=f;qs.push({kind:'tens',a,b,ans:a*b,table:0,hint:`${L(ar(a)+' × ١ = '+ar(a))} ثم نضيف ${f===10?'صفراً':f===100?'صفرين':'ثلاثة أصفار'}`,text:`${ar(a)} × ${ar(b)} = ؟`})}}
+  return qs}
+function dist(q){const s=new Set([q.ans]);const base=q.ans;const c=[q.a*(q.b+1),q.a*(q.b-1),(q.a+1)*q.b,(q.a-1)*q.b,base+q.a,base-q.a,base+10,base-10,base+1,base-1];
+  if(q.kind==='tens'){c.push(base*10,Math.round(base/10),base+Math.pow(10,String(base).length-1))}
+  if(q.kind==='div'){c.length=0;c.push(q.b+1,q.b-1,q.b+2,q.a,q.p-q.a,q.b*2)}
+  for(const x of shuffle(c)){if(s.size>=4)break;if(x>0&&x!==base)s.add(x)}let n=2;while(s.size<4)s.add(base+n++);return shuffle([...s])}
+let Q,qi,okc,again;
+function round(mode,qs){Q=qs;qi=0;okc=0;again=[];ask(mode)}
+function ask(mode){const total=Q.length+again.length;
+  if(qi>=Q.length){if(again.length){Q=Q.concat(again.map(x=>Object.assign({},x,{redo:true})));again=[]}}
+  if(qi>=Q.length)return endRound(mode);
+  const q=Q[qi];$('#pr').textContent=`سؤال ${ar(qi+1)} من ${ar(Q.length)}`;
+  const typed=mode==='type';
+  const famNote=q.kind==='div'?`<div class="coach">🔁 فكّري: ${L(ar(q.a)+' × ؟ = '+ar(q.p))}</div>`:'';
+  $('#app').innerHTML=`<div class="card"><div class="pg"><i style="width:${qi/Q.length*100}%"></i></div>${q.redo?'<div class="small" style="text-align:center">نعيدها مرة ثانية 💪</div>':''}<div class="q">${L(q.text)}</div>${famNote}`+(typed?`<input class="ans" id="in" inputmode="numeric" pattern="[0-9٠-٩]*" autocomplete="off" placeholder="الجواب"><div style="text-align:center"><button class="go" id="ck">تأكدي ✓</button></div>`:`<div class="opts">`+dist(q).map(v=>`<button class="opt" data-v="${v}">${ar(v)}</button>`).join('')+`</div>`)+`<div id="fb"></div><div style="text-align:center"><button class="go gray" id="bk">← للقائمة</button></div></div>`;
+  $('#bk').onclick=menu;
+  const answer=(v,btn)=>{const fact=q.a+'x'+q.b;const right=v===q.ans;
+    if(right){S.ok['t'+q.table]=(S.ok['t'+q.table]||0)+1;if(q.kind==='mul')S.wrong=S.wrong.filter(x=>x!==fact);S.stars++;okc++;stars();
+      if(btn)btn.classList.add('ok');lock();show(`<div class="coach">✅ ${praise()}</div>`,mode)}
+    else{S.bad['t'+q.table]=(S.bad['t'+q.table]||0)+1;if(q.kind==='mul'&&!S.wrong.includes(fact))S.wrong.push(fact);if(!q.redo)again.push(q);
+      if(btn)btn.classList.add('no');const known=q.kind==='div'?`${L(ar(q.p)+' ÷ '+ar(q.a)+' = '+ar(q.ans))}، لأن ${L(ar(q.a)+' × '+ar(q.ans)+' = '+ar(q.p))}`:L(ar(q.a)+' × '+ar(q.b)+' = '+ar(q.ans));
+      document.querySelectorAll('.opt').forEach(o=>{if(+o.dataset.v===q.ans)o.classList.add('ok')});lock();
+      show(`<div class="coach warn">قريبة! الجواب: <b>${known}</b>.<br>${q.hint?q.hint+'.<br>':''}كرّريها بصوتك مرتين 🔁 وبنسألك عنها مرة ثانية.</div>`,mode)}save()};
+  const lock=()=>document.querySelectorAll('.opt').forEach(o=>o.disabled=true);
+  const show=(h,mode)=>{$('#fb').innerHTML=h+`<div style="text-align:center"><button class="go g" id="nx">التالي ←</button></div>`;$('#nx').onclick=()=>{qi++;ask(mode)}};
+  if(typed){const ck=()=>{const v=toEn($('#in').value);if(v==='')return;$('#ck').disabled=true;$('#in').disabled=true;answer(+v,null)};$('#ck').onclick=ck;$('#in').onkeydown=e=>{if(e.key==='Enter')ck()};setTimeout(()=>{try{$('#in').focus()}catch(e){}},50)}
+  else document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.v,b))}
+function endRound(mode){const n=Q.length;
+  $('#app').innerHTML=`<div class="card" style="text-align:center"><div style="font-size:2.6rem">🏆</div><div class="big">أنهيتِ الجولة يا نادين!</div><p>${praise()}</p><p>نجومك الآن: <b>${ar(S.stars)}</b> ⭐</p><button class="go g" id="ag">جولة جديدة 🎲</button><button class="go gray" id="bk">للقائمة</button></div>`;
+  $('#bk').onclick=menu;$('#ag').onclick=()=>go(mode==='today'?'today':mode==='tens'?'tens':mode);stars()}
+menu();
+</script></body></html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>مفاتيح رياضيات نادين</title>
+<style>
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#fff8e1;font-family:'B',sans-serif;padding:12px 12px 40px;color:#333;line-height:1.55}
+.card{background:#fff;border:4px solid #ddd;border-radius:20px;padding:14px;margin:12px auto;max-width:720px}
+.bis{text-align:center;font-size:1.7rem;color:#1b7f4b;margin:4px 0}
+.imag{background:#f3f0ff;border-color:#7a5af8;text-align:center;font-size:1.05rem}
+.praise{text-align:center;color:#c2410c;font-size:1.05rem}
+h2{margin:0 0 6px;font-size:1.15rem;color:#4a2fc0}
+h3{margin:14px 0 4px;font-size:1.05rem}
+.key{background:#fff3bf;border:3px solid #f59f00;border-radius:14px;padding:8px 12px;margin:8px 0;font-size:1.1rem}
+.mem{background:#e7f5ff;border:3px solid #1c7ed6;border-radius:14px;padding:8px 12px;margin:8px 0}
+.see{background:#ebfbee;border:3px solid #2f9e44;border-radius:14px;padding:8px 12px;margin:8px 0}
+.see b{color:#2b8a3e}
+button{font:inherit;font-size:1rem;border:4px solid #7a5af8;background:#fff;color:#4a2fc0;border-radius:16px;padding:10px 16px;margin:4px;cursor:pointer;min-height:48px}
+button.g{background:#7a5af8;color:#fff}
+button.o{background:#2f9e44;border-color:#2f9e44;color:#fff}
+.fc{min-height:130px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.2rem;background:#fffbe6;border:4px dashed #f59f00;border-radius:18px;padding:12px;cursor:pointer}
+.fc.back{background:#ebfbee;border-color:#2f9e44}
+.row{text-align:center}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.tabs button.on{background:#7a5af8;color:#fff}
+.small{font-size:.8rem;color:#777}
+</style></head><body>
+<div class="bis">بسم الله الرحمن الرحيم</div>
+<div class="card imag">🌟 <b>تخيّلي نفسك في الاختبار:</b> جالسة هادئة، تأخذين نفساً عميقاً، تقولين «بسم الله»، وتفتحين الورقة وأنتِ مبتسمة. تقرئين السؤال <b>مرتين</b>، وتسألين نفسك: ماذا يريدون مني؟ ثم تحلّين خطوة خطوة. أنتِ تعرفين هذا، ركّزي وستصلين بإذن الله.</div>
+<div class="card praise" id="pr"></div>
+
+<div class="card" style="border-color:#e03131">
+ <h2 style="color:#c92a2a">⭐ المسألة اللفظية: كيف أحلّها؟</h2>
+ <div class="small" style="text-align:center;color:#c92a2a">أهم شيء في الاختبار. أول خطوة دائماً: المطلوب!</div>
+ <div class="key" style="border-color:#e03131;background:#fff5f5">① <b>أقرأ المسألة مرتين.</b> ثم أسأل نفسي: <b>ماذا يُطلب مني؟</b> (أضع خطاً تحت جملة السؤال)</div>
+ <div class="key">② <b>المعطيات:</b> ما الأرقام التي أعطوني؟ وماذا يدل كل رقم؟ (أدوّرها)</div>
+ <div class="key">③ <b>أختار العملية</b> من الكلمات:
+  <div style="font-size:.95rem;margin-top:4px">➕ <b>جمع:</b> مجموع، معاً، كسب، اشترى مزيداً، الكل<br>➖ <b>طرح:</b> بقي، فقد، خسر، أعطى، كم يزيد، الفرق<br>✖️ <b>ضرب:</b> كل يوم نفس العدد، في ٤ أيام، مجموعات متساوية<br>➗ <b>قسمة:</b> نوزّع بالتساوي، كم مجموعة، كم مرة</div></div>
+ <div class="key">④ <b>أحلّ وأتحقق:</b> أكتب العملية بالأرقام، ثم أسأل: هل الجواب معقول؟ وهل أجبتُ عن المطلوب؟</div>
+ <div class="mem">🧠 مثال: «وفّرت هدى ٢٥ ريالاً ثم ١٨ ريالاً. ما مجموع ما وفّرته؟» ← المطلوب: المجموع. المعطيات: ٢٥ و١٨. كلمة «مجموع» ← جمع. <bdi dir="ltr">٢٥&#8206; + &#8206;١٨&#8206; = &#8206;٤٣</bdi> ريالاً.</div>
+ <div class="row"><button class="g" onclick="go('ch4')">🧠 تدرّبي على المسائل اللفظية (الفصل ٤)</button></div>
+</div>
+<div class="card">
+ <h2>🔁 مراجعة اليوم (٤ بطاقات)</h2>
+ <div class="small" style="text-align:center">اقرئي السؤال، جاوبي في بالك، ثم اضغطي البطاقة لترين الجواب.</div>
+ <div id="fc" class="fc"></div>
+ <div class="row" id="fcb"></div>
+</div>
+
+<div class="card">
+ <h2>🎲 لعبة جدول الضرب</h2>
+ <div class="row"><button class="o" onclick="go('mult')">العبي الآن</button></div>
+</div>
+
+<div class="card">
+ <h2>🔑 مفاتيح الدروس</h2>
+ <div class="tabs" id="tabs"></div>
+ <div id="les"></div>
+</div>
+<div class="row"><button class="g" onclick="go('ch3')">📊 مدرّبة الفصل الثالث</button><button class="g" onclick="go('ch4x')">📝 أسئلة الفصل الرابع</button></div>
+<script>
+const KEYS=__KEYS__;
+const PRAISE=['ركّزتِ فوصلتِ 🌟','كل يوم خطوة صغيرة، ومع الوقت تصير كبيرة 💪','اجتهادك اليوم يفرّحك بإذن الله','التوفيق من الله، وعلينا أن نجتهد ونتوكّل','حين تساعدين صديقتك في الفهم، يثبت الفهم عندك أكثر 🤍','لو أخطأتِ فليس هذا مشكلة، الخطأ يعلّمنا ولا يحرجنا','اقرئي السؤال مرتين، فهذا يريحك ويوصلك للجواب'];
+const LR=s=>String(s).replace(/-/g,'\u200E-\u200E');
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function go(t){try{parent.postMessage({tab:t},'*')}catch(e){}}
+document.getElementById('pr').textContent=PRAISE[Math.floor(Math.random()*PRAISE.length)];
+/* بطاقات المراجعة */
+const CARDS=KEYS.flatMap(l=>l.cards.map(c=>({q:c[0],a:c[1],id:l.id+c[0]})));
+let BOX={};try{BOX=JSON.parse(localStorage.getItem('nyg_nadeen_keys_box')||'{}')}catch(e){}
+let deck=[],di=0,flipped=false;
+function pickDeck(){const w=CARDS.map(c=>[c,(BOX[c.id]||0)+Math.random()*1.5]).sort((a,b)=>a[1]-b[1]).slice(0,4).map(x=>x[0]);deck=w;di=0;show()}
+function show(){const f=document.getElementById('fc'),b=document.getElementById('fcb');flipped=false;
+ if(di>=deck.length){f.className='fc back';f.innerHTML='أحسنتِ! أنهيتِ مراجعة اليوم 🌟<br><span class="small">اجتهدتِ، والتوفيق من الله</span>';b.innerHTML='<button class="g" onclick="pickDeck()">٤ بطاقات أخرى</button>';return}
+ const c=deck[di];f.className='fc';f.innerHTML=esc(c.q);f.onclick=()=>{if(flipped)return;flipped=true;f.className='fc back';f.innerHTML=esc(c.a);b.innerHTML='<button class="o" id="k1">عرفتها ✅</button><button id="k0">أحتاج أعيدها 🔁</button>';
+  document.getElementById('k1').onclick=()=>{BOX[c.id]=(BOX[c.id]||0)+1;sv();di++;show()};document.getElementById('k0').onclick=()=>{BOX[c.id]=0;sv();di++;show()}};
+ b.innerHTML='<span class="small">اضغطي البطاقة لترين الجواب</span> <span class="small">('+(di+1)+' من '+deck.length+')</span>'}
+function sv(){try{localStorage.setItem('nyg_nadeen_keys_box',JSON.stringify(BOX))}catch(e){}}
+pickDeck();
+/* الدروس */
+const tabs=document.getElementById('tabs'),les=document.getElementById('les');
+function showLesson(i){[...tabs.children].forEach((b,j)=>b.classList.toggle('on',i===j));const l=KEYS[i];
+ les.innerHTML=`<h3><bdi dir="ltr">${LR(esc(l.id))}</bdi> ${esc(l.title)}</h3>`+l.keys.map(k=>`<div class="key">🔑 ${esc(k)}</div>`).join('')+`<div class="mem">🧠 <b>عبارة تثبّت في الذاكرة:</b> ${esc(l.mem)}</div>`+`<div class="see"><b>في الاختبار:</b><br>${l.see.map(s=>'• '+esc(s)).join('<br>')}</div>`}
+KEYS.forEach((l,i)=>{const b=document.createElement('button');b.innerHTML='<bdi dir="ltr">'+LR(l.id)+'</bdi>';b.onclick=()=>showLesson(i);tabs.appendChild(b)});
+showLesson(0);
+</script></body></html>

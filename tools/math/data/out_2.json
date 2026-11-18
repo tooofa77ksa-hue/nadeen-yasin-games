@@ -1,0 +1,129 @@
+{
+ "chapter": 2,
+ "moved": [],
+ "dups_within_model": [],
+ "clusters": [
+  {
+   "id": "c2-001",
+   "kind": "مطابق",
+   "canonical_uid": "sharqia-113",
+   "members": [
+    "sharqia-113",
+    "hafr-148"
+   ],
+   "note": "٢٠٠٦ − ٥٣٦ نفسه"
+  },
+  {
+   "id": "c2-002",
+   "kind": "مطابق",
+   "canonical_uid": "sharqia-116",
+   "members": [
+    "sharqia-116",
+    "hafr-151"
+   ],
+   "note": "مسألة الزجاجات ١٧٢+٢٣٦"
+  },
+  {
+   "id": "c2-003",
+   "kind": "مطابق",
+   "canonical_uid": "sharqia-121",
+   "members": [
+    "sharqia-121",
+    "hafr-156"
+   ],
+   "note": "تقدير طالبات الصف الخامس ٥٠−٣٨، الخيارات نفسها"
+  },
+  {
+   "id": "c2-004",
+   "kind": "مطابق",
+   "canonical_uid": "sharqia-123",
+   "members": [
+    "sharqia-123",
+    "hafr-158"
+   ],
+   "note": "خالد ٩٥−٢٥، ترتيب الخيارات فقط مختلف"
+  },
+  {
+   "id": "c2-005",
+   "kind": "مطابق",
+   "canonical_uid": "sharqia-127",
+   "members": [
+    "sharqia-127",
+    "hafr-162"
+   ],
+   "note": "الجملة ٧٩ □ ٢٦ = ١٠٥"
+  },
+  {
+   "id": "c2-006",
+   "kind": "مشابه",
+   "canonical_uid": "sharqia-109",
+   "members": [
+    "sharqia-109",
+    "hafr-144"
+   ],
+   "note": "نفس الأرقام (٨+□)+٧ = ٩+(...) لكن ترتيب (٨+٧) صار (٧+٨) في حفر"
+  },
+  {
+   "id": "c2-007",
+   "kind": "مشابه",
+   "canonical_uid": "tabuk-042",
+   "members": [
+    "tabuk-042",
+    "jazan-089"
+   ],
+   "note": "إيجاد العدد المفقود في جملة خاصية التجميع بأرقام مختلفة"
+  },
+  {
+   "id": "c2-008",
+   "kind": "مشابه",
+   "canonical_uid": "hail-003",
+   "members": [
+    "hail-003",
+    "tabuk-057"
+   ],
+   "note": "العدد المفقود في جملة المحايد الجمعي (+٠)، تختلف الأرقام وصيغة السؤال (اختيار/إكمال)"
+  },
+  {
+   "id": "c2-009",
+   "kind": "مشابه",
+   "canonical_uid": "hail-004",
+   "members": [
+    "hail-004",
+    "tabuk-052"
+   ],
+   "note": "تقدير مجموع إلى أقرب عشرة بأرقام مختلفة"
+  },
+  {
+   "id": "c2-010",
+   "kind": "مشابه",
+   "canonical_uid": "tabuk-074",
+   "members": [
+    "hail-005",
+    "tabuk-074"
+   ],
+   "note": "مسألة شراء شيئين وسؤال «فكم دفع ثمناً لذلك؟»، أرقام وأغراض مختلفة"
+  },
+  {
+   "id": "c2-011",
+   "kind": "مشابه",
+   "canonical_uid": "qassim-196",
+   "members": [
+    "hail-033",
+    "tabuk-075",
+    "qassim-196"
+   ],
+   "note": "أوجد ناتج الطرح عمودياً مع إعادة التجميع بأعداد مختلفة"
+  },
+  {
+   "id": "c2-012",
+   "kind": "مشابه",
+   "canonical_uid": "sharqia-127",
+   "members": [
+    "sharqia-127",
+    "qassim-199"
+   ],
+   "note": "اختيار العملية المناسبة للجملة العددية؛ أعداد مختلفة (راجع شكل qassim-199)"
+  }
+ ],
+ "notes": "hafr-162 وsharqia-127 في العنقود المطابق؛ العنقود الأخير يضم sharqia-127 أيضاً (تداخل مقصود). لم أفتح صور الأشكال."
+}

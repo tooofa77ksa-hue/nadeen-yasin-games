@@ -1,0 +1,1116 @@
+[
+ {
+  "uid": "hail-004",
+  "final_chapter": "other",
+  "lesson": "٢-٢",
+  "chapter_basis": "تقدير المجموع والفرق: فصل ٢ وليس ٤ أو ٥. الجواب ٧٠ (د) ٤١→٤٠ و٣٣→٣٠.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": true,
+  "notes": ""
+ },
+ {
+  "uid": "hail-009",
+  "final_chapter": 4,
+  "lesson": "٤-١",
+  "chapter_basis": "كتابة عبارة عددية من مسألة لفظية (الطرح) - ٤-١/٤-٢",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "أ) ٢١ − ٧",
+  "explain": {
+   "task": "المطلوب: العبارة العددية لعدد الجمرات الباقية مع الحاج.",
+   "think": "نسأل أنفسنا: كان معه ٢١ ورمى ٧، يعني أخذ منه شيء. إذن العملية طرح.",
+   "steps": [
+    "كان معه ٢١ جمرة.",
+    "رمى منها ٧ جمرات.",
+    "الباقي = ما كان معه − ما رماه.",
+    "نكتب: ٢١ − ٧ (والناتج ١٤)."
+   ],
+   "answer": "إذن الجواب: أ) ٢١ − ٧",
+   "why": "ب) جمع فيزيد العدد وهو لا يزيد. ج) الضرب لا يناسب. د) ٢١ − ٢١ يعني رمى الكل وهذا غير صحيح.",
+   "tip": "كلمة «رمى» أو «أعطى» تعني غالباً طرح، والعدد الكبير يُكتب أولاً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": true,
+  "notes": "في الورقة الخيار أ يظهر ٧−٢١ بصرياً (اتجاه الكتابة العربية)؛ المقصود ٢١−٧."
+ },
+ {
+  "uid": "hail-010",
+  "final_chapter": 4,
+  "lesson": "٤-٤",
+  "chapter_basis": "جدول المدخلة والمخرجة والقاعدة (اكتشاف قاعدة من جدول)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) △ + ٢",
+  "explain": {
+   "task": "المطلوب: القاعدة التي تربط المدخلة △ بالمخرجة ▭.",
+   "think": "نسأل أنفسنا: ماذا نفعل بالمدخلة لنحصل على المخرجة؟ نجرّب على كل صف.",
+   "steps": [
+    "٢ ← ٤ ، الفرق ٢ (٢ + ٢ = ٤).",
+    "٤ ← ٦ ، الفرق ٢ (٤ + ٢ = ٦).",
+    "٥ ← ٧ ، الفرق ٢ (٥ + ٢ = ٧).",
+    "في كل الصفوف نضيف ٢."
+   ],
+   "answer": "إذن الجواب: ج) △ + ٢",
+   "why": "أ) ٢ × ٢ = ٤ تصح للأول لكن ٢ × ٤ = ٨ وليست ٦. ب) ٣ × ٢ = ٦ ليست ٤. د) ٢ − ٢ = ٠ ليست ٤.",
+   "tip": "جرّبي القاعدة على كل الصفوف، لا على صف واحد."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": true,
+  "notes": ""
+ },
+ {
+  "uid": "hail-011",
+  "final_chapter": 5,
+  "lesson": "٥-٤",
+  "chapter_basis": "تقدير ناتج الضرب (تقريب العدد الكبير لأكبر منزلة)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) ١٥٠",
+  "explain": {
+   "task": "المطلوب: تقدير ناتج ٣ × ٤٧.",
+   "think": "نسأل أنفسنا: نقرّب ٤٧ إلى أقرب عشرة فيسهل الضرب.",
+   "steps": [
+    "٤٧ تقرّب إلى ٥٠.",
+    "٣ × ٥٠ = ١٥٠.",
+    "الناتج الدقيق ١٤١ وهو قريب من ١٥٠."
+   ],
+   "answer": "إذن الجواب: ج) ١٥٠",
+   "why": "٤٠ و٨٠ بعيدان جداً، و٣٢٠ كبير جداً. ١٥٠ هو الأقرب.",
+   "tip": "قرّبي ثم اضربي."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": true,
+  "notes": ""
+ },
+ {
+  "uid": "hail-012",
+  "final_chapter": 5,
+  "lesson": "٥-١",
+  "chapter_basis": "القواسم: الدرس ٥-١ (ص١٣٩ من الكتاب)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ١، ٢، ٣، ٤، ٦، ١٢",
+  "explain": {
+   "task": "المطلوب: كل الأعداد التي تقسم ١٢ دون باقٍ (قواسم ١٢).",
+   "think": "نسأل أنفسنا: أي أزواج أعداد حاصل ضربها ١٢؟",
+   "steps": [
+    "١ × ١٢ = ١٢",
+    "٢ × ٦ = ١٢",
+    "٣ × ٤ = ١٢",
+    "القواسم: ١ ، ٢ ، ٣ ، ٤ ، ٦ ، ١٢"
+   ],
+   "answer": "إذن الجواب: د) ١، ٢، ٣، ٤، ٦، ١٢",
+   "why": "أ و ج و ب ناقصة؛ كلها ينقصها قواسم (مثل ٣ و٤). د فيها كل القواسم الستة.",
+   "tip": "القواسم تأتي دائماً في أزواج، ولا تنسي ١ والعدد نفسه."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": false,
+  "notes": "الدائرة اليدوية على الصورة حول أ (٢، ٦) خطأ والصحيح د؛ الدوائر ليست جواباً رسمياً."
+ },
+ {
+  "uid": "hail-013",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "مسألة ضرب في مضاعفات ١٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) ٨٠ صفحة",
+  "explain": {
+   "task": "المطلوب: عدد الصفحات في ٤ أيام.",
+   "think": "نسأل أنفسنا: كل يوم نفس العدد، إذن نضرب: ٢٠ × ٤.",
+   "steps": [
+    "٢٠ = ٢ عشرتان.",
+    "٢ × ٤ = ٨ ، يعني ٨ عشرات.",
+    "٨ عشرات = ٨٠."
+   ],
+   "answer": "إذن الجواب: ج) ٨٠ صفحة",
+   "why": "٤٠ تكفي يومين فقط، و٦٠ ثلاثة أيام، و١٢٠ ستة أيام.",
+   "tip": "اضربي الأرقام ثم أضيفي الصفر."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": true,
+  "notes": ""
+ },
+ {
+  "uid": "hail-014",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "جملة عددية ضرب مضاعفات ١٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ٤٥",
+  "explain": {
+   "task": "المطلوب: العدد الناقص في ١٠ × ▭ = ٤٥٠.",
+   "think": "نسأل أنفسنا: ١٠ في أي عدد يعطي ٤٥٠؟ نقسم ٤٥٠ على ١٠.",
+   "steps": [
+    "٤٥٠ ÷ ١٠ = ٤٥.",
+    "نتحقق: ١٠ × ٤٥ = ٤٥٠."
+   ],
+   "answer": "إذن الجواب: د) ٤٥",
+   "why": "١٥ يعطي ١٥٠، ٢٠ يعطي ٢٠٠، ٣٥ يعطي ٣٥٠.",
+   "tip": "الضرب في ١٠ يضيف صفراً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "hail-015",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "مسألة ضرب في مضاعفات ١٠٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ٢٠٠٠",
+  "explain": {
+   "task": "المطلوب: عدد المقاعد في القاعة.",
+   "think": "نسأل أنفسنا: ١٠ صفوف في كل صف ٢٠٠. نضرب ١٠ × ٢٠٠.",
+   "steps": [
+    "٢٠٠ = ٢ مئتان.",
+    "١٠ × ٢ = ٢٠ مئة.",
+    "٢٠ مئة = ٢٠٠٠."
+   ],
+   "answer": "إذن الجواب: د) ٢٠٠٠",
+   "why": "٢٠٠ مقاعد صف واحد فقط، و١٠ هو عدد الصفوف. ٣٠٠ لا علاقة لها.",
+   "tip": "١٠ × ٢٠٠ = ٢٠٠٠ ، نضيف صفراً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "hail-016",
+  "final_chapter": "other",
+  "lesson": "١-١",
+  "chapter_basis": "القيمة المنزلية: الصيغة القياسية (فصل ١).",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ٨٣٦٥٠٠٠",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "جواب د) ٨٣٦٥٠٠٠. الأصفار صغيرة في الصورة لكن الخيار د هو الوحيد المطابق (٨٬٣٦٥٬٠٠٠)."
+ },
+ {
+  "uid": "hail-017",
+  "final_chapter": "other",
+  "lesson": "١-٣",
+  "chapter_basis": "«استعمال الخطوات الأربع» درس ١-٣ في فصل ١ (افهم، خطط، حل، تحقق). الجواب ب.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ب) افهم، خطط، حل، تحقق",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "جواب ب) افهم، خطط، حل، تحقق."
+ },
+ {
+  "uid": "hail-022",
+  "final_chapter": 4,
+  "lesson": "٤-١",
+  "chapter_basis": "العبارة والجملة العددية: ص١٠٧ من الكتاب",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✗ (خطأ)",
+  "explain": {
+   "task": "المطلوب: هل ٣ + ٥ + ٧ = ١٥ تسمى عبارة عددية؟",
+   "think": "نسأل أنفسنا: ما الفرق بين العبارة والجملة؟ هل فيها علامة =؟",
+   "steps": [
+    "العبارة العددية فيها أعداد وعمليات فقط، مثل ٣ + ٥ + ٧.",
+    "هنا يوجد = ١٥ وهذه علامة يساوي.",
+    "العبارة مع علامة (=) أو (>) أو (<) تسمى جملة عددية."
+   ],
+   "answer": "إذن الجواب: خطأ",
+   "why": "لأنها جملة عددية وليست عبارة عددية.",
+   "tip": "إذا رأيتِ علامة = فهي جملة."
+  },
+  "agree_with_extractor": false,
+  "agree_with_site": null,
+  "notes": "جواب المستخرِج «صح» خطأ؛ الصحيح «خطأ» حسب ص١٠٧ من الكتاب (الجملة العددية تتضمن إحدى الإشارات =، >، <)."
+ },
+ {
+  "uid": "hail-023",
+  "final_chapter": 5,
+  "lesson": "٥-١",
+  "chapter_basis": "تعريف القواسم (عوامل): ص١٣٩ من الكتاب",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✓ (صح)",
+  "explain": {
+   "task": "المطلوب: هل الأعداد التي نضربها لنجد ناتج الضرب تسمى قواسم؟",
+   "think": "نسأل أنفسنا: ماذا يقول الكتاب في درس القواسم؟",
+   "steps": [
+    "الكتاب (٥-١) يقول: الأعداد التي نضربها في بعضها لنجد ناتج الضرب تسمى قواسم (عوامل).",
+    "مثال: ٣ × ٨ = ٢٤ فـ ٣ و٨ قاسمان للعدد ٢٤."
+   ],
+   "answer": "إذن الجواب: صح",
+   "why": "العبارة هي نفس تعريف الكتاب.",
+   "tip": "القواسم هي الأعداد التي نضربها."
+  },
+  "agree_with_extractor": false,
+  "agree_with_site": null,
+  "notes": "جواب المستخرِج «خطأ» خطأ؛ الصحيح «صح» (ص١٣٩ من الكتاب: تسمى قواسم (عوامل))."
+ },
+ {
+  "uid": "hail-026",
+  "final_chapter": 5,
+  "lesson": "٥-١",
+  "chapter_basis": "مضاعف العدد: عمود ٢ مطابقة (حاصل ضرب عدد في عدد آخر)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج",
+  "explain": {
+   "task": "المطلوب: حرف الوصف الذي يناسب «مضاعف العدد».",
+   "think": "نسأل أنفسنا: المضاعف ناتج ضرب العدد في أعداد أخرى.",
+   "steps": [
+    "مضاعفات ٣: ٣ × ١ = ٣ ، ٣ × ٢ = ٦ ، ٣ × ٣ = ٩.",
+    "المضاعف هو حاصل ضرب عدد في عدد آخر."
+   ],
+   "answer": "إذن الجواب: ج",
+   "why": "الأخرى تصف التقدير والاحتمال والخاصية وغيرها.",
+   "tip": "المضاعف = ناتج الضرب."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "hail-027",
+  "final_chapter": "other",
+  "lesson": "٢-٢",
+  "chapter_basis": "التقدير (إعطاء إجابة قريبة): تقدير الجمع والطرح فصل ٢",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "أ",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "hail-032",
+  "final_chapter": 4,
+  "lesson": "٤-٤",
+  "chapter_basis": "القاعدة (جدول المدخلة والمخرجة) ولا يوجد وصف لها في العمود الأول",
+  "status": "doubt",
+  "doubt_reason": "العمود الثاني فيه ٧ عناصر (مضاعف العدد، التقدير، العنصر المحايد الجمعي، الاحتمال، اللفظية، لوحة الإشارات، القاعدة) مقابل ٦ أوصاف فقط (أ-و)؛ لا وصف يناسب «القاعدة». السؤال غير مكتمل.",
+  "final_answer": "غير معتمد",
+  "explain": {
+   "task": "المطلوب: حرف الوصف المناسب لكلمة «القاعدة».",
+   "think": "نقرأ الأوصاف الستة ونرى هل أحدها يصف القاعدة.",
+   "steps": [
+    "لا يوجد وصف للقاعدة بين الأوصاف."
+   ],
+   "answer": "لا يوجد جواب معتمد.",
+   "why": "السؤال فيه عنصر زائد.",
+   "tip": ""
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "خطأ في الورقة: عنصر زائد؛ أ→التقدير، ب→الاحتمال، ج→مضاعف العدد، د→العنصر المحايد الجمعي، هـ→لوحة الإشارات، و→اللفظية."
+ },
+ {
+  "uid": "hail-034",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "الضرب في ١٠ و١٠٠ و١٠٠٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٢ ، ٢٠ ، ٢٠٠ ، ٢٠٠٠",
+  "explain": {
+   "task": "المطلوب: ناتج ٢ × ١ ثم ٢ × ١٠ ثم ٢ × ١٠٠ ثم ٢ × ١٠٠٠.",
+   "think": "نسأل أنفسنا: نضرب ٢ ثم نكتب بعده أصفار ١٠ أو ١٠٠ أو ١٠٠٠.",
+   "steps": [
+    "٢ × ١ = ٢",
+    "٢ × ١٠ = ٢٠ (صفر واحد)",
+    "٢ × ١٠٠ = ٢٠٠ (صفران)",
+    "٢ × ١٠٠٠ = ٢٠٠٠ (ثلاثة أصفار)"
+   ],
+   "answer": "إذن الجواب: ٢ ، ٢٠ ، ٢٠٠ ، ٢٠٠٠",
+   "why": "",
+   "tip": "كل صفر في ١٠ و١٠٠ و١٠٠٠ ينتقل إلى الناتج."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "hail-035",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "جدول المدخلة والمخرجة بقاعدة الضرب: ٤-٧ جداول الضرب والقسمة",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "١٢ ، ١٦",
+  "explain": {
+   "task": "المطلوب: أكملي المخرجة بالقاعدة △ × ٤.",
+   "think": "نسأل أنفسنا: نضرب كل مدخلة في ٤.",
+   "steps": [
+    "١ × ٤ = ٤",
+    "٢ × ٤ = ٨",
+    "٣ × ٤ = ١٢",
+    "٤ × ٤ = ١٦"
+   ],
+   "answer": "إذن الجواب: ١٢ ثم ١٦",
+   "why": "",
+   "tip": "عدّي بالأربعات: ٤ ، ٨ ، ١٢ ، ١٦."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-043",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "مسألة ضرب في ١٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "أ) ٤٠ دقيقة",
+  "explain": {
+   "task": "المطلوب: زمن تغليف ١٠ هدايا.",
+   "think": "نسأل أنفسنا: الهدية ٤ دقائق، ١٠ هدايا: نضرب ٤ × ١٠.",
+   "steps": [
+    "٤ × ١٠ = ٤٠."
+   ],
+   "answer": "إذن الجواب: أ) ٤٠ دقيقة",
+   "why": "٦٠ و٨٠ و١٠٠ أكبر من الناتج.",
+   "tip": "الضرب في ١٠ يضيف صفراً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-049",
+  "final_chapter": 4,
+  "lesson": "٤-١",
+  "chapter_basis": "كتابة عبارة عددية (قسمة بالتساوي)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ٣٥ ÷ ٧",
+  "explain": {
+   "task": "المطلوب: العبارة لعدد الطلاب في كل فريق.",
+   "think": "نسأل أنفسنا: ٣٥ طالباً على ٧ فرق بالتساوي: توزيع، يعني قسمة.",
+   "steps": [
+    "٣٥ طالباً ÷ ٧ فرق.",
+    "٣٥ ÷ ٧ = ٥ طلاب في كل فريق."
+   ],
+   "answer": "إذن الجواب: د) ٣٥ ÷ ٧",
+   "why": "الجمع والطرح والضرب لا تقسم العدد على فرق متساوية.",
+   "tip": "التوزيع بالتساوي = قسمة."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "النص يسميها «عبارة جبرية» وهي عبارة عددية (لا متغير)؛ قريبة من ٤-٧ أيضاً."
+ },
+ {
+  "uid": "tabuk-050",
+  "final_chapter": "other",
+  "lesson": "٦-١",
+  "chapter_basis": "تقدير ضرب عددين من رقمين (١٢×١٩≈١٠×٢٠=٢٠٠): فصل ٦. الجواب ج) ٢٠٠.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) ٢٠٠",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "جواب ج) ٢٠٠"
+ },
+ {
+  "uid": "tabuk-051",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "جدول دالة: ضرب (أكواب الأرز والماء)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ١٦",
+  "explain": {
+   "task": "المطلوب: كمية الماء لـ ٨ أكواب.",
+   "think": "نسأل أنفسنا: ما القاعدة بين الأرز والماء؟",
+   "steps": [
+    "٢ ← ٤ ، ٤ ← ٨ ، ٦ ← ١٢.",
+    "القاعدة: الماء = الأرز × ٢.",
+    "٨ × ٢ = ١٦."
+   ],
+   "answer": "إذن الجواب: د) ١٦",
+   "why": "١٠ و١٢ و١٤ لا تناسب ضعف ٨.",
+   "tip": "الماء ضعف الأرز."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-052",
+  "final_chapter": "other",
+  "lesson": "٢-٢",
+  "chapter_basis": "تقدير المجموع لأقرب عشرة (١٥٤+٢٨→١٥٠+٣٠=١٨٠): فصل ٢. الجواب ب) ١٨٠.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ب) ١٨٠",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "جواب ب) ١٨٠"
+ },
+ {
+  "uid": "tabuk-053",
+  "final_chapter": "other",
+  "lesson": "٢-٢",
+  "chapter_basis": "تقدير الفرق (٧٩−٤٨ ≈ ٨٠−٥٠=٣٠): فصل ٢. الجواب ج) ٣٠ ريالاً.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) ٣٠ ريالاً",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "جواب ج"
+ },
+ {
+  "uid": "tabuk-054",
+  "final_chapter": 5,
+  "lesson": "٥-١",
+  "chapter_basis": "مضاعفات العدد ٦",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "أ) ٦ ، ١٢ ، ١٨",
+  "explain": {
+   "task": "المطلوب: أول مضاعفات ٦.",
+   "think": "نسأل أنفسنا: المضاعفات نحصل عليها بالعد بالستات.",
+   "steps": [
+    "٦ × ١ = ٦",
+    "٦ × ٢ = ١٢",
+    "٦ × ٣ = ١٨"
+   ],
+   "answer": "إذن الجواب: أ) ٦ ، ١٢ ، ١٨",
+   "why": "ب فيها ١ وهو ليس مضاعف ٦. ج ينقصها ٦ وفيها ٢٦. د فيها ٣ و٣٠ بلا ترتيب.",
+   "tip": "عدّي ٦ ، ١٢ ، ١٨."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-055",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "نمط ضرب مضاعفات ١٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٤٠",
+  "explain": {
+   "task": "المطلوب: العدد الناقص في ١٤ × ▭ = ٥٦٠.",
+   "think": "نسأل أنفسنا: ١٤ × ٤ = ٥٦، و٥٦٠ هو ٥٦ × ١٠.",
+   "steps": [
+    "٥٦٠ = ٥٦ × ١٠.",
+    "إذن نضرب ٤ × ١٠ = ٤٠.",
+    "١٤ × ٤٠ = ٥٦٠."
+   ],
+   "answer": "إذن الجواب: ٤٠",
+   "why": "",
+   "tip": "الضرب في ١٠ يضيف صفراً للناتج."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-058",
+  "final_chapter": 5,
+  "lesson": "٥-٨",
+  "chapter_basis": "ضرب ثلاثة أرقام في رقم",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٣٠٦",
+  "explain": {
+   "task": "المطلوب: ناتج ٣ × ١٠٢.",
+   "think": "نسأل أنفسنا: نضرب كل منزلة في ٣.",
+   "steps": [
+    "٢ × ٣ = ٦ آحاد.",
+    "٠ × ٣ = ٠ عشرات.",
+    "١ × ٣ = ٣ مئات.",
+    "الناتج ٣٠٦."
+   ],
+   "answer": "إذن الجواب: ٣٠٦",
+   "why": "",
+   "tip": "لا تنسي الصفر في خانة العشرات."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "العدد في الصورة ١٠٢ (النقطة صفر)؛ لو كان ١٢٠ لكان الناتج ٣٦٠."
+ },
+ {
+  "uid": "tabuk-059",
+  "final_chapter": "other",
+  "lesson": "٦-١",
+  "chapter_basis": "ضرب مضاعفات ١٠ بعددين من رقمين (٨٠×٨٠=٦٤٠٠): فصل ٦. الجواب ٦٤٠٠.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٦٤٠٠",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "جواب ٦٤٠٠"
+ },
+ {
+  "uid": "tabuk-060",
+  "final_chapter": 5,
+  "lesson": "٥-٤",
+  "chapter_basis": "تقدير ناتج الضرب",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٢٨٠٠",
+  "explain": {
+   "task": "المطلوب: تقدير ٤ × ٦٥٧.",
+   "think": "نسأل أنفسنا: نقرّب ٦٥٧ لأكبر منزلة، أي لأقرب مئة.",
+   "steps": [
+    "٦٥٧ تقرّب إلى ٧٠٠.",
+    "٤ × ٧٠٠ = ٢٨٠٠.",
+    "الناتج الدقيق ٢٦٢٨ وهو قريب من ٢٨٠٠."
+   ],
+   "answer": "إذن الجواب: ٢٨٠٠",
+   "why": "",
+   "tip": "قرّبي العدد الكبير ثم اضربي."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "لم يحدد السؤال التقريب؛ المعتمد ٢٨٠٠ (تقريب لأقرب مئة كما في الكتاب)."
+ },
+ {
+  "uid": "tabuk-065",
+  "final_chapter": 4,
+  "lesson": "٤-٥",
+  "chapter_basis": "جدول دالة: طرح",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٥ ، ٢",
+  "explain": {
+   "task": "المطلوب: أكملي المخرجة بالقاعدة △ − ٤.",
+   "think": "نسأل أنفسنا: نطرح ٤ من كل مدخلة.",
+   "steps": [
+    "١٥ − ٤ = ١١ ✓",
+    "١٢ − ٤ = ٨ ✓",
+    "٩ − ٤ = ٥",
+    "٦ − ٤ = ٢"
+   ],
+   "answer": "إذن الجواب: ٥ ثم ٢",
+   "why": "",
+   "tip": "تحققي من الأمثلة المعطاة أولاً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-066",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "جدول دالة: اكتشاف قاعدة القسمة",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "القاعدة: △ ÷ ٢ ؛ المخرجة الأخيرة: ٨",
+  "explain": {
+   "task": "المطلوب: كتابة القاعدة وإكمال المخرجة.",
+   "think": "نسأل أنفسنا: ١٠ ← ٥ ، ١٢ ← ٦ ، ١٤ ← ٧: المخرجة نصف المدخلة.",
+   "steps": [
+    "١٠ ÷ ٢ = ٥",
+    "١٢ ÷ ٢ = ٦",
+    "١٤ ÷ ٢ = ٧",
+    "القاعدة: △ ÷ ٢ ، إذن ١٦ ÷ ٢ = ٨."
+   ],
+   "answer": "إذن الجواب: القاعدة △ ÷ ٢ والناتج ٨",
+   "why": "",
+   "tip": "نصف العدد = القسمة على ٢."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-067",
+  "final_chapter": 5,
+  "lesson": "٥-٥",
+  "chapter_basis": "ضرب رقمين في رقم دون إعادة تجميع",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✗ (خطأ)",
+  "explain": {
+   "task": "المطلوب: هل ٤ × ١٢ = ٥٦؟",
+   "think": "نسأل أنفسنا: نحسب ٤ × ١٢.",
+   "steps": [
+    "٤ × ٢ = ٨ آحاد.",
+    "٤ × ١ = ٤ عشرات = ٤٠.",
+    "٤٠ + ٨ = ٤٨."
+   ],
+   "answer": "إذن الجواب: خطأ",
+   "why": "الناتج ٤٨ وليس ٥٦.",
+   "tip": "احسبي بنفسك ولا تصدقي الناتج المكتوب."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-071",
+  "final_chapter": 5,
+  "lesson": "٥-١",
+  "chapter_basis": "القواسم المشتركة",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✗ (خطأ)",
+  "explain": {
+   "task": "المطلوب: هل ٢ قاسم مشترك لـ ١٩ و٢٤؟",
+   "think": "نسأل أنفسنا: هل ٢ يقسم كل عدد؟",
+   "steps": [
+    "٢٤ ÷ ٢ = ١٢ فهو يقسمه.",
+    "١٩ عدد فردي، ٢ لا يقسمه.",
+    "قواسم ١٩: ١ و١٩ فقط."
+   ],
+   "answer": "إذن الجواب: خطأ",
+   "why": "٢ يقسم ٢٤ فقط.",
+   "tip": "القاسم المشترك يقسم العددين معاً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "tabuk-072",
+  "final_chapter": "other",
+  "lesson": "٦-١",
+  "chapter_basis": "ضرب ٥٣ × ٣٠ (عدد من رقمين × مضاعف ١٠): فصل ٦. ٥٣×٣٠=١٥٩٠ إذن صح ✓.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✓",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "الجواب: ✓"
+ },
+ {
+  "uid": "tabuk-073",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "مسألة لفظية: قسمة / جدول ضرب",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٦ ساعات",
+  "explain": {
+   "task": "المطلوب: عدد الساعات ليحصل على ١٢٠ ريالاً.",
+   "think": "نسأل أنفسنا: كل ساعة ٢٠ ريالاً. كم مرة ٢٠ لنصل ١٢٠؟",
+   "steps": [
+    "٢٠ ، ٤٠ ، ٦٠ ، ٨٠ ، ١٠٠ ، ١٢٠.",
+    "عدّدنا ٦ مرات.",
+    "تحقق: ٢٠ × ٦ = ١٢٠."
+   ],
+   "answer": "إذن الجواب: ٦ ساعات",
+   "why": "",
+   "tip": "اسألي: كم مرة نكرر ٢٠؟"
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "تحلّ بالضرب أو العدّ التراكمي أو القسمة ١٢٠ ÷ ٢٠."
+ },
+ {
+  "uid": "tabuk-076",
+  "final_chapter": "other",
+  "lesson": "٦-١",
+  "chapter_basis": "ضرب ١٠٦ × ١٢ (٣ أرقام × رقمين): فصل ٦. الناتج ١٢٧٢.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "١٢٧٢",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "الجواب ١٢٧٢"
+ },
+ {
+  "uid": "jazan-080",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "مسألة لفظية: قسمة وجدول ضرب",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ٨ كتب",
+  "explain": {
+   "task": "المطلوب: عدد الكتب بـ ٣٢ ريالاً.",
+   "think": "نسأل أنفسنا: كل كتاب ٤ ريالات: كم ٤ في ٣٢؟",
+   "steps": [
+    "٤ × ٨ = ٣٢",
+    "إذن ٣٢ ÷ ٤ = ٨"
+   ],
+   "answer": "إذن الجواب: د) ٨ كتب",
+   "why": "٥ كتب = ٢٠ ريالاً، ٦ = ٢٤، ٧ = ٢٨.",
+   "tip": "فكّري: ٤ × ؟ = ٣٢."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-084",
+  "final_chapter": 4,
+  "lesson": "٤-٢",
+  "chapter_basis": "كتابة جملة عددية من رسم",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) ٩−٣=٦",
+  "explain": {
+   "task": "المطلوب: الجملة العددية التي تمثل الرسم.",
+   "think": "نسأل أنفسنا: كم قطعة في الرسم؟ كم منها مشطوب؟",
+   "steps": [
+    "في الرسم ٩ قطع.",
+    "٣ منها مشطوبة (أُخذت).",
+    "يبقى ٦.",
+    "الجملة: ٩ − ٣ = ٦."
+   ],
+   "answer": "إذن الجواب: ج) ٩−٣=٦",
+   "why": "أ) ٦+٣=٩ جمع. ب) ١٠−٧ والرسم ليس ١٠. د) ٧+٣=١٠ والرسم ليس ١٠.",
+   "tip": "الشطب يعني طرح."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "الرسم: ٩ مكعبات، ٣ مشطوبة."
+ },
+ {
+  "uid": "jazan-086",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "مسألة لفظية: قسمة",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ج) ٦",
+  "explain": {
+   "task": "المطلوب: عدد الساعات لـ ١٢٠ ريالاً.",
+   "think": "نسأل أنفسنا: كم مرة ٢٠ في ١٢٠؟",
+   "steps": [
+    "٢٠ × ٦ = ١٢٠",
+    "إذن ١٢٠ ÷ ٢٠ = ٦"
+   ],
+   "answer": "إذن الجواب: ج) ٦",
+   "why": "٢٠ × ٤ = ٨٠، ٢٠ × ٥ = ١٠٠، ٢٠ × ٧ = ١٤٠.",
+   "tip": "جرّبي كل خيار بالضرب."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-087",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "جدول دالة: القاعدة اضرب في ٦",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ب) ٨ و٢٤",
+  "explain": {
+   "task": "المطلوب: الزوج الذي لا يصلح لقاعدة (اضرب في ٦).",
+   "think": "نسأل أنفسنا: نضرب المدخلة في ٦ ونقارن.",
+   "steps": [
+    "٥ × ٦ = ٣٠ ✓",
+    "٨ × ٦ = ٤٨ وليس ٢٤ ✗",
+    "١٠ × ٦ = ٦٠ ✓",
+    "٧ × ٦ = ٤٢ ✓"
+   ],
+   "answer": "إذن الجواب: ب) ٨ و٢٤",
+   "why": "الباقي يصح.",
+   "tip": "ابحثي عن الزوج الذي لا يصح."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-090",
+  "final_chapter": 4,
+  "lesson": "٤-٤",
+  "chapter_basis": "نمط عددي (اكتشاف قاعدة)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "أ) طرح ٣",
+  "explain": {
+   "task": "المطلوب: نمط الأعداد ١٥ ، ١٢ ، ٩ ، ٦ ، ٣.",
+   "think": "نسأل أنفسنا: ننقص أم نزيد؟ وبكم؟",
+   "steps": [
+    "١٥ − ١٢ = ٣",
+    "١٢ − ٩ = ٣",
+    "٩ − ٦ = ٣",
+    "في كل مرة ينقص ٣."
+   ],
+   "answer": "إذن الجواب: أ) طرح ٣",
+   "why": "الأعداد تنقص فلا نزيد.",
+   "tip": "العدد يصغر = طرح."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-093",
+  "final_chapter": 4,
+  "lesson": "٤-٣",
+  "chapter_basis": "حل المسألة بالعمل عكسياً (استدلال منطقي)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "ب) ٢٧",
+  "explain": {
+   "task": "المطلوب: العدد الذي ينتج ٥٧ بعد العمليات.",
+   "think": "نسأل أنفسنا: نرجع للخلف بالعمليات العكسية.",
+   "steps": [
+    "آخر شيء: أضفنا ٧ فنطرح ٥٧ − ٧ = ٥٠.",
+    "قبلها ضربنا في ٢ فنقسم ٥٠ ÷ ٢ = ٢٥.",
+    "قبلها طرحنا ٢ فنجمع ٢٥ + ٢ = ٢٧.",
+    "تحقق: ٢٧−٢=٢٥ ، ×٢=٥٠ ، +٧=٥٧ ✓"
+   ],
+   "answer": "إذن الجواب: ب) ٢٧",
+   "why": "نجرّب الخيارات في الخطوات فتفشل.",
+   "tip": "ارجعي للخلف بالعكس."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "الدرس قريب من ٤-٣/٤-٦ (اختيار الخطة)."
+ },
+ {
+  "uid": "jazan-094",
+  "final_chapter": 4,
+  "lesson": "٤-٣",
+  "chapter_basis": "حل المسألة عكسياً",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "د) ٦",
+  "explain": {
+   "task": "المطلوب: ما كان معها في البداية.",
+   "think": "نسأل أنفسنا: نعمل بالعكس.",
+   "steps": [
+    "معها الآن ٨.",
+    "أعطت أخاها ٢ فقبلها كان ٨ + ٢ = ١٠.",
+    "أعطاها والدها ٤ فقبلها كان ١٠ − ٤ = ٦.",
+    "تحقق: ٦+٤=١٠ ، ١٠−٢=٨ ✓"
+   ],
+   "answer": "إذن الجواب: د) ٦",
+   "why": "١٢ و١٠ و٨ لا تعطي ٨ في النهاية.",
+   "tip": "ما أُخذ نرجعه، وما أُعطي ننقصه."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-095",
+  "final_chapter": 4,
+  "lesson": "٤-٢",
+  "chapter_basis": "جملة عددية: العدد المفقود",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✓",
+  "explain": {
+   "task": "المطلوب: هل العدد المفقود في ٩ − □ = ٠ هو ٩؟",
+   "think": "نسأل أنفسنا: ٩ ناقص كم يساوي ٠؟",
+   "steps": [
+    "٩ − ٩ = ٠",
+    "إذن المفقود ٩."
+   ],
+   "answer": "إذن الجواب: صح",
+   "why": "",
+   "tip": "أي عدد ناقص نفسه يساوي صفراً."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-096",
+  "final_chapter": "other",
+  "lesson": "٢-٢",
+  "chapter_basis": "تقدير المجموع لأقرب مئة: فصل ٢. ٢٣٠٠+٦٠٠=٢٩٠٠ فالجملة خطأ.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✗",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "الجواب ×؛ لو قُرّب الناتج الدقيق ٢٩٧٩ لأقرب مئة لصار ٣٠٠٠، لكن تقدير الناتج يقرّب كل عدد أولاً."
+ },
+ {
+  "uid": "jazan-097",
+  "final_chapter": "other",
+  "lesson": "٢-٢",
+  "chapter_basis": "التقريب إلى الأدنى: فصل ٢. المجموع بعد التقريب أصغر، فالجملة خطأ.",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✗",
+  "explain": {},
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-101",
+  "final_chapter": 4,
+  "lesson": "٤-١",
+  "chapter_basis": "تعريف العبارة العددية",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✓",
+  "explain": {
+   "task": "المطلوب: هل العبارة العددية تتضمن أعداداً وعمليات وتمثل كمية؟",
+   "think": "نسأل أنفسنا: ماذا يقول الكتاب؟",
+   "steps": [
+    "الكتاب (٤-١): تتضمن العبارة العددية أعداداً وعمليات وتمثل كمية رياضية."
+   ],
+   "answer": "إذن الجواب: صح",
+   "why": "",
+   "tip": "عبارة = أعداد وعمليات بدون يساوي."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-102",
+  "final_chapter": 4,
+  "lesson": "٤-٥",
+  "chapter_basis": "جدول المدخلة والمخرجة",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "✗",
+  "explain": {
+   "task": "المطلوب: هل نجد المخرجة بعكس القاعدة؟",
+   "think": "نسأل أنفسنا: المخرجة نحصل عليها بتطبيق القاعدة نفسها.",
+   "steps": [
+    "المخرجة = المدخلة بعد تطبيق القاعدة.",
+    "عكس القاعدة نستعمله لنجد المدخلة."
+   ],
+   "answer": "إذن الجواب: خطأ",
+   "why": "عكس القاعدة يُستعمل لإيجاد المدخلة لا المخرجة.",
+   "tip": "القاعدة للمخرجة وعكسها للمدخلة."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "jazan-106",
+  "final_chapter": 4,
+  "lesson": "٤-٥",
+  "chapter_basis": "جدول دالة: جمع",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "المخرجة: ٤ ، ٥ ، ٦ ، ٧",
+  "explain": {
+   "task": "المطلوب: أكملي المخرجة بالقاعدة △ + ٣.",
+   "think": "نسأل أنفسنا: نضيف ٣ لكل مدخلة.",
+   "steps": [
+    "١ + ٣ = ٤",
+    "٢ + ٣ = ٥",
+    "٣ + ٣ = ٦",
+    "٤ + ٣ = ٧"
+   ],
+   "answer": "إذن الجواب: ٤ ، ٥ ، ٦ ، ٧",
+   "why": "",
+   "tip": "أضيفي ٣ لكل صف."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "sharqia-110",
+  "final_chapter": 5,
+  "lesson": "٥-٢",
+  "chapter_basis": "ضرب في مضاعفات ١٠٠",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "١٨٠٠",
+  "explain": {
+   "task": "المطلوب: عدد الفطائر في ٦ أيام.",
+   "think": "نسأل أنفسنا: ٣٠٠ كل يوم: نضرب ٣٠٠ × ٦.",
+   "steps": [
+    "٣ × ٦ = ١٨",
+    "٣٠٠ × ٦ = ١٨٠٠ (نضيف صفرين)"
+   ],
+   "answer": "إذن الجواب: ١٨٠٠",
+   "why": "",
+   "tip": "٣ مئات × ٦ = ١٨ مئة."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "sharqia-111",
+  "final_chapter": 4,
+  "lesson": "٤-٧",
+  "chapter_basis": "مسألة لفظية قسمة / جدول ضرب",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٨",
+  "explain": {
+   "task": "المطلوب: عدد الكتب بـ ٣٢ ريالاً.",
+   "think": "نسأل أنفسنا: كل كتاب ٤ ريالات: كم ٤ في ٣٢؟",
+   "steps": [
+    "٤ × ٨ = ٣٢",
+    "٣٢ ÷ ٤ = ٨"
+   ],
+   "answer": "إذن الجواب: ٨ كتب",
+   "why": "",
+   "tip": "فكّري: ٤ × ؟ = ٣٢."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ },
+ {
+  "uid": "sharqia-112",
+  "final_chapter": 4,
+  "lesson": "٤-٤",
+  "chapter_basis": "نمط عددي (+٥)",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٢٥",
+  "explain": {
+   "task": "المطلوب: عدد الأزهار في الصف الخامس.",
+   "think": "نسأل أنفسنا: ٥ ، ١٠ ، ١٥: نزيد كم؟",
+   "steps": [
+    "٥ ← ١٠ ← ١٥: نزيد ٥ كل مرة.",
+    "الصف الرابع: ٢٠.",
+    "الصف الخامس: ٢٥."
+   ],
+   "answer": "إذن الجواب: ٢٥",
+   "why": "",
+   "tip": "اكتشفي كم يزيد كل مرة."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": "نص السؤال مقصوص في الصورة؛ الجواب ٢٥ مبني على النمط +٥ الواضح."
+ },
+ {
+  "uid": "sharqia-114",
+  "final_chapter": 5,
+  "lesson": "٥-٦",
+  "chapter_basis": "ضرب رقمين في رقم مع إعادة تجميع",
+  "status": "ok",
+  "doubt_reason": "",
+  "final_answer": "٩٠",
+  "explain": {
+   "task": "المطلوب: عدد الملصقات في الدفتر.",
+   "think": "نسأل أنفسنا: ٥ أوراق في كل ورقة ١٨: نضرب ٥ × ١٨.",
+   "steps": [
+    "٥ × ٨ = ٤٠ ، نكتب ٠ ونحمل ٤.",
+    "٥ × ١ = ٥ عشرات ، نضيف ٤ فتصير ٩ عشرات.",
+    "الناتج ٩٠."
+   ],
+   "answer": "إذن الجواب: ٩٠",
+   "why": "",
+   "tip": "لا تنسي الحمل."
+  },
+  "agree_with_extractor": true,
+  "agree_with_site": null,
+  "notes": ""
+ }
+]

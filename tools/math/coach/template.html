@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<style>
+@font-face{font-family:'B';font-weight:500;src:url('../shared/fonts/Baloo-Medium.ttf')}
+@font-face{font-family:'B';font-weight:800;src:url('../shared/fonts/Baloo-ExtraBold.ttf')}
+:root{--p:#7a5af8;--g:#2fb457;--r:#e03131;--o:#ff8a3d;--b:#2f7bd8}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'B',sans-serif;font-weight:500;margin:0;background:#fff8e1;color:#222;font-size:19px;line-height:1.7;-webkit-text-size-adjust:100%}
+.w{max-width:780px;margin:0 auto;padding:12px 14px 80px}
+h1{font-weight:800;text-align:center;color:var(--p);margin:4px 0;font-size:1.55rem}
+.sub{text-align:center;color:#555;margin-bottom:6px;font-size:.95rem}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:#555}
+.bar{display:flex;gap:6px;justify-content:center;margin:6px 0 4px;flex-wrap:wrap}
+.bar span{border-radius:12px;padding:1px 12px;font-size:.88rem;background:#eee;color:#666}
+.bar span.on{background:var(--p);color:#fff}.bar span.done{background:#cfeedb;color:#1b6b34}
+.card{background:#fff;border:4px solid var(--p);border-radius:20px;padding:12px 16px;margin:10px 0}
+.src{color:var(--r);font-size:.72rem;font-weight:800;margin-top:2px}
+.prob{font-size:1.3rem;line-height:2.15;text-align:right}
+.prob .tk{display:inline-block;padding:0 4px;margin:0 1px;border-radius:9px;border:2px solid transparent;cursor:pointer;user-select:none}
+.prob .tk.g{background:#d9e8ff;border-color:var(--b)}
+.prob .tk.q{background:#ffe0e0;border-color:var(--r)}
+.prob .tk.miss{outline:3px dashed var(--o)}
+.prob.lock .tk{cursor:default}
+.coach{background:#eefaf0;border:3px solid var(--g);border-radius:14px;padding:8px 12px;margin:8px 0;font-size:1rem}
+.coach.warn{background:#fff3e0;border-color:var(--o)}
+.coach b.red{color:var(--r)}
+.go{background:var(--p);color:#fff;border:0;border-radius:16px;padding:10px 22px;font-weight:800;cursor:pointer;margin:6px 4px;min-height:50px;font-size:1.05rem}
+.go.g{background:var(--g)}.go.gray{background:#999}.go:disabled{opacity:.45}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.op{border:4px solid #ddd;background:#fff;border-radius:18px;padding:8px 6px;text-align:center;cursor:pointer;min-height:84px;font-family:inherit}
+.op b{display:block;font-size:2.1rem;line-height:1.1}.op small{font-size:.85rem;color:#555}
+.op.no{border-color:var(--r);background:#ffecec}.op.ok{border-color:var(--g);background:#e3f8ea}
+input.ans{font:inherit;font-size:1.6rem;font-weight:800;width:100%;text-align:center;border:4px solid var(--p);border-radius:16px;padding:8px;direction:ltr}
+.eq{font-size:1.6rem;font-weight:800;text-align:center;direction:ltr;margin:4px 0}
+.opt{display:block;width:100%;text-align:right;border:3px solid #ddd;background:#fff;border-radius:14px;padding:8px 12px;margin:6px 0;cursor:pointer;font:inherit;font-size:1.1rem}
+.opt.no{border-color:var(--r);background:#ffecec}.opt.ok{border-color:var(--g);background:#e3f8ea}
+.big{font-size:1.25rem;font-weight:800;text-align:center}
+.sp{border:3px solid var(--p);background:#fff;color:var(--p);border-radius:14px;padding:4px 14px;font-weight:800;cursor:pointer;font:inherit;font-size:.95rem}
+.fin{text-align:center;padding:20px 6px}
+.fin .st{font-size:2.4rem}
+.small{font-size:.85rem;color:#666}
+</style></head><body><div class="w">
+<div class="top"><span id="pr"></span><button class="sp" id="mn" onclick="menu()" style="display:none">☰ القائمة</button><span id="stars">⭐ 0</span></div>
+<h1>🧠 __TITLE__</h1>
+<div class="sub">نقرأ · نلوّن المعطيات · نحدد المطلوب · نختار العملية · نحل</div>
+<div class="bar" id="bar"></div>
+<div id="app"></div>
+</div>
+<script>
+const ALLP=__DECK__;const GROUPS=__GROUPS__;let DECK=[];
+const L=s=>String(s).replace(/([+\-−×÷=<>])/g,'\u200E$1\u200E');
+(function(){const f=o=>{for(const k of ['text','ask','final_note','why_correct']){if(typeof o[k]==='string')o[k]=L(o[k])}
+ if(o.given)o.given=o.given.map(L);if(o.options)o.options=o.options.map(L);
+ if(o.wrong_hints)for(const k in o.wrong_hints)o.wrong_hints[k]=L(o.wrong_hints[k]);
+ (o.steps||[]).forEach(s=>{for(const k of ['write','clue','do'])if(typeof s[k]==='string')s[k]=L(s[k]);if(s.wrong_hints)for(const k in s.wrong_hints)s.wrong_hints[k]=L(s.wrong_hints[k])})};ALLP.forEach(f)})();
+let KEY='nyg_nadeen_masail___CH__';
+let ST={i:0,stars:0,redo:[],tries:{}};
+function loadST(){ST={i:0,stars:0,redo:[],tries:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s.i==='number')ST=Object.assign(ST,s)}catch(e){}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const $=(s,r=document)=>r.querySelector(s);
+const AR='٠١٢٣٤٥٦٧٨٩';const ar=n=>String(n).replace(/\d/g,d=>AR[d]);
+const toEn=s=>String(s).replace(/[٠-٩]/g,d=>AR.indexOf(d)).replace(/[٫,،\s]/g,'');
+const OPN={'+':['جمع','نضم'],'−':['طرح','ننقص أو نقارن'],'×':['ضرب','نكرر نفس العدد'],'÷':['قسمة','نوزّع بالتساوي']};
+const PRAISE=['ركّزتِ فوصلتِ ✨','أحسنتِ، لأنك قرأتِ بتأنٍّ 🌟','الله يوفقك، شفتِ كيف رتّبتِ خطواتك؟ 👏','جهدك واضح يا نادين 💪','بتوفيق الله، خطوة خطوة نوصل 🌷'];
+const praise=()=>PRAISE[Math.floor(Math.random()*PRAISE.length)];
+const STEPS=['١ اقرئي','٢ لوّني المعطيات','٣ حددي المطلوب','٤ اختاري العملية','٥ احسبي'];
+function bar(k){$('#bar').innerHTML=STEPS.map((s,i)=>`<span class="${i<k?'done':i===k?'on':''}">${s}</span>`).join('')}
+function speak(t){try{if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.8;speechSynthesis.speak(u)}catch(e){}}
+function tokens(p){ // returns [{t,start,end}]
+  const out=[];const re=/\S+/g;let m;while(m=re.exec(p.text))out.push({t:m[0],s:m.index,e:m.index+m[0].length});return out}
+function spans(p,list){const res=[];for(const g of list){const n=p.text.indexOf(g);if(n>=0)res.push([n,n+g.length])}return res}
+function inSpans(tk,sp){return sp.some(([a,b])=>tk.s<b&&tk.e>a)}
+let P,TK,GS,AS,sel,tryN,phase,stepIdx,prev;
+function cur(){return DECK[ST.i]}
+function head(p){return `<div class="card"><div class="small" style="margin-bottom:2px;color:#4a2fc0;font-weight:800">${p.origin==='central'?((p.src||'').startsWith('الفترة')?'📝 من اختبارات الفترة الثانية':'📝 من الاختبارات المركزية'):'📖 '+L(p.group||'من كتابها')}</div><div class="prob" id="prob"></div>${p.origin==='central'&&p.src?`<div class="src">جاء في: ${p.src}</div>`:''}<div style="text-align:left;margin-top:4px"><button class="sp" onclick="speak(P.text)">🔊 اسمعي المسألة</button></div></div>`}
+function renderProb(mode){ // mode: 'g' color givens / 'q' ask / none
+  const el=$('#prob');let h='';let last=0;
+  TK.forEach((k,i)=>{h+=p_esc(P.text.slice(last,k.s));last=k.e;
+    let cl='tk';if(sel.has(i))cl+=mode==='g'?' g':' q';
+    if(phase.keep&&phase.keep.g&&phase.keep.g.has(i))cl+=' g';
+    if(phase.keep&&phase.keep.q&&phase.keep.q.has(i))cl+=' q';
+    if(phase.miss&&phase.miss.has(i))cl+=' miss';
+    h+=`<span class="${cl}" data-i="${i}">${p_esc(k.t)}</span>`});
+  h+=p_esc(P.text.slice(last));el.innerHTML=h;
+  el.querySelectorAll('.tk').forEach(s=>s.onclick=()=>{if(!(phase.name==='g'||phase.name==='q'))return;const i=+s.dataset.i;sel.has(i)?sel.delete(i):sel.add(i);renderProb(phase.name)})}
+const p_esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function setKey(id){return 'nyg_nadeen_masail___CH___'+id}
+function setProg(id){try{const s=JSON.parse(localStorage.getItem(setKey(id))||'null');return s&&typeof s.i==='number'?s.i:0}catch(e){return 0}}
+function setItems(id){if(id==='allbook')return ALLP.filter(p=>p.origin==='book');if(id==='period')return ALLP.filter(p=>p.origin==='central'&&(p.src||'').startsWith('الفترة'));if(id==='central')return ALLP.filter(p=>p.origin==='central'&&!(p.src||'').startsWith('الفترة'));const g=GROUPS.find(x=>x.id===id);return g?ALLP.filter(p=>g.ids.includes(p.id)):[]}
+function menu(){try{speechSynthesis.cancel()}catch(e){}
+  $('#bar').innerHTML='';$('#pr').textContent='';$('#mn').style.display='none';$('#stars').textContent='';
+  const btn=(id,title,extra)=>{const n=setItems(id).length;const d=Math.min(setProg(id),n);return `<button class="opt" data-s="${id}"><b>${L(title)}</b> <span class="small">(${ar(n)} ${n===1?'مسألة':'مسائل'}${d?'، أنجزتِ '+ar(d):''})</span></button>`};
+  $('#app').innerHTML=`${GROUPS.length?'<div class="card"><div class="big">📖 من كتابها</div>':'<div class="card" style="display:none">'}<div class="small" style="text-align:center;margin-bottom:4px">اختاري الدرس اللي أخذتِه في المدرسة</div>`+GROUPS.map(g=>btn(g.id,g.title)).join('')+btn('allbook','كل مسائل الكتاب')+`</div>`+(setItems('period').length?`<div class="card" style="border-color:#e03131"><div class="big">📝 من اختبارات الفترة الثانية</div><div class="small" style="text-align:center;margin-bottom:4px">مسائل جاءت في نماذج الفترة الثانية، بنصها كما هي</div>`+btn('period','مسائل الفترة الثانية')+`</div>`:'')+`<div class="card" style="border-color:#e03131"><div class="big">📝 من الاختبارات المركزية</div><div class="small" style="text-align:center;margin-bottom:4px">مسائل جاءت في الاختبارات المركزية، بنصها كما هي</div>`+btn('central','مسائل الاختبارات المركزية')+`</div>`;
+  document.querySelectorAll('.opt[data-s]').forEach(b=>b.onclick=()=>openSet(b.dataset.s))}
+let SETID='';function openSet(id){SETID=id;KEY=setKey(id);DECK=setItems(id).slice();loadST();if(ST.i>=DECK.length){ST={i:0,stars:ST.stars,redo:[],tries:{}}}$('#mn').style.display='';start()}
+function start(){ if(ST.i>=DECK.length){return finish()} P=cur();TK=tokens(P);GS=new Set();AS=new Set();
+  const gs=spans(P,P.given),as=spans(P,[P.ask]);TK.forEach((k,i)=>{if(inSpans(k,gs))GS.add(i);if(inSpans(k,as))AS.add(i)});
+  sel=new Set();phase={name:'r',keep:{g:new Set(),q:new Set()}};tryN=0;stepIdx=0;prev=null;
+  $('#pr').textContent=`مسألة ${ar(ST.i+1)} من ${ar(DECK.length)}`;$('#stars').textContent='⭐ '+ar(ST.stars);
+  bar(0);$('#app').innerHTML=head(P)+`<div class="coach">📖 <b>أول شيء:</b> اقرئي المسألة ببطء مرتين: مرة بعينك ومرة بصوتك. لا نستعجل، والتأنّي يوصلنا للجواب الصحيح.</div><div style="text-align:center"><button class="go" id="nx">قرأتها المرة الأولى ✓</button></div>`;
+  renderProb();let rd=0;$('#nx').onclick=()=>{rd++;if(rd===1){$('#nx').textContent='قرأتها المرة الثانية ✓'}else stageG()}}
+function stageG(){phase={name:'g',keep:{g:new Set(),q:new Set()}};sel=new Set();tryN=0;bar(1);
+  $('#app').innerHTML=head(P)+`<div class="coach" id="cm">🔵 <b>لوّني المعطيات:</b> المعطيات هي <b>الأرقام</b> و<b>الكلمة اللي تدل عليها</b> (مثل «٢٠ صفحة»). اضغطي عليها فتتلوّن بالأزرق.</div><div style="text-align:center"><button class="go" id="ck">تحققي ✓</button></div>`;renderProb('g');$('#ck').onclick=checkG}
+function setComp(a,b){return [...a].filter(x=>!b.has(x))}
+function checkG(){const need=GS,miss=setComp(need,sel),extra=setComp(sel,need);tryN++;
+  if(!miss.length&&!extra.length){phase.keep.g=new Set(sel);return stageQ()}
+  if(tryN>=2){phase.keep.g=new Set(need);sel=new Set(need);renderProb('g');$('#cm').className='coach warn';$('#cm').innerHTML='لا بأس، لوّنّاها معاً 💙 المعطيات: '+P.given.map(g=>'«'+g+'»').join(' و')+'. انتبهي، المعطيات = رقم + الكلمة اللي تدل عليه.';$('#ck').textContent='نكمل ←';$('#ck').onclick=()=>stageQ();return}
+  phase.miss=new Set(miss);renderProb('g');
+  $('#cm').className='coach warn';$('#cm').innerHTML=(miss.length?'ناقصك معلومة مهمة (مؤشّرة بالخط المنقّط) 🔎 ':'')+(extra.length?'وفي كلمات ملوّنة مو من المعطيات المهمة، اضغطي عليها مرة ثانية لإلغائها. ':'')+'<br>جرّبي مرة ثانية، أنتِ قريبة!'}
+function stageQ(){phase={name:'q',keep:{g:new Set(GS),q:new Set()}};sel=new Set();tryN=0;bar(2);
+  $('#app').innerHTML=head(P)+`<div class="coach" id="cm">🔴 <b>حددي المطلوب:</b> المطلوب هو <b>السؤال</b> (غالباً يبدأ بـ «كم» أو «ماذا»). اضغطي على كلمات السؤال فتتلوّن بالأحمر.</div><div style="text-align:center"><button class="go" id="ck">تحققي ✓</button></div>`;renderProb('q');$('#ck').onclick=checkQ}
+function checkQ(){const need=AS;const hit=[...sel].filter(x=>need.has(x)).length;const extra=setComp(sel,need).length;tryN++;
+  if(hit>=Math.ceil(need.size*.7)&&extra<=2){phase.keep.q=new Set(need);return stageOp()}
+  if(tryN>=2){phase.keep.q=new Set(need);sel=new Set(need);renderProb('q');$('#cm').className='coach warn';$('#cm').innerHTML='نلوّنه معاً ❤️ المطلوب: «'+P.ask+'». هذا اللي نبغى نعرفه في الآخر.';$('#ck').textContent='نكمل ←';$('#ck').onclick=()=>stageOp();return}
+  $('#cm').className='coach warn';$('#cm').innerHTML='قريبة 👍 المطلوب هو جملة السؤال اللي تبغى جوابها (فيها «كم» أو «ماذا»). لوّنيها كلها بالأحمر وجرّبي مرة ثانية.'}
+let opTries,calcTries;
+function stageOp(){phase={name:'op',keep:{g:new Set(GS),q:new Set(AS)}};sel=new Set();stepIdx=0;prev=null;opTries=0;calcTries=0;showOp()}
+function showOp(){bar(3);
+  if(P.mode==='choose'){return showChoose()}
+  const s=P.steps[stepIdx];const pv=prev!==null?`<div class="coach">الناتج من الخطوة السابقة: <b>${ar(prev)}</b></div>`:'';
+  $('#app').innerHTML=head(P)+pv+`<div class="coach" id="cm">🤔 <b>اسألي نفسك:</b> ${P.steps.length>1?(stepIdx===0?'الخطوة الأولى: ':'الخطوة الثانية: '):''}إيش العملية اللي أحتاجها: نضم؟ ننقص؟ نكرر نفس العدد؟ نوزّع؟</div>
+  <div class="ops">${['+','−','×','÷'].map(o=>`<button class="op" data-o="${o}"><b>${o}</b><small>${OPN[o][0]} · ${OPN[o][1]}</small></button>`).join('')}</div><div id="fb"></div>`;
+  renderProb();$('#prob').classList.add('lock');
+  document.querySelectorAll('.op').forEach(b=>b.onclick=()=>pickOp(b))}
+function pickOp(b){const s=P.steps[stepIdx];const o=b.dataset.o;
+  if(o===s.op){b.classList.add('ok');$('#fb').innerHTML=`<div class="coach">✅ أحسنتِ! <b class="red">الدليل:</b> ${s.clue}<br><b>سوّي كذا:</b> ${s.do}<br><b>حطي:</b> <span dir="ltr" style="font-weight:800">${s.write}</span></div><div style="text-align:center"><button class="go g" id="nx">احسبي ←</button></div>`;document.querySelectorAll('.op').forEach(x=>x.disabled=true);$('#nx').onclick=()=>showCalc();return}
+  opTries++;b.classList.add('no');ST.tries[P.id]=(ST.tries[P.id]||0)+1;save();
+  $('#fb').innerHTML=`<div class="coach warn">💡 ${(s.wrong_hints&&s.wrong_hints[o])||'جرّبي عملية ثانية.'}</div>`}
+function showChoose(){const h=`<div class="coach" id="cm">🤔 <b>اسألي نفسك:</b> أي خيار يطابق كل معطيات المسألة بالترتيب؟</div>`+P.options.map((t,i)=>`<button class="opt" data-i="${i}">${t}</button>`).join('')+'<div id="fb"></div>';
+  $('#app').innerHTML=head(P)+h;renderProb();$('#prob').classList.add('lock');
+  document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(i===P.correct_index){b.classList.add('ok');document.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#fb').innerHTML=`<div class="coach">✅ أحسنتِ! ${P.why_correct}</div><div style="text-align:center"><button class="go g" id="nx">${praise()} — التالية ←</button></div>`;ST.stars++;done();$('#nx').onclick=next}else{b.classList.add('no');ST.tries[P.id]=(ST.tries[P.id]||0)+1;save();$('#fb').innerHTML=`<div class="coach warn">💡 ${(P.wrong_hints&&P.wrong_hints[String(i)])||'جرّبي خياراً ثانياً.'}</div>`}})}
+function showCalc(){bar(4);const s=P.steps[stepIdx];calcTries=0;
+  $('#app').innerHTML=head(P)+`<div class="coach">✍️ اكتبي العملية في دفترك، وبعدين احسبي واكتبي الناتج هنا:</div><div class="eq">${s.write} ${L("=")} ؟</div><input class="ans" id="in" inputmode="numeric" pattern="[0-9٠-٩]*" autocomplete="off" placeholder="الناتج"><div style="text-align:center"><button class="go" id="ck">تأكدي ✓</button></div><div id="fb"></div>`;
+  renderProb();$('#prob').classList.add('lock');$('#ck').onclick=checkCalc;$('#in').onkeydown=e=>{if(e.key==='Enter')checkCalc()};setTimeout(()=>{try{$('#in').focus()}catch(e){}},50)}
+function checkCalc(){const s=P.steps[stepIdx];const v=toEn($('#in').value);if(v==='')return;calcTries++;
+  if(+v===s.result){prev=s.result;if(stepIdx<P.steps.length-1){stepIdx++;opTries=0;$('#fb').innerHTML=`<div class="coach">✅ صح! ناتج الخطوة: <b>${ar(prev)}</b>. باقي خطوة وحدة.</div><div style="text-align:center"><button class="go g" id="nx">الخطوة التالية ←</button></div>`;$('#nx').onclick=showOp;return}
+    const unit=P.answer_unit?' '+P.answer_unit:'';
+    $('#fb').innerHTML=`<div class="coach">🎉 <b>الجواب: ${ar(s.result)}${unit}</b><br>${P.final_note||''}<br>${praise()}</div><div style="text-align:center"><button class="go g" id="nx">المسألة التالية ←</button></div>`;
+    ST.stars+= (calcTries===1&&!(ST.tries[P.id]>0))?2:1;done();$('#nx').onclick=next;return}
+  ST.tries[P.id]=(ST.tries[P.id]||0)+1;save();
+  if(calcTries===1)$('#fb').innerHTML=`<div class="coach warn">قريبة، راجعي حسابك مرة ثانية 🔁 العملية: <span dir="ltr" style="font-weight:800">${s.write}</span>. جرّبي تحسبينها عمودياً.</div>`;
+  else if(calcTries===2)$('#fb').innerHTML=`<div class="coach warn">خلينا نحسبها معاً: <span dir="ltr" style="font-weight:800">${s.write}</span>. ${hintCalc(s)}</div>`;
+  else{$('#fb').innerHTML=`<div class="coach warn">الناتج الصحيح: <b>${ar(s.result)}</b> ← <span style="font-weight:800">${s.write} ${L('=')} ${ar(s.result)}</span>. بنعيد هذي المسألة بعدين 💪</div><div style="text-align:center"><button class="go" id="nx">أكملي ←</button></div>`;if(!ST.redo.includes(P.id))ST.redo.push(P.id);save();$('#nx').onclick=()=>{prev=s.result;if(stepIdx<P.steps.length-1){stepIdx++;showOp()}else next()}}}
+function hintCalc(s){const a=s.a==='prev'?prev:s.a,b=s.b==='prev'?prev:s.b;
+  if(s.op==='×')return `فكّكي العدد الكبير: ${L(ar(a)+' × '+ar(b))} ← اضربي الآحاد ثم العشرات وجمعي الناتجين.`;
+  if(s.op==='÷')return `اسألي نفسك: كم مرة يدخل ${ar(b)} في ${ar(a)}؟ أو ${L(ar(b)+' × ؟ = '+ar(a))}.`;
+  if(s.op==='+')return `ابدئي من الآحاد ثم العشرات، وانتبهي للحمل.`;
+  return `ابدئي من الآحاد ثم العشرات، وانتبهي للاستلاف.`}
+function done(){save();$('#stars').textContent='⭐ '+ar(ST.stars)}
+function next(){ST.i++;save();start();try{window.scrollTo(0,0)}catch(e){}}
+function finish(){bar(5);const need=ST.redo.length;
+  $('#app').innerHTML=`<div class="card fin"><div class="st">🏆</div><div class="big">أنهيتِ كل المسائل يا نادين!</div><p>${praise()}</p><p>نجومك: <b>${ar(ST.stars)}</b> ⭐</p>${need?`<p class="small">فيه ${ar(need)} مسألة تحتاج إعادة، نعيدها الحين؟</p><button class="go" id="rd">أعيدي المسائل الصعبة</button>`:''}<button class="go gray" id="rs">ابدئي من جديد</button><button class="go gray" onclick="menu()">☰ القائمة</button></div>`;
+  if(need)$('#rd').onclick=()=>{const ids=ST.redo.slice();ST.redo=[];const redo=DECK.filter(p=>ids.includes(p.id));DECK=redo;ST.i=0;save();start()};
+  $('#rs').onclick=()=>{ST={i:0,stars:0,redo:[],tries:{}};save();openSet(SETID||'allbook')}}
+menu();
+</script></body></html>
