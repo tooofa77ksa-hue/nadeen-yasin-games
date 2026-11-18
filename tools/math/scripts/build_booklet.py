@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys,re;sys.path.insert(0,'/tmp/m4')
 import build_chapter as B
+from parent_guide import GUIDE
 CSS2='''
 body{color:#1b1b1b}
 h1{color:#4a2fc0;font-size:27px}
@@ -21,10 +22,11 @@ h2{color:#fff;background:#4a2fc0;border:none;border-radius:10px;padding:5px 12px
 table.st{width:100%;border-collapse:collapse;margin:6px 0}table.st td,table.st th{border:2px solid #4a2fc0;padding:4px 8px;text-align:center}table.st th{background:#e5dbff}
 .dua{border:none;padding:0;margin-top:12px;text-align:center;color:#8a8a8a;font-size:10.5px;line-height:1.6;break-inside:avoid}
 .cue{background:#e7f5ff;border:2px dashed #1c7ed6;border-radius:8px;padding:1px 8px;margin-bottom:4px;font-size:12.5px;color:#1c7ed6}
-.pb{break-before:page}
+.pb{break-before:page}.par{background:#f3f0ff;border:2px solid #7048e8;border-radius:8px;padding:2px 8px;margin-top:5px;font-size:12.5px;color:#5f3dc4}.star{background:#ffd43b;color:#4a2b00;border-radius:8px;padding:0 8px;font-weight:800;font-size:12px}
 '''
 def body(ch,solved):
-    b=B.build_ch(ch,solved,'central',body_only=True)
+    B.PARENT=solved
+    b=B.build_ch(ch,solved,'central',body_only=True,mark_top=True)
     b=re.sub(r'<h1>.*?</div><div class="note">','<div class="note">',b,count=1,flags=re.S)  # نحذف العنوان الصغير والوصف
     b=b.replace(' — تكرر في ',' — <span class="rep">🔁 تكرر في ').replace(' نماذج</div>',' نماذج</span></div>')
     if not solved:
@@ -57,8 +59,30 @@ def booklet(solved):
     foot='''<div class="dua">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>'''
     h1_3='<h2 class="pb">الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها</h2>'
     h1_4='<h2 class="pb">الفصل الرابع: الأنماط والجبر</h2>'
-    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}{B.SOLVED_CSS if solved else ""}</style></head><body>{cover}{idx}{secs}{foot}</body></html>'
+    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}{B.SOLVED_CSS if solved else ""}</style></head><body>{cover}{GUIDE if solved else ""}{idx}{secs}{foot}</body></html>'
     name='central_all_solved' if solved else 'central_all_student'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(html);return name
+
+
+def short(solved):
+    B.IDX.clear();B.PARENT=solved
+    secs=''
+    for ch in (1,2,3,4,5,6):
+        B.ch_cur[0]=ch
+        es=[e for e in B.entries(ch) if [m for m in e['models'] if not m.startswith('M')]]
+        es=[dict(e,models=[m for m in e['models'] if not m.startswith('M')],n=len([m for m in e['models'] if not m.startswith('M')]),sim_models=[m for m in e['sim_models'] if not m.startswith('M')]) for e in es]
+        only={e['canon'] for e in B.pick_top(es,5)}
+        b=B.build_ch(ch,solved,'central',body_only=True,only=only,appendix=False)
+        b=re.sub(r'<h1>.*?</div><div class="note">','<div class="note">',b,count=1,flags=re.S)
+        b=b.replace(' — تكرر في ',' — <span class="rep">🔁 تكرر في ').replace(' نماذج</div>',' نماذج</span></div>')
+        if not solved: b=b.replace('<span class="t">','<span class="cue">🔎 ركّزي: ما المطلوب؟ ما المعطيات؟ ثم حلّلي</span><br><span class="t">')
+        secs+=f'<h2 class="pb">{B.CHN[ch]}: أهم ٥ أسئلة</h2>'+b
+    ver='النسخة المختصرة (أهم ما تكرر، حوالي ٢٠ صفحة)'+(' · محلولة ومشروحة' if solved else ' · للطالبة')
+    cover=f'<div class="cover" style="padding-top:8mm"><div style="font-size:48px">📘</div><div class="big">ما جاء في الاختبارات المركزية</div><div style="font-size:21px">الرياضيات · الصف الرابع الابتدائي · الفصول ١–٦</div><div style="font-size:20px;background:#ffd8a8;border-radius:12px;display:inline-block;padding:4px 18px;margin:8px">{ver}</div><div class="box"><b>٥ أسئلة من كل فصل:</b> الأكثر تكراراً في الاختبارات المركزية، لتبدئي بها إن ضاق الوقت. الأسئلة الكاملة في الملزمة الكبيرة.</div></div>'
+    foot='<div class="dua">إعداد: عواطف الجهني ✨ اللهم بارك لي في أولادي ووالديّ وإخواني ووفّقهم · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div>'
+    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}{B.SOLVED_CSS if solved else ""}</style></head><body>{cover}{GUIDE if solved else ""}{secs}{foot}</body></html>'
+    name='short_solved' if solved else 'short_student'
+    open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(html);return name
+
 if __name__=='__main__':
-    print(booklet(True),booklet(False))
+    print(booklet(True),booklet(False),short(True),short(False))

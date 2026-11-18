@@ -111,7 +111,8 @@ def fig_html_ch(x,solved):
     return f'<div class="fig"><img src="file://{f}"></div>'
 def q_html_ch(i,e,ch,solved):
     x=ITEMS[e['canon']];r=rec(e['canon'],ch)
-    h=f'<div class="q"><span class="n">{str(i).translate(AR)}</span><span class="t">{H(x["text"])}</span>'
+    star=' <span class="star">⭐ من أهم ٥ أسئلة</span>' if e['canon'] in TOPSET else ''
+    h=f'<div class="q"><span class="n">{str(i).translate(AR)}</span>{star}<span class="t">{H(x["text"])}</span>'
     if x.get('options'): h+='<div class="opts">'+''.join(f'<div>{H(o)}</div>' for o in x['options'])+'</div>'
     h+=fig_html_ch(x,solved)
     if not solved:
@@ -124,6 +125,9 @@ def q_html_ch(i,e,ch,solved):
     if e['sim_models']: h+=f'<div class="src" style="color:#555">ونفس الفكرة بأرقام أخرى جاءت في: {H(place_label(e["sim_models"]))}</div>'
     if solved:
         ex=r.get('explain') or {}
+        if PARENT:
+            th=re.sub(r'^(اسألي نفسك|نسأل أنفسنا|اسأل نفسك)\s*:?\s*','',str(ex.get('think') or '')).strip() or 'ماذا يريدون منا في هذا السؤال؟'
+            h+=f'<div class="par">👨‍👩‍👧 اسألي بنتك: «{H(th)}»</div>'
         h+='<div class="sol">'
         if ex.get('task'): h+=f'<div class="red">① أول شيء: {H(ex["task"])}</div>'
         if ex.get('think'): h+=f'<div><b>② {H(ex["think"])}</b></div>'
@@ -134,9 +138,25 @@ def q_html_ch(i,e,ch,solved):
         h+='</div>'
     return h+'</div>'
 ORDER=[('tf','أولاً: صح وخطأ'),('mcq','ثانياً: اختيار من متعدد'),('word','ثالثاً: مسائل لفظية'),('other','رابعاً: جداول ورسوم وأسئلة أخرى')]
+PARENT=False
+TOPSET=set()
+ONLY=None
+SOLVED_PAR_CSS='.par{background:#f3f0ff;border:2px solid #7048e8;border-radius:8px;padding:2px 8px;margin-top:5px;font-size:12.5px;color:#5f3dc4}.star{background:#ffd43b;color:#4a2b00;border-radius:8px;padding:0 8px;font-weight:800;font-size:12px}'
 SOLVED_CSS='.fig img{filter:none!important;max-height:400px!important;border:1px solid #adb5bd;border-radius:6px}'
 CHN={1:'الفصل الأول: القيمة المنزلية',2:'الفصل الثاني: الجمع والطرح',5:'الفصل الخامس: الضرب في عدد من رقم واحد',6:'الفصل السادس: الضرب في عدد من رقمين',3:'الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها',4:'الفصل الرابع: الأنماط والجبر'}
-def build_ch(ch,solved,src=None,body_only=False):
+def pick_top(es,k=5):
+    pri={'tf':1,'mcq':0,'word':0,'other':2}
+    rs=sorted(es,key=lambda e:(-e['n'],pri[sec(ITEMS[e['canon']])],ITEMS[e['canon']]['page']))
+    out=[];cnt={}
+    for e in rs:
+        r=rec(e['canon'],ch_cur[0]);lc=BP.code(r.get('lesson'),ch_cur[0]) if r else None
+        if cnt.get(lc,0)>=2: continue
+        cnt[lc]=cnt.get(lc,0)+1;out.append(e)
+        if len(out)>=k: break
+    return out
+ch_cur=[0]
+def build_ch(ch,solved,src=None,body_only=False,only=None,mark_top=False,topk=5,appendix=True):
+    ch_cur[0]=ch
     es=entries(ch)
     if src:
         keep=[]
@@ -144,10 +164,22 @@ def build_ch(ch,solved,src=None,body_only=False):
             ms=[m for m in e['models'] if (m.startswith('M'))==(src=='period')]
             if ms: e=dict(e,models=ms,n=len(ms),sim_models=[m for m in e['sim_models'] if (m.startswith('M'))==(src=='period')]);keep.append(e)
         es=keep
+    if only is not None:
+        es=[e for e in es if e['canon'] in only]
     es.sort(key=lambda e:(-e['n'],ITEMS[e['canon']]['src_id'],ITEMS[e['canon']]['page']))
     tot=len(es); rep=sum(1 for e in es if e['n']>=2)
+    TOPSET.clear()
+    num={};nn=0
+    for sk,sn in ORDER:
+        for e in [e for e in es if sec(ITEMS[e['canon']])==sk]:
+            nn+=1;num[e['canon']]=nn
+    if mark_top:
+        tp=pick_top(es,topk);TOPSET.update(e['canon'] for e in tp)
+        topn=sorted(num[e['canon']] for e in tp)
     b=f'<h1>{CHN[ch]}{" — محلول" if solved else ""}</h1><div class="sub">'+({'period':'من نماذج اختبارات الفترة الثانية فقط','central':'من الاختبارات المركزية (٦ مناطق) فقط',None:'من الاختبارات المركزية ونماذج الفترة الثانية'}[src])+' ، نصاً كما هو. السؤال المتكرر مكتوب مرة واحدة وتحته مواضع تكراره.</div>'
     b+='<div class="note">'+('<b>طريقة الحل:</b> أول شيء نقرأ السؤال ونحدد المطلوب ونسأل أنفسنا: ماذا يُطلب؟ ماذا أعرف؟ بعدين نحل ونتأكد. <b>الأحمر هو أول خطوة دايماً.</b>' if solved else '<b>للطالبة:</b> أقرأ السؤال أولاً، وأحدد المطلوب، وأسأل نفسي: ماذا أعرف؟ ماذا أريد؟ ثم أحل.')+f' &nbsp;|&nbsp; عدد الأسئلة: {tot} (منها {rep} تكررت في أكثر من نموذج)'.translate(AR)+'</div>'
+    if mark_top:
+        b+='<div class="focus">⭐ <b>ابدئي بهذه الأسئلة الخمسة أولاً</b> (الأكثر تكراراً في الاختبارات المركزية): الأسئلة رقم '+'، '.join(str(x).translate(AR) for x in topn)+'. عليها شارة ⭐.</div>'
     n=0
     for sk,sn in ORDER:
         part=[e for e in es if sec(ITEMS[e['canon']])==sk]
@@ -155,7 +187,7 @@ def build_ch(ch,solved,src=None,body_only=False):
         b+=f'<h2>{sn} ({len(part)})'.translate(AR)+'</h2>'
         for e in part:
             n+=1;b+=q_html_ch(n,e,ch,solved)
-    if solved:
+    if solved and appendix:
         flaws=[(e,rec(e['canon'],ch)) for e in es if rec(e['canon'],ch).get('flaw') or (rec(e['canon'],ch).get('notes') and re.search('خطأ|خاطئ',str(rec(e['canon'],ch).get('notes'))))]
         b+='<h2 style="break-before:page">للأم: ما صحّحناه في الأوراق (لا يُعرض على الطالبة)</h2><table class="ap"><tr><th>المصدر</th><th>السؤال</th><th>الملاحظة وما اعتمدناه</th></tr>'
         for e,r in flaws:
