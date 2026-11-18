@@ -45,6 +45,7 @@ def build():
             ex=r.get('explain') or {}
             opts=x.get('options') or []
             kind,ans=parse_ans(r.get('final_answer'),opts,x)
+            if e['canon'] in B.DUAL: kind,ans='self',None
             img=orig=None;f=x.get('figure')
             if f and os.path.exists(f):
                 nm=os.path.basename(f)[:-4];rd=f'/tmp/m4/redraw/{nm}.png'
@@ -55,7 +56,7 @@ def build():
                     from PIL import Image
                     im=Image.open(f).convert('L');im.thumbnail((300,300));im.save(f'{OUT}/img/{nm}_o.jpg',quality=70);orig=f'img/{nm}_o.jpg'
             sim=B.place_label(e['sim_models']) if e['sim_models'] else ''
-            items.append({'id':e['canon'],'k':B.sec(x),'kind':kind,'ans':ans,'q':x['text'],'o':opts,'img':img,'orig':orig,'src':B.place_label(e['models']),'n':e['n'],'sim':sim,'lesson':r.get('lesson',''),'ex':ex,'fa':str(r.get('final_answer','')),'op':guess_op(ex) if B.sec(x)=='word' else None})
+            items.append({'id':e['canon'],'k':B.sec(x),'kind':kind,'ans':ans,'q':x['text'],'o':opts,'img':img,'orig':orig,'src':B.place_label(e['models']),'n':e['n'],'sim':sim,'lesson':r.get('lesson',''),'bk':B.BP.label(r.get('lesson'),ch),'ex':ex,'fa':str(r.get('final_answer','')),'op':guess_op(ex) if B.sec(x)=='word' else None})
         data[ch]=items
     return data
 if __name__=='__main__':

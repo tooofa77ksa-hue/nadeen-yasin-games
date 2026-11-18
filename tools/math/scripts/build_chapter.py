@@ -13,10 +13,14 @@ UNSAFE={'p2_p35_2','p2_p35_4','p2_p35_5','qassim_p2_12','qassim_p2_13','qassim_p
 F7={}
 for f in sorted(glob.glob('/tmp/m4/c126/final7_*.json')):
     for r in json.load(open(f)): F7[r['uid'].translate(str.maketrans('٠١٢٣٤٥٦٧٨٩','0123456789'))]=r
+from dual import DUAL
+import book_pages as BP
+IDX={}
 def rec(u,ch):
+    if u in DUAL and DUAL[u]['final_chapter']==ch: return DUAL[u]
     if ch in (1,2,6):
         r=F7.get(u)
-        if not r or str(r.get('final_chapter'))!=str(ch) or r.get('unsafe'): return None
+        if not r or str(r.get('final_chapter'))!=str(ch) or (r.get('unsafe') and u not in ('sharqia-115','sharqia-108')): return None
         return r
     if ch==5:
         r=FIN.get(u)
@@ -38,7 +42,7 @@ def place_label(models):
     return ' · '.join(s)
 def sec(x):
     t=x.get('type');return 'word' if t=='word' else 'mcq' if t=='mcq' else 'tf' if t=='tf' else 'other'
-HIDE={'p2-209','p2-324'}  # جواب غير مؤكد أو خطأ في السؤال نفسه: لا تُعرض على نادين حتى تراجعها ولية الأمر
+HIDE=set()  # جواب غير مؤكد أو خطأ في السؤال نفسه: لا تُعرض على نادين حتى تراجعها ولية الأمر
 def entries(ch):
     import os as _os
     out=json.load(open(f'/tmp/m4/rep/out_all_{ch}.json' if _os.path.exists(f'/tmp/m4/rep/out_all_{ch}.json') else f'/tmp/m4/rep/out_{ch}.json'))
@@ -97,6 +101,8 @@ def q_html_ch(i,e,ch,solved):
         elif x.get('type')=='tf': h+='<div style="margin-top:3px">( &nbsp;&nbsp;&nbsp;&nbsp; ) صح &nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp;&nbsp; ) خطأ</div>'
     src='جاء في: '+place_label(e['models'])+(f' — تكرر في {str(e["n"]).translate(AR)} نماذج' if e['n']>=2 else '')
     h+=f'<div class="src">{H(src)}</div>'
+    h+=f'<div class="src" style="background:#e7f5ff;border-color:#1c7ed6;color:#0b5394">📖 في كتابك: {H(BP.label(r.get("lesson"),ch))}</div>'
+    IDX.setdefault(ch,[]).append((i,BP.code(r.get('lesson'),ch)))
     if e['sim_models']: h+=f'<div class="src" style="color:#555">ونفس الفكرة بأرقام أخرى جاءت في: {H(place_label(e["sim_models"]))}</div>'
     if solved:
         ex=r.get('explain') or {}

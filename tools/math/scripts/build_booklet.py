@@ -30,7 +30,22 @@ def body(ch,solved):
     if not solved:
         b=b.replace('<span class="t">','<span class="cue">🔎 ركّزي: ما المطلوب؟ ما المعطيات؟ ثم حلّلي</span><br><span class="t">')
     return b
+def index_html():
+    import book_pages as P
+    h='<h2 class="pb">فهرس الأسئلة: أين تجدين كل سؤال في كتابك؟</h2><div class="small">لكل فصل: الدرس، وصفحاته في الكتاب، وكم سؤالاً جاء منه في المركزية، وأرقام الأسئلة في هذه الملزمة (رقم السؤال داخل الفصل).</div>'
+    for ch in (1,2,3,4,5,6):
+        rows=B.IDX.get(ch,[]);d={}
+        for n,c in sorted(set(rows)):d.setdefault(c,[]).append(n)
+        h+=f'<h3 style="color:#4a2fc0;margin:10px 0 3px">{B.CHN[ch]}</h3><table class="st"><tr><th>الدرس</th><th>صفحات الكتاب</th><th>عدد الأسئلة</th><th>أرقام الأسئلة</th></tr>'
+        for k,t,sp,ep in P.LES[ch]:
+            ns=d.get(k,[]);pg=f'ص{P.a(sp)}' if sp==ep else f'ص{P.a(sp)}–{P.a(ep)}'
+            h+=f'<tr><td style="text-align:right">{k.replace("-","&#8206;-&#8206;")} {t}</td><td>{pg}</td><td>{P.a(len(ns)) if ns else "—"}</td><td style="font-size:12px">{"، ".join(P.a(x) for x in ns) if ns else "لم يأتِ"}</td></tr>'
+        rest=d.get(None,[])
+        if rest:h+=f'<tr><td style="text-align:right">مراجعة الفصل</td><td style="font-size:11px">{P.REVIEW[ch]}</td><td>{P.a(len(rest))}</td><td>{"، ".join(P.a(x) for x in rest)}</td></tr>'
+        h+='</table>'
+    return h
 def booklet(solved):
+    B.IDX.clear()
     secs=''.join(f'<h2 class="pb">{B.CHN[c]}</h2>'+body(c,solved) for c in (1,2,3,4,5,6))
     ver='نموذج الإجابة (مع شرح المعلّم)' if solved else 'نموذج تحلّه الطالبة'
     cover=f'''<div class="cover"><div style="font-size:60px">📘</div><div class="big">ما جاء في الاختبارات المركزية</div><div class="big" style="font-size:26px">الرياضيات · الصف الرابع الابتدائي</div><div style="font-size:21px;margin:8px 0">الفصول من الأول إلى السادس</div><div style="font-size:22px;background:#ffd8a8;border-radius:12px;display:inline-block;padding:4px 18px;margin:8px">{ver}</div>
@@ -38,10 +53,11 @@ def booklet(solved):
 <div class="box"><b>ماذا ركّزت عليه الاختبارات المركزية؟</b>
 <table class="st"><tr><th>الفصل</th><th>عدد الأسئلة في الاختبارات المركزية (تقريباً)</th></tr><tr><td>١ القيمة المنزلية</td><td>٣٨</td></tr><tr><td>٢ الجمع والطرح</td><td><b style="color:#e03131">٤٤ (الأكثر)</b></td></tr><tr><td>٣ تنظيم البيانات</td><td>٣٨ (منها ٣٥ سؤالاً مختلفاً، تكرر ٢ منها)</td></tr><tr><td>٤ الأنماط والجبر</td><td>٣٧ (منها ٣٠ سؤالاً مختلفاً، تكرر ٦ منها)</td></tr><tr><td>٥ الضرب في رقم</td><td>٣٩</td></tr><tr><td>٦ الضرب في رقمين</td><td>١١ (الأقل)</td></tr></table>
 <div class="small">الفصل الثاني ثم الخامس هما الأكثر أسئلة، والفصلان ٣ و٤ لهما نصيب كبير أيضاً. أعداد الفصول من تصنيف أولي لأسئلة المركزيات.</div></div></div>'''
+    idx=index_html()
     foot='''<div class="dua">إعداد: عواطف الجهني<br><span style="font-size:13px;color:#555">هذا جهد شخصي لوجه الله، ولا يُعتمد عليه وحده؛ ارجعي دائماً إلى كتابك ومعلمتك.</span><br>اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وانفع به كل من يقرؤه.<br>اللهم بارك لي في أولادي، واحفظ أمي وأبي وإخواني، وارزقنا جميعاً العلم النافع والعمل الصالح والتوفيق في الدنيا والآخرة. آمين.</div>'''
     h1_3='<h2 class="pb">الفصل الثالث: تنظيم البيانات وعرضها وتفسيرها</h2>'
     h1_4='<h2 class="pb">الفصل الرابع: الأنماط والجبر</h2>'
-    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}</style></head><body>{cover}{secs}{foot}</body></html>'
+    html=f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{B.CSS}{CSS2}</style></head><body>{cover}{idx}{secs}{foot}</body></html>'
     name='central_all_solved' if solved else 'central_all_student'
     open(f'/tmp/m4/out/{name}.html','w',encoding='utf-8').write(html);return name
 if __name__=='__main__':
