@@ -77,7 +77,7 @@ function goRev(){G.n=1;G.tables=[2,3,4,5];G.rounds=4;start()}
 function goNew(i){const p=PLAN[i];G.n=1;G.tables=p.t.slice();G.rounds=p.nr;start()}
 function planCard(){const td=todayStr(),o=pdone();let i=PLAN.findIndex(p=>p.d==td),h='';
  if(i>=0){const p=PLAN[i];h+='<div class="card" style="border-color:var(--g,#2f9e44);border-width:3px"><b>🌷 جدول اليوم · '+p.n+'</b><div style="font-size:20px;margin:6px 0">'+ar(p.m)+' دقائق فقط'+(p.rev?' — لعبتان: مراجعة ثم '+p.lab:' — '+p.lab)+'</div>'
-  +(p.rev?'<button class="main" style="width:100%;margin:4px 0" onclick="goRev()">١) مراجعة ٢ إلى ٥ (٤ أسئلة)</button>':'')
+  +(p.rev?'<button class="main" style="width:100%;margin:4px 0" onclick="goRev()">🌱 اللعبة ١: مراجعة ٢ إلى ٥ (٤ أسئلة)</button>':'')
   +'<button class="main" style="width:100%;margin:4px 0" onclick="goNew('+i+')">'+(p.rev?'🌳 اللعبة ٢: ':'ابدئي: ')+p.lab+'</button>'
   +'<div class="small" style="margin-top:6px">خذي وقتك، لا استعجال. وإذا انتهت الدقائق نتوقف، والقليل كل يوم يكفي. 🤍</div>'
   +'<button style="width:100%;margin-top:6px" class="'+(o[p.d]?'on':'')+'" onclick="ptoggle(\''+p.d+'\')">'+(o[p.d]?'✅ كملتِ اليوم، ما شاء الله!':'⬜ كملتُ اليوم')+'</button></div>'}
