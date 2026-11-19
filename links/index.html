@@ -1,0 +1,48 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>روابط للمشاركة</title>
+<style>
+@font-face{font-family:'Baloo';font-weight:400;src:url('../darb/fonts/baloo-400.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:700;src:url('../darb/fonts/baloo-700.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:800;src:url('../darb/fonts/baloo-800.ttf') format('truetype')}
+*{box-sizing:border-box}body{margin:0;font-family:"Baloo",system-ui,Tahoma,sans-serif;background:linear-gradient(#fff0f6,#e7f5ff);color:#33243a;padding:10px}
+.wrap{max-width:720px;margin:auto}.hero{background:linear-gradient(135deg,#f06595,#7048e8);color:#fff;border-radius:20px;padding:12px;text-align:center;box-shadow:0 5px 0 #5f3dc4}.hero h1{margin:0;font-size:26px}.hero div{font-size:14px}
+h2{color:#7048e8;margin:14px 4px 4px;font-size:19px}
+.it{background:#fff;border:3px solid #7048e8;border-radius:16px;padding:10px;margin:8px 0}.it b{font-size:18px;display:block}.it small{display:block;color:#666;margin:2px 0 6px;font-size:13px}
+.u{direction:ltr;text-align:left;font-size:12px;color:#1c7ed6;word-break:break-all;margin-bottom:6px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button,a.b{font:inherit;font-family:inherit;font-weight:800;border-radius:12px;border:3px solid #7048e8;background:#f3f0ff;color:#4c2bb8;padding:8px 14px;font-size:17px;cursor:pointer;text-decoration:none;display:inline-block}
+button.main{background:#25d366;border-color:#128c7e;color:#fff}
+.ok{background:#d3f9d8!important;border-color:#2f9e44!important;color:#1b5e20!important}
+.n{font-size:12px;color:#888;text-align:center;margin:16px 0 4px}
+</style></head><body><div class="wrap">
+<div class="hero"><h1>🔗 روابط للمشاركة</h1><div>اضغطي «مشاركة» لترسلي الرابط مباشرة للواتساب، أو «نسخ» ثم الصقيه في أي محادثة</div></div>
+<div id="app"></div>
+<div class="n">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div></div>
+<script>
+const B='https://tooofa77ksa-hue.github.io/nadeen-yasin-games/';
+const L=[
+['للمعلمة سميرة الشريف (رياضيات)',[
+ ['🌸 حديقة الضرب السحرية (المهمة الأدائية)','darb/','لعبة تفاعلية لواحدة أو من ٢ إلى ٤ لاعبات'],
+ ['📄 شرح اللعبة: الفائدة والآلية والدراسات','docs/math/teacher.pdf','ورقة ملوّنة (٣ صفحات)']]],
+['علوم نادين',[
+ ['🌿 حديقة العلوم + قلعة الذاكرة','olom/','أسئلة المركزية (موضي وهشام فرغلي) ومذكرة هشام'],
+ ['📘 ملزمة العلوم محلولة','docs/science/solved.pdf','مرتبة بالفصل والدرس، المصدر تحت كل سؤال'],
+ ['📗 ملزمة العلوم للطالبة','docs/science/student.pdf','بلا حلول'],
+ ['📊 أين جاءت الأسئلة في الكتاب؟','docs/science/coverage_science.pdf','']]],
+['رياضيات نادين',[
+ ['🎯 ألعاب الاختبارات المركزية','markaz/','مراجعة اليوم + مفرقعات'],
+ ['📖 مسائل الرياضيات (كل الفصول)','nadeen/math_masail.html',''],
+ ['📊 أين جاءت الأسئلة في الكتاب؟','docs/math/coverage_math.pdf',''],
+ ['✍️ ورقة حيل الضرب للطباعة','docs/math/multsheet.pdf','']]],
+['لغتي نادين',[
+ ['🏰 قلعة الإعراب','nadeen/irab_castle.html','سبع غرف من كتابها'],
+ ['📋 جدول كل الإعرابات','docs/lughati/irab_table.pdf','أبيض وأسود'],
+ ['✍️ أسأل نفسي ثم أُعرب','docs/lughati/irab_bw.pdf','٣ صفحات أبيض وأسود'],
+ ['🏠 موقع نادين','nadeen/','']]],
+['رسالة الطريقة لكل المواد (للمعلمات)',[
+ ['📄 طريقة واحدة لكل المواد','docs/method_letter.pdf','ورقة ملوّنة (٣ صفحات) بالمراجع']]]];
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+$('#app').innerHTML=L.map(g=>'<h2>'+esc(g[0])+'</h2>'+g[1].map((x,i)=>'<div class="it"><b>'+esc(x[0])+'</b>'+(x[2]?'<small>'+esc(x[2])+'</small>':'')+'<div class="u">'+B+x[1]+'</div><div class="row"><button class="main" data-u="'+B+x[1]+'" data-t="'+esc(x[0])+'" onclick="sh(this)">📤 مشاركة</button><button data-u="'+B+x[1]+'" onclick="cp(this)">📋 نسخ الرابط</button><a class="b" href="'+B+x[1]+'" target="_blank" rel="noopener">فتح</a></div></div>').join('')).join('');
+function done(b,t){const o=b.textContent;b.classList.add('ok');b.textContent=t;setTimeout(()=>{b.classList.remove('ok');b.textContent=o},1800)}
+function cp(b){const u=b.dataset.u;const f=()=>{const t=document.createElement('textarea');t.value=u;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');done(b,'✔ تم النسخ')}catch(e){done(b,'انسخيه من الأعلى')}t.remove()};
+ if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(u).then(()=>done(b,'✔ تم النسخ')).catch(f);else f()}
+function sh(b){const u=b.dataset.u,t=b.dataset.t;if(navigator.share){navigator.share({title:t,text:t,url:u}).catch(()=>{})}else{cp(b);}}
+</script></body></html>
