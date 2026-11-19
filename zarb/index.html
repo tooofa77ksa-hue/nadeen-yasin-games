@@ -1,0 +1,135 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مراجعة جدول الضرب — نادين</title>
+<style>
+@font-face{font-family:'Baloo';font-weight:400;src:url('fonts/baloo-400.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:500;src:url('fonts/baloo-500.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:600;src:url('fonts/baloo-600.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:700;src:url('fonts/baloo-700.ttf') format('truetype')}@font-face{font-family:'Baloo';font-weight:800;src:url('fonts/baloo-800.ttf') format('truetype')}
+:root{--p:#7048e8;--pk:#f06595;--g:#2f9e44;--y:#fab005}
+*{box-sizing:border-box}body{margin:0;font-family:"Baloo",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:linear-gradient(#fff0f6,#f3f0ff);color:#33243a;min-height:100vh;padding:10px}
+.wrap{max-width:720px;margin:auto}h1{text-align:center;color:var(--p);margin:4px 0;font-size:28px}.sub{text-align:center;color:#666;font-size:14px;margin-bottom:6px}
+.card{background:#fff;border:3px solid var(--p);border-radius:20px;padding:14px;margin:10px 0;text-align:center}
+button{font:inherit;font-family:inherit;font-weight:800;border-radius:14px;border:3px solid var(--p);background:#f3f0ff;color:#4c2bb8;padding:10px 14px;font-size:20px;cursor:pointer}
+button.main{background:var(--pk);border-color:#c2255c;color:#fff;font-size:24px}button.ok{background:#d3f9d8;border-color:var(--g)}button.no{background:#ffe3e3;border-color:#e03131}
+.chip{display:inline-block;margin:3px;min-width:46px}.chip.on{background:var(--p);color:#fff}
+.q{font-size:56px;font-weight:800;direction:ltr;unicode-bidi:isolate;margin:6px 0}.disp{font-size:44px;font-weight:800;min-height:64px;border:3px dashed var(--p);border-radius:14px;direction:ltr;margin:6px auto;max-width:240px;background:#fff9db}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px;margin:8px auto}.pad button{font-size:30px;padding:12px}
+.hint{background:#fff9db;border-right:6px solid var(--y);border-radius:10px;padding:10px;font-size:19px;margin-top:8px;text-align:right}
+.score{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.pl{border:3px solid #ddd;border-radius:14px;padding:6px 12px;background:#fff;font-weight:800}.pl.cur{border-color:var(--pk);background:#fff0f6;transform:scale(1.05)}
+.arr{display:inline-grid;gap:3px;margin:6px;direction:ltr}.arr i{width:20px;height:20px;border-radius:50%;display:block}
+.r1{background:#f06595}.r2{background:#4dabf7}
+.heat{display:grid;grid-template-columns:repeat(9,1fr);gap:3px;direction:ltr;max-width:430px;margin:8px auto;font-size:13px}.heat div{padding:5px 0;border-radius:6px;color:#fff;font-weight:700}
+.cup{font-size:110px;animation:b 1s infinite alternate}@keyframes b{to{transform:translateY(-14px) rotate(4deg)}}
+.small{font-size:12px;color:#888;text-align:center;margin:16px 0 4px}.cols{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+@media(min-width:1000px){.wrap{max-width:980px}h1{font-size:44px}.q{font-size:96px}.disp{font-size:72px;max-width:380px}.pad{max-width:480px}.pad button{font-size:44px;padding:18px}.arr i{width:32px;height:32px}button{font-size:28px}.hint{font-size:28px}.pl{font-size:26px}}
+.hero{background:linear-gradient(135deg,#f06595,#7048e8);color:#fff;border-radius:22px;padding:10px 12px 8px;text-align:center;position:relative;box-shadow:0 6px 0 #5f3dc4}
+.hero h1{color:#fff;margin:0;text-shadow:0 2px 0 rgba(0,0,0,.2)}.who{font-size:17px;margin-top:2px}.stu{font-size:15px;opacity:.95}.en{font-size:11px;opacity:.85}
+#snd{position:absolute;left:8px;top:8px;padding:2px 8px;font-size:20px;border-radius:12px;border:2px solid #fff;background:rgba(255,255,255,.25);color:#fff}
+.q,.disp,.pad button,.pl,.score,.heat div{font-variant-numeric:tabular-nums}
+.pad button{box-shadow:0 4px 0 #b197fc;transition:transform .08s}.pad button:active{transform:translateY(3px);box-shadow:0 1px 0 #b197fc}
+.shake{animation:sh .35s}@keyframes sh{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.pop{animation:pp .5s}@keyframes pp{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@media(min-width:1000px){.who{font-size:30px}.stu{font-size:26px}.en{font-size:18px}.hero h1{font-size:52px}#snd{font-size:34px}}
+@media print{.noprint{display:none}body{background:#fff}}
+</style></head><body><div class="wrap">
+<div class="hero"><button id="snd" class="noprint" onclick="tgSound()" title="الصوت">🔊</button><h1>🌸 حديقة الضرب السحرية 🌸</h1>
+<div class="who">مراجعة هادئة لجدول الضرب · بلا استعجال 🌷</div>
+<div class="stu">لنادين وحدها · الصف الرابع / ٢</div></div>
+<div id="app"></div>
+<div class="small">إعداد: عواطف الجهني · جهد شخصي لوجه الله، ولا يُعتمد عليه وحده</div></div>
+<script src="fx.js"></script>
+<script>
+function tgSound(){var m=FX.toggle();document.getElementById("snd").textContent=m?"🔇":"🔊"}
+const AR='٠١٢٣٤٥٦٧٨٩',ar=n=>String(n).replace(/\d/g,d=>AR[d]),$=s=>document.querySelector(s),LR='‎';
+const eq=(a,b,c)=>LR+ar(a)+LR+' × '+LR+ar(b)+LR+(c!==undefined?' = '+LR+ar(c)+LR:'');
+const EMO=['👸','🧚‍♀️','🦄','🧜‍♀️'];
+const HOOK={'6x6':'ستة في ستة: ٣٦','6x7':'٦ و٧ جاءوا اثنين وأربعين: ٤٢','6x8':'ستة في ثمانية: ٤٨','7x7':'سبعة في سبعة: ٤٩','7x8':'الأرقام ٥ ٦ ٧ ٨ بالترتيب: ٥٦ = ٧ × ٨','8x8':'ثمانية في ثمانية: ٦٤'};
+function hint(a,b){let x=Math.min(a,b),y=Math.max(a,b),h='';
+ if(x==2)h=eq(2,y)+' = '+ar(y)+' + '+ar(y)+' = '+ar(2*y);
+ else if(x==3)h=eq(3,y)+' = '+ar(y)+' + '+ar(y)+' + '+ar(y)+' = '+ar(3*y);
+ else if(x==4)h=eq(4,y)+' = ضعف ضعف '+ar(y)+': '+ar(2*y)+' ثم '+ar(4*y);
+ else if(x==5)h=eq(5,y)+' = نصف '+ar(10*y)+' = '+ar(5*y);
+ else if(y==9)h=eq(9,x)+' = '+ar(10*x)+' − '+ar(x)+' = '+ar(9*x);
+ else h=eq(x,y)+' = '+eq(5,y)+' + '+eq(x-5,y)+' = '+ar(5*y)+' + '+ar((x-5)*y)+' = '+ar(x*y);
+ const k=HOOK[x+'x'+y];return h+(k?'<br>💡 '+k:'')}
+function arr(a,b){let s='<div class="arr" style="grid-template-columns:repeat('+b+',auto)">';for(let i=0;i<a;i++)for(let j=0;j<b;j++)s+='<i class="'+(i<5?'r1':'r2')+'"></i>';return s+'</div>'}
+// ===== حالة =====
+let G={n:1,names:['نادين','صديقتي ١','صديقتي ٢','صديقتي ٣'],tables:[2,3,4,5,6,7,8,9],rounds:8},P=[],turn=0,cur=null,entry='',hinted=false,tries=0,lastKey='';
+const KEY=n=>'zarb_'+n;
+function load(n){try{return Object.assign({box:{},seen:{},miss:{},sess:0},JSON.parse(localStorage.getItem(KEY(n))||'{}'))}catch(e){return{box:{},seen:{},miss:{},sess:0}}}
+function save(p){try{localStorage.setItem(KEY(p.name),JSON.stringify({box:p.box,seen:p.seen,miss:p.miss,sess:p.sess}))}catch(e){}}
+
+// ===== جدول الأسبوع (من ولية الأمر): بلا استعجال، كل يوم وقته وبدايته =====
+const ALL=[2,3,4,5,6,7,8,9];
+const PLAN=[
+{d:'2026-11-19',n:'الخميس ١٩',m:5,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
+{d:'2026-11-20',n:'الجمعة ٢٠',m:5,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
+{d:'2026-11-21',n:'السبت ٢١',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
+{d:'2026-11-22',n:'الأحد ٢٢',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
+{d:'2026-11-23',n:'الاثنين ٢٣',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
+{d:'2026-11-24',n:'الثلاثاء ٢٤',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
+{d:'2026-11-25',n:'الأربعاء ٢٥',m:5,rev:0,t:[6,7,8,9],lab:'٦ ٧ ٨ ٩ (الأحمر أولاً)'},
+{d:'2026-11-26',n:'الخميس ٢٦',m:10,rev:0,t:ALL,lab:'الكل مخلوط، ثم تسألك المعلمة شفهياً'},
+{d:'2026-11-27',n:'الجمعة ٢٧',m:5,rev:0,t:ALL,lab:'مراجعة خفيفة ممتعة'},
+{d:'2026-11-28',n:'السبت ٢٨',m:5,rev:0,t:ALL,lab:'مراجعة خفيفة ممتعة'},
+{d:'2026-11-29',n:'الأحد ٢٩',m:5,rev:0,t:ALL,lab:'مراجعة خفيفة ممتعة'}];
+PLAN.forEach(p=>{p.nr=p.rev?(p.m==5?5:10):(p.m==5?8:15)});
+function todayStr(){try{return new Date().toLocaleDateString('en-CA')}catch(e){return ''}}
+function pdone(){try{return JSON.parse(localStorage.getItem('zarb_plan')||'{}')}catch(e){return{}}}
+function ptoggle(d){const o=pdone();if(o[d])delete o[d];else o[d]=1;try{localStorage.setItem('zarb_plan',JSON.stringify(o))}catch(e){}setup()}
+function goRev(){G.n=1;G.tables=[2,3,4,5];G.rounds=4;start()}
+function goNew(i){const p=PLAN[i];G.n=1;G.tables=p.t.slice();G.rounds=p.nr;start()}
+function planCard(){const td=todayStr(),o=pdone();let i=PLAN.findIndex(p=>p.d==td),h='';
+ if(i>=0){const p=PLAN[i];h+='<div class="card" style="border-color:var(--g,#2f9e44);border-width:3px"><b>🌷 جدول اليوم · '+p.n+'</b><div style="font-size:20px;margin:6px 0">'+ar(p.m)+' دقائق فقط'+(p.rev?' — لعبتان: مراجعة ثم '+p.lab:' — '+p.lab)+'</div>'
+  +(p.rev?'<button class="main" style="width:100%;margin:4px 0" onclick="goRev()">🌱 اللعبة ١: مراجعة ٢ إلى ٥ (٤ أسئلة)</button>':'')
+  +'<button class="main" style="width:100%;margin:4px 0" onclick="goNew('+i+')">'+(p.rev?'🌳 اللعبة ٢: ':'ابدئي: ')+p.lab+'</button>'
+  +'<div class="small" style="margin-top:6px">خذي وقتك، لا استعجال. وإذا انتهت الدقائق نتوقف، والقليل كل يوم يكفي. 🤍</div>'
+  +'<button style="width:100%;margin-top:6px" class="'+(o[p.d]?'on':'')+'" onclick="ptoggle(\''+p.d+'\')">'+(o[p.d]?'✅ كملتِ اليوم، ما شاء الله!':'⬜ كملتُ اليوم')+'</button></div>'}
+ h+='<div class="card" style="text-align:right"><b>📅 جدول الأسبوع</b><div class="small">كل يوم: الوقت وبماذا نبدأ. اضغطي على اليوم لتعلّمي «كملتِ».</div>';
+ PLAN.forEach((p,k)=>{h+='<div onclick="ptoggle(\''+p.d+'\')" style="display:flex;gap:6px;align-items:center;padding:5px 4px;border-top:1px solid #ddd;'+(p.d==td?'background:#ebfbee;border-radius:8px;':'')+'"><span style="width:26px">'+(o[p.d]?'✅':'⬜')+'</span><b style="width:92px">'+p.n+'</b><span style="width:66px">'+ar(p.m)+' د</span><span style="flex:1;font-size:15px">'+(p.rev?'مراجعة ٢–٥ + ':'')+p.lab+'</span></div>'});
+ return h+'</div>'}
+function setup(){G.n=1;let h=planCard()+'<div class="card" style="display:none"><b>كم لاعبة؟</b><div class="cols">'+[1,2,3,4].map(n=>'<button class="chip '+(G.n==n?'on':'')+'" onclick="G.n='+n+';setup()">'+ar(n)+'</button>').join('')+'</div>';
+ h+='<div style="margin-top:8px">'+Array.from({length:G.n},(_,i)=>'<div>'+EMO[i]+' <input id="nm'+i+'" value="'+G.names[i]+'" style="font:inherit;font-size:20px;padding:6px;border:2px solid var(--p);border-radius:10px;width:60%" oninput="G.names['+i+']=this.value"></div>').join('')+'</div></div>';
+ h+='<div class="card"><b>أي جداول نلعب؟</b><div>'+[2,3,4,5,6,7,8,9].map(t=>'<button class="chip '+(G.tables.includes(t)?'on':'')+'" onclick="tg('+t+')">'+ar(t)+'</button>').join('')+'</div><div class="cols" style="margin-top:6px"><button onclick="G.tables=[6,7,8];setup()">⭐ الصعبة ٦ ٧ ٨</button><button onclick="G.tables=[2,3,4,5,6,7,8,9];setup()">الكل</button></div></div>';
+ h+='<div class="card"><b>كم سؤالاً لكل لاعبة؟</b><div class="cols">'+[5,8,10,15].map(n=>'<button class="chip '+(G.rounds==n?'on':'')+'" onclick="G.rounds='+n+';setup()">'+ar(n)+'</button>').join('')+'</div><div class="small" style="margin:4px">٨ أسئلة ≈ ٥ دقائق للاعبة واحدة</div></div>';
+ h+='<button class="main" style="width:100%" onclick="start()">ابدئي اللعب 🌷</button><div class="card" style="font-size:15px;text-align:right"><b>كيف تلعبين؟</b><br>١) تظهر عملية ضرب، اكتبي جوابها بأزرار الأرقام (بدون خيارات، لأن التذكّر الحرّ يقوّي الحفظ).<br>٢) «💡 ساعديني» تُظهر لك الحيلة والنقاط (يقلّ نقطتك إلى ١).<br>٣) إن أخطأتِ: ترين الحيلة والنقاط الملونة، ثم تكتبين الجواب الصحيح بنفسك، وترجع العملية لتأتيك قريباً.<br>٤) كل عملية تتنقل بين صناديق: الجديدة تتكرر كثيراً، والمتقنة تتباعد 🏅.<br>٥) في النهاية: الكأس 🏆 وخريطة الإتقان.</div>';
+ $('#app').innerHTML=h}
+function tg(t){const i=G.tables.indexOf(t);if(i>=0){if(G.tables.length>1)G.tables.splice(i,1)}else G.tables.push(t);setup()}
+function start(){P=Array.from({length:G.n},(_,i)=>{const nm=(G.names[i]||'لاعبة'+(i+1)).trim();const s=load(nm);s.sess++;return Object.assign(s,{name:nm,emo:EMO[i],pts:0,first:0,asked:0,streak:0,done:0})});P.forEach(save);turn=0;next()}
+const GAP=[0,1,2,4,7];
+function factsPool(){const r=[];G.tables.forEach(a=>{for(let b=2;b<=9;b++)r.push([a,b])});return r}
+function pick(p){const pool=factsPool(),k=f=>f[0]+'x'+f[1];
+ let due=pool.filter(f=>{const b=p.box[k(f)]||0;return b===0||b===1||(p.sess-(p.seen[k(f)]||0))>=GAP[Math.min(b,4)]});
+ if(!due.length)due=pool;due=due.filter(f=>k(f)!==lastKey&&!(f[1]==lastKey.split('x')[0]&&f[0]==lastKey.split('x')[1]));if(!due.length)due=pool;
+ // الأقل إتقاناً أولاً مع عشوائية
+ due.sort((a,b)=>((p.box[k(a)]||0)-(p.box[k(b)]||0))+(Math.random()-.5)*2.2);return due[0]}
+function next(){const p=P[turn];if(P.every(x=>x.done>=G.rounds))return end();
+ if(p.done>=G.rounds){turn=(turn+1)%P.length;return next()}
+ cur=pick(p);lastKey=cur[0]+'x'+cur[1];entry='';hinted=false;tries=0;ask()}
+function bar(){return '<div class="score">'+P.map((p,i)=>'<div class="pl '+(i==turn?'cur':'')+'">'+p.emo+' '+p.name+' · '+ar(p.pts)+'⭐</div>').join('')+'</div>'}
+function ask(msg){const p=P[turn];const k=cur[0]+'x'+cur[1];
+ $('#app').innerHTML=bar()+'<div class="card"><div class="small">دور '+p.emo+' '+p.name+' · سؤال '+ar(p.done+1)+' من '+ar(G.rounds)+'</div><div class="q">'+eq(cur[0],cur[1])+' = ؟</div><div id="vis"></div><div class="disp" id="disp">'+(entry?ar(entry):'&nbsp;')+'</div>'+pad()+'<div id="fb">'+(msg||'')+'</div><button style="margin-top:8px" onclick="help()">💡 ساعديني</button></div>'}
+function pad(){let s='<div class="pad">';[7,8,9,4,5,6,1,2,3].forEach(n=>s+='<button onclick="dig('+n+')">'+ar(n)+'</button>');s+='<button onclick="back()">⌫</button><button onclick="dig(0)">'+ar(0)+'</button><button class="main" onclick="submit()" style="font-size:22px">تم ✔</button></div>';return s}
+function dig(n){if(entry.length<3){entry+=n;$('#disp').textContent=ar(entry)}}function back(){entry=entry.slice(0,-1);$('#disp').innerHTML=entry?ar(entry):'&nbsp;'}
+function help(){hinted=true;$('#vis').innerHTML=arr(cur[0],cur[1]);$('#fb').innerHTML='<div class="hint">'+hint(cur[0],cur[1])+'</div>'}
+function submit(){if(!entry)return;const p=P[turn],k=cur[0]+'x'+cur[1],ans=cur[0]*cur[1];tries++;
+ if(+entry===ans){
+  if(tries===1){p.asked++;if(!hinted){p.first++;p.streak++}else p.streak=0;
+   const gain=hinted?1:2+(p.streak>=3?1:0);p.pts+=gain;p.box[k]=hinted?Math.max(1,p.box[k]||1):Math.min(4,(p.box[k]||0)+1)}
+  else{p.asked++;p.streak=0;p.box[k]=1}
+  if((p.box[k]||0)>=3)delete p.miss[k];
+  p.seen[k]=p.sess;save(p);p.done++;if(tries===1&&!hinted)FX.correct(p.streak);else FX.pop();
+  const msg=(tries===1&&!hinted)?'🌟 أحسنتِ! ركّزتِ فوصلتِ'+(p.streak>=3?' (سلسلة '+ar(p.streak)+' 🔥)':''):'👏 جميل أنك كتبتِ الجواب الصحيح بنفسك';
+  $('#app').innerHTML=bar()+'<div class="card"><div class="q">'+eq(cur[0],cur[1],ans)+'</div><div class="hint" style="border-color:var(--g)">'+msg+'</div></div>';
+  turn=(turn+1)%P.length;setTimeout(next,tries===1&&!hinted?900:1500)}
+ else{FX.oops();var dd=document.getElementById('disp');if(dd){dd.classList.remove('shake');void dd.offsetWidth;dd.classList.add('shake')}if(tries===1){p.box[k]=1;p.miss[k]=1;p.seen[k]=p.sess;p.streak=0;save(p)}entry='';
+  $('#vis').innerHTML=arr(cur[0],cur[1]);
+  $('#fb').innerHTML='<div class="hint" style="border-color:#e03131">اقتربتِ! الحيلة:<br><b>'+hint(cur[0],cur[1])+'</b><br>الآن اكتبي الجواب الصحيح بنفسك: <b>'+ar(ans)+'</b></div>';
+  $('#disp').innerHTML='&nbsp;'}}
+function end(){FX.win();const mx=Math.max(...P.map(p=>p.pts));const win=P.filter(p=>p.pts===mx);
+ let h='<div class="card"><div class="cup">🏆</div><h2>'+(P.length>1?(win.length>1?'تعادل! الكأس لـ '+win.map(w=>w.name).join(' و '):'الكأس لـ '+win[0].emo+' '+win[0].name):'ما شاء الله '+P[0].name+'!')+'</h2>'
+ +(P.length>1?'<div>اللعب الجميل أهم: كلكنّ اجتهدتنّ، والتوفيق من الله 🤍</div>':'')+'</div>';
+ P.forEach(p=>{const pc=Math.round(100*p.first/Math.max(1,p.asked));
+  h+='<div class="card"><b>'+p.emo+' '+p.name+'</b> — '+ar(p.pts)+' نقطة · صحيحة من أول مرة بلا مساعدة: '+ar(p.first)+' من '+ar(p.asked)+' ('+ar(pc)+'٪)'+heat(p)+'</div>'});
+ h+='<div class="cols noprint"><button class="main" onclick="start()">جولة جديدة</button><button onclick="setup()">تغيير الإعدادات</button><button onclick="window.print()">🖨️ طباعة النتائج للمعلمة</button></div>';
+ $('#app').innerHTML=h}
+function heat(p){let s='<div class="small">خريطة الإتقان (أخضر = ثابتة، أصفر/أخضر فاتح = في الطريق، أحمر = أخطأت فيها وتحتاج تدريباً، رمادي = لم تُسأل)</div><div class="heat"><div></div>';for(let b=2;b<=9;b++)s+='<div style="background:#fff;color:#333">'+ar(b)+'</div>';
+ for(let a=2;a<=9;a++){s+='<div style="background:#fff;color:#333">'+ar(a)+'</div>';for(let b=2;b<=9;b++){const kk=a+'x'+b,x=p.box[kk]||0,c=p.miss&&p.miss[kk]&&x<3?'#fa5252':x==0?'#adb5bd':x==1?'#fab005':x==2?'#82c91e':'#2f9e44';s+='<div style="background:'+c+'">'+(x>=4?'🏅':ar(a*b))+'</div>'}}return s+'</div>'}
+setup();
+</script></body></html>

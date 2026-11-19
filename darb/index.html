@@ -54,37 +54,7 @@ let G={n:1,names:['نادين','صديقتي ١','صديقتي ٢','صديقتي
 const KEY=n=>'darb_'+n;
 function load(n){try{return Object.assign({box:{},seen:{},miss:{},sess:0},JSON.parse(localStorage.getItem(KEY(n))||'{}'))}catch(e){return{box:{},seen:{},miss:{},sess:0}}}
 function save(p){try{localStorage.setItem(KEY(p.name),JSON.stringify({box:p.box,seen:p.seen,miss:p.miss,sess:p.sess}))}catch(e){}}
-
-// ===== جدول الأسبوع (من ولية الأمر): بلا استعجال، كل يوم وقته وبدايته =====
-const ALL=[2,3,4,5,6,7,8,9];
-const PLAN=[
-{d:'2026-11-19',n:'الخميس ١٩',m:5,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
-{d:'2026-11-20',n:'الجمعة ٢٠',m:5,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
-{d:'2026-11-21',n:'السبت ٢١',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
-{d:'2026-11-22',n:'الأحد ٢٢',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
-{d:'2026-11-23',n:'الاثنين ٢٣',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
-{d:'2026-11-24',n:'الثلاثاء ٢٤',m:10,rev:1,t:[6,7,8,9],lab:'خانة ٦ ٧ ٨ ٩'},
-{d:'2026-11-25',n:'الأربعاء ٢٥',m:5,rev:0,t:[6,7,8,9],lab:'٦ ٧ ٨ ٩ (الأحمر أولاً)'},
-{d:'2026-11-26',n:'الخميس ٢٦',m:10,rev:0,t:ALL,lab:'الكل مخلوط، ثم تسألك المعلمة شفهياً'},
-{d:'2026-11-27',n:'الجمعة ٢٧',m:5,rev:0,t:ALL,lab:'مراجعة خفيفة ممتعة'},
-{d:'2026-11-28',n:'السبت ٢٨',m:5,rev:0,t:ALL,lab:'مراجعة خفيفة ممتعة'},
-{d:'2026-11-29',n:'الأحد ٢٩',m:5,rev:0,t:ALL,lab:'مراجعة خفيفة ممتعة'}];
-PLAN.forEach(p=>{p.nr=p.rev?(p.m==5?5:10):(p.m==5?8:15)});
-function todayStr(){try{return new Date().toLocaleDateString('en-CA')}catch(e){return ''}}
-function pdone(){try{return JSON.parse(localStorage.getItem('darb_plan')||'{}')}catch(e){return{}}}
-function ptoggle(d){const o=pdone();if(o[d])delete o[d];else o[d]=1;try{localStorage.setItem('darb_plan',JSON.stringify(o))}catch(e){}setup()}
-function goRev(){G.n=1;G.tables=[2,3,4,5];G.rounds=4;start()}
-function goNew(i){const p=PLAN[i];G.n=1;G.tables=p.t.slice();G.rounds=p.nr;start()}
-function planCard(){const td=todayStr(),o=pdone();let i=PLAN.findIndex(p=>p.d==td),h='';
- if(i>=0){const p=PLAN[i];h+='<div class="card" style="border-color:var(--g,#2f9e44);border-width:3px"><b>🌷 جدول اليوم · '+p.n+'</b><div style="font-size:20px;margin:6px 0">'+ar(p.m)+' دقائق فقط'+(p.rev?' — لعبتان: مراجعة ثم '+p.lab:' — '+p.lab)+'</div>'
-  +(p.rev?'<button class="main" style="width:100%;margin:4px 0" onclick="goRev()">🌱 اللعبة ١: مراجعة ٢ إلى ٥ (٤ أسئلة)</button>':'')
-  +'<button class="main" style="width:100%;margin:4px 0" onclick="goNew('+i+')">'+(p.rev?'🌳 اللعبة ٢: ':'ابدئي: ')+p.lab+'</button>'
-  +'<div class="small" style="margin-top:6px">خذي وقتك، لا استعجال. وإذا انتهت الدقائق نتوقف، والقليل كل يوم يكفي. 🤍</div>'
-  +'<button style="width:100%;margin-top:6px" class="'+(o[p.d]?'on':'')+'" onclick="ptoggle(\''+p.d+'\')">'+(o[p.d]?'✅ كملتِ اليوم، ما شاء الله!':'⬜ كملتُ اليوم')+'</button></div>'}
- h+='<div class="card" style="text-align:right"><b>📅 جدول الأسبوع</b><div class="small">كل يوم: الوقت وبماذا نبدأ. اضغطي على اليوم لتعلّمي «كملتِ».</div>';
- PLAN.forEach((p,k)=>{h+='<div onclick="ptoggle(\''+p.d+'\')" style="display:flex;gap:6px;align-items:center;padding:5px 4px;border-top:1px solid #ddd;'+(p.d==td?'background:#ebfbee;border-radius:8px;':'')+'"><span style="width:26px">'+(o[p.d]?'✅':'⬜')+'</span><b style="width:92px">'+p.n+'</b><span style="width:66px">'+ar(p.m)+' د</span><span style="flex:1;font-size:15px">'+(p.rev?'مراجعة ٢–٥ + ':'')+p.lab+'</span></div>'});
- return h+'</div>'}
-function setup(){let h=planCard()+'<div class="card"><b>كم لاعبة؟</b><div class="cols">'+[1,2,3,4].map(n=>'<button class="chip '+(G.n==n?'on':'')+'" onclick="G.n='+n+';setup()">'+ar(n)+'</button>').join('')+'</div>';
+function setup(){let h='<div class="card"><b>كم لاعبة؟</b><div class="cols">'+[1,2,3,4].map(n=>'<button class="chip '+(G.n==n?'on':'')+'" onclick="G.n='+n+';setup()">'+ar(n)+'</button>').join('')+'</div>';
  h+='<div style="margin-top:8px">'+Array.from({length:G.n},(_,i)=>'<div>'+EMO[i]+' <input id="nm'+i+'" value="'+G.names[i]+'" style="font:inherit;font-size:20px;padding:6px;border:2px solid var(--p);border-radius:10px;width:60%" oninput="G.names['+i+']=this.value"></div>').join('')+'</div></div>';
  h+='<div class="card"><b>أي جداول نلعب؟</b><div>'+[2,3,4,5,6,7,8,9].map(t=>'<button class="chip '+(G.tables.includes(t)?'on':'')+'" onclick="tg('+t+')">'+ar(t)+'</button>').join('')+'</div><div class="cols" style="margin-top:6px"><button onclick="G.tables=[6,7,8];setup()">⭐ الصعبة ٦ ٧ ٨</button><button onclick="G.tables=[2,3,4,5,6,7,8,9];setup()">الكل</button></div></div>';
  h+='<div class="card"><b>كم سؤالاً لكل لاعبة؟</b><div class="cols">'+[5,8,10,15].map(n=>'<button class="chip '+(G.rounds==n?'on':'')+'" onclick="G.rounds='+n+';setup()">'+ar(n)+'</button>').join('')+'</div><div class="small" style="margin:4px">٨ أسئلة ≈ ٥ دقائق للاعبة واحدة</div></div>';
