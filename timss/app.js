@@ -11,30 +11,35 @@ function rng(seed){var a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;var t=
 function shuffle(arr,r){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 function daySeed(){var d=new Date();return d.getFullYear()*1000+Math.floor((d-new Date(d.getFullYear(),0,0))/864e5)}
 function weekSeed(){return Math.floor(daySeed()/7)}
+var SUBJ=[{k:'sci',n:'علوم',ic:'ic_sci',e:'🔬',txt:'ألغاز من أسئلة TIMSS'},{k:'math',n:'رياضيات',ic:'ic_math',e:'➕',txt:'أسئلة TIMSS رياضيات',wait:'أسئلة TIMSS للرياضيات لم تصلنا بعد. نضيفها بنفس اللعبة فور وصول ملفها 🌷'},{k:'lang',n:'لغتي',ic:'ic_lang',e:'📖',txt:'من كتاب لغتي',wait:'لغتي ليست ضمن اختبارات TIMSS، وتُبنى من كتاب لغتي نفسه. تُضاف في المرحلة القادمة 🌷'}];
+var SUB='sci';function Q(){return window.TIMSS[SUB]||[]}
 var S={}; // الحالة الحالية
 /* ---------- صوت ---------- */
 var fsb=$('#fs'),de=document.documentElement;if(fsb&&(de.requestFullscreen||de.webkitRequestFullscreen)){fsb.style.display='block';fsb.onclick=function(){var d=document;if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}else{(de.requestFullscreen||de.webkitRequestFullscreen).call(de)}}}
 var snd=$('#snd');if(window.FX&&FX.isMuted&&FX.isMuted())snd.textContent='🔇';
 snd.onclick=function(){var m=FX.toggle();snd.textContent=m?'🔇':'🔊'};
 /* ---------- الشاشة الرئيسية ---------- */
+function tabsHTML(){return '<div class="tabs">'+SUBJ.map(function(s){var rdy=Q&&window.TIMSS[s.k].length;return '<button class="tab'+(s.k===SUB?' on':'')+'" data-k="'+s.k+'">'+pic(s.ic,s.e)+'<span>'+s.n+'</span>'+(rdy?'':'<small>قريباً</small>')+'</button>'}).join('')+'</div>'}
+function wireTabs(){document.querySelectorAll('.tab').forEach(function(b){b.onclick=function(){SUB=b.dataset.k;if(window.FX)FX.pop();home()}})}
 function home(){
- S={};
- app.innerHTML='<div class="head">'+pic('trophy','🏆','logo')+'<h1>رحلة الكنز</h1><div class="sub">ألغاز علوم من أسئلة TIMSS — بلا درجات وبلا وقت</div></div>'+
- '<div class="games">'+
+ S={};var sj=SUBJ.filter(function(s){return s.k===SUB})[0],ready=Q().length>0;
+ app.innerHTML='<div class="head">'+pic('trophy','🏆','logo')+'<h1>رحلة الكنز</h1><div class="sub">ألغاز بالكروشيه — بلا درجات وبلا وقت</div></div>'+tabsHTML()+
+ (ready?'':'<div class="note">'+sj.wait+'</div>')+
+ '<div class="games'+(ready?'':' off')+'">'+
  '<div class="g yarn paper" id="g1"><div class="ic">'+pic('chest','🧰')+pic('scroll','🗺️')+'</div><h2>🗺️ لعبة 1: رحلة الكنز</h2><div class="what"><b>تلعبين وحدكِ.</b> أمامكِ خريطة فيها محطات. تحلّين لغز كل محطة فتقفز الفراشة للمحطة التالية حتى تصلي إلى الكأس 🏆.</div><span class="tag">لاعبة واحدة · جهاز واحد</span></div>'+
  '<div class="g yarn paper" id="g2" style="animation-delay:.1s"><div class="ic">'+pic('rose','🌹')+pic('star','⭐')+pic('cloud','☁️')+pic('butterfly','🦋')+'</div><h2>🏆 لعبة 2: سباق الفرق</h2><div class="what"><b>للصف مع المعلمة.</b> من 2 إلى 4 فرق، <b>لكل فريق آيباد</b>. تفتح المعلمة لوحة وتعطي كوداً، وتدخل كل مجموعة الكود وتحلّ نفس الألغاز، وترى الجميع الفراشات تتقدم على الخريطة.</div><span class="tag">2–4 فرق · أجهزة مختلفة · كود</span></div>'+
  '</div>'+
  '<div class="note">🌷 هذه اللعبة تدريب على <b>طريقة أسئلة</b> اختبارات TIMSS، فلا درجات ولا ترتيب بين الطالبات. الخطأ عندنا «غرزة تحتاج إعادة» نكمّلها ونمشي.</div>';
- $('#g1').onclick=function(){solo()};$('#g2').onclick=function(){teamHome()};
+ wireTabs();if(ready){$('#g1').onclick=function(){solo()};$('#g2').onclick=function(){teamHome()}}
 }
 /* ---------- لعبة فردية ---------- */
 function solo(){
- app.innerHTML='<button class="back" id="bk">→ رجوع</button><div class="head"><h1>رحلة الكنز</h1><div class="sub">اختاري التحدي</div></div>'+
+ app.innerHTML='<button class="back" id="bk">→ رجوع</button><div class="head"><h1>رحلة الكنز · '+SUBJ.filter(function(s){return s.k===SUB})[0].n+'</h1><div class="sub">اختاري التحدي</div></div>'+
  '<div class="how yarn paper"><h3>كيف نلعب؟</h3><ol><li>نقرأ السؤال بهدوء.</li><li>نختار الإجابة التي نظنها صحيحة.</li><li>إن كانت صحيحة: تقفز الفراشة للمحطة التالية ⭐.</li><li>وإن لم تكن: «غرزة تحتاج إعادة»، نفكر ونجرّب مرة ثانية.</li></ol></div><div class="games"><div class="g yarn paper" id="d"><div class="ic">'+pic('star','⭐')+'</div><h2>تحدي اليوم</h2><div class="what">5 محطات جديدة كل يوم. نحو 5 دقائق من اللعب الهادئ.</div></div>'+
  '<div class="g yarn paper" id="w"><div class="ic">'+pic('chest','🧰')+'</div><h2>تحدي الأسبوع</h2><div class="what">الخريطة كاملة: 8 محطات للوصول إلى الكنز.</div></div></div>';
  $('#bk').onclick=home;$('#d').onclick=function(){startSolo(5,daySeed())};$('#w').onclick=function(){startSolo(8,weekSeed())};
 }
-function pick(n,seed){var r=rng(seed);var all=window.TIMSS.map(function(q,i){return i});return shuffle(all,r).slice(0,Math.min(n,all.length)).map(function(i){return window.TIMSS[i]})}
+function pick(n,seed){var r=rng(seed);var L=Q();var all=L.map(function(q,i){return i});return shuffle(all,r).slice(0,Math.min(n,all.length)).map(function(i){return L[i]})}
 function startSolo(n,seed){S={mode:'solo',qs:pick(n,seed),n:n,pos:0,stars:0,seed:seed,tries:0,retry:[]};S.n=S.qs.length;playScreen()}
 /* ---------- الخريطة ---------- */
 function coords(n){var a=[];for(var k=0;k<n;k++){var t=n>1?k/(n-1):0;var y=88-t*66;var x=50+32*Math.sin(k*1.55+.3);a.push([x,y])}return a}
@@ -111,13 +116,13 @@ function hostStart(){
  app.innerHTML='<div class="note">جارٍ تجهيز الغرفة… 🧶</div>';
  loadPeer(function(){
   var code=newCode();var peer=new Peer('ntimss'+code);
-  var H={code:code,peer:peer,teams:[],conns:[],started:false,n:8,seed:weekSeed()};S={mode:'host',H:H,peer:peer};
+  var H={code:code,peer:peer,teams:[],conns:[],started:false,n:8,seed:weekSeed(),subj:SUB};S={mode:'host',H:H,peer:peer};
   peer.on('error',function(e){if(e.type==='unavailable-id'){try{peer.destroy()}catch(x){};hostStart()}else{app.innerHTML='<div class="note">تعذّر فتح الغرفة ('+e.type+'). تأكدي من الإنترنت ثم <button class="btn sm" id="rt">أعيدي</button></div>';$('#rt').onclick=hostStart}});
   peer.on('open',function(){hostScreen()});
   peer.on('connection',function(c){c.on('data',function(m){hostMsg(c,m)});c.on('close',function(){})});
  },function(m){app.innerHTML='<div class="note">'+m+' <button class="btn sm" id="rt">أعيدي</button></div>';$('#rt').onclick=hostStart});
 }
-function hostBroadcast(extra){var H=S.H;var st={t:'state',started:H.started,n:H.n,seed:H.seed,teams:H.teams.map(function(t){return{idx:t.idx,pos:t.pos,stars:t.stars}}),winner:H.winner};if(extra)for(var k in extra)st[k]=extra[k];H.conns.forEach(function(c){try{c.send(st)}catch(e){}})}
+function hostBroadcast(extra){var H=S.H;var st={t:'state',subj:H.subj,started:H.started,n:H.n,seed:H.seed,teams:H.teams.map(function(t){return{idx:t.idx,pos:t.pos,stars:t.stars}}),winner:H.winner};if(extra)for(var k in extra)st[k]=extra[k];H.conns.forEach(function(c){try{c.send(st)}catch(e){}})}
 function hostMsg(c,m){
  var H=S.H;if(!m)return;
  if(m.t==='join'){
@@ -168,7 +173,7 @@ function teamMsg(m,to){
  else if(m.t==='full'){$('#jm').textContent='الغرفة ممتلئة (4 فرق) 🌷'}
  else if(m.t==='state'){
   S.known=m;
-  if(m.started&&(!S.running||S.runSeed!==m.seed||S.runN!==m.n)){S.running=1;S.runSeed=m.seed;S.runN=m.n;S.qs=pick(m.n,m.seed);S.n=S.qs.length;S.pos=0;S.stars=0;S.seed=m.seed;playScreen();sendPos()}
+  if(m.started&&(!S.running||S.runSeed!==m.seed||S.runN!==m.n)){S.running=1;S.runSeed=m.seed;S.runN=m.n;if(m.subj)SUB=m.subj;S.qs=pick(m.n,m.seed);S.n=S.qs.length;S.pos=0;S.stars=0;S.seed=m.seed;playScreen();sendPos()}
   if(!m.started&&S.running){S.running=0;S.runSeed=null;teamPlayWait()}
   if(m.winner!=null&&S.running&&m.winner!==S.team&&!S.sawWin){S.sawWin=1;var pg=$('#pg');if(pg)pg.innerHTML='🎉 مبروك '+TEAMS[m.winner].n+'! نكمل بهدوء حتى نصل جميعاً 🌷';if(window.FX)FX.hearts()}
   if(m.winner==null)S.sawWin=0;
