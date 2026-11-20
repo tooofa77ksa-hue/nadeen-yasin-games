@@ -13,6 +13,7 @@ function daySeed(){var d=new Date();return d.getFullYear()*1000+Math.floor((d-ne
 function weekSeed(){return Math.floor(daySeed()/7)}
 var S={}; // الحالة الحالية
 /* ---------- صوت ---------- */
+var fsb=$('#fs'),de=document.documentElement;if(fsb&&(de.requestFullscreen||de.webkitRequestFullscreen)){fsb.style.display='block';fsb.onclick=function(){var d=document;if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}else{(de.requestFullscreen||de.webkitRequestFullscreen).call(de)}}}
 var snd=$('#snd');if(window.FX&&FX.isMuted&&FX.isMuted())snd.textContent='🔇';
 snd.onclick=function(){var m=FX.toggle();snd.textContent=m?'🔇':'🔊'};
 /* ---------- الشاشة الرئيسية ---------- */
@@ -29,7 +30,7 @@ function home(){
 /* ---------- لعبة فردية ---------- */
 function solo(){
  app.innerHTML='<button class="back" id="bk">→ رجوع</button><div class="head"><h1>رحلة الكنز</h1><div class="sub">اختاري التحدي</div></div>'+
- '<div class="games"><div class="g yarn paper" id="d"><div class="ic">'+pic('star','⭐')+'</div><h2>تحدي اليوم</h2><div class="what">5 محطات جديدة كل يوم. نحو 5 دقائق من اللعب الهادئ.</div></div>'+
+ '<div class="how yarn paper"><h3>كيف نلعب؟</h3><ol><li>نقرأ السؤال بهدوء.</li><li>نختار الإجابة التي نظنها صحيحة.</li><li>إن كانت صحيحة: تقفز الفراشة للمحطة التالية ⭐.</li><li>وإن لم تكن: «غرزة تحتاج إعادة»، نفكر ونجرّب مرة ثانية.</li></ol></div><div class="games"><div class="g yarn paper" id="d"><div class="ic">'+pic('star','⭐')+'</div><h2>تحدي اليوم</h2><div class="what">5 محطات جديدة كل يوم. نحو 5 دقائق من اللعب الهادئ.</div></div>'+
  '<div class="g yarn paper" id="w"><div class="ic">'+pic('chest','🧰')+'</div><h2>تحدي الأسبوع</h2><div class="what">الخريطة كاملة: 8 محطات للوصول إلى الكنز.</div></div></div>';
  $('#bk').onclick=home;$('#d').onclick=function(){startSolo(5,daySeed())};$('#w').onclick=function(){startSolo(8,weekSeed())};
 }
@@ -50,7 +51,7 @@ function moveAv(i,n,pos,m){var el=$('#av'+i);if(!el)return;var p=posXY(n,pos,i,m
 /* ---------- شاشة اللعب ---------- */
 function playScreen(){
  var me=S.team!=null?TEAMS[S.team]:{s:'butterfly',e:'🦋'};
- app.innerHTML='<button class="back" id="bk">→ خروج</button><div class="prog" id="pg"></div>'+mapHTML(S.n,[{s:me.s,e:me.e,pos:S.pos}])+'<div id="qa"></div>';
+ app.innerHTML='<div class="pl"><div class="side"><button class="back" id="bk">→ خروج</button><div class="prog" id="pg"></div>'+mapHTML(S.n,[{s:me.s,e:me.e,pos:S.pos}])+'</div><div class="main"><div id="qa"></div></div></div>';
  $('#bk').onclick=function(){if(S.peer){try{S.peer.destroy()}catch(e){}}home()};
  updProg();nextQ();
 }
@@ -62,13 +63,13 @@ function nextQ(){
  var meta='<div class="qmeta">محطة '+num(S.pos+1)+' · '+q.lesson+' · حقيبة TIMSS ص'+num(q.pg)+'</div>';
  var h='<div class="qcard yarn paper">'+meta+'<div class="qtext">'+q.q+'</div>'+(q.fig?'<img class="qfig" src="'+q.fig+'" alt="صورة السؤال">':'');
  if(q.wr){h+='<div class="wr"><textarea id="wa" placeholder="اكتبي إجابتكِ هنا (أو في دفترك)"></textarea><div class="row"><button class="btn" id="rv">اكشفي الإجابة</button></div></div>'}
- else{var r=rng((S.seed||1)*7+S.pos*13+(S.team||0));S.order=shuffle([0,1,2,3],r);
-  S.order.forEach(function(oi,k){h+='<button class="opt" data-o="'+oi+'" style="--c:'+['#c24a6c','#5c9a3c','#7b5ab0','#d98a3d'][k]+';--pl:url(img/plaque_'+PLAQ[k]+'.webp)"><span class="lt">'+pic(LET[k][0],LET[k][1])+'</span><span>'+q.o[oi]+'</span></button>'})}
+ else{h+='<div class="opts">';var r=rng((S.seed||1)*7+S.pos*13+(S.team||0));S.order=shuffle([0,1,2,3],r);
+  S.order.forEach(function(oi,k){h+='<button class="opt" data-o="'+oi+'" style="--c:'+['#c24a6c','#5c9a3c','#7b5ab0','#d98a3d'][k]+';--pl:url(img/plaque_'+PLAQ[k]+'.webp)"><span class="lt">'+pic(LET[k][0],LET[k][1])+'</span><span>'+q.o[oi]+'</span></button>'});h+='</div>'}
  h+='<div class="fb" id="fb"></div></div>';
  qa.innerHTML=h;
  if(q.wr){$('#rv').onclick=function(){$('#rv').style.display='none';var fb=$('#fb');fb.className='fb show soft';fb.innerHTML='<h3>الإجابة: '+q.ans+'</h3>'+q.why+'<div class="row"><button class="btn g2" id="yes">كتبتُها صح 🧶</button><button class="btn o2" id="no">سأعيدها لاحقاً</button></div>';$('#yes').onclick=function(){solved(true)};$('#no').onclick=function(){solved(false)}}}
  else qa.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){choose(b,+b.dataset.o)}});
- setTimeout(function(){var qc=$('#qa');if(qc&&qc.scrollIntoView&&S.pos>0)qc.scrollIntoView({behavior:'smooth',block:'start'})},60);
+ setTimeout(function(){var qc=$('#qa'),m=document.querySelector('.pl .main');if(m&&m.scrollTop)m.scrollTop=0;if(window.innerWidth<window.innerHeight*1.2&&qc&&qc.scrollIntoView&&S.pos>0)qc.scrollIntoView({behavior:'smooth',block:'start'})},60);
 }
 function choose(btn,oi){
  var q=S.cur,fb=$('#fb');
@@ -131,9 +132,9 @@ function hostMsg(c,m){
 }
 function hostScreen(){
  var H=S.H;
- app.innerHTML='<div class="head"><h1>لوحة المعلمة</h1></div><div class="note" style="text-align:center">أعطي الفرق هذا الكود وليدخلوا من «نحن فريق»:</div><div class="code">'+H.code+'</div>'+
- '<div class="row"><button class="btn g2" id="s8">ابدئي: 8 محطات</button><button class="btn o2" id="s5">ابدئي: 5 محطات (سريع)</button></div><div class="prog" id="hp"></div><div id="hm"></div><div class="teams" id="tl"></div>'+
- '<div class="row"><button class="btn p2 sm" id="nw">سباق جديد (نفس الفرق)</button><button class="btn sm" id="hx">إنهاء الغرفة</button></div>';
+ app.innerHTML='<div class="hostgrid"><div class="side"><div id="hm"></div></div><div class="main"><div class="head"><h1>لوحة المعلمة</h1></div><div class="note" style="text-align:center">أعطي الفرق هذا الكود وليدخلوا من «نحن فريق»:</div><div class="code">'+H.code+'</div>'+
+ '<div class="row"><button class="btn g2" id="s8">ابدئي: 8 محطات</button><button class="btn o2" id="s5">ابدئي: 5 محطات (سريع)</button></div><div class="prog" id="hp"></div><div class="teams" id="tl"></div>'+
+ '<div class="row"><button class="btn p2 sm" id="nw">سباق جديد (نفس الفرق)</button><button class="btn sm" id="hx">إنهاء الغرفة</button></div><div class="how yarn paper"><h3>كيف يجري السباق؟</h3><ol><li>تعرضين هذه الشاشة، وتعطين الكود للفرق.</li><li>كل فريق على آيباد: «نحن فريق» ← يكتب الكود.</li><li>تضغطين «ابدئي»: يحلّ الجميع نفس الألغاز.</li><li>تتقدم الفراشات على الخريطة حتى الكأس 🏆.</li></ol></div></div></div>';
  $('#s8').onclick=function(){hostGo(8)};$('#s5').onclick=function(){hostGo(5)};
  $('#nw').onclick=function(){H.teams.forEach(function(t){t.pos=0;t.stars=0});H.winner=null;H.started=false;H.seed=Math.floor(Math.random()*1e6);hostBroadcast();hostRefresh()};
  $('#hx').onclick=function(){try{S.peer.destroy()}catch(e){}home()};
