@@ -12,7 +12,10 @@ function shuffle(arr,r){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Ma
 function daySeed(){var d=new Date();return d.getFullYear()*1000+Math.floor((d-new Date(d.getFullYear(),0,0))/864e5)}
 function weekSeed(){return Math.floor(daySeed()/7)}
 var SUBJ=[{k:'sci',n:'علوم',ic:'ic_sci',e:'🔬',txt:'ألغاز من أسئلة TIMSS'},{k:'math',n:'رياضيات',ic:'ic_math',e:'➕',txt:'أسئلة TIMSS رياضيات',wait:'أسئلة TIMSS للرياضيات لم تصلنا بعد. نضيفها بنفس اللعبة فور وصول ملفها 🌷'},{k:'lang',n:'لغتي',ic:'ic_lang',e:'📖',txt:'من كتاب لغتي',wait:'لغتي ليست ضمن اختبارات TIMSS، وتُبنى من كتاب لغتي نفسه. تُضاف في المرحلة القادمة 🌷'}];
-var SUB='sci';function Q(){return window.TIMSS[SUB]||[]}
+var SUB='sci',LES='';function QALL(){return window.TIMSS[SUB]||[]}function Q(){var L=QALL();return LES?L.filter(function(q){return q.lesson===LES}):L}
+function lessons(){var m={};QALL().forEach(function(q){m[q.lesson]=(m[q.lesson]||0)+1});return Object.keys(m).sort(function(x,y){return m[y]-m[x]}).map(function(k){return[k,m[k]]})}
+function chipsHTML(){var h='<div class="chips"><button class="chip'+(LES?'':' on')+'" data-l="">كل الدروس ('+QALL().length+')</button>';lessons().forEach(function(p){h+='<button class="chip'+(LES===p[0]?' on':'')+'" data-l="'+p[0].replace(/"/g,'')+'">'+p[0]+' ('+p[1]+')</button>'});return h+'</div>'}
+function wireChips(cb){document.querySelectorAll('.chip').forEach(function(b){b.onclick=function(){LES=b.dataset.l;cb()}})}
 var S={}; // الحالة الحالية
 /* ---------- صوت ---------- */
 var fsb=$('#fs'),de=document.documentElement;if(fsb&&(de.requestFullscreen||de.webkitRequestFullscreen)){fsb.style.display='block';fsb.onclick=function(){var d=document;if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d)}else{(de.requestFullscreen||de.webkitRequestFullscreen).call(de)}}}
@@ -20,7 +23,7 @@ var snd=$('#snd');if(window.FX&&FX.isMuted&&FX.isMuted())snd.textContent='🔇';
 snd.onclick=function(){var m=FX.toggle();snd.textContent=m?'🔇':'🔊'};
 /* ---------- الشاشة الرئيسية ---------- */
 function tabsHTML(){return '<div class="tabs">'+SUBJ.map(function(s){var rdy=Q&&window.TIMSS[s.k].length;return '<button class="tab'+(s.k===SUB?' on':'')+'" data-k="'+s.k+'">'+pic(s.ic,s.e)+'<span>'+s.n+'</span>'+(rdy?'':'<small>قريباً</small>')+'</button>'}).join('')+'</div>'}
-function wireTabs(){document.querySelectorAll('.tab').forEach(function(b){b.onclick=function(){SUB=b.dataset.k;if(window.FX)FX.pop();home()}})}
+function wireTabs(){document.querySelectorAll('.tab').forEach(function(b){b.onclick=function(){SUB=b.dataset.k;LES='';if(window.FX)FX.pop();home()}})}
 function home(){
  S={};var sj=SUBJ.filter(function(s){return s.k===SUB})[0],ready=Q().length>0;
  app.innerHTML='<div class="head">'+pic('trophy','🏆','logo')+'<h1>رحلة الكنز</h1><div class="sub">ألغاز بالكروشيه — بلا درجات وبلا وقت</div></div>'+tabsHTML()+
@@ -35,9 +38,9 @@ function home(){
 /* ---------- لعبة فردية ---------- */
 function solo(){
  app.innerHTML='<button class="back" id="bk">→ رجوع</button><div class="head"><h1>رحلة الكنز · '+SUBJ.filter(function(s){return s.k===SUB})[0].n+'</h1><div class="sub">اختاري التحدي</div></div>'+
- '<div class="how yarn paper"><h3>كيف نلعب؟</h3><ol><li>نقرأ السؤال بهدوء.</li><li>نختار الإجابة التي نظنها صحيحة.</li><li>إن كانت صحيحة: تقفز الفراشة للمحطة التالية ⭐.</li><li>وإن لم تكن: «غرزة تحتاج إعادة»، نفكر ونجرّب مرة ثانية.</li></ol></div><div class="games"><div class="g yarn paper" id="d"><div class="ic">'+pic('star','⭐')+'</div><h2>تحدي اليوم</h2><div class="what">5 محطات جديدة كل يوم. نحو 5 دقائق من اللعب الهادئ.</div></div>'+
+ '<div class="how yarn paper"><h3>ما الدرس؟</h3>'+chipsHTML()+'</div><div class="how yarn paper"><h3>كيف نلعب؟</h3><ol><li>نقرأ السؤال بهدوء.</li><li>نختار الإجابة التي نظنها صحيحة.</li><li>إن كانت صحيحة: تقفز الفراشة للمحطة التالية ⭐.</li><li>وإن لم تكن: «غرزة تحتاج إعادة»، نفكر ونجرّب مرة ثانية.</li></ol></div><div class="games"><div class="g yarn paper" id="d"><div class="ic">'+pic('star','⭐')+'</div><h2>تحدي اليوم</h2><div class="what">5 محطات جديدة كل يوم. نحو 5 دقائق من اللعب الهادئ.</div></div>'+
  '<div class="g yarn paper" id="w"><div class="ic">'+pic('chest','🧰')+'</div><h2>تحدي الأسبوع</h2><div class="what">الخريطة كاملة: 8 محطات للوصول إلى الكنز.</div></div></div>';
- $('#bk').onclick=home;$('#d').onclick=function(){startSolo(5,daySeed())};$('#w').onclick=function(){startSolo(8,weekSeed())};
+ wireChips(solo);$('#bk').onclick=home;$('#d').onclick=function(){startSolo(5,daySeed())};$('#w').onclick=function(){startSolo(8,weekSeed())};
 }
 function pick(n,seed){var r=rng(seed);var L=Q();var all=L.map(function(q,i){return i});return shuffle(all,r).slice(0,Math.min(n,all.length)).map(function(i){return L[i]})}
 function startSolo(n,seed){S={mode:'solo',qs:pick(n,seed),n:n,pos:0,stars:0,seed:seed,tries:0,retry:[]};S.n=S.qs.length;playScreen()}
@@ -69,7 +72,7 @@ function nextQ(){
  var h='<div class="qcard yarn paper">'+meta+'<div class="qtext">'+q.q+'</div>'+(q.fig?'<img class="qfig" src="'+q.fig+'" alt="صورة السؤال">':'');
  if(q.wr){h+='<div class="wr"><textarea id="wa" placeholder="اكتبي إجابتكِ هنا (أو في دفترك)"></textarea><div class="row"><button class="btn" id="rv">اكشفي الإجابة</button></div></div>'}
  else{h+='<div class="opts">';var r=rng((S.seed||1)*7+S.pos*13+(S.team||0));S.order=shuffle([0,1,2,3],r);
-  S.order.forEach(function(oi,k){h+='<button class="opt" data-o="'+oi+'" style="--c:'+['#c24a6c','#5c9a3c','#7b5ab0','#d98a3d'][k]+';--pl:url(img/plaque_'+PLAQ[k]+'.webp)"><span class="lt">'+pic(LET[k][0],LET[k][1])+'</span><span>'+q.o[oi]+'</span></button>'});h+='</div>'}
+  S.order.forEach(function(oi,k){h+='<button class="opt" data-o="'+oi+'" style="--c:'+['#c24a6c','#5c9a3c','#7b5ab0','#d98a3d'][k]+';--pl:url(img/plaque_'+PLAQ[k]+'.webp);--tl:url(img/tile_'+PLAQ[k]+'.webp)"><span class="lt">'+pic(LET[k][0],LET[k][1])+'</span><span>'+q.o[oi]+'</span></button>'});h+='</div>'}
  h+='<div class="fb" id="fb"></div></div>';
  qa.innerHTML=h;
  if(q.wr){$('#rv').onclick=function(){$('#rv').style.display='none';var fb=$('#fb');fb.className='fb show soft';fb.innerHTML='<h3>الإجابة: '+q.ans+'</h3>'+q.why+'<div class="row"><button class="btn g2" id="yes">كتبتُها صح 🧶</button><button class="btn o2" id="no">سأعيدها لاحقاً</button></div>';$('#yes').onclick=function(){solved(true)};$('#no').onclick=function(){solved(false)}}}
@@ -116,13 +119,13 @@ function hostStart(){
  app.innerHTML='<div class="note">جارٍ تجهيز الغرفة… 🧶</div>';
  loadPeer(function(){
   var code=newCode();var peer=new Peer('ntimss'+code);
-  var H={code:code,peer:peer,teams:[],conns:[],started:false,n:8,seed:weekSeed(),subj:SUB};S={mode:'host',H:H,peer:peer};
+  var H={code:code,peer:peer,teams:[],conns:[],started:false,n:8,seed:weekSeed(),subj:SUB,lesson:''};S={mode:'host',H:H,peer:peer};
   peer.on('error',function(e){if(e.type==='unavailable-id'){try{peer.destroy()}catch(x){};hostStart()}else{app.innerHTML='<div class="note">تعذّر فتح الغرفة ('+e.type+'). تأكدي من الإنترنت ثم <button class="btn sm" id="rt">أعيدي</button></div>';$('#rt').onclick=hostStart}});
   peer.on('open',function(){hostScreen()});
   peer.on('connection',function(c){c.on('data',function(m){hostMsg(c,m)});c.on('close',function(){})});
  },function(m){app.innerHTML='<div class="note">'+m+' <button class="btn sm" id="rt">أعيدي</button></div>';$('#rt').onclick=hostStart});
 }
-function hostBroadcast(extra){var H=S.H;var st={t:'state',subj:H.subj,started:H.started,n:H.n,seed:H.seed,teams:H.teams.map(function(t){return{idx:t.idx,pos:t.pos,stars:t.stars}}),winner:H.winner};if(extra)for(var k in extra)st[k]=extra[k];H.conns.forEach(function(c){try{c.send(st)}catch(e){}})}
+function hostBroadcast(extra){var H=S.H;var st={t:'state',subj:H.subj,lesson:H.lesson,started:H.started,n:H.n,seed:H.seed,teams:H.teams.map(function(t){return{idx:t.idx,pos:t.pos,stars:t.stars}}),winner:H.winner};if(extra)for(var k in extra)st[k]=extra[k];H.conns.forEach(function(c){try{c.send(st)}catch(e){}})}
 function hostMsg(c,m){
  var H=S.H;if(!m)return;
  if(m.t==='join'){
@@ -138,14 +141,14 @@ function hostMsg(c,m){
 function hostScreen(){
  var H=S.H;
  app.innerHTML='<div class="hostgrid"><div class="side"><div id="hm"></div></div><div class="main"><div class="head"><h1>لوحة المعلمة</h1></div><div class="note" style="text-align:center">أعطي الفرق هذا الكود وليدخلوا من «نحن فريق»:</div><div class="code">'+H.code+'</div>'+
- '<div class="row"><button class="btn g2" id="s8">ابدئي: 8 محطات</button><button class="btn o2" id="s5">ابدئي: 5 محطات (سريع)</button></div><div class="prog" id="hp"></div><div class="teams" id="tl"></div>'+
+ '<div class="how yarn paper"><h3>ما الدرس؟</h3>'+chipsHTML()+'</div><div class="row"><button class="btn g2" id="s8">ابدئي: 8 محطات</button><button class="btn o2" id="s5">ابدئي: 5 محطات (سريع)</button></div><div class="prog" id="hp"></div><div class="teams" id="tl"></div>'+
  '<div class="row"><button class="btn p2 sm" id="nw">سباق جديد (نفس الفرق)</button><button class="btn sm" id="hx">إنهاء الغرفة</button></div><div class="how yarn paper"><h3>كيف يجري السباق؟</h3><ol><li>تعرضين هذه الشاشة، وتعطين الكود للفرق.</li><li>كل فريق على آيباد: «نحن فريق» ← يكتب الكود.</li><li>تضغطين «ابدئي»: يحلّ الجميع نفس الألغاز.</li><li>تتقدم الفراشات على الخريطة حتى الكأس 🏆.</li></ol></div></div></div>';
- $('#s8').onclick=function(){hostGo(8)};$('#s5').onclick=function(){hostGo(5)};
+ wireChips(function(){H.lesson=LES;hostScreen()});$('#s8').onclick=function(){hostGo(8)};$('#s5').onclick=function(){hostGo(5)};
  $('#nw').onclick=function(){H.teams.forEach(function(t){t.pos=0;t.stars=0});H.winner=null;H.started=false;H.seed=Math.floor(Math.random()*1e6);hostBroadcast();hostRefresh()};
  $('#hx').onclick=function(){try{S.peer.destroy()}catch(e){}home()};
  hostRefresh();
 }
-function hostGo(n){var H=S.H;if(!H.teams.length){$('#hp').textContent='ننتظر أول فريق يدخل بالكود… 🧶';return}H.n=n;H.started=true;H.winner=null;H.teams.forEach(function(t){t.pos=0;t.stars=0});hostBroadcast();hostRefresh()}
+function hostGo(n){var H=S.H;n=Math.min(n,Q().length);if(!H.teams.length){$('#hp').textContent='ننتظر أول فريق يدخل بالكود… 🧶';return}H.n=n;H.started=true;H.winner=null;H.teams.forEach(function(t){t.pos=0;t.stars=0});hostBroadcast();hostRefresh()}
 function hostRefresh(){
  var H=S.H;if(!H||!$('#tl'))return;
  $('#hp').textContent=H.started?(H.winner!=null?'🏆 وصل '+TEAMS[H.winner].n+' إلى الكأس! والبقية يكملون بهدوء':'السباق جارٍ… '+H.n+' محطات'):(H.teams.length?'دخل '+H.teams.length+' من الفرق. اضغطي ابدئي':'ننتظر دخول الفرق… 🧶');
@@ -173,7 +176,7 @@ function teamMsg(m,to){
  else if(m.t==='full'){$('#jm').textContent='الغرفة ممتلئة (4 فرق) 🌷'}
  else if(m.t==='state'){
   S.known=m;
-  if(m.started&&(!S.running||S.runSeed!==m.seed||S.runN!==m.n)){S.running=1;S.runSeed=m.seed;S.runN=m.n;if(m.subj)SUB=m.subj;S.qs=pick(m.n,m.seed);S.n=S.qs.length;S.pos=0;S.stars=0;S.seed=m.seed;playScreen();sendPos()}
+  if(m.started&&(!S.running||S.runSeed!==m.seed||S.runN!==m.n)){S.running=1;S.runSeed=m.seed;S.runN=m.n;if(m.subj)SUB=m.subj;LES=m.lesson||'';S.qs=pick(m.n,m.seed);S.n=S.qs.length;S.pos=0;S.stars=0;S.seed=m.seed;playScreen();sendPos()}
   if(!m.started&&S.running){S.running=0;S.runSeed=null;teamPlayWait()}
   if(m.winner!=null&&S.running&&m.winner!==S.team&&!S.sawWin){S.sawWin=1;var pg=$('#pg');if(pg)pg.innerHTML='🎉 مبروك '+TEAMS[m.winner].n+'! نكمل بهدوء حتى نصل جميعاً 🌷';if(window.FX)FX.hearts()}
   if(m.winner==null)S.sawWin=0;
