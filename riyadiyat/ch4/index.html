@@ -17,6 +17,12 @@
 .prog{background:#fff;border:3px solid #fab005;border-radius:14px;padding:8px 12px;margin:10px 0;text-align:center;font-weight:800}
 .btn{font:inherit;font-weight:800;border:3px solid #7048e8;background:#f3f0ff;color:#4c2bb8;border-radius:12px;padding:8px 14px;font-size:17px;cursor:pointer}
 .self li{margin:3px 0}
+
+#print{display:none}
+@media print{.calm,.wrap,#nav{display:none!important}body{background:#fff!important;padding:0}#print{display:block;color:#000;font-size:14px;direction:rtl}
+#print h1{font-size:18px;margin:0 0 4px;border-bottom:2px solid #000}.pm{font-size:12px;margin-bottom:6px}.pq{margin:8px 0;border:1.5px solid #000;border-radius:6px;padding:5px 8px;break-inside:avoid}
+.po{display:flex;gap:18px;flex-wrap:wrap;margin-top:4px}.pl{border-bottom:1.5px dotted #000;height:24px;margin-top:6px}.pa{margin-top:5px;font-weight:700;font-size:13px;border-top:1px dashed #000;padding-top:3px}.pf{margin-top:10px;font-size:10px;color:#777;text-align:center}
+#print .tb td{border:1.5px solid #000;padding:2px 10px}#print .tb td:first-child{background:#eee}}
 </style></head><body>
 <div class="calm">🌷 الاختبار يحسب <u>درجتكِ</u> لا <u>سرعتكِ</u><small>حلّي بتأنٍّ، واقرئي السؤال جيداً، وتأكدي من إجابتكِ قبل أن تجيبي.</small></div>
 <div class="wrap"><div class="hero"><h1>الفصل ٤ · الأنماط والجبر</h1><div>سبعة دروس نتعلّمها خطوة خطوة 🌟</div></div>
@@ -32,13 +38,13 @@ function nav(){const st=stars();document.getElementById('nav').innerHTML=D.map((
 function table(t){if(!t)return'';return '<table class="tb">'+t.map(r=>'<tr>'+r.map(c=>'<td>'+ltr(c)+'</td>').join('')+'</tr>').join('')+'</table>'}
 function go(i){cur=i;render();window.scrollTo(0,0)}
 function render(){nav();const d=D[cur];let h='';
- h+='<div class="hero" style="background:linear-gradient(135deg,#69db7c,#38d9a9);box-shadow:0 5px 0 #20c997"><h1 style="font-size:22px">'+(d.id=='mix'?'🔄 مراجعة مخلوطة':'الدرس '+d.id.replace('4-','٤-')+' · '+d.title)+'</h1></div>';
+ h+='<div class="hero" style="background:linear-gradient(135deg,#69db7c,#38d9a9);box-shadow:0 5px 0 #20c997"><h1 style="font-size:22px">'+(d.id=='mix'?'🔄 مراجعة مخلوطة':'الدرس '+ltr(d.id.replace('4-','٤-'))+' · '+d.title)+'</h1></div>';
  if(d.rule.length){h+='<div class="card"><h2>📖 من كتابكِ</h2>'+d.rule.map(r=>'<div class="rule">'+ltr(r.replace(/</g,'&lt;'))+'</div>').join('')+'<div class="src">📍 مكانه في كتابكِ: الفصل ٤ · درس '+d.id.replace('4-','٤-')+' · <b>ص '+ltr(d.pages.replace('ص',''))+'</b></div></div>'}
  if(d.how.length){h+='<div class="card"><h2>🧠 كيف نحلّل السؤال؟</h2><ol class="how">'+d.how.map(s=>'<li>'+s+'</li>').join('')+'</ol></div>'}
  if(['4-2','4-3','4-6'].includes(d.id)){h+=READ}
  h+='<div class="prog" id="prog">لفتح النجمة ⭐ أجيبي صح عن '+Math.ceil(d.items.length*NEED)+' من '+d.items.length+' بتأنٍّ، ولا يهم الوقت 🌷</div><h2 style="color:#5f3dc4;margin:14px 4px 0">✏️ نتدرّب</h2><div id="qs"></div>';
  if(d.id!='mix'){h+='<div class="card self"><h2>🤔 كيف أعرف أني فهمت؟</h2><ul><li>أستطيع أن أقول بكلماتي: «المطلوب هو…».</li><li>أعرف <b>لماذا</b> اخترتُ هذه العملية.</li><li>تحقّقتُ أن الجواب منطقي.</li></ul></div>'}
- h+='<div style="text-align:center;margin:10px"><button class="btn" onclick="go('+(cur+1<D.length?cur+1:0)+')">'+(cur+1<D.length?'الدرس التالي ←':'من البداية')+'</button></div>';
+ h+='<div style="text-align:center;margin:10px"><button class="btn" onclick="printSheet(false)">🖨️ اطبعي الورقة</button> <button class="btn" onclick="printSheet(true)">🖨️ مع الإجابات</button></div><div style="text-align:center;margin:10px"><button class="btn" onclick="go('+(cur+1<D.length?cur+1:0)+')">'+(cur+1<D.length?'الدرس التالي ←':'من البداية')+'</button></div>';
  document.getElementById('app').innerHTML=h;build()}
 let score=0,answered=0;
 function build(){const d=D[cur];score=0;answered=0;const box=document.getElementById('qs');box.innerHTML='';
@@ -60,5 +66,16 @@ function answer(d,it,c,k){if(c.dataset.done)return;const right=it.kind=='mcq'?it
 function check(d){const need=Math.ceil(d.items.length*NEED);const p=document.getElementById('prog');
  if(answered>=d.items.length){if(score>=need){setStar(d.id,1);p.innerHTML='⭐ ما شاء الله! أجبتِ '+score+' من '+d.items.length+' صح. ركّزتِ فوصلتِ 🌷';p.style.background='#ebfbee'}else{p.innerHTML='أجبتِ '+score+' من '+d.items.length+'. لا بأس، نعيد الدرس بهدوء ونحاول مرة ثانية 🌷'}nav()}
  else{p.innerHTML='أجبتِ '+answered+' من '+d.items.length+' · صحيحة من أول مرة: '+score}}
+
+function printSheet(ans){const d=D[cur];const t=d.id=='mix'?'مراجعة مخلوطة':'الدرس '+ltr(d.id.replace('4-','٤-'))+' · '+d.title;
+ let h='<h1>الفصل ٤ · الأنماط والجبر — '+t+'</h1><div class="pm">'+(ans?'نموذج الإجابة':'ورقة تدريب')+' · الاختبار يحسب درجتكِ لا سرعتكِ: حلّي بتأنٍّ.</div>';
+ d.items.forEach((it,i)=>{h+='<div class="pq"><b>'+(i+1)+')</b> '+ltr(it.q)+table(it.table);
+  if(it.kind=='mcq'){h+='<div class="po">'+it.opts.map((o,k)=>'<span>'+L[k]+') '+ltr(o)+'</span>').join('')+'</div>'}
+  else if(it.kind=='tf'){h+='<div class="po"><span>( ) صح</span><span>( ) خطأ</span></div>'}
+  else{h+='<div class="pl"></div><div class="pl"></div>'}
+  if(ans){const a=it.kind=='mcq'?(L[it.ans]+') '+it.opts[it.ans]):(it.kind=='tf'?(it.ans?'صح':'خطأ'):it.ans);h+='<div class="pa">✓ الإجابة: '+ltr(a)+' — '+ltr(it.why)+'</div>'}
+  h+='</div>'});
+ h+='<div class="pf">إعداد: عواطف الجهني · جهد شخصي لوجه الله · للطلبات (واتساب): <span class="ltr">966580908077</span></div>';
+ let p=document.getElementById('print');if(!p){p=document.createElement('div');p.id='print';document.body.appendChild(p)}p.innerHTML=h;window.print()}
 render();
 </script></body></html>
