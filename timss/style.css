@@ -134,3 +134,37 @@ main{max-width:min(100%,60rem)}
 .tab{background-image:url(img/sw_cream.webp);background-size:6rem;background-blend-mode:multiply}
 
 .chips{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center}.chip{font:800 .8rem 'B';color:var(--rasp);background:#fff;border:.15rem solid var(--rasp);border-radius:1rem;padding:.1rem .7rem;cursor:pointer}.chip.on{background:var(--rasp);color:#fff}
+
+/* ===== وضوح وتباين (طالبات 9–12 سنة) ===== */
+:root{--ink:#3a0a1e}
+/* بطاقات الورق: نسيج صوف خفيف تحته غلالة كريمية صلبة فالنص الداكن واضح */
+.yarn.paper{background-image:linear-gradient(rgba(255,249,240,.9),rgba(255,249,240,.9)),url(img/sw_cream.webp);background-size:100% 100%,9rem;background-blend-mode:normal;color:var(--ink)}
+.yarn.paper h2,.yarn.paper h3{color:#a01848;text-shadow:0 .06rem 0 #fff,0 .14rem 0 rgba(120,20,60,.35)}
+.qtext{color:#2e0716;font-size:1.3rem;text-shadow:0 .06rem 0 #fff,0 .12rem .1rem rgba(120,20,60,.3)}
+.qmeta{font-size:.85rem;color:#6b2a45;opacity:1;font-weight:700}
+.how li,.g .what,.note{font-weight:700;color:#2e0716}
+.how ol{font-size:1.05rem}
+.g .tag{background:#fff;color:#a01848;border-color:#a01848}
+/* نص أبيض فوق صوف: حدّ داكن + بروز */
+.head h1,.sub,.prog,.back,.tab,.opt,.tm,.code,.credit{paint-order:stroke fill}
+.head h1{-webkit-text-stroke:.3rem #6e1636;text-shadow:0 .25rem 0 #6e1636}
+.sub{color:#fff;font-weight:800;-webkit-text-stroke:.16rem #6e1636;text-shadow:0 .12rem 0 #6e1636;font-size:1rem}
+.prog{color:#fff;-webkit-text-stroke:.16rem #6e1636;text-shadow:0 .12rem 0 #6e1636;font-size:1.05rem}
+.back{color:#fff;-webkit-text-stroke:.14rem #6e1636;text-shadow:0 .1rem 0 #6e1636}
+.tab{-webkit-text-stroke:.14rem #4a0d27;text-shadow:0 .12rem 0 #4a0d27;font-size:1.25rem}
+.tab small{-webkit-text-stroke:0;text-shadow:none;color:#a01848;font-weight:800}
+/* أزرار الإجابة: تعتيم خفيف للصوف ونص أبيض بحدّ وبروز */
+.opt{background-image:linear-gradient(rgba(40,0,20,.22),rgba(40,0,20,.22)),var(--tl);background-size:100% 100%,auto 100%;color:#fff;font-size:1.2rem;-webkit-text-stroke:.16rem #3d0a1f;paint-order:stroke fill;text-shadow:0 .12rem 0 #3d0a1f,0 .2rem .2rem rgba(0,0,0,.35)}
+.opt .lt{-webkit-text-stroke:0}
+.tm{-webkit-text-stroke:.14rem #4a0d27;text-shadow:0 .12rem 0 #4a0d27}
+.tm .ss{font-size:.95rem}
+.code{-webkit-text-stroke:.3rem #6e1636;text-shadow:0 .3rem 0 #6e1636}
+.credit{background:rgba(96,12,40,.92);color:#fff;text-shadow:none;-webkit-text-stroke:0;font-size:.85rem}
+.credit .c1{font-size:1rem}.credit .c5{font-size:.78rem;opacity:1}
+.fb{font-weight:700}.fb h3{font-size:1.4rem}
+.chip{font-size:.95rem;font-weight:800}
+@media (min-aspect-ratio:12/10){.credit{font-size:.78rem}.credit .c5{font-size:.7rem}.qtext{font-size:1.25rem}.opt{font-size:1.05rem}}
+.btn.o2{background:#b3620f;box-shadow:0 .3rem 0 #6e3a05}.btn.g2{background:#3f7a25;box-shadow:0 .3rem 0 #234a12}.btn.p2{background:#6a48a0}
+.btn{-webkit-text-stroke:.08rem rgba(40,0,20,.55);paint-order:stroke fill;text-shadow:0 .08rem 0 rgba(40,0,20,.5)}
+.opt{background-image:linear-gradient(rgba(40,0,20,.34),rgba(40,0,20,.34)),var(--tl);-webkit-text-stroke:.2rem #2e0716;text-shadow:0 .12rem 0 #2e0716,0 .25rem .25rem rgba(0,0,0,.4)}
+@media (max-aspect-ratio:12/10){.tabs{gap:.4rem;flex-wrap:nowrap}.tab{min-width:0;flex:1 1 0;padding:.3rem .3rem .4rem;font-size:1.05rem}.tab img,.tab .em{height:2.4rem}}
