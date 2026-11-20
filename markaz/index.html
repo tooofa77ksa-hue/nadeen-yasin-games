@@ -185,4 +185,4 @@ function contestNext(ok){const i=CUR;$('#fb').innerHTML=`<div class="${ok?'good'
 function contestEnd(){const [a,b]=CONT.sc,n=CONT.names;const win=a===b?null:(a>b?0:1);
  $('#app').innerHTML=`<div class="card" style="text-align:center"><div class="cup">🏆</div><h2>${win===null?'تعادلتما! الكأس لكما معاً 🤝':'الكأس لـ '+esc(n[win])+' 🎉'}</h2><div class="sc">${n.map((x,k)=>`<div class="${k===win?'on':''}">${esc(x)}<br>${ar(CONT.sc[k])} ⭐</div>`).join('')}</div><p>أحسنتما! الجميع فائز لأنكما اجتهدتما 🤍</p><button class="btn g" onclick="contestSetup()">مسابقة جديدة</button><button class="btn o" onclick="contestAbort()">الرئيسية</button></div>`;MODE='solo'}
 home();
-</script></body></html>
+</script><div style="text-align:center;font:700 14px/1.6 system-ui,Tahoma,sans-serif;color:#555;margin:22px 8px 14px;padding-top:8px;border-top:2px dashed #ccc;direction:rtl">للتواصل والطلبات (واتساب): <a href="https://wa.me/966580908077" style="color:#0b7a4b;text-decoration:none"><span style="direction:ltr;unicode-bidi:isolate;display:inline-block">966580908077</span></a><br>إعداد: عواطف الجهني · جهد شخصي لوجه الله · اللهم تقبّله منا واجعله نافعاً</div></body></html>

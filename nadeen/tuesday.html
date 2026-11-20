@@ -70,4 +70,4 @@ $('#cv').innerHTML=SV.map((x,i)=>`<div class="sv1" data-i="${i}"><b>${i+1}) ${x.
 <div class="qs">${x.q.join(' · ')}</div><div class="ir">👆 اضغطي على كلمة لترين إعرابها وموقعها.</div></div>`).join('');
 $('#cv').addEventListener('click',e=>{const b=e.target.closest('.wd');if(!b)return;const box=b.closest('.sv1'),x=SV[+box.dataset.i],k=+b.dataset.k,w=x.w[k];$$('.wd',box).forEach(z=>z.classList.remove('sel'));b.classList.add('sel');
  $('.ir',box).innerHTML='📖 <b>'+svIrab(w)+'</b><br><span style="color:#555">'+(LOC[w[1].replace(/ (ماضٍ|مضارع)/,'')]||'')+'</span>'});
-</script></body></html>
+</script><div style="text-align:center;font:700 14px/1.6 system-ui,Tahoma,sans-serif;color:#555;margin:22px 8px 14px;padding-top:8px;border-top:2px dashed #ccc;direction:rtl">للتواصل والطلبات (واتساب): <a href="https://wa.me/966580908077" style="color:#0b7a4b;text-decoration:none"><span style="direction:ltr;unicode-bidi:isolate;display:inline-block">966580908077</span></a><br>إعداد: عواطف الجهني · جهد شخصي لوجه الله · اللهم تقبّله منا واجعله نافعاً</div></body></html>

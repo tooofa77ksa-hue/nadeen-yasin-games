@@ -132,4 +132,4 @@ function end(){FX.win();const mx=Math.max(...P.map(p=>p.pts));const win=P.filter
 function heat(p){let s='<div class="small">خريطة الإتقان (أخضر = ثابتة، أصفر/أخضر فاتح = في الطريق، أحمر = أخطأت فيها وتحتاج تدريباً، رمادي = لم تُسأل)</div><div class="heat"><div></div>';for(let b=2;b<=9;b++)s+='<div style="background:#fff;color:#333">'+ar(b)+'</div>';
  for(let a=2;a<=9;a++){s+='<div style="background:#fff;color:#333">'+ar(a)+'</div>';for(let b=2;b<=9;b++){const kk=a+'x'+b,x=p.box[kk]||0,c=p.miss&&p.miss[kk]&&x<3?'#fa5252':x==0?'#adb5bd':x==1?'#fab005':x==2?'#82c91e':'#2f9e44';s+='<div style="background:'+c+'">'+(x>=4?'🏅':ar(a*b))+'</div>'}}return s+'</div>'}
 setup();
-</script></body></html>
+</script><div style="text-align:center;font:700 14px/1.6 system-ui,Tahoma,sans-serif;color:#555;margin:22px 8px 14px;padding-top:8px;border-top:2px dashed #ccc;direction:rtl">للتواصل والطلبات (واتساب): <a href="https://wa.me/966580908077" style="color:#0b7a4b;text-decoration:none"><span style="direction:ltr;unicode-bidi:isolate;display:inline-block">966580908077</span></a><br>إعداد: عواطف الجهني · جهد شخصي لوجه الله · اللهم تقبّله منا واجعله نافعاً</div></body></html>
