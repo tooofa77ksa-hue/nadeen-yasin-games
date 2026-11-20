@@ -33,7 +33,7 @@ function table(t){if(!t)return'';return '<table class="tb">'+t.map(r=>'<tr>'+r.m
 function go(i){cur=i;render();window.scrollTo(0,0)}
 function render(){nav();const d=D[cur];let h='';
  h+='<div class="hero" style="background:linear-gradient(135deg,#69db7c,#38d9a9);box-shadow:0 5px 0 #20c997"><h1 style="font-size:22px">'+(d.id=='mix'?'🔄 مراجعة مخلوطة':'الدرس '+d.id.replace('4-','٤-')+' · '+d.title)+'</h1></div>';
- if(d.rule.length){h+='<div class="card"><h2>📖 من كتابكِ</h2>'+d.rule.map(r=>'<div class="rule">'+ltr(r.replace(/</g,'&lt;'))+'</div>').join('')+'<div class="src">📍 مكانه في كتابكِ: الفصل ٤ · درس '+d.id.replace('4-','٤-')+' · <b>'+d.pages+'</b></div></div>'}
+ if(d.rule.length){h+='<div class="card"><h2>📖 من كتابكِ</h2>'+d.rule.map(r=>'<div class="rule">'+ltr(r.replace(/</g,'&lt;'))+'</div>').join('')+'<div class="src">📍 مكانه في كتابكِ: الفصل ٤ · درس '+d.id.replace('4-','٤-')+' · <b>ص '+ltr(d.pages.replace('ص',''))+'</b></div></div>'}
  if(d.how.length){h+='<div class="card"><h2>🧠 كيف نحلّل السؤال؟</h2><ol class="how">'+d.how.map(s=>'<li>'+s+'</li>').join('')+'</ol></div>'}
  if(['4-2','4-3','4-6'].includes(d.id)){h+=READ}
  h+='<div class="prog" id="prog">لفتح النجمة ⭐ أجيبي صح عن '+Math.ceil(d.items.length*NEED)+' من '+d.items.length+' بتأنٍّ، ولا يهم الوقت 🌷</div><h2 style="color:#5f3dc4;margin:14px 4px 0">✏️ نتدرّب</h2><div id="qs"></div>';
