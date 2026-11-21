@@ -66,3 +66,5 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 .hc{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.3rem;font-weight:800;direction:rtl}
 
 .hands .hb{height:9rem}.hands .hi{height:9rem}
+
+.fr{direction:rtl}
