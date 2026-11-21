@@ -226,8 +226,8 @@ function five(){
  draw();
 }
 /* الأصابع: بكلام المقطع (صوابع صاحية / صوابع نايمة) */
-var HIMG='media/hands/';
-function handImg(side,k){return '<img class="hi'+(side==='L'?' fl':'')+'" src="'+HIMG+'h'+k+'.webp" alt="">'}
+var HIMG='media/hands5/';
+function handImg(side,k){return '<img class="hi" src="'+HIMG+'h'+k+'.webp" alt="">'}
 function fingers(){
  var pairs=[];for(var a=6;a<=9;a++)for(var b=a;b<=9;b++)pairs.push([a,b]);pairs.push([10,9],[10,8],[10,7]);var Pq=shuf(pairs),pi=0;
  function round(){
@@ -235,7 +235,7 @@ function fingers(){
   var pr=Pq[pi++];if(rnd(2))pr=[pr[1],pr[0]];var A=pr[0],B=pr[1],L=0,R=0,hint=0;
   function render(){
    app.innerHTML='<button class="back" id="bk">→ طقس الاختبار</button><div class="head"><h1>الأصابع: <bdi class="eq">'+A+' × '+B+'</bdi></h1><div class="sub">كل إيد هتشيل رقم، وعينها على عشرة</div></div>'+
-   '<div class="yarn paper" style="padding:.7rem 1rem"><div class="hands" style="direction:ltr"><div class="hw"><div class="hl">الإيد الأولى: <b>'+A+'</b></div><div class="hb" id="hL">'+handImg('L',L)+'</div><div class="hc"><button class="btn sm" data-h="L" data-d="-1">−</button><b>الصوابع الصاحية: '+L+'</b><button class="btn sm" data-h="L" data-d="1">+</button></div></div><div class="hw"><div class="hl">الإيد التانية: <b>'+B+'</b></div><div class="hb" id="hR">'+handImg('R',R)+'</div><div class="hc"><button class="btn sm" data-h="R" data-d="-1">−</button><b>الصوابع الصاحية: '+R+'</b><button class="btn sm" data-h="R" data-d="1">+</button></div></div></div>'+
+   '<div class="yarn paper" style="padding:.7rem 1rem"><div class="hands" style="direction:ltr"><div class="hw"><div class="hl">الإيد الأولى: <b>'+A+'</b></div><div class="hb" id="hL">'+handImg('L',L)+'</div><div class="hc"><button class="btn sm" data-h="L" data-d="-1">−</button><b>صاحية: '+L+' · نايمة: '+(5-L)+'</b><button class="btn sm" data-h="L" data-d="1">+</button></div></div><div class="hw"><div class="hl">الإيد التانية: <b>'+B+'</b></div><div class="hb" id="hR">'+handImg('R',R)+'</div><div class="hc"><button class="btn sm" data-h="R" data-d="-1">−</button><b>صاحية: '+R+' · نايمة: '+(5-R)+'</b><button class="btn sm" data-h="R" data-d="1">+</button></div></div></div>'+
    '<div class="msg soft">1) <b>'+A+'</b> باقي لها كام عن عشرة؟ ارفعي الصوابع دي في الإيد الأولى.<br>2) <b>'+B+'</b> باقي لها كام عن عشرة؟ ارفعيها في الإيد التانية.</div><div id="s2"></div></div>';
    $('#bk').onclick=ritual;
    document.querySelectorAll('.hc button').forEach(function(x){x.onclick=function(){var d=+x.dataset.d;if(x.dataset.h==='L')L=Math.max(0,Math.min(5,L+d));else R=Math.max(0,Math.min(5,R+d));render()}});
