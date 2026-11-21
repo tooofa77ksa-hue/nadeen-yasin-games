@@ -51,3 +51,12 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 
 .fv{display:block;width:100%;max-width:22rem;margin:.4rem auto;border-radius:1rem;border:.2rem solid #a01848;background:#000}
 .fv{width:auto;max-width:100%;max-height:66vh}
+
+.fr{display:flex;align-items:center;gap:.6rem;justify-content:center;margin:.25rem 0;direction:ltr;font-size:1.3rem;font-weight:800}
+.frs{max-width:20rem;margin:.4rem auto}
+.ti{width:2.6rem;height:2.6rem;text-align:center;font:800 1.5rem 'B';border:.2rem solid #a01848;border-radius:.7rem;background:#fff;color:#2e0716}
+.ti.w2{width:4.2rem}
+.hands{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hw{text-align:center}.hw .hl{font-weight:800;font-size:1rem;color:#2e0716}
+.hand{width:12rem;height:12.8rem;cursor:pointer;touch-action:manipulation}
+.qa{display:grid;gap:.5rem;margin:.5rem 0}.qa label{font-weight:800;font-size:1.05rem;color:#2e0716;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}

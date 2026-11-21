@@ -63,12 +63,13 @@ function home(){
  if(tp.p){steps+='<li class="'+(dn.learn?'done':'')+'"><b class="n">'+n+'</b><div>نبني جدول '+tp.p.t.join(' و ')+' بأنفسنا<small>نعرف حيلته ونتعلّم نتأكد من الجواب</small></div></li>';n++;
   steps+='<li class="'+(dn.quiz?'done':'')+'"><b class="n">'+n+'</b><div>نتدرّب ونتأكد بالجمع<small>عشر عمليات لكل جدول، بلا وقت</small></div></li>'}
  else steps+='<li><b class="n">1</b><div>مراجعة الأخطاء حتى تنتهي كلها<small>ونختبر أصعب العمليات</small></div></li>';
+ var rt=(ST.rit&&ST.rit[k])||{five:0,fing:0};steps+='<li class="'+(rt.five>=3&&rt.fing>=5?'done':'')+'"><b class="n">★</b><div>طقس الاختبار: جدول 5 والأصابع<small>اليوم: جدول 5 '+rt.five+' من 3 مرات · الأصابع '+rt.fing+' من 5 أزواج</small></div></li>';
  app.innerHTML='<div class="head"><div class="dayhead">'+(tp.p?'<div class="bigd">'+tp.p.t.map(dig).join('<span class="em" style="align-self:center">+</span>')+'</div>':pic('trophy','🏆'))+'</div><h1>'+title+'</h1><div class="sub">'+(tp.p&&tp.i<5?DAYN[tp.i]+' · اليوم '+(tp.i+1)+' من 5':'')+'</div></div>'+
  '<div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">مهمة اليوم</h2><ol class="steps">'+steps+'</ol><div class="row"><button class="btn big" id="go">ابدئي مهمة اليوم ←</button></div></div>'+
- '<div class="grid2"><div class="yarn paper mini" id="m1">'+'<h3>📌 طريقتي في الاختبار</h3><p>اضربي ثم تأكدي بالجمع: ثلاث خطوات تكفي</p></div>'+
+ '<div class="grid2"><div class="yarn paper mini" id="m0" style="outline:.25rem solid #fff"><h3>🎒 طقس الاختبار</h3><p>أول ما أستلم الورقة: جدول 5 ثم الأصابع</p></div><div class="yarn paper mini" id="m1">'+'<h3>📌 طريقتي في الاختبار</h3><p>اضربي ثم تأكدي بالجمع: ثلاث خطوات تكفي</p></div>'+
  '<div class="yarn paper mini" id="m2"><h3>🗺️ خريطة إتقاني</h3><p>أين أخطأتُ وأين أتقنتُ</p></div>'+
  '<div class="yarn paper mini" id="m3"><h3>👩‍👧 للأم</h3><p>التقدّم واختيار اليوم</p></div></div>';
- $('#go').onclick=startToday;$('#m1').onclick=method;$('#m2').onclick=mapScreen;$('#m3').onclick=parent;
+ $('#go').onclick=startToday;$('#m0').onclick=ritual;$('#m1').onclick=method;$('#m2').onclick=mapScreen;$('#m3').onclick=parent;
 }
 /* خطوات الجلسة */
 function startToday(){
@@ -168,7 +169,7 @@ function method(){
 }
 function printCard(){
  var pc=$('#printcard');
- pc.innerHTML='<h1>طريقتي في الاختبار — جدول الضرب</h1><div class="pb"><b>1)</b> أقرأ العملية &nbsp; <b>2)</b> أضرب بالحيلة &nbsp; <b>3)</b> أتأكد بالجمع (أجمع العدد نفسه بعدد المرات) &nbsp; <b>4)</b> أكتب الجواب إذا تطابق، وإذا اختلف أعيد الحيلة.</div><table><tr><th>الجدول</th><th>الحيلة</th><th>للتأكد بالجمع</th></tr>'+
+ pc.innerHTML='<h1>طريقتي في الاختبار — جدول الضرب</h1><div class="pb"><b>طقس أول ما أستلم الورقة:</b> (1) أطلب ورقة جانبية أو أكتب في خلف الورقة (أسأل المعلمة قبل الاختبار). (2) أكتب جدول 5: الآحاد 5 0 5 0 5 0 5 0 5 0، والعشرات 0 1 1 2 2 3 3 4 4 5. (3) للجداول 6–9: أرفع (العدد − 5) أصابع في كل يد؛ القائمة معاً = العشرات، والمثنية × المثنية = الآحاد (وإن زادت الآحاد عن 9 أضيف العشر للعشرات). (4) أتأكد بالجمع مرة واحدة وأكتب.</div><div class="pb"><b>1)</b> أقرأ العملية &nbsp; <b>2)</b> أضرب بالحيلة &nbsp; <b>3)</b> أتأكد بالجمع (أجمع العدد نفسه بعدد المرات) &nbsp; <b>4)</b> أكتب الجواب إذا تطابق، وإذا اختلف أعيد الحيلة.</div><table><tr><th>الجدول</th><th>الحيلة</th><th>للتأكد بالجمع</th></tr>'+
  [[2,'نضاعف','مثال: 2×7 = 7 + 7'],[3,'×2 ثم نضيف مرة','3×6: 6+6 ثم +6'],[4,'نضاعف مرتين','4×7: 7+7 ثم نضاعف'],[5,'×10 ثم النصف','نواتجه تنتهي بـ 5 أو 0'],[6,'×5 ثم نضيف مرة','6×7: 5×7 ثم +7'],[7,'×5 ثم ×2 ونجمع','7×6: 5×6 + 2×6'],[8,'نضاعف ثلاث مرات','8×7: 7→14→28→56'],[9,'×10 ثم نطرح مرة','مجموع أرقام الناتج = 9']].map(function(r){return '<tr><td><b>×'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'}).join('')+'</table><div class="pb">إذا نسيتُ: أبدّل مكان العددين (6×7 = 7×6)، أو أتأكد بالقسمة.</div><div class="pf">إعداد: عواطف الجهني · جهد شخصي لوجه الله · اللهم تقبّله منا واجعله نافعاً · للطلبات (واتساب): 966580908077</div>';
  window.print();
 }
@@ -191,6 +192,72 @@ function parent(){
  document.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){var v=c.dataset.i;ST.ov=v==='a'?null:+v;save();parent()}});
  $('#rs').onclick=function(){if(confirm('نمسح كل تقدّم نادين في جدول الضرب؟')){ST={f:{},done:{},ov:null};save();parent()}};
 }
+/* ===== طقس الاختبار: جدول 5 بالنمط + الأصابع للجداول 6–9 ===== */
+function rit(){var k=dateKey();ST.rit=ST.rit||{};ST.rit[k]=ST.rit[k]||{five:0,fing:0};return ST.rit[k]}
+function ritual(){
+ var r=rit();
+ app.innerHTML='<button class="back" id="bk">→ الرئيسية</button><div class="head">'+pic('chest','🎒','logo')+'<h1>طقس الاختبار</h1><div class="sub">أول ما أستلم ورقة الاختبار أفعل هذا بالترتيب. أحفظه مثل اسمي</div></div>'+
+ '<div class="yarn paper" style="padding:.7rem 1rem"><ol class="steps"><li><b class="n">1</b><div>أطلب ورقة جانبية<small>أو أقلب ورقة الاختبار وأكتب في الخلف (أسأل المعلمة قبل الاختبار هل يجوز)</small></div></li><li><b class="n">2</b><div>أكتب جدول 5 بالنمط<small>الآحاد: 5 0 5 0 5 0 … والعشرات: 0 1 1 2 2 3 3 4 4 5</small></div></li><li><b class="n">3</b><div>للجداول من 6 إلى 9 أستعمل أصابعي<small>القائمة = عشرات · المثنية × المثنية = آحاد</small></div></li><li><b class="n">4</b><div>أتأكد بالجمع مرة واحدة<small>ثم أكتب الجواب وأمشي</small></div></li></ol></div>'+
+ '<div class="grid2"><div class="yarn paper mini" id="r1"><h3>✍️ أتدرّب: جدول 5</h3><p>اليوم: '+r.five+' من 3 مرات</p></div><div class="yarn paper mini" id="r2"><h3>🖐️ أتدرّب: الأصابع</h3><p>اليوم: '+r.fing+' من 5 أزواج</p></div></div>'+
+ '<div class="yarn paper" style="padding:.7rem 1rem;margin-top:.6rem"><h2 style="margin:0">🎬 مقطع: جدول 5 في ثوانٍ</h2><video class="fv" controls playsinline preload="metadata" poster="media/five1.jpg" src="media/five1.mp4"></video><p style="font-size:.8rem;font-weight:700;color:#6b2a45;margin:.2rem 0">المقطع لصاحبه. نستعمله للتعلّم فقط.</p></div>'+
+ '<div class="yarn paper" style="padding:.7rem 1rem;margin-top:.6rem"><h2 style="margin:0">🎬 مقطع ثانٍ لنفس الطريقة</h2><video class="fv" controls playsinline preload="metadata" poster="media/five2.jpg" src="media/five2.mp4"></video><p style="font-size:.8rem;font-weight:700;color:#6b2a45;margin:.2rem 0">المقطع لصاحبه. نستعمله للتعلّم فقط.</p></div>'+
+ '<div class="yarn paper" style="padding:.7rem 1rem;margin-top:.6rem"><h2 style="margin:0">🎬 طريقة الأصابع (6 إلى 9)</h2><video class="fv" controls playsinline preload="metadata" poster="media/fingers.jpg" src="media/fingers.mp4"></video><p style="font-size:.8rem;font-weight:700;color:#6b2a45;margin:.2rem 0">المقطع لصاحبته (علامتها المائية ظاهرة). نستعمله للتعلّم فقط.</p><div class="row"><a class="btn sm" href="media/fingers_all.png" target="_blank" rel="noopener" style="text-decoration:none">🖐️ ورقة كل الأزواج بالأيدي</a></div></div>';
+ $('#bk').onclick=home;$('#r1').onclick=five;$('#r2').onclick=fingers;
+}
+/* جدول 5 */
+function five(){
+ var lvl=0,tries=0;
+ function draw(){
+  var rows='';for(var n=1;n<=10;n++)rows+='<div class="fr"><bdi class="eq">5 × '+n+' =</bdi><input class="ti" inputmode="numeric" maxlength="1" data-r="'+n+'" data-p="t" aria-label="العشرات"><input class="ti" inputmode="numeric" maxlength="1" data-r="'+n+'" data-p="u" aria-label="الآحاد"></div>';
+  app.innerHTML='<button class="back" id="bk">→ طقس الاختبار</button><div class="head"><h1>جدول 5 بالنمط</h1><div class="sub">'+(lvl===0?'اتبعي النمط في الأعلى':'الآن من ذاكرتكِ بلا نمط')+'</div></div>'+
+  '<div class="yarn paper" style="padding:.7rem 1rem">'+(lvl===0?'<div class="pat">الآحاد تتناوب: <bdi class="eq">5 0 5 0 5 0 5 0 5 0</bdi><br>العشرات كل عددين معاً: <bdi class="eq">0 1 1 2 2 3 3 4 4 5</bdi></div>':'<div class="msg soft">✏️ اكتبي الجدول كاملاً. العشرات في الخانة اليمنى، والآحاد في اليسرى.</div>')+'<div class="frs">'+rows+'</div><div id="fm"></div><div class="row"><button class="btn big" id="ck">تأكدي ✓</button></div></div>';
+  $('#bk').onclick=ritual;
+  var ins=document.querySelectorAll('.ti');ins.forEach(function(i,ix){i.oninput=function(){i.value=i.value.replace(/\D/g,'').slice(0,1);if(i.value&&ins[ix+1])ins[ix+1].focus()}});if(ins[0])ins[0].focus();
+  $('#ck').onclick=function(){
+   var bad=0,all=true;for(var n=1;n<=10;n++){var t=document.querySelector('.ti[data-r="'+n+'"][data-p="t"]'),u=document.querySelector('.ti[data-r="'+n+'"][data-p="u"]');
+    var tv=t.value===''?-1:+t.value,uv=u.value===''?-1:+u.value,tr=Math.floor(5*n/10),ur=(5*n)%10;
+    var ok=tv===tr&&uv===ur;t.style.borderColor=u.style.borderColor=ok?'#3f7a25':'#c0392b';t.style.background=u.style.background=ok?'#ebfbee':'#fff0f0';if(!ok)bad++}
+   tries++;var fm=$('#fm');
+   if(!bad){var r=rit();r.five++;save();fm.innerHTML='<div class="msg good">⭐ جدول 5 كامل! '+(lvl===0?'الآن نجرّب من الذاكرة بلا نمط.':'ركّزتِ فوصلتِ بتوفيق الله.')+'</div>';if(window.FX)FX.correct(2);
+    var go=document.createElement('div');go.className='row';go.innerHTML='<button class="btn big" id="nx2">'+(lvl===0?'من الذاكرة ←':'رجوع ←')+'</button>';fm.appendChild(go);$('#nx2').onclick=function(){if(lvl===0){lvl=1;draw()}else ritual()}}
+   else fm.innerHTML='<div class="msg soft">🧶 '+bad+' خانات تحتاج مراجعة (الحمراء). نتذكّر: الآحاد 5 ثم 0 بالتناوب، والعشرات تزيد كل عددين. نعدّلها ونتأكد ثانية.</div>';
+  };
+ }
+ draw();
+}
+/* الأصابع */
+function handSVG(side,up){ // up: مصفوفة 5 قيم (0=إبهام،1..4)
+ var f=[[22,-40,40],[46,0,66],[66,0,74],[86,0,68],[106,0,54]];var s='<svg class="hand" viewBox="0 0 150 160" data-side="'+side+'">';
+ s+='<rect x="30" y="92" width="92" height="58" rx="24" fill="#f6c6a0" stroke="#c98d5f" stroke-width="3"/>';
+ for(var i=0;i<5;i++){var on=up[i];var hh=on?f[i][2]:20;
+  if(i===0)s+='<g class="fg" data-i="0" transform="rotate(-40 30 118)"><rect x="12" y="'+(100-hh)+'" width="18" height="'+(hh+8)+'" rx="9" fill="'+(on?'#f6c6a0':'#d9b08c')+'" stroke="#c98d5f" stroke-width="3"/></g>';
+  else s+='<g class="fg" data-i="'+i+'"><rect x="'+(f[i][0]-8)+'" y="'+(96-hh)+'" width="19" height="'+(hh+8)+'" rx="9" fill="'+(on?'#f6c6a0':'#d9b08c')+'" stroke="#c98d5f" stroke-width="3"/></g>'}
+ return s+'</svg>'}
+function fingers(){
+ var pairs=[];for(var a=6;a<=9;a++)for(var b=a;b<=9;b++)pairs.push([a,b]);var Pq=shuf(pairs),pi=0;
+ function round(){
+  if(pi>=Pq.length){pi=0;Pq=shuf(pairs)}
+  var pr=Pq[pi++],A=pr[0],B=pr[1],L=[0,0,0,0,0],R=[0,0,0,0,0];
+  function render(step){
+   var cl=L.reduce(function(x,y){return x+y},0),cr=R.reduce(function(x,y){return x+y},0);
+   app.innerHTML='<button class="back" id="bk">→ طقس الاختبار</button><div class="head"><h1>الأصابع: <bdi class="eq">'+A+' × '+B+'</bdi></h1><div class="sub">اضغطي على الأصابع لترفعيها أو تثنيها</div></div>'+
+   '<div class="yarn paper" style="padding:.7rem 1rem"><div class="hands" style="direction:ltr"><div class="hw"><div class="hl">اليد اليسرى: '+A+'</div>'+handSVG('L',L)+'<div class="hl">القائمة: <b id="cl">'+cl+'</b></div></div><div class="hw"><div class="hl">اليد اليمنى: '+B+'</div>'+handSVG('R',R)+'<div class="hl">القائمة: <b id="cr">'+cr+'</b></div></div></div>'+
+   '<div class="msg soft">1) نرفع في كل يد (العدد − 5) أصابع: '+A+' ← '+(A-5)+' وَ '+B+' ← '+(B-5)+'. والباقي مثنيّ.</div><div id="s2"></div></div>';
+   $('#bk').onclick=ritual;
+   document.querySelectorAll('.hand').forEach(function(h){h.querySelectorAll('.fg').forEach(function(g){g.onclick=function(){var arr=h.dataset.side==='L'?L:R,i=+g.dataset.i;arr[i]=arr[i]?0:1;render(step)}})});
+   if(cl===A-5&&cr===B-5){
+    var fa=5-cl,fb=5-cr;
+    $('#s2').innerHTML='<div class="msg good">✅ أحسنتِ! القائمة '+cl+' و'+cr+'، والمثنية '+fa+' و'+fb+'. الآن:</div><div class="qa"><label>العشرات = القائمة معاً × 10: <bdi class="eq">'+cl+' + '+cr+'</bdi> ← <input class="ti w2" id="tn" inputmode="numeric" maxlength="3"></label><label>الآحاد = المثنية × المثنية: <bdi class="eq">'+fa+' × '+fb+'</bdi> = <input class="ti w2" id="un" inputmode="numeric" maxlength="3"></label><label>الجواب النهائي: <bdi class="eq">'+A+' × '+B+'</bdi> = <input class="ti w2" id="fi" inputmode="numeric" maxlength="3"></label></div><div id="s3"></div><div class="row"><button class="btn big" id="ck2">تأكدي ✓</button></div>';
+    $('#ck2').onclick=function(){var t=+$('#tn').value,u=+$('#un').value,f=+$('#fi').value,ok=(t===(cl+cr)*10)&&(u===fa*fb)&&(f===A*B),m=$('#s3');
+     if(ok){var r=rit();r.fing++;save();m.innerHTML='<div class="msg good">⭐ صحيح! '+(fa*fb>=10?'ولاحظي: الآحاد زادت عن 9، فكتبنا آحادها وأضفنا العشر إلى العشرات.':'')+'</div><div class="row"><button class="btn big" id="nx3">زوج جديد ←</button></div>';if(window.FX)FX.correct(2);$('#nx3').onclick=round}
+     else m.innerHTML='<div class="msg soft">🧶 قريبة! نراجع: العشرات = (القائمة معاً) × 10، والآحاد = المثنية × المثنية، ثم نجمعهما. وإذا زادت الآحاد عن 9 نضيف عشرها للعشرات. نجرّب مرة ثانية بهدوء.</div>'}
+   }
+  }
+  render(0);
+ }
+ round();
+}
+
 home();
 window.__Z=function(){return{ST:ST,RUN:RUN}};
 })();
