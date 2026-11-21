@@ -70,3 +70,10 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 .fr{direction:rtl}
 
 .hb{height:17rem}.hi{height:17rem;max-width:13rem}.hands .hb,.hands .hi{height:12rem}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.7rem;margin:.6rem 0}
+.tile{padding:.7rem .8rem;text-align:center;cursor:pointer}.tile .ic{font-size:3rem;line-height:1.2}.tile h2{margin:.1rem 0;font-size:1.35rem;color:#a01848}.tile p{margin:.1rem 0;font-size:.9rem;font-weight:700;color:#2e0716}.tile small{font-weight:800;color:#6b2a45}
+.vb{display:grid;gap:.7rem}.vbox{background:#2e0716;color:#fff;border-radius:1.2rem;padding:.6rem;text-align:center;border:.2rem solid #fff}
+.vbox .vt{font-weight:800;font-size:1.15rem;color:#ffe28a;margin-bottom:.3rem}.vbox .vc{font-size:.78rem;opacity:.9;margin-top:.2rem}
+@media (min-aspect-ratio:12/10){.vb{grid-template-columns:1fr 20rem;align-items:start}.vbox .fv{max-height:60vh}}
+.dots{width:100%;max-width:46rem;height:auto}
