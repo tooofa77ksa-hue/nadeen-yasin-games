@@ -60,3 +60,7 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 .hw{text-align:center}.hw .hl{font-weight:800;font-size:1rem;color:#2e0716}
 .hand{width:12rem;height:12.8rem;cursor:pointer;touch-action:manipulation}
 .qa{display:grid;gap:.5rem;margin:.5rem 0}.qa label{font-weight:800;font-size:1.05rem;color:#2e0716;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+
+.hb{cursor:pointer;display:flex;justify-content:center;align-items:flex-end;height:14rem;touch-action:manipulation}
+.hi{height:14rem;width:auto;max-width:12rem;object-fit:contain}.hi.fl{transform:scaleX(-1)}
+.hc{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.3rem;font-weight:800;direction:rtl}
