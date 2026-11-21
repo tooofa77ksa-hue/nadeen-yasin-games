@@ -228,7 +228,7 @@ function five(){
  draw();
 }
 /* الأصابع (من 7 إلى 10) */
-var HIMG='media/hands5/';
+var HIMG='media/hands6/';
 function handImg(side,k){return '<img class="hi" src="'+HIMG+'h'+k+'.webp" alt="">'}
 function fingers(){
  var pairs=[];for(var a=7;a<=10;a++)for(var b=a;b<=10;b++)pairs.push([a,b]);var Pq=shuf(pairs),pi=0;
