@@ -77,3 +77,4 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 .vbox .vt{font-weight:800;font-size:1.15rem;color:#ffe28a;margin-bottom:.3rem}.vbox .vc{font-size:.78rem;opacity:.9;margin-top:.2rem}
 @media (min-aspect-ratio:12/10){.vb{grid-template-columns:1fr 20rem;align-items:start}.vbox .fv{max-height:60vh}}
 .dots{width:100%;max-width:46rem;height:auto}
+.eq{direction:rtl!important}
