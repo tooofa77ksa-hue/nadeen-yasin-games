@@ -168,3 +168,34 @@ main{max-width:min(100%,60rem)}
 .btn{-webkit-text-stroke:.08rem rgba(40,0,20,.55);paint-order:stroke fill;text-shadow:0 .08rem 0 rgba(40,0,20,.5)}
 .opt{background-image:linear-gradient(rgba(40,0,20,.34),rgba(40,0,20,.34)),var(--tl);-webkit-text-stroke:.2rem #2e0716;text-shadow:0 .12rem 0 #2e0716,0 .25rem .25rem rgba(0,0,0,.4)}
 @media (max-aspect-ratio:12/10){.tabs{gap:.4rem;flex-wrap:nowrap}.tab{min-width:0;flex:1 1 0;padding:.3rem .3rem .4rem;font-size:1.05rem}.tab img,.tab .em{height:2.4rem}}
+
+/* ===== رأس المدرسة وتذييل هادئ ===== */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;background:#5b0e2d;color:#ffe9ef;padding:.25rem 1rem;font-size:.8rem;font-weight:800;letter-spacing:.01em;border-bottom:.12rem solid rgba(255,255,255,.25)}
+.topbar .stu{opacity:.95}
+.credit{display:none}
+.foot{margin-top:auto;width:100%;background:#5b0e2d;color:#ffd9e3;text-align:center;padding:.5rem 1rem .6rem;font-size:.74rem;line-height:1.7;border-top:.12rem solid rgba(255,255,255,.2)}
+.foot a{color:#fff;text-decoration:none;font-weight:800;border-bottom:.06rem dotted rgba(255,255,255,.6)}
+.foot i{font-style:normal;opacity:.6;margin:0 .45rem}
+.foot .f1{font-weight:800;color:#fff;font-size:.8rem;letter-spacing:.01em}
+.foot .f3{opacity:.8;font-size:.68rem}
+@media (min-aspect-ratio:12/10){.foot{padding:.25rem 1rem .3rem;font-size:.7rem;line-height:1.5}.foot .f1{font-size:.74rem}.foot .f3{font-size:.62rem}.topbar{font-size:.7rem;padding:.15rem 1rem}}
+/* دليل الاستخدام */
+.gd{max-width:56rem;margin:0 auto}
+.gd .sec{margin:.7rem 0;padding:.8rem 1rem}
+.gd h2{margin:0 0 .3rem;font-size:1.35rem;color:#a01848;display:flex;gap:.5rem;align-items:center}
+.gd h2 img{height:2.2rem}
+.gd ol,.gd ul{margin:.2rem 0;padding:0 1.3rem 0 0}.gd li{font-size:1.02rem;font-weight:700;line-height:1.7;margin:.15rem 0}
+.gd .leg{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.5rem}
+.gd .leg div{display:flex;gap:.5rem;align-items:center;background:#fff;border:.15rem solid #e8b6c4;border-radius:1rem;padding:.3rem .6rem;font-weight:700;font-size:.95rem}.gd .leg img{height:2.4rem}
+.gd details{background:#fff;border:.15rem solid #e8b6c4;border-radius:1rem;padding:.3rem .8rem;margin:.3rem 0}.gd summary{font-weight:800;cursor:pointer;font-size:1rem;color:#a01848}.gd details p{margin:.3rem 0;font-weight:700;font-size:.95rem}
+.btn.big{font-size:1.25rem;min-height:3rem;padding:.5rem 1.6rem}
+.go{display:inline-block;margin-top:.5rem}
+.topbar{padding-left:5.2rem}
+@media (min-aspect-ratio:12/10){
+ main:has(#g1) .g .ic,main:has(#g1) .g .ic img{height:3.6rem}main:has(#g1) .g h2{font-size:1.3rem}main:has(#g1) .g .what{font-size:.82rem;line-height:1.45}
+ main:has(#g1) .head img.logo{width:3.3rem}main:has(#g1) h1{font-size:1.9rem;-webkit-text-stroke:.2rem #6e1636}main:has(#g1) .sub{font-size:.85rem}
+ main:has(#g1) .tab img,main:has(#g1) .tab .em{height:2.4rem}main:has(#g1) .tab{min-width:5.6rem;font-size:1rem}main:has(#g1) .tabs{margin:.2rem 0 .5rem}
+ main:has(#g1) .note{font-size:.8rem;padding:.3rem .8rem;margin:.4rem 0}
+ main:has(#g1) .g .row{margin-top:.3rem}main:has(#g1) .g .btn{min-height:2.4rem;font-size:1rem;padding:.2rem 1.2rem}
+ main:has(#g1) .g{padding:.5rem .8rem}
+}

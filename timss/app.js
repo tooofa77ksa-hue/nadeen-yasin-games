@@ -29,11 +29,11 @@ function home(){
  app.innerHTML='<div class="head">'+pic('trophy','🏆','logo')+'<h1>رحلة الكنز</h1><div class="sub">ألغاز بالكروشيه — بلا درجات وبلا وقت</div></div>'+tabsHTML()+
  (ready?'':'<div class="note">'+sj.wait+'</div>')+
  '<div class="games'+(ready?'':' off')+'">'+
- '<div class="g yarn paper" id="g1"><div class="ic">'+pic('chest','🧰')+pic('scroll','🗺️')+'</div><h2>🗺️ لعبة 1: رحلة الكنز</h2><div class="what"><b>تلعبين وحدكِ.</b> أمامكِ خريطة فيها محطات. تحلّين لغز كل محطة فتقفز الفراشة للمحطة التالية حتى تصلي إلى الكأس 🏆.</div><span class="tag">لاعبة واحدة · جهاز واحد</span></div>'+
- '<div class="g yarn paper" id="g2" style="animation-delay:.1s"><div class="ic">'+pic('rose','🌹')+pic('star','⭐')+pic('cloud','☁️')+pic('butterfly','🦋')+'</div><h2>🏆 لعبة 2: سباق الفرق</h2><div class="what"><b>للصف مع المعلمة.</b> من 2 إلى 4 فرق، <b>لكل فريق آيباد</b>. تفتح المعلمة لوحة وتعطي كوداً، وتدخل كل مجموعة الكود وتحلّ نفس الألغاز، وترى الجميع الفراشات تتقدم على الخريطة.</div><span class="tag">2–4 فرق · أجهزة مختلفة · كود</span></div>'+
+ '<div class="g yarn paper" id="g1"><div class="ic">'+pic('chest','🧰')+pic('scroll','🗺️')+'</div><h2>🗺️ لعبة 1: رحلة الكنز</h2><div class="what"><b>تلعبين وحدكِ.</b> أمامكِ خريطة فيها محطات. تحلّين لغز كل محطة فتقفز الفراشة للمحطة التالية حتى تصلي إلى الكأس 🏆.</div><span class="tag">لاعبة واحدة · جهاز واحد</span><div class="row"><button class="btn">ابدئي الرحلة ←</button></div></div>'+
+ '<div class="g yarn paper" id="g2" style="animation-delay:.1s"><div class="ic">'+pic('rose','🌹')+pic('star','⭐')+pic('cloud','☁️')+pic('butterfly','🦋')+'</div><h2>🏆 لعبة 2: سباق الفرق</h2><div class="what"><b>للصف مع المعلمة.</b> من 2 إلى 4 فرق، <b>لكل فريق آيباد</b>. تفتح المعلمة لوحة وتعطي كوداً، وتدخل كل مجموعة الكود وتحلّ نفس الألغاز، وترى الجميع الفراشات تتقدم على الخريطة.</div><span class="tag">2–4 فرق · أجهزة مختلفة · كود</span><div class="row"><button class="btn p2">ابدئي السباق ←</button></div></div>'+
  '</div>'+
- '<div class="note">🌷 هذه اللعبة تدريب على <b>طريقة أسئلة</b> اختبارات TIMSS، فلا درجات ولا ترتيب بين الطالبات. الخطأ عندنا «غرزة تحتاج إعادة» نكمّلها ونمشي.</div>';
- wireTabs();if(ready){$('#g1').onclick=function(){solo()};$('#g2').onclick=function(){teamHome()}}
+ '<div class="note">🌷 هذه اللعبة تدريب على <b>طريقة أسئلة</b> اختبارات TIMSS، فلا درجات ولا ترتيب بين الطالبات. الخطأ عندنا «غرزة تحتاج إعادة» نكمّلها ونمشي. <button class="btn sm" id="gh2">📖 دليل الاستخدام</button></div>';
+ wireTabs();var g2=$('#gh2');if(g2)g2.onclick=guide;if(ready){$('#g1').onclick=function(){solo()};$('#g2').onclick=function(){teamHome()}}
 }
 /* ---------- لعبة فردية ---------- */
 function solo(){
@@ -185,6 +185,21 @@ function teamMsg(m,to){
 function teamPlayWait(){var T=TEAMS[S.team];S.running=0;
  app.innerHTML='<div class="head">'+pic(T.s,T.e,'logo')+'<h1>'+T.n+'</h1><div class="sub">أهلاً بكِ! ننتظر أن تبدأ المعلمة السباق 🧶</div></div><div class="note">اسم مجموعتكِ: <b>'+T.n+'</b>. حين تضغط المعلمة «ابدئي» تبدأ الألغاز تلقائياً.</div>'}
 function sendPos(){if(S.conn&&S.conn.open)try{S.conn.send({t:'pos',idx:S.team,pos:S.pos,stars:S.stars})}catch(e){}}
-home();
+
+/* ---------- دليل الاستخدام ---------- */
+function guide(){
+ app.innerHTML='<div class="gd"><button class="back" id="bk">→ رجوع</button><div class="head">'+pic('scroll','📖','logo')+'<h1>دليل الاستخدام</h1><div class="sub">كل ما تحتاجينه لتبدئي وتفهمي اللعب</div></div>'+
+ '<div class="sec yarn paper"><h2>'+pic('trophy','🏆')+'ما هذا الموقع؟</h2><ul><li>ألغاز علوم بأسلوب أسئلة <b>TIMSS</b> الدولية، لطالبات وطلاب الصف الرابع.</li><li><b>بلا درجات وبلا وقت</b>: هدفنا أن نفهم ونتعلّم، لا أن نتسابق مع الساعة.</li><li>الأسئلة من حقيبة TIMSS التدريبية (وزارة التعليم)، بصورها كما هي.</li></ul></div>'+
+ '<div class="sec yarn paper"><h2>'+pic('chest','🗺️')+'اللعبة 1: رحلة الكنز (لاعبة واحدة)</h2><ol><li>نختار المادة من الأزرار في أعلى الصفحة (علوم الآن).</li><li>نضغط «رحلة الكنز» ثم نختار <b>تحدي اليوم</b> (5 محطات) أو <b>تحدي الأسبوع</b> (8 محطات)، ونقدر نختار درساً معيّناً.</li><li>نقرأ السؤال بهدوء وننظر إلى الصورة، ثم نضغط الإجابة التي نظنها صحيحة.</li><li>إن كانت صحيحة: تظهر <b>نجمة صوف</b> وشرح قصير، وتقفز الفراشة للمحطة التالية.</li><li>وإن لم تكن: تظهر «غرزة تحتاج إعادة» وسؤال يساعدنا على التفكير، ونجرّب مرة ثانية.</li><li>عند الوصول إلى الكأس 🏆 تنتهي الرحلة، ونقدر نبدأ رحلة جديدة.</li></ol></div>'+
+ '<div class="sec yarn paper"><h2>'+pic('rose','🌹')+'اللعبة 2: سباق الفرق (للصف مع المعلمة)</h2><p><b>تحتاج:</b> جهازاً للمعلمة (أو شاشة عرض) وآيباداً لكل فريق، وكلها متصلة بالإنترنت.</p><ol><li><b>المعلمة:</b> «سباق الفرق» ← «أنا المعلمة: افتحي اللوحة». يظهر كود من 4 أرقام وخريطة كبيرة.</li><li><b>كل فريق:</b> «سباق الفرق» ← «نحن فريق» ← يكتب الكود. يأخذ اسماً: الورد، النجوم، الغيوم، أو الفراشات.</li><li><b>المعلمة:</b> تختار الدرس ثم تضغط «ابدئي: 8 محطات» (أو 5 للسريع).</li><li>يحلّ كل فريق نفس الألغاز على جهازه، وتتقدم فراشته على الخريطة الكبيرة.</li><li>عند وصول فريق إلى الكأس يُهنَّأ، ويكمل الباقون بهدوء حتى يصلوا جميعاً. لا ترتيب لأسماء الطالبات.</li><li>«سباق جديد» يعيد اللعب بنفس الفرق.</li></ol></div>'+
+ '<div class="sec yarn paper"><h2>'+pic('star','⭐')+'ماذا تعني الرموز؟</h2><div class="leg"><div>'+pic('star','⭐')+'<span>نجمة صوف: إجابة صحيحة من أول مرة</span></div><div>'+pic('scroll','🧶')+'<span>غرزة تحتاج إعادة: نفكّر ونجرّب ثانية</span></div><div>'+pic('butterfly','🦋')+'<span>الفراشة: تبيّن أين وصلنا على الخريطة</span></div><div>'+pic('stone','⭕','')+'<span>الحجر المرقّم: محطة فيها لغز</span></div><div>'+pic('trophy','🏆')+'<span>الكأس: نهاية الرحلة</span></div><div>'+pic('chest','🧰')+'<span>الكنز: مكافأة من وصل</span></div></div></div>'+
+ '<div class="sec yarn paper"><h2>💡 نصائح</h2><ul><li>زر <b>⛶</b> في أعلى الصفحة يملأ الشاشة (الآيباد والكمبيوتر). في الآيفون: «مشاركة ← إضافة إلى الشاشة الرئيسية».</li><li>زر <b>🔊</b> يكتم الصوت أو يفتحه.</li><li>الأفضل أن تُعرض لوحة المعلمة على <b>شاشة عرض أفقية</b>.</li><li>إن حدث خلل في السباق: «إنهاء الغرفة» ثم نفتح غرفة جديدة بكود جديد.</li></ul></div>'+
+ '<div class="sec yarn paper"><h2>❓ أسئلة شائعة</h2><details><summary>لماذا رياضيات ولغتي مكتوب عليهما «قريباً»؟</summary><p>لأن أسئلتهما لم تُضف بعد. الألعاب جاهزة وتنتظر الأسئلة.</p></details><details><summary>هل في درجات أو ترتيب؟</summary><p>لا. عندنا نجوم صوف للتشجيع فقط، وفي السباق نحتفل بوصول الفرق دون ترتيب أسماء الطالبات.</p></details><details><summary>من أين الأسئلة؟</summary><p>من «الحقيبة التدريبية للاختبارات الدولية TIMSS للصف الرابع علوم» الصادرة عن وزارة التعليم. اخترنا أسئلة الصف الرابع من نوع الاختيار من متعدد.</p></details><details><summary>السباق لا يتصل. ماذا أفعل؟</summary><p>تأكدي أن كل الأجهزة على الإنترنت وأن الكود مكتوب صحيحاً (4 أرقام). إن استمر الخلل فالرحلة الفردية تعمل دائماً.</p></details></div>'+
+ '<div class="row"><button class="btn big" id="gh">ابدئي اللعب ←</button></div></div>';
+ $('#bk').onclick=home;$('#gh').onclick=home;if(location.hash!=='#guide')try{history.replaceState(null,'','#guide')}catch(e){}
+}
+
+var gl=document.getElementById('gl');if(gl)gl.onclick=function(e){e.preventDefault();if(S.peer&&S.mode!=='solo'){}guide()};
+if(location.hash==='#guide')guide();else home();
 window.__S=function(){return S};
 })();
