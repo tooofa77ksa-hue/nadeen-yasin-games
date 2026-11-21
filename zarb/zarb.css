@@ -48,3 +48,6 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 
 .trick .zl{margin:.1rem 0}.trick bdi.eq{font-size:1.1em}
 @media print{html,body{background:#fff!important}}
+
+.fv{display:block;width:100%;max-width:22rem;margin:.4rem auto;border-radius:1rem;border:.2rem solid #a01848;background:#000}
+.fv{width:auto;max-width:100%;max-height:66vh}
