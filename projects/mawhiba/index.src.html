@@ -69,7 +69,7 @@ function home(){var r=R(),td=today(),G=[['grpL','الجزء اللفظي',[1,2,3
  (due.length?'<div class="card" style="background:#fff3b0"><b>🔔 للمراجعة اليوم ('+AR(due.length)+'):</b> '+due.map(function(t){return '<button class="btn o" data-t="'+t.id+'" style="margin:3px;padding:6px 14px;min-height:36px">'+t.name+'</button>'}).join('')+'</div>':'')+
  '<div class="grid" style="margin:10px 0"><button class="tile" data-s="intro"><b>📖 المقدمة</b><small>إرشادات وتعبئة الورقة</small></button><button class="tile" data-s="types"><b>🧩 أنواع الأسئلة</b><small>أمثلة وفنيات الإجابة</small></button></div>'+
  G.map(function(g){return '<h2>'+g[1]+'</h2><div class="grid">'+g[2].map(function(i){var t=MAN.tests[i-1],e=r[t.id],d=e&&e.due<=td;return '<button class="tile '+g[0]+(d?' due':'')+'" data-t="'+t.id+'">'+(d?'<span class="badge">راجعي</span>':'')+'<b>'+t.name+'</b><small>'+(t.n?AR(t.n)+' سؤالًا — ':'')+(t.min?AR(t.min)+' دقيقة':'')+'</small><span class="stars">'+(e?stars(e.best):'☆☆☆')+'</span>'+(e?'<small>آخر نتيجة '+AR(e.last)+'٪</small>':'')+'</button>'}).join('')+'</div>'}).join('')+
- '<div class="card" style="margin-top:16px;text-align:center"><button class="btn g" id="snd">📤 أرسلي ملخصي لمها</button><div class="muted" id="ss"></div></div>';
+ '<div class="card" style="margin-top:16px;text-align:center"><button class="btn g" id="snd">📤 أرسلي ملخصي للمعلمة</button><div class="muted" id="ss"></div></div>';
  [].forEach.call(app.querySelectorAll('[data-t]'),function(b){b.onclick=function(){testView(MAN.tests[+b.dataset.t-1])}});
  [].forEach.call(app.querySelectorAll('[data-s]'),function(b){b.onclick=function(){secView(b.dataset.s)}});
  $('#snd').onclick=send;window.scrollTo(0,0)}
