@@ -55,34 +55,32 @@ snd.onclick=function(){var m=FX.toggle();snd.textContent=m?'🔇':'🔊'};
 var RUN=null; // جلسة جارية
 function todayPlan(){var i=dayIdx();return{i:i,p:i<PLAN.length?PLAN[i]:null}}
 function home(){
- RUN=null;var tp=todayPlan(),un=unresolvedList(),k=dateKey(),dn=ST.done[k]||{};
- var title=tp.p?'اليوم: جدول '+tp.p.t.join(' و '):'أيام المراجعة';
- var steps='';
- var n=1;
- if(un.length){steps+='<li class="'+(dn.warn?'done':'')+'"><b class="n">'+n+'</b><div>تنبيهات من أخطاء الأيام الماضية<small>'+un.length+' عملية نراجعها بطريقة سهلة</small></div></li>';n++}
- if(tp.p){steps+='<li class="'+(dn.learn?'done':'')+'"><b class="n">'+n+'</b><div>نبني جدول '+tp.p.t.join(' و ')+' بأنفسنا<small>نعرف حيلته ونتعلّم نتأكد من الجواب</small></div></li>';n++;
-  steps+='<li class="'+(dn.quiz?'done':'')+'"><b class="n">'+n+'</b><div>نتدرّب ونتأكد بالجمع<small>عشر عمليات لكل جدول، بلا وقت</small></div></li>'}
- else steps+='<li><b class="n">1</b><div>مراجعة الأخطاء حتى تنتهي كلها<small>ونختبر أصعب العمليات</small></div></li>';
- var rt=(ST.rit&&ST.rit[k])||{five:0,fing:0};steps+='<li class="'+(rt.five>=3&&rt.fing>=5?'done':'')+'"><b class="n">★</b><div>طقس الاختبار: جدول 5 والأصابع<small>اليوم: جدول 5 '+rt.five+' من 3 مرات · الأصابع '+rt.fing+' من 5 أزواج</small></div></li>';
- app.innerHTML='<div class="head"><div class="dayhead">'+(tp.p?'<div class="bigd">'+tp.p.t.map(dig).join('<span class="em" style="align-self:center">+</span>')+'</div>':pic('trophy','🏆'))+'</div><h1>'+title+'</h1><div class="sub">'+(tp.p&&tp.i<5?DAYN[tp.i]+' · اليوم '+(tp.i+1)+' من 5':'')+'</div></div>'+
- '<div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">مهمة اليوم</h2><ol class="steps">'+steps+'</ol><div class="row"><button class="btn big" id="go">ابدئي مهمة اليوم ←</button></div></div>'+
- '<div class="msg good" style="text-align:center">✍️ أول ما تستلمين ورقة الاختبار: اكتبي جدول 5. ثم الأصابع للضرب من 7 إلى 10.</div><div class="tiles"><div class="yarn paper tile" id="m0"><div class="ic">🎒</div><h2>طرق الاختبار</h2><p>جدول 5 · الأصابع · الجمع للتأكد · مراجعة 1–4</p></div><div class="yarn paper tile" id="m2"><div class="ic">🗺️</div><h2>خريطة إتقاني</h2><p>أين أخطأتُ وأين أتقنتُ</p></div><div class="yarn paper tile" id="m3"><div class="ic">👩‍👧</div><h2>للأم</h2><p>التقدّم واختيار اليوم</p></div></div>';
+ RUN=null;AFTER=null;var un=unresolvedList(),k=dateKey(),dn=ST.done[k]||{};
+ var rt=(ST.rit&&ST.rit[k])||{five:0,fing:0};
+ var steps='<li><b class="n">1</b><div>نراجع طريقة الأصابع<small>مثال واحد بالمقطع</small></div></li>'+
+  (un.length?'<li><b class="n">2</b><div>تنبيهات: '+un.length+' عملية أخطأنا فيها<small>نتذكّر حيلتها</small></div></li>':'')+
+  '<li><b class="n">'+(un.length?3:2)+'</b><div>جداول 1 إلى 4 مع الأبلة<small>عمليات عشوائية سريعة</small></div></li>'+
+  '<li><b class="n">'+(un.length?4:3)+'</b><div>جدول 5: نكتبه ونحفظه<small>بالنمط، من اليمين</small></div></li>'+
+  '<li><b class="n">'+(un.length?5:4)+'</b><div>الأصابع من 7 إلى 10<small>عمليات عشوائية</small></div></li>';
+ app.innerHTML='<div class="head"><div class="dayhead">'+pic('trophy','🏆')+'</div><h1>مراجعة جدول الضرب</h1><div class="sub">جولة قصيرة بين الرياضيات والعلوم، بلا وقت وبلا ضغط</div></div>'+
+ '<div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">جولة اليوم</h2><ol class="steps">'+steps+'</ol><div class="row"><button class="btn big" id="go">ابدئي الجولة ←</button></div></div>'+
+ '<div class="msg good" style="text-align:center">✍️ أول ما تستلمين ورقة الاختبار: اكتبي جدول 5. ثم الأصابع للضرب من 7 إلى 10.</div><div class="tiles"><div class="yarn paper tile" id="m0"><div class="ic">🎒</div><h2>طرق الاختبار</h2><p>جدول 5 · الأصابع · الجمع للتأكد · مراجعة 1–4</p></div><div class="yarn paper tile" id="m2"><div class="ic">🗺️</div><h2>خريطة إتقاني</h2><p>أين أخطأتُ وأين أتقنتُ</p></div><div class="yarn paper tile" id="m3"><div class="ic">👩‍👧</div><h2>للأم</h2><p>الأخطاء ومسح التقدّم</p></div></div>';
  $('#go').onclick=startToday;$('#m0').onclick=ritual;$('#m2').onclick=mapScreen;$('#m3').onclick=parent;
 }
 /* خطوات الجلسة */
+var AFTER=null,FC=0;
+function leave(){if(AFTER){var f=AFTER;AFTER=null;f()}else ritual()}
 function startToday(){
- var tp=todayPlan(),seq=[{k:'recap'}],un=unresolvedList().slice(0,10);
- if(un.length){seq.push({k:'warn',list:un});seq.push({k:'quiz',name:'مراجعة الأخطاء',items:un.map(function(x){return{a:x.a,b:x.b,rv:1}}),mark:'warn'})}
- if(tp.p){tp.p.t.forEach(function(t,ix){seq.push({k:'lesson',t:t});var it=[];for(var b=1;b<=10;b++)it.push({a:t,b:b});seq.push({k:'quiz',name:'جدول '+t,items:shuf(it),mark:(ix===tp.p.t.length-1?'quiz':null),lm:ix===0?'learn':null})})}
- else{ // أيام المراجعة: أصعب العمليات
-  var hard=[];for(var a=6;a<=9;a++)for(var b=6;b<=9;b++)hard.push({a:a,b:b});seq.push({k:'quiz',name:'أصعب العمليات',items:shuf(hard).slice(0,10),mark:'quiz'})}
+ var seq=[{k:'recap'}],un=unresolvedList().slice(0,10);
+ if(un.length)seq.push({k:'warn',list:un});
+ seq.push({k:'r14'},{k:'five'},{k:'fing'});
  RUN={seq:seq,i:0};step();
 }
 function bar(){var s=RUN.seq;return '<div class="bar">'+s.map(function(x,i){return '<i class="'+(i<RUN.i?'d':i===RUN.i?'on':'')+'"></i>'}).join('')+'</div>'}
 function step(){
  if(RUN.i>=RUN.seq.length)return summary();
  var s=RUN.seq[RUN.i];
- if(s.k==='recap')recap();else if(s.k==='warn')warn(s);else if(s.k==='lesson')lesson(s);else quiz(s);
+ if(s.k==='recap')recap();else if(s.k==='warn')warn(s);else if(s.k==='r14'){AFTER=nextStep;review14()}else if(s.k==='five'){AFTER=nextStep;five()}else if(s.k==='fing'){AFTER=nextStep;FC=0;fingers()}else nextStep();
 }
 function nextStep(){RUN.i++;step()}
 function markDone(w){if(!w)return;var k=dateKey();ST.done[k]=ST.done[k]||{};ST.done[k][w]=1;save()}
@@ -179,14 +177,12 @@ function mapScreen(){
 }
 /* للأم */
 function parent(){
- var un=unresolvedList(),tp=todayPlan();
+ var un=unresolvedList();
  app.innerHTML='<button class="back" id="bk">→ الرئيسية</button><div class="head"><h1>للأم</h1><div class="sub">متابعة هادئة، بلا ضغط على نادين</div></div>'+
- '<div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">خطة الأسبوع</h2><p style="font-weight:700">الأحد: جدول 3 · الاثنين: 4 · الثلاثاء: 6 · الأربعاء: 7 · الخميس: 8 و9. كل يوم يبدأ بتنبيهات أخطاء الأيام الماضية (إن وُجدت)، وبعدها الجدول الجديد. ما لم تخطئ فيه نادين لا يُعاد.</p>'+
+ '<div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">الجولة اليومية</h2><p style="font-weight:700">كل يوم الجولة نفسها: مراجعة الأصابع، جداول 1 إلى 4 مع الأبلة، جدول 5 بالنمط، والأصابع من 7 إلى 10. بلا جدول أسبوعي. والجمع للتأكد احتياط فقط.</p>'+
  '<h2 style="margin:.4rem 0 0">أخطاء لم تُحسم بعد</h2>'+(un.length?'<p style="font-weight:700">'+un.map(function(x){return eq(x.a,x.b)+' ('+x.w+' مرة)'}).join(' ، ')+'</p>':'<p style="font-weight:700">لا شيء حالياً.</p>')+
- '<h2 style="margin:.4rem 0 0">اختيار اليوم</h2><div class="chips">'+[0,1,2,3,4].map(function(i){return '<button class="chip'+(tp.i===i?' on':'')+'" data-i="'+i+'">'+DAYN[i]+' ('+(PLAN[i].t.join('+'))+')</button>'}).join('')+'<button class="chip'+(tp.i>=5?' on':'')+'" data-i="5">أيام المراجعة</button><button class="chip" data-i="a">حسب التاريخ</button></div>'+
  '<div class="row"><button class="btn sm" id="rs">مسح تقدّم نادين</button></div></div>';
  $('#bk').onclick=home;
- document.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){var v=c.dataset.i;ST.ov=v==='a'?null:+v;save();parent()}});
  $('#rs').onclick=function(){if(confirm('نمسح كل تقدّم نادين في جدول الضرب؟')){ST={f:{},done:{},ov:null};save();parent()}};
 }
 /* ===== صفحات الطرق: جدول 5 · الأصابع · الجمع للتأكد · مراجعة 1–4 ===== */
@@ -221,7 +217,7 @@ function five(){
     var ok=tv===tr&&uv===ur;t.style.borderColor=u.style.borderColor=ok?'#3f7a25':'#c0392b';t.style.background=u.style.background=ok?'#ebfbee':'#fff0f0';if(!ok)bad++}
    var fm=$('#fm');
    if(!bad){var r=rit();r.five++;save();fm.innerHTML='<div class="msg good">⭐ جدول 5 كامل! '+(lvl===0?'الآن نجرّب من الذاكرة بلا نمط.':'ركّزتِ فوصلتِ بتوفيق الله.')+'</div>';if(window.FX)FX.correct(2);
-    var go=document.createElement('div');go.className='row';go.innerHTML='<button class="btn big" id="nx2">'+(lvl===0?'من الذاكرة ←':'رجوع ←')+'</button>';fm.appendChild(go);$('#nx2').onclick=function(){if(lvl===0){lvl=1;draw()}else ritual()}}
+    var go=document.createElement('div');go.className='row';go.innerHTML='<button class="btn big" id="nx2">'+(lvl===0?'من الذاكرة ←':'رجوع ←')+'</button>';fm.appendChild(go);$('#nx2').onclick=function(){if(lvl===0){lvl=1;draw()}else leave()}}
    else fm.innerHTML='<div class="msg soft">🧶 '+bad+' خانات تحتاج مراجعة (الحمراء). نتذكّر: خانة 1 تتناوب 5 ثم 0، وخانة 10 تزيد كل عددين. نعدّلها ونتأكد ثانية.</div>';
   };
  }
@@ -249,7 +245,7 @@ function fingers(){
     var nA=5-cA,nB=5-cB,pr2=cA*cB,sl=nA+nB;
     $('#s2').innerHTML='<div class="msg good">✅ أحسنتِ! الأصابع الواقفة: '+cA+' و'+cB+'. والنائمة: '+nA+' و'+nB+'.</div><div class="qa"><label>الواقفة نضربها ببعضها: <bdi class="eq">'+cA+' × '+cB+'</bdi> = <input class="ti w2" id="pu" inputmode="numeric" maxlength="3"> <small>(نكتبه في خانة 1)</small></label><label>النائمة نعدّها في اليدين: <input class="ti w2" id="sl" inputmode="numeric" maxlength="3"> <small>(نكتبه في خانة 10)</small></label><label>الناتج: <bdi class="eq">'+A+' × '+B+'</bdi> = <input class="ti w2" id="fi" inputmode="numeric" maxlength="3"></label></div><div id="s3"></div><div class="row"><button class="btn big" id="ck2">تأكدي ✓</button></div>';
     $('#ck2').onclick=function(){var p=+$('#pu').value,sv=+$('#sl').value,f=+$('#fi').value,m=$('#s3');
-     if(p===pr2&&sv===sl&&f===A*B){var r=rit();r.fing++;save();m.innerHTML='<div class="msg good">⭐ صحيح! ركّزتِ فوصلتِ.</div><div class="row"><button class="btn big" id="nx3">عملية جديدة ←</button></div>';if(window.FX)FX.correct(2);$('#nx3').onclick=round}
+     if(p===pr2&&sv===sl&&f===A*B){var r=rit();r.fing++;save();m.innerHTML='<div class="msg good">⭐ صحيح! ركّزتِ فوصلتِ.</div><div class="row"><button class="btn big" id="nx3">عملية جديدة ←</button></div>';if(window.FX)FX.correct(2);FC++;$('#nx3').onclick=function(){if(AFTER&&FC>=5)leave();else round()}}
      else m.innerHTML='<div class="msg soft">🧶 قريبة! نراجع بهدوء: الواقفة نضربها ببعضها ونكتب الناتج في خانة 1، والنائمة نعدّها ونكتب العدد في خانة 10.</div>'}
    }else if(L>0||R>0){
     var bad=(L!==cA?'اليد الأولى: '+A+' باقي له كم ليصير 10؟ عدّي من '+A+' حتى 10.':'')+(R!==cB?(L!==cA?'<br>':'')+'اليد الثانية: '+B+' باقي له كم ليصير 10؟ عدّي من '+B+' حتى 10.':'');
@@ -286,9 +282,9 @@ function addPage(){
 }
 /* مراجعة جداول 1–4: سهلة وسريعة */
 function review14(){
- var items=[];for(var a=1;a<=4;a++)for(var b=1;b<=10;b++)items.push([a,b]);items=shuf(items).slice(0,10);var i=0,typed='';
+ var items=[];for(var a=1;a<=4;a++)for(var b=1;b<=10;b++)items.push([a,b]);var un14=unresolvedList().filter(function(x){return x.a<=4}).slice(0,5).map(function(x){return[x.a,x.b]});items=un14.concat(shuf(items).filter(function(p){return !un14.some(function(q){return q[0]===p[0]&&q[1]===p[1]})})).slice(0,10);var i=0,typed='';
  function ask(){
-  if(i>=items.length){app.innerHTML='<div class="head">'+pic('star','⭐','logo')+'<h1>أنهيتِ المراجعة</h1><div class="sub">ما شاء الله، ركّزتِ فوصلتِ 🌷</div></div><div class="row"><button class="btn big" id="bk2">رجوع</button></div>';$('#bk2').onclick=ritual;if(window.FX&&FX.win)FX.win();return}
+  if(i>=items.length){app.innerHTML='<div class="head">'+pic('star','⭐','logo')+'<h1>أنهيتِ المراجعة</h1><div class="sub">ما شاء الله، ركّزتِ فوصلتِ 🌷</div></div><div class="row"><button class="btn big" id="bk2">رجوع</button></div>';$('#bk2').onclick=leave;if(window.FX&&FX.win)FX.win();return}
   var it=items[i];typed='';
   app.innerHTML='<button class="back" id="bk">→ الرجوع</button><div class="head"><h1>مراجعة جداول 1 إلى 4</h1><div class="sub">سهلة وسريعة، وبلا وقت. السؤال '+(i+1)+' من 10</div></div><div class="yarn paper qbox"><div class="big"><bdi class="eq">'+it[0]+' × '+it[1]+'</bdi> = <span class="ans" id="an"></span></div><div id="area"></div></div>';
   $('#bk').onclick=ritual;pad();
