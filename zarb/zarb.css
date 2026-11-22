@@ -78,3 +78,9 @@ table.map td.ok{background:#8fd17a;border-color:#3f7a25}table.map td.fix{backgro
 @media (min-aspect-ratio:12/10){.vb{grid-template-columns:1fr 20rem;align-items:start}.vbox .fv{max-height:60vh}}
 .dots{width:100%;max-width:46rem;height:auto}
 .eq{direction:rtl!important}
+/* يلا هنا: الزر المطلوب يتحرك ويشير إليه إصبع */
+@keyframes nudge{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes point{0%,100%{transform:translateY(0)}50%{transform:translateY(-.5rem)}}
+#go,#nx,#nq,#nx2,#nx3,#ck,#ck2,.btn.big{animation:nudge 1.4s ease-in-out infinite}
+.row:has(.btn.big)::after{content:"👆 اضغطي هنا";display:block;text-align:center;font-weight:800;font-size:1.1rem;color:#a01848;animation:point 1.2s ease-in-out infinite;width:100%}
+@media (prefers-reduced-motion:reduce){#go,#nx,#nq,#nx2,#nx3,#ck,#ck2,.btn.big,.row:has(.btn.big)::after{animation:none}}
