@@ -75,7 +75,7 @@ function printSheet(ans){const d=D[cur];const t=d.id=='mix'?'مراجعة مخل
   else{h+='<div class="pl"></div><div class="pl"></div>'}
   if(ans){const a=it.kind=='mcq'?(L[it.ans]+') '+it.opts[it.ans]):(it.kind=='tf'?(it.ans?'صح':'خطأ'):it.ans);h+='<div class="pa">✓ الإجابة: '+ltr(a)+' — '+ltr(it.why)+'</div>'}
   h+='</div>'});
- h+='<div class="pf">إعداد: عواطف الجهني · جهد شخصي لوجه الله · للطلبات (واتساب): <span class="ltr">966580908077</span></div>';
+ h+='<div class="pf">إعداد: عواطف الجهني · جهد شخصي لوجه الله · للتواصل فقط: <span class="ltr">966580908077</span></div>';
  let p=document.getElementById('print');if(!p){p=document.createElement('div');p.id='print';document.body.appendChild(p)}p.innerHTML=h;window.print()}
 render();
 </script></body></html>
