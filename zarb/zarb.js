@@ -48,7 +48,7 @@ function trickFor(a,b){
 function fm(s){return s.replace(/(\d[\d\s+×−=؟]*)/g,function(m){return '<bdi class="eq">'+m.trim()+'</bdi> '})}
 function trickHTML(a,b){var t=trickFor(a,b);return '<div class="trick"><b>الحيلة ('+t.n+'):</b>'+t.s.map(function(s){return '<span class="zl">• '+fm(s)+'</span>'}).join('')+'</div>'}
 function exampleHTML(t){var r=trickFor(t,3);return '<div class="trick"><b>مثال: <bdi class="eq">'+t+' × 3</bdi></b>'+r.s.map(function(s){return '<span class="zl">• '+fm(s.replace(/؟/g,String(t*3)))+'</span>'}).join('')+'</div>'}
-var PAT={2:'كل نواتج ×2 أعداد زوجية، وتنتهي بـ 2 و4 و6 و8 و0.',3:'مجموع أرقام الناتج يكون 3 أو 6 أو 9 دائماً (مثل 12 ← 1+2=3).',4:'نواتج ×4 تنتهي بـ 4 و8 و2 و6 و0، وتتكرر.',5:'نواتج ×5 تنتهي بـ 5 أو 0 فقط.',6:'نواتج ×6 كلها زوجية وتنتهي بـ 6 و2 و8 و4 و0.',7:'بعد ×5 نضيف ×2: 7 = 5 + 2.',8:'نواتج ×8 تنتهي بـ 8 و6 و4 و2 و0 (تنزل من اثنين إلى اثنين).',9:'مجموع أرقام الناتج يكون 9 دائماً (مثل 18 ← 1+8=9). وخانة العشرات تزيد واحداً.'};
+var PAT={2:'كل نواتج ×2 أعداد زوجية، وتنتهي بـ 2 و4 و6 و8 و0.',3:'مجموع أرقام الناتج يكون 3 أو 6 أو 9 دائماً (مثل 12 ← 1+2=3).',4:'نواتج ×4 تنتهي بـ 4 و8 و2 و6 و0، وتتكرر.',5:'نواتج ×5 تنتهي بـ 5 أو 0 فقط.',6:'نواتج ×6 كلها زوجية وتنتهي بـ 6 و2 و8 و4 و0.',7:'بعد ×5 نضيف ×2: 7 = 5 + 2.',8:'نواتج ×8 تنتهي بـ 8 و6 و4 و2 و0 (تنزل من اثنين إلى اثنين).',9:'مجموع أرقام الناتج يكون 9 دائماً (مثل 18 ← 1+8=9). والعشرات تزيد واحداً.'};
 /* ---------- الشاشات ---------- */
 var snd=$('#snd');if(window.FX&&FX.isMuted&&FX.isMuted())snd.textContent='🔇';
 snd.onclick=function(){var m=FX.toggle();snd.textContent=m?'🔇':'🔊'};
@@ -165,7 +165,7 @@ function method(){
 }
 function printCard(){
  var pc=$('#printcard');
- pc.innerHTML='<h1>طريقتي في الاختبار — جدول الضرب</h1><div class="pb"><b>أول ما أستلم ورقة الاختبار:</b> أطلب ورقة جانبية أو أكتب في خلف الورقة (أسأل المعلمة قبل الاختبار)، وأكتب جدول 5.</div><div class="pb"><b>جدول 5 (من اليمين):</b> خانة 1: 5 0 5 0 5 0 5 0 5 0 ← ثم خانة 10: 0 1 1 2 2 3 3 4 4 5.</div><div class="pb"><b>الأصابع للضرب من 7 إلى 10:</b> كل يد تمسك رقماً. كم باقي لهذا الرقم ليصير 10؟ أرفع هذا العدد: هذه الأصابع <b>الواقفة</b>، والباقية <b>النائمة</b>. الواقفة أضربها ببعضها ← خانة 1. النائمة أعدّها وكل واحدة 10 ← خانة 10. مثال 8 × 6: الواقفة 2 × 4 = 8 ← خانة 1، والنائمة 3 و1 ← 4 ← خانة 10 ← الناتج 48.</div><div class="pb"><b>شوفي المقطع، مهم.</b> وأراجع الطريقة كل يوم.</div><div class="pf">إعداد: عواطف الجهني · جهد شخصي لوجه الله · اللهم تقبّله منا واجعله نافعاً · للطلبات (واتساب): 966580908077</div>';
+ pc.innerHTML='<h1>طريقتي في الاختبار — جدول الضرب</h1><div class="pb"><b>أول ما أستلم ورقة الاختبار:</b> أطلب ورقة جانبية أو أكتب في خلف الورقة (أسأل المعلمة قبل الاختبار)، وأكتب جدول 5.</div><div class="pb"><b>جدول 5 (من اليمين):</b> الآحاد: 5 0 5 0 5 0 5 0 5 0 ← ثم العشرات: 0 1 1 2 2 3 3 4 4 5.</div><div class="pb"><b>الأصابع للضرب من 7 إلى 10:</b> كل يد تمسك رقماً. كم باقي لهذا الرقم ليصير 10؟ أرفع هذا العدد: هذه الأصابع <b>الواقفة</b>، والباقية <b>النائمة</b>. الواقفة أضربها ببعضها ← الآحاد. النائمة أعدّها وكل واحدة 10 ← العشرات. مثال 8 × 6: الواقفة 2 × 4 = 8 ← الآحاد، والنائمة 3 و1 ← 4 ← العشرات ← الناتج 48.</div><div class="pb"><b>شوفي المقطع، مهم.</b> وأراجع الطريقة كل يوم.</div><div class="pf">إعداد: عواطف الجهني · جهد شخصي لوجه الله · اللهم تقبّله منا واجعله نافعاً · للطلبات (واتساب): 966580908077</div>';
  window.print();
 }
 /* خريطة الإتقان */
@@ -204,11 +204,11 @@ function ritual(){
 function five(){
  var lvl=0;
  function draw(){
-  var rows='';for(var n=1;n<=10;n++)rows+='<div class="fr"><bdi class="eq">5 × '+n+' =</bdi><input class="ti" inputmode="numeric" maxlength="1" data-r="'+n+'" data-p="u" aria-label="خانة 1"><input class="ti" inputmode="numeric" maxlength="1" data-r="'+n+'" data-p="t" aria-label="خانة 10"></div>';
-  var steps='<ol class="steps"><li><b class="n">1</b><div>نكتب العمليات من 5×1 إلى 5×10<small>تحت بعضها</small></div></li><li><b class="n">2</b><div>نبدأ من اليمين: خانة 1<small>نكتب 5 ثم 0 ثم 5 ثم 0 … إلى آخر سطر</small></div></li><li><b class="n">3</b><div>ثم خانة 10 (على اليسار)<small>نبدأ بـ 0، وبعده كل رقم مرتين: 0 1 1 2 2 3 3 4 4 5</small></div></li><li><b class="n">4</b><div>نقرأ الناتج كأي رقم<small>مثال 5×4: خانة 10 فيها 2، وخانة 1 فيها 0 ← 20</small></div></li></ol>';
+  var rows='';for(var n=1;n<=10;n++)rows+='<div class="fr"><bdi class="eq">5 × '+n+' =</bdi><input class="ti" inputmode="numeric" maxlength="1" data-r="'+n+'" data-p="u" aria-label="الآحاد"><input class="ti" inputmode="numeric" maxlength="1" data-r="'+n+'" data-p="t" aria-label="العشرات"></div>';
+  var steps='<ol class="steps"><li><b class="n">1</b><div>نكتب العمليات من 5×1 إلى 5×10<small>تحت بعضها</small></div></li><li><b class="n">2</b><div>نبدأ من اليمين: الآحاد<small>نكتب 5 ثم 0 ثم 5 ثم 0 … إلى آخر سطر</small></div></li><li><b class="n">3</b><div>ثم العشرات (على اليسار)<small>نبدأ بـ 0، وبعده كل رقم مرتين: 0 1 1 2 2 3 3 4 4 5</small></div></li><li><b class="n">4</b><div>نقرأ الناتج كأي رقم<small>مثال 5×4: العشرات فيها 2، والآحاد فيها 0 ← 20</small></div></li></ol>';
   app.innerHTML='<button class="back" id="bk">→ الرجوع</button><div class="head"><h1>جدول 5</h1><div class="sub">أول ما نستلم ورقة الاختبار نكتبه</div></div>'+
   '<div class="vb"><div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">الطريقة</h2>'+steps+'</div>'+vid('media/five1.mp4','media/five1.jpg',CR)+'</div>'+
-  '<div class="yarn paper" style="padding:.7rem 1rem;margin-top:.6rem"><h2 style="margin:0">أتدرّب</h2>'+(lvl===0?'<div class="pat">خانة 1 (يميناً): <bdi class="eq">5 0 5 0 5 0 5 0 5 0</bdi><br>خانة 10 (يسارها): <bdi class="eq">0 1 1 2 2 3 3 4 4 5</bdi></div>':'<div class="msg soft">✏️ الآن من الذاكرة بلا نمط. نبدأ بخانة 1 (اليمنى) ثم خانة 10.</div>')+'<div class="frs">'+rows+'</div><div id="fm"></div><div class="row"><button class="btn big" id="ck">تأكدي ✓</button></div><div class="row"><a class="btn sm" href="../docs/math/zarb_five.pdf" target="_blank" rel="noopener" style="text-decoration:none">🖨️ ورقة جدول 5 للطباعة</a></div></div>';
+  '<div class="yarn paper" style="padding:.7rem 1rem;margin-top:.6rem"><h2 style="margin:0">أتدرّب</h2>'+(lvl===0?'<div class="pat">الآحاد (على اليمين): <bdi class="eq">5 0 5 0 5 0 5 0 5 0</bdi><br>العشرات (يسارها): <bdi class="eq">0 1 1 2 2 3 3 4 4 5</bdi></div>':'<div class="msg soft">✏️ الآن من الذاكرة بلا نمط. نبدأ بالآحاد (اليمنى) ثم العشرات.</div>')+'<div class="frs">'+rows+'</div><div id="fm"></div><div class="row"><button class="btn big" id="ck">تأكدي ✓</button></div><div class="row"><a class="btn sm" href="../docs/math/zarb_five.pdf" target="_blank" rel="noopener" style="text-decoration:none">🖨️ ورقة جدول 5 للطباعة</a></div></div>';
   $('#bk').onclick=ritual;
   var ins=document.querySelectorAll('.ti');ins.forEach(function(i,ix){i.oninput=function(){i.value=i.value.replace(/\D/g,'').slice(0,1);if(i.value&&ins[ix+1])ins[ix+1].focus()}});if(ins[0])ins[0].focus();
   $('#ck').onclick=function(){
@@ -218,7 +218,7 @@ function five(){
    var fm=$('#fm');
    if(!bad){var r=rit();r.five++;save();fm.innerHTML='<div class="msg good">⭐ جدول 5 كامل! '+(lvl===0?'الآن نجرّب من الذاكرة بلا نمط.':'ركّزتِ فوصلتِ بتوفيق الله.')+'</div>';if(window.FX)FX.correct(2);
     var go=document.createElement('div');go.className='row';go.innerHTML='<button class="btn big" id="nx2">'+(lvl===0?'من الذاكرة ←':'رجوع ←')+'</button>';fm.appendChild(go);$('#nx2').onclick=function(){if(lvl===0){lvl=1;draw()}else leave()}}
-   else fm.innerHTML='<div class="msg soft">🧶 '+bad+' خانات تحتاج مراجعة (الحمراء). نتذكّر: خانة 1 تتناوب 5 ثم 0، وخانة 10 تزيد كل عددين. نعدّلها ونتأكد ثانية.</div>';
+   else fm.innerHTML='<div class="msg soft">🧶 '+bad+' خانات تحتاج مراجعة (الحمراء). نتذكّر: الآحاد تتناوب 5 ثم 0، والعشرات تزيد كل عددين. نعدّلها ونتأكد ثانية.</div>';
   };
  }
  draw();
@@ -232,7 +232,7 @@ function fingers(){
   if(pi>=Pq.length){pi=0;Pq=shuf(pairs)}
   var pr=Pq[pi++];if(rnd(2))pr=[pr[1],pr[0]];var A=pr[0],B=pr[1],L=0,R=0;
   function render(first){
-   var steps='<ol class="steps"><li><b class="n">1</b><div>كل يد تمسك رقماً<small>مثلاً 8 × 6: اليد الأولى 8، والثانية 6</small></div></li><li><b class="n">2</b><div>كم باقي لهذا الرقم ليصير 10؟<small>8 باقي له 2، و6 باقي له 4. نرفع هذا العدد من الأصابع: هذه الأصابع <b>الواقفة</b></small></div></li><li><b class="n">3</b><div>الواقفة نضربها ببعضها<small>2 × 4 = 8 ← نكتبها في خانة 1 (يميناً)</small></div></li><li><b class="n">4</b><div>النائمة نعدّها، وكل واحدة تساوي 10<small>3 + 1 = 4 ← نكتب 4 في خانة 10 (يعني 40). الناتج 48</small></div></li></ol>';
+   var steps='<ol class="steps"><li><b class="n">1</b><div>كل يد تمسك رقماً<small>مثلاً 8 × 6: اليد الأولى 8، والثانية 6</small></div></li><li><b class="n">2</b><div>كم باقي لهذا الرقم ليصير 10؟<small>8 باقي له 2، و6 باقي له 4. نرفع هذا العدد من الأصابع: هذه الأصابع <b>الواقفة</b></small></div></li><li><b class="n">3</b><div>الواقفة نضربها ببعضها<small>2 × 4 = 8 ← نكتبها في الآحاد (على اليمين)</small></div></li><li><b class="n">4</b><div>النائمة نعدّها، وكل واحدة تساوي 10<small>3 + 1 = 4 ← نكتب 4 في العشرات (يعني 40). الناتج 48</small></div></li></ol>';
    var cl=L,cr=R,cA=10-A,cB=10-B;
    app.innerHTML='<button class="back" id="bk">→ الرجوع</button><div class="head"><h1>الأصابع: <bdi class="eq">'+A+' × '+B+'</bdi></h1><div class="sub">للضرب من 7 إلى 10</div></div>'+
    '<div class="vb"><div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">الطريقة</h2>'+steps+'<div class="row"><a class="btn sm" href="../docs/math/zarb_fingers_7_10.pdf" target="_blank" rel="noopener" style="text-decoration:none">🖨️ ورقة الأصابع للطباعة</a></div></div>'+vid('media/fingers.mp4','media/fingers.jpg','المقطع لصاحبته (علامتها المائية ظاهرة). نستعمله للتعلّم فقط.')+'</div>'+
@@ -243,10 +243,10 @@ function fingers(){
    document.querySelectorAll('.hb').forEach(function(x){x.onclick=function(){if(x.id==='hL')L=L>=5?0:L+1;else R=R>=5?0:R+1;render()}});
    if(L===cA&&R===cB){
     var nA=5-cA,nB=5-cB,pr2=cA*cB,sl=nA+nB;
-    $('#s2').innerHTML='<div class="msg good">✅ أحسنتِ! الأصابع الواقفة: '+cA+' و'+cB+'. والنائمة: '+nA+' و'+nB+'.</div><div class="qa"><label>الواقفة نضربها ببعضها: <bdi class="eq">'+cA+' × '+cB+'</bdi> = <input class="ti w2" id="pu" inputmode="numeric" maxlength="3"> <small>(نكتبه في خانة 1)</small></label><label>النائمة نعدّها في اليدين: <input class="ti w2" id="sl" inputmode="numeric" maxlength="3"> <small>(نكتبه في خانة 10)</small></label><label>الناتج: <bdi class="eq">'+A+' × '+B+'</bdi> = <input class="ti w2" id="fi" inputmode="numeric" maxlength="3"></label></div><div id="s3"></div><div class="row"><button class="btn big" id="ck2">تأكدي ✓</button></div>';
+    $('#s2').innerHTML='<div class="msg good">✅ أحسنتِ! الأصابع الواقفة: '+cA+' و'+cB+'. والنائمة: '+nA+' و'+nB+'.</div><div class="qa"><label>الواقفة نضربها ببعضها: <bdi class="eq">'+cA+' × '+cB+'</bdi> = <input class="ti w2" id="pu" inputmode="numeric" maxlength="3"> <small>(نكتبه في الآحاد)</small></label><label>النائمة نعدّها في اليدين: <input class="ti w2" id="sl" inputmode="numeric" maxlength="3"> <small>(نكتبه في العشرات)</small></label><label>الناتج: <bdi class="eq">'+A+' × '+B+'</bdi> = <input class="ti w2" id="fi" inputmode="numeric" maxlength="3"></label></div><div id="s3"></div><div class="row"><button class="btn big" id="ck2">تأكدي ✓</button></div>';
     $('#ck2').onclick=function(){var p=+$('#pu').value,sv=+$('#sl').value,f=+$('#fi').value,m=$('#s3');
      if(p===pr2&&sv===sl&&f===A*B){var r=rit();r.fing++;save();m.innerHTML='<div class="msg good">⭐ صحيح! ركّزتِ فوصلتِ.</div><div class="row"><button class="btn big" id="nx3">عملية جديدة ←</button></div>';if(window.FX)FX.correct(2);FC++;$('#nx3').onclick=function(){if(AFTER&&FC>=5)leave();else round()}}
-     else m.innerHTML='<div class="msg soft">🧶 قريبة! نراجع بهدوء: الواقفة نضربها ببعضها ونكتب الناتج في خانة 1، والنائمة نعدّها ونكتب العدد في خانة 10.</div>'}
+     else m.innerHTML='<div class="msg soft">🧶 قريبة! نراجع بهدوء: الواقفة نضربها ببعضها ونكتب الناتج في الآحاد، والنائمة نعدّها ونكتب العدد في العشرات.</div>'}
    }else if(L>0||R>0){
     var bad=(L!==cA?'اليد الأولى: '+A+' باقي له كم ليصير 10؟ عدّي من '+A+' حتى 10.':'')+(R!==cB?(L!==cA?'<br>':'')+'اليد الثانية: '+B+' باقي له كم ليصير 10؟ عدّي من '+B+' حتى 10.':'');
     $('#s2').innerHTML='<div class="msg soft">'+bad+'</div>'}
@@ -258,7 +258,7 @@ function fingers(){
 /* الجمع للتأكد: احتياط فقط */
 function colAdd(x,y){ // يشرح جمع عددين من اليمين
  var xs=String(x).split('').reverse(),ys=String(y).split('').reverse(),carry=0,out=[],lines=[];
- for(var i=0;i<Math.max(xs.length,ys.length);i++){var p=(+xs[i]||0),q=(+ys[i]||0),t=p+q+carry;lines.push((i===0?'خانة 1':'خانة 10')+' (من اليمين): '+p+' + '+q+(carry?' + '+carry+' (محمول)':'')+' = '+t);out.push(t%10);carry=t>=10?1:0}
+ for(var i=0;i<Math.max(xs.length,ys.length);i++){var p=(+xs[i]||0),q=(+ys[i]||0),t=p+q+carry;lines.push((i===0?'الآحاد':'العشرات')+' (من اليمين): '+p+' + '+q+(carry?' + '+carry+' (محمول)':'')+' = '+t);out.push(t%10);carry=t>=10?1:0}
  if(carry)out.push(1);return{lines:lines,res:x+y}}
 function addPage(){
  var ops=[[6,7],[7,6],[6,8],[7,8],[8,7],[7,9],[8,9],[9,6],[9,9]],cur=ops[0];
@@ -299,7 +299,7 @@ function review14(){
 /* مراجعة الأصابع اليومية: أول خطوة في المهمة */
 function recap(){
  app.innerHTML='<button class="back" id="bk">→ الرئيسية</button>'+bar()+'<div class="head"><h1>نراجع طريقة الأصابع</h1><div class="sub">دقيقتان كل يوم قبل أي شيء</div></div>'+
- '<div class="vb"><div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">يا نادين، مثال <bdi class="eq">8 × 6</bdi></h2><div class="hands" style="direction:ltr;margin:.3rem 0"><div class="hw"><div class="hb">'+handImg('L',4)+'</div><div class="hl">6 ← باقي له 4</div></div><div class="hw"><div class="hb">'+handImg('R',2)+'</div><div class="hl">8 ← باقي له 2</div></div></div><ol class="steps"><li><b class="n">1</b><div>8 باقي له 2 ليصير 10، و6 باقي له 4<small>نرفع 2 في يد و4 في اليد الأخرى</small></div></li><li><b class="n">2</b><div>الواقفة نضربها: 2 × 4 = 8<small>نكتب 8 في خانة 1 (يميناً)</small></div></li><li><b class="n">3</b><div>النائمة: 3 + 1 = 4، وكل واحدة 10<small>نكتب 4 في خانة 10 (يعني 40)</small></div></li><li><b class="n">4</b><div>الناتج: 48 ✓</div></li></ol><div class="msg good">💡 في الاختبار: شككتِ أو لم تشكّي، طبّقي هذه الطريقة على الضرب من 7 إلى 10، واكتبي جدول 5 أول ما تستلمين الورقة.</div><div class="row"><button class="btn big" id="nx">راجعتها، نكمل ←</button></div></div>'+vid('media/fingers.mp4','media/fingers.jpg','المقطع لصاحبته (علامتها المائية ظاهرة).')+'</div>';
+ '<div class="vb"><div class="yarn paper" style="padding:.7rem 1rem"><h2 style="margin:0">يا نادين، مثال <bdi class="eq">8 × 6</bdi></h2><div class="hands" style="direction:ltr;margin:.3rem 0"><div class="hw"><div class="hb">'+handImg('L',4)+'</div><div class="hl">6 ← باقي له 4</div></div><div class="hw"><div class="hb">'+handImg('R',2)+'</div><div class="hl">8 ← باقي له 2</div></div></div><ol class="steps"><li><b class="n">1</b><div>8 باقي له 2 ليصير 10، و6 باقي له 4<small>نرفع 2 في يد و4 في اليد الأخرى</small></div></li><li><b class="n">2</b><div>الواقفة نضربها: 2 × 4 = 8<small>نكتب 8 في الآحاد (على اليمين)</small></div></li><li><b class="n">3</b><div>النائمة: 3 + 1 = 4، وكل واحدة 10<small>نكتب 4 في العشرات (يعني 40)</small></div></li><li><b class="n">4</b><div>الناتج: 48 ✓</div></li></ol><div class="msg good">💡 في الاختبار: شككتِ أو لم تشكّي، طبّقي هذه الطريقة على الضرب من 7 إلى 10، واكتبي جدول 5 أول ما تستلمين الورقة.</div><div class="row"><button class="btn big" id="nx">راجعتها، نكمل ←</button></div></div>'+vid('media/fingers.mp4','media/fingers.jpg','المقطع لصاحبته (علامتها المائية ظاهرة).')+'</div>';
  $('#bk').onclick=home;$('#nx').onclick=nextStep;
 }
 
