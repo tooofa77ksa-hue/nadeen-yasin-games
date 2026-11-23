@@ -1,0 +1,13 @@
+@font-face{font-family:B;font-weight:700;src:url('file:///home/user/nadeen-yasin-games/darb/fonts/baloo-700.ttf')}
+@font-face{font-family:B;font-weight:800;src:url('file:///home/user/nadeen-yasin-games/darb/fonts/baloo-800.ttf')}
+@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;font-family:B,sans-serif;font-weight:700;color:#000;font-size:15.5px;line-height:1.75;background:#fff}
+.pg{width:794px;min-height:1123px;padding:26px 40px 46px;position:relative;page-break-after:always}
+.hd{border:2.5px solid #000;border-radius:10px;padding:6px 14px;display:flex;justify-content:space-between;align-items:center;font-size:14px;line-height:1.6}.hd .c{text-align:center;font-size:16px}
+.gn{border:2px solid #000;border-radius:8px;text-align:center;margin:6px 0;font-size:13.5px}
+.sc{border-collapse:collapse;margin:4px auto;font-size:12.5px}.sc td,.sc th{border:1.5px solid #000;padding:1px 8px;text-align:center}
+h2{break-after:avoid;font-size:19px;margin:10px 0 3px;border-bottom:2.5px solid #000;padding-bottom:1px}h2 .m{float:left;font-size:15px}
+.hint{font-size:14px;margin:3px 0}.t{width:100%;border-collapse:collapse;margin:3px 0}.t td,.t th{border:1.5px solid #000;padding:2px 8px;text-align:center;height:30px}.t th{background:#fff;font-weight:800}
+.q{margin:5px 0;break-inside:avoid}.op{display:inline-block;padding:0 3px;margin-left:10px}.op.ok{border:2px solid #000;border-radius:6px;font-weight:800;text-decoration:underline}
+.a{border:2px solid #000;border-radius:6px;padding:0 8px;font-weight:800}.why{font-size:13px;border-right:4px solid #000;padding-right:8px;margin:3px 0}
+.cp{font-size:22px;text-align:center;margin:4px 0}.ln{border-bottom:1.5px dotted #000;height:34px}.ed{text-align:center;font-size:12px;margin-top:6px}
+.ft{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:11px}.ft a{color:#000;text-decoration:none}u{text-decoration:underline;text-underline-offset:4px}.bx{display:inline-block;border:2px solid #000;border-radius:6px;min-width:34px;height:24px;text-align:center;vertical-align:middle}.bx.ok{font-weight:800;text-decoration:underline}.fig{text-align:center}.fig img{max-height:150px;max-width:75%;border:1.5px solid #000}.ans{border:2px solid #000;border-radius:8px;padding:1px 10px;margin:3px 0}
